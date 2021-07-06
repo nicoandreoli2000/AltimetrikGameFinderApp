@@ -11,65 +11,75 @@
     <title>Game Finder</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <!-- Main ?-->
-    <!-- Dimensiones? -->
+    <div class="container-fluid">
+        <!-- Container -->
+        <div class="container-fluid dimensions">
 
-    <div class="container-fluid w-75">
+            <!-- Login -->
+            <div class="row align-items-center">
 
-        <!-- Login -->
-        <div class="row">
-
-            <!-- Form -->
-            <div class="col">
-
-
-                <h1 class="row justify-content-center">GAMEFINDER</h1>
-                <form action="">
-                    <input type="text" name="username" placeholder="Username or email"><br>
-                    <input type="password" name="password" placeholder="Password"><br>
-                    <input type="checkbox" id="remember" name="remember">
-                    <label for="remember">Remember me</label>
-                    <input type="submit" value="LOGIN"><br>
-                    <a href="">Register now</a>
-                    <a href="">Forgot password?</a>
-                </form>
-
-            </div>
-
-            <div clas="row">
-                <div class="col-4">
-                    <hr>
-                </div>
-
+                <!-- Form -->
                 <div class="col">
-                    <p>or</p>
+
+
+                    <div class="row">
+                        <h1>GAMEFINDER</h1>
+                        <form action="">
+                            <input type="text" name="username" placeholder="Username or email"><br>
+                            <input type="password" name="password" placeholder="Password"><br>
+                            <input type="checkbox" id="remember" name="remember">
+                            <label for="remember">Remember me</label>
+                            <input type="submit" value="LOGIN"><br>
+                            <a href="">Register now</a>
+                            <a href="">Forgot password?</a>
+                        </form>
+                    </div>
+
+
+
+                    <div clas="row">
+                        <div class="col">
+                            <hr>
+                        </div>
+
+                        <div class="col">
+                            <p>or</p>
+                        </div>
+
+                        <div class="col">
+                            <hr>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <button>LOGIN WITH FACEBOOK</button><br>
+                    </div>
+
+                    <div class="row">
+                        <button>LOGIN WITH TWITTER</button><br>
+                    </div>
+
+                    <div class="row">
+                        <button>LOGIN WITH GOOGLE</button>
+                    </div>
+
                 </div>
 
+
+
+                <!-- Image -->
                 <div class="col">
-                    <hr>
+                    <img src="./assets/images/login.png" class="img-fluid" alt="Corousel of login images">
                 </div>
             </div>
-            <div class="row">
-                <button>LOGIN WITH FACEBOOK</button><br>
-            </div>
-            <div class="row">
-                <button>LOGIN WITH TWITTER</button><br>
-            </div>
-            <div class="row">
-                <button>LOGIN WITH GOOGLE</button>
-            </div>
 
-            <!-- Image -->
-            <div class="col">
-                <img src="./assets/images/login.png" class="img-fluid" alt="Corousel of login images">
-            </div>
         </div>
-
     </div>
+
 </body>
 
 </html>
