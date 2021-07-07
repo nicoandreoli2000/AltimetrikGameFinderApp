@@ -6,7 +6,8 @@ html {
     font-family: Open Sans, sans-serif;
     font-style: normal;
     font-weight: normal;
-    color: #FFFFFF;
+    color: #8F8F8F;
+    ;
 }
 
 
@@ -17,6 +18,7 @@ html {
     margin-top: 2rem;
     grid-template-rows: 41.25rem;
     grid-template-columns: auto 39.375rem 28.313rem auto;
+    /*Ver si no poner auto en la primera de rem...*/
     grid-template-areas: '. form image .';
 }
 
@@ -39,15 +41,26 @@ html {
 
 .form-box {
     margin-top: 2.125rem;
+    /* width: 19.875rem; Cuano vayas a reverlo fijate esto*/
     display: flex;
-    justify-content: center;
-    flex-direction: row;
+    align-items: center;
+    flex-direction: column;
 }
 
 .form {
     border-radius: 10px 0px 0px 10px;
     background-color: #303030;
+    /*poner solo background y eliminar css?*/
     grid-area: form;
+}
+
+
+/* No cambia en nada esto CREO */
+
+.form-title {
+    display: flex;
+    justify-content: center;
+    color: white;
 }
 
 .form-title-normal {
@@ -71,9 +84,37 @@ html {
 }
 
 .form-login {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: auto auto auto;
+    grid-template-areas: 'remember . login';
     margin-top: 2rem;
+}
+
+.form-remember-me {
+    grid-area: remember;
+    justify-self: start;
+}
+
+#remember {
+    border: 1px solid #8F8F8F;
+    box-sizing: border-box;
+    border-radius: 4px;
+    background-color: #303030;
+    /*Por qu eno anda esto?????*/
+}
+
+.form-login-button {
+    grid-area: login;
+    justify-self: end;
+    border: 0;
+    background: linear-gradient(180deg, #7CD235 0%, #2BB34F 100%);
+    border-radius: 8px;
+    width: 6.25rem;
+    height: 2.5rem;
+    font-weight: 600;
+    font-size: 16px;
+    color: white;
 }
 
 .form-placeholders {
@@ -81,6 +122,85 @@ html {
     justify-content: space-between;
     margin-top: 1.5rem;
     font-size: 14px;
+}
+
+hr {
+    border: 1px solid #FFFFFF;
+    background-color: white;
+    width: 8.375rem;
+}
+
+
+/* CUIDADO, ESTAS FORZANDO EL ANCHO DEL FORM_CONTAINER... simplemente con las lineas xd */
+
+.form-lines {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: auto auto auto;
+}
+
+.form-vertical-center {
+    display: flex;
+    align-items: center;
+}
+
+.form-text-or {
+    width: 3.813rem;
+    text-align: center;
+}
+
+
+/*IDem CUIDADO de más arriba, creo que FORCë el width.....*/
+
+.form-buttons-social {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-button-facebook {
+    margin-top: 1.313rem;
+}
+
+.form-button-facebook button {
+    background: #3B5998;
+    border-radius: 8px;
+    width: 15rem;
+    height: 2.5rem;
+    font-weight: 700;
+    font-size: 12px;
+    color: white;
+    border: 0;
+}
+
+.form-button-twitter {
+    margin-top: 1.5rem;
+}
+
+.form-button-twitter button {
+    background: #00ACED;
+    border-radius: 8px;
+    width: 15rem;
+    height: 2.5rem;
+    font-weight: 700;
+    font-size: 12px;
+    color: white;
+    border: 0;
+}
+
+.form-button-google {
+    margin-top: 1.5rem;
+}
+
+.form-button-google button {
+    background: #C7C7C7;
+    border-radius: 8px;
+    width: 15rem;
+    height: 2.5rem;
+    font-weight: 700;
+    font-size: 12px;
+    color: white;
+    border: 0;
 }
 
 
