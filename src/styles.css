@@ -13,7 +13,6 @@ html {
     font-style: normal;
     font-weight: 400;
     color: #8F8F8F;
-    ;
 }
 
 
@@ -32,7 +31,6 @@ html {
 .image-box {
     width: 453px;
     height: 660px;
-    background-color: white;
 }
 
 .image-adjust {
@@ -57,54 +55,85 @@ html {
 .form-wrapper {
     margin-top: 34px;
     width: 330px;
-    height: 571px;
-    /* Height esta de más creo... se infiere sola */
 }
 
 .form-title {
+    width: 100%;
     display: flex;
     justify-content: center;
     color: white;
+    /*Ver porque aca te queda un espacio a la derecha del div...., el text align no tiene efecto*/
     font-size: 21px;
     line-height: 61px;
     letter-spacing: 2.8px;
-    /* ESTE VALOR ES 45px EN FIGMA, se va al carajo, estan mal dados los datos en figma mucha info... */
+    /* ESTE VALOR ES 45px EN FIGMA, se va al carajo, estan raros estos datos line height, spacing... */
 }
 
 .form-title-normal {
     font-weight: 300;
+    /* Es 400 en realidad */
 }
 
 .form-title-strong {
     font-weight: 800;
 }
 
-
-/* Seguir optimizando desde aca... */
-
 .form-user {
-    display: flex;
-    justify-content: center;
-    margin-top: 1.563rem;
+    margin-top: 2.5px;
 }
 
 input[type="text"] {
+    background: #303030;
+    box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.1);
+    /*El box shadow no me está funcionando*/
     border: 1px solid #8F8F8F;
     border-radius: 8px;
+    padding-left: 72px;
+    font-size: 14px;
+    line-height: 19px;
     width: 100%;
-    height: 3.25rem;
+    height: 52px;
 }
+
+.form-user i {
+    color: #D1D1D1;
+    font-size: 1.25rem;
+    /*Esta bien aproximar tamano del icono*/
+    position: relative;
+    top: 37px;
+    left: 16px;
+    /*No se como calcular margin top exacto, es el alto del macaco*/
+    /*Probe con float pero no funca, me gustaria poder ver como resolver esto mejor*/
+}
+
+
+/*Las preguntas se repiten para password*/
+
+
+/*En ambos falta la linea*/
 
 .form-pass {
-    display: flex;
-    justify-content: center;
-    margin-top: 1.25rem;
+    margin-top: -2.5px;
 }
 
-input[type="password"] {
+.form-pass input[type="password"] {
+    background: #303030;
+    box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.1);
     border: 1px solid #8F8F8F;
     border-radius: 8px;
+    padding-left: 72px;
+    font-size: 14px;
+    line-height: 19px;
     width: 100%;
+    height: 52px;
+}
+
+.form-pass i {
+    color: #D1D1D1;
+    font-size: 1.25rem;
+    position: relative;
+    top: 37px;
+    left: 16px;
 }
 
 .form-login {
@@ -112,20 +141,27 @@ input[type="password"] {
     grid-template-rows: auto;
     grid-template-columns: auto auto auto;
     grid-template-areas: 'remember . login';
-    margin-top: 2rem;
+    margin-top: 32px;
 }
 
 .form-remember-me {
     grid-area: remember;
     justify-self: start;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    line-height: 19px;
+    /*No entiendo bien para que es el line-height en TODO el programa*/
 }
 
 #remember {
+    background-color: #303030;
+    /*No anda esto....*/
     border: 1px solid #8F8F8F;
     box-sizing: border-box;
     border-radius: 4px;
-    background-color: #303030;
-    /*Por qu eno anda esto?????*/
+    margin-right: 10px;
+    cursor: pointer;
 }
 
 .form-login-button {
@@ -134,33 +170,42 @@ input[type="password"] {
     border: 0;
     background: linear-gradient(180deg, #7CD235 0%, #2BB34F 100%);
     border-radius: 8px;
-    width: 6.25rem;
-    height: 2.5rem;
-    font-weight: 600;
-    font-size: 16px;
+    width: 100px;
+    height: 40px;
+    font-weight: 550;
+    letter-spacing: 0.7px;
+    /*En FIGMA: font weight es de 600 y no hay letter spacing*/
+    line-height: 22px;
     color: white;
+    cursor: pointer;
 }
+
+
+/*Register now        Forgot password?*/
 
 .form-placeholders {
+    margin-top: 15px;
+    font-size: 14px;
+    line-height: 19px;
+    color: white;
     display: flex;
     justify-content: space-between;
-    margin-top: 1.5rem;
-    font-size: 14px;
 }
+
+
+/*---------- or ---------*/
 
 hr {
-    border: 1px solid #FFFFFF;
+    border: 0.1px solid white;
+    /*En figma: 1px*/
     background-color: white;
-    width: 8.375rem;
+    width: 142px;
 }
 
-
-/* CUIDADO, ESTAS FORZANDO EL ANCHO DEL FORM_CONTAINER... simplemente con las lineas xd */
-
 .form-lines {
-    display: grid;
-    grid-template-rows: auto;
-    grid-template-columns: auto auto auto;
+    margin-top: 47px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .form-vertical-center {
@@ -169,21 +214,22 @@ hr {
 }
 
 .form-text-or {
-    width: 3.813rem;
+    width: 61px;
+    font-size: 14px;
+    line-height: 19px;
     text-align: center;
 }
 
 
 /*IDem CUIDADO de más arriba, creo que FORCë el width.....*/
 
-.form-buttons-social {
+.form-center {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
 }
 
 .form-button-facebook {
-    margin-top: 1.313rem;
+    margin-top: 24px;
 }
 
 .form-button-facebook button {
@@ -198,7 +244,7 @@ hr {
 }
 
 .form-button-twitter {
-    margin-top: 1.5rem;
+    margin-top: 21px;
 }
 
 .form-button-twitter button {
@@ -213,7 +259,7 @@ hr {
 }
 
 .form-button-google {
-    margin-top: 1.5rem;
+    margin-top: 21px;
 }
 
 .form-button-google button {
