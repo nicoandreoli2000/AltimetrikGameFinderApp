@@ -47,25 +47,40 @@ html {
 .form-box {
     width: 630px;
     height: 660px;
+    display: flex;
     align-items: center;
     flex-direction: column;
     border-radius: 10px 0px 0px 10px;
     background: #303030;
 }
 
+.form-wrapper {
+    margin-top: 34px;
+    width: 330px;
+    height: 571px;
+    /* Height esta de más creo... se infiere sola */
+}
+
 .form-title {
     display: flex;
     justify-content: center;
     color: white;
+    font-size: 21px;
+    line-height: 61px;
+    letter-spacing: 2.8px;
+    /* ESTE VALOR ES 45px EN FIGMA, se va al carajo, estan mal dados los datos en figma mucha info... */
 }
 
 .form-title-normal {
-    font-weight: 400;
+    font-weight: 300;
 }
 
 .form-title-strong {
     font-weight: 800;
 }
+
+
+/* Seguir optimizando desde aca... */
 
 .form-user {
     display: flex;
