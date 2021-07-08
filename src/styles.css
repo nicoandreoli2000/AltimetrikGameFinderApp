@@ -1,13 +1,3 @@
-/* *,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
-
-html {
-  box-sizing: border-box;
-} */
-
 * {
     padding: 0;
     margin: 0;
@@ -60,7 +50,6 @@ form {
     justify-content: center;
     color: white;
     font-size: 21px;
-    /*Es 45 en realidad*/
     height: 61px;
     line-height: 61px;
     letter-spacing: 2.8px;
@@ -89,20 +78,41 @@ form {
     width: 52px;
 }
 
-.user-icon img {
+.user-icon svg {
     position: relative;
     top: 16px;
     left: 16px;
+    fill: #D1D1D1;
 }
 
 .user-input {
+    -webkit-appearance: none;
     background-color: #303030;
     border: 1px solid #8F8F8F;
     border-radius: 0px 8px 8px 0px;
     padding-left: 20px;
     font-size: 14px;
+    color: #8F8F8F;
     line-height: 19px;
     width: 278px;
+}
+
+.user-icon:active {
+    border-color: red;
+}
+
+.user-input:focus {
+    outline: none;
+    border-color: white;
+    color: white;
+}
+
+.user-box:focus-within .user-icon {
+    border-color: white;
+}
+
+.user-box:focus-within svg {
+    fill: white;
 }
 
 .pass-box {
@@ -120,10 +130,11 @@ form {
     width: 52px;
 }
 
-.pass-icon img {
+.pass-icon svg {
     position: relative;
     top: 15px;
     left: 16px;
+    fill: #D1D1D1;
 }
 
 .pass-input {
@@ -145,9 +156,10 @@ form {
     width: 34px;
 }
 
-.hidepass-icon img {
+.hidepass-icon svg {
     position: relative;
     top: 18px;
+    fill: #D1D1D1;
 }
 
 .hidepass-icon button {
@@ -197,7 +209,7 @@ form {
     background-image: url(./assets/images/check.svg);
 }
 
-.form-login-button {
+.login-button {
     grid-area: login;
     justify-self: end;
     border: 0;
@@ -211,6 +223,14 @@ form {
     cursor: pointer;
 }
 
+.login-button:hover {
+    background: #7CD235;
+}
+
+.login-button:focus {
+    border: 1px solid #FFFFFF;
+}
+
 .placeholders {
     margin-top: 15px;
     font-size: 14px;
@@ -219,6 +239,7 @@ form {
     color: white;
     display: flex;
     justify-content: space-between;
+    cursor: pointer;
 }
 
 hr {
@@ -278,6 +299,7 @@ hr {
 .icon {
     border-radius: 8px 0px 0px 8px;
     width: 46.55px;
+    cursor: pointer;
 }
 
 .fb-icon {
@@ -288,7 +310,7 @@ hr {
     background: #3B5998;
 }
 
-.fb-icon img {
+.fb-icon svg {
     position: relative;
     top: 11px;
     left: 13.27px;
@@ -302,7 +324,7 @@ hr {
     background: #00ACED;
 }
 
-.tw-icon img {
+.tw-icon svg {
     position: relative;
     top: 12px;
     left: 14.73px;
@@ -316,7 +338,7 @@ hr {
     background: #C7C7C7;
 }
 
-.g-icon img {
+.g-icon svg {
     position: relative;
     top: 13.56px;
     left: 15.55px;
