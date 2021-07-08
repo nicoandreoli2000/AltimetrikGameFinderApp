@@ -15,18 +15,12 @@ html {
     color: #8F8F8F;
 }
 
-
-/*Container */
-
 .wrapper {
     display: flex;
     justify-content: center;
     margin-top: 180px;
     margin-bottom: 184px;
 }
-
-
-/* Image */
 
 .image-box {
     width: 453px;
@@ -37,9 +31,6 @@ html {
     border-radius: 0px 10px 10px 0px;
     height: 660px;
 }
-
-
-/* Form */
 
 .form-box {
     width: 630px;
@@ -62,13 +53,13 @@ form {
     color: white;
     font-size: 21px;
     /*Es 45 en realidad*/
+    height: 61px;
     line-height: 61px;
     letter-spacing: 2.8px;
 }
 
 .form-title-normal {
-    font-weight: 300;
-    /* Es 400 en realidad */
+    font-weight: 400;
 }
 
 .form-title-strong {
@@ -96,7 +87,7 @@ input[type="text"] {
 }
 
 .form-pass {
-    margin-top: 32px;
+    margin-top: 20px;
 }
 
 input[type="password"] {
@@ -133,17 +124,18 @@ input[type="password"] {
 }
 
 input[type="checkbox"] {
-    background-color: #303030;
-    /*No anda esto....*/
-    border: 1px solid #8F8F8F;
-    box-sizing: border-box;
-    border-radius: 4px;
+    width: 20px;
+    height: 20px;
     margin-right: 10px;
+    border: 1px solid #8F8F8F;
+    border-radius: 4px;
+    background-color: #303030;
+    /*No anda ni border ni background*/
     cursor: pointer;
 }
 
 input[type="checkbox"]:checked {
-    background-color: green;
+    color: green;
 }
 
 .form-login-button {
@@ -160,33 +152,29 @@ input[type="checkbox"]:checked {
     cursor: pointer;
 }
 
-
-/*Register now        Forgot password?*/
-
-.form-placeholders {
+.placeholders {
     margin-top: 15px;
     font-size: 14px;
+    height: 19px;
     line-height: 19px;
     color: white;
     display: flex;
     justify-content: space-between;
 }
 
-
-/*---------- or ---------*/
-
 hr {
     border: 1px solid white;
-    width: 142px;
+    width: 134px;
 }
 
 .form-lines {
+    height: 19px;
     margin-top: 47px;
     display: flex;
     justify-content: space-between;
 }
 
-.form-vertical-center {
+.vertical-center {
     display: flex;
     align-items: center;
 }
