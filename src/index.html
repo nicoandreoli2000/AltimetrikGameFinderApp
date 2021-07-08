@@ -26,17 +26,29 @@
                     <h1 class="form-title-normal">GAME<strong class="form-title-strong">FINDER</strong></h1>
                 </div>
 
-                <div class="form-user">
-                    <input type="text" placeholder="Username or email" name="username">
+                <div class="user-box">
+                    <div class="user-icon">
+                        <img src="./assets/images/avatar.svg" alt="Username icon" width="20" height="20">
+                    </div>
+                    <input class="user-input" type="text" placeholder="Username or email" name="username">
                 </div>
 
-                <div class="form-pass">
-                    <input type="password" placeholder="Password" name="password">
+                <div class="pass-box">
+                    <div class="pass-icon">
+                        <img src="./assets/images/key.svg" alt="Password icon" width="21" height="9">
+                    </div>
+                    <input class="pass-input" type="password" placeholder="Password" name="password">
+                    <div class="hidepass-icon">
+                        <button>
+                            <img src="./assets/images/showpass.svg" alt="Show/Hide password icon" width="20"
+                                height="13.75">
+                        </button>
+                    </div>
                 </div>
 
                 <div class="form-login">
                     <div class="form-remember-me">
-                        <input type="checkbox" id="remember" name="remember">
+                        <input class="checkbox-custom" type="checkbox" id="remember" name="remember">
                         <label for="remember">Remember me</label>
                     </div>
 
@@ -64,16 +76,32 @@
 
                 </div>
 
-                <div class="center facebook">
-                    <button class="buttons">LOGIN WITH FACEBOOK</button>
+                <div class="container-button container-first-button">
+                    <div class="subcontainer-button">
+                        <span class="icon fb-icon">
+                            <img src="./assets/images/FB.svg" alt="Facebook icon" width="20" height="18">
+                        </span>
+                        <button class="buttons facebook">LOGIN WITH FACEBOOK</button>
+                    </div>
                 </div>
 
-                <div class="center twitter">
-                    <button class="buttons">LOGIN WITH TWITTER</button>
+                <div class="container-button">
+                    <div class="subcontainer-button">
+                        <span class="icon tw-icon">
+                            <img src="./assets/images/TW.svg" alt="Twitter icon" width="20" height="16">
+                        </span>
+                        <button class="buttons twitter">LOGIN WITH TWITTER</button>
+
+                    </div>
                 </div>
 
-                <div class="center google">
-                    <button class="buttons">LOGIN WITH GOOGLE</button>
+                <div class="container-button">
+                    <div class="subcontainer-button">
+                        <span class="icon g-icon">
+                            <img src="./assets/images/G.svg" alt="Google icon" width="14" height="14">
+                        </span>
+                        <button class="buttons google">LOGIN WITH GOOGLE</button>
+                    </div>
                 </div>
 
             </form>
