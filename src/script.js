@@ -2,9 +2,9 @@
 const loginPrueba = ['nandreoli', '123'];
 
 // Referencias HTML
-let formTotal = document.querySelector('form');
-let inputPassword = document.querySelector('.pass-input');
-let buttonHidePassword = document.querySelector('.btn-hidepass');
+const formTotal = document.querySelector('form');
+const inputPassword = document.querySelector('.pass-input');
+const buttonHidePassword = document.querySelector('.btn-hidepass');
 
 //Show/Hide icons
 const hidepassIcon = `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -36,13 +36,17 @@ S9.2,3.7,10,3.7c0.8,0,1.6,0.3,2.2,0.9S13.1,6,13.1,6.9z" />
 //Funciones
 const showPassword = () => {
 
-    buttonHidePassword.innerHTML = null;
     let div = document.createElement('div');
+    /*Hacer All y quedarte con el que quieras o darle clases a los svg*/
+    let svg = document.querySelector('btn-hidepass svg');
+    console.log(svg);
+    svg.remove();
 
     if (inputPassword.type === "password") {
         inputPassword.type = "text";
         div.innerHTML = hidepassIcon;
         buttonHidePassword.append(div.firstChild);
+        console.log(buttonHidePassword);
 
     } else {
         inputPassword.type = "password";
