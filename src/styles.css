@@ -95,14 +95,10 @@ form {
     color: #8F8F8F;
     line-height: 19px;
     width: 278px;
-}
-
-.user-icon:active {
-    border-color: red;
+    outline: none;
 }
 
 .user-input:focus {
-    outline: none;
     border-color: white;
     color: white;
 }
@@ -111,9 +107,12 @@ form {
     border-color: white;
 }
 
-.user-box:focus-within svg {
+.user-box:focus-within .user-icon svg {
     fill: white;
 }
+
+
+/*Active*/
 
 .pass-box {
     margin-top: 20px;
@@ -145,7 +144,8 @@ form {
     font-size: 14px;
     line-height: 19px;
     box-sizing: border-box;
-    width: 244px;
+    width: 230px;
+    outline: none;
 }
 
 .hidepass-icon {
@@ -153,20 +153,54 @@ form {
     border-radius: 0px 8px 8px 0px;
     border-left-width: 0px;
     box-sizing: border-box;
-    width: 34px;
+    width: 48px;
 }
 
-.hidepass-icon svg {
-    position: relative;
-    top: 18px;
-    fill: #D1D1D1;
-}
-
-.hidepass-icon button {
+.btn-hidepass {
     background-color: inherit;
     border: 0;
     cursor: pointer;
+    outline: none;
 }
+
+.btn-hidepass svg {
+    position: relative;
+    top: 18px;
+    left: 14px;
+    fill: #D1D1D1;
+}
+
+.pass-input:focus {
+    border-color: white;
+    color: white;
+}
+
+.pass-box:focus-within .hidepass-icon {
+    border-color: white;
+}
+
+.pass-box:focus-within .pass-icon {
+    border-color: white;
+}
+
+.pass-box:focus-within .pass-icon>svg {
+    border-color: white;
+    color: white;
+    fill: white;
+}
+
+
+/* .error {
+    border-color: #D24040;
+}
+
+.error::placeholder {
+    color: #D24040;
+}
+
+.error>svg {
+    fill: #D24040;
+} */
 
 .form-login {
     display: grid;
@@ -188,7 +222,6 @@ form {
 .checkbox-custom {
     -webkit-appearance: none;
     background-color: #303030;
-    /* #E5E5E5 */
     width: 20px;
     height: 20px;
     margin-right: 10px;
@@ -197,7 +230,8 @@ form {
     cursor: pointer;
 }
 
-.checkbox-custom:hover {
+.checkbox-custom:focus {
+    outline: none;
     border-color: white;
 }
 
@@ -228,8 +262,16 @@ form {
 }
 
 .login-button:focus {
+    outline: none;
     border: 1px solid #FFFFFF;
 }
+
+.login-button:active {
+    background: linear-gradient(180deg, #7CD235 0%, #2BB34F 100%);
+}
+
+
+/*Pressed?????*/
 
 .placeholders {
     margin-top: 15px;
