@@ -1,0 +1,8 @@
+@media (max-width: 1083px) {
+    .image-box {
+        display: none;
+    }
+    .form-box {
+        border-radius: 10px 10px 10px 10px;
+    }
+}

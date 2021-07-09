@@ -1,0 +1,21 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 180px;
+    margin-bottom: 184px;
+}
+
+.form-box {
+    width: 630px;
+    height: 660px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px 0px 0px 10px;
+    background: #303030;
+}
+
+.image-box {
+    width: 453px;
+    height: 660px;
+}
