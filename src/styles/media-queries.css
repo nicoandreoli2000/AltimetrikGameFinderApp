@@ -1,4 +1,17 @@
-@media (max-width: 1083px) {
+/*
+Mobile:
+320 a 767px mobile
+
+Tablet:
+768 a 1023px tablet
+
+Original:
+1024 a 1279px laptop
+1280 a 1439px desktop
+1440 > big screens
+*/
+
+@media (max-width: 1024px) {
     .image-box {
         display: none;
     }
