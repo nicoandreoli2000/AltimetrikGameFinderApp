@@ -1,32 +1,64 @@
-/* .error {
+/* Error */
+
+.inputError .pass-message,
+.inputError .user-message {
+    display: flex;
+}
+
+.inputError .form-lines {
+    height: 16px;
+}
+
+.inputError .pass-box {
+    margin-top: 6px;
+}
+
+.inputError .form-login,
+.inputError .form-lines {
+    margin-top: 21px;
+}
+
+.inputError .container-first-button {
+    margin-top: 23px;
+}
+
+.inputError .user-input,
+.inputError .user-icon,
+.inputError .pass-icon,
+.inputError .pass-input,
+.inputError .hidepass-icon {
     border-color: #D24040;
 }
 
-.error::placeholder {
+.inputError .user-input::placeholder,
+.inputError .pass-input::placeholder {
     color: #D24040;
 }
 
-.error>svg {
+.inputError .user-icon>svg,
+.inputError .pass-icon>svg {
     fill: #D24040;
-} */
+}
 
 
 /* Focus */
 
-
-/* .isFocused {
+.isFocused .user-icon,
+.isFocused .user-input,
+.isFocused .pass-icon,
+.isFocused .pass-input,
+.isFocused .hidepass-icon {
     border-color: white;
-} */
-
-
-/*Active */
-
-
-/* .isActive {
-    border-color: white;
-    color: white;
 }
 
-.isActive svg {
+.isActive>div>svg {
     fill: white;
-} */
+}
+
+
+/* Active */
+
+.isActive .user-input,
+.isActive .pass-input {
+    color: white;
+}

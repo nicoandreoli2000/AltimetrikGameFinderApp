@@ -1,13 +1,17 @@
-// Base de datos
-const loginPrueba = ['nandreoli', '123'];
+// Data base
+const prueba = ['nandreoli', '123'];
 
-// Referencias HTML
-const formTotal = document.querySelector('form');
-const inputPassword = document.querySelector('.pass-input');
+// HTML references
+const form = document.querySelector('form');
+const loginButton = document.querySelector('.login-button');
 const buttonHidePassword = document.querySelector('.btn-hidepass');
+const inputEmail = document.querySelector('.user-input');
+const emailBox = document.querySelector('.user-box');
+const inputPassword = document.querySelector('.pass-input');
+const passwordBox = document.querySelector('.pass-box');
 
-//Show/Hide icons
-const hidepassIcon = `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+//Show/Hide password icons
+const hidepassIcon = `<svg width="20" height="13.75" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 viewBox="0 0 20 14" style="enable-background:new 0 0 20 14;" xml:space="preserve">
 <path class="st0" d="M10,0C8.5,0,7.1,0.4,5.9,1l2,2C8.6,2.7,9.3,2.5,10,2.5c1.2,0,2.3,0.5,3.1,1.3c0.8,0.8,1.3,1.9,1.3,3.1
    c0,0.7-0.2,1.4-0.5,2.1l2.4,2.4c2.4-2,3.8-4.4,3.8-4.4S16.2,0,10,0z"/>
@@ -32,21 +36,17 @@ S9.2,3.7,10,3.7c0.8,0,1.6,0.3,2.2,0.9S13.1,6,13.1,6.9z" />
 </svg>`;
 
 
-
-//Funciones
+//Functions
 const showPassword = () => {
 
-    let div = document.createElement('div');
-    /*Hacer All y quedarte con el que quieras o darle clases a los svg*/
-    let svg = document.querySelector('btn-hidepass svg');
-    console.log(svg);
+    const div = document.createElement('div');
+    const svg = document.querySelector('.btn-hidepass svg');
     svg.remove();
 
     if (inputPassword.type === "password") {
         inputPassword.type = "text";
         div.innerHTML = hidepassIcon;
         buttonHidePassword.append(div.firstChild);
-        console.log(buttonHidePassword);
 
     } else {
         inputPassword.type = "password";
@@ -54,3 +54,47 @@ const showPassword = () => {
         buttonHidePassword.append(div.firstChild);
     }
 }
+
+
+//Email input states
+inputEmail.addEventListener('input', () => {
+    emailBox.classList.add('isActive');
+});
+inputEmail.addEventListener('click', () => {
+    emailBox.classList.add('isActive');
+});
+inputEmail.addEventListener('focus', () => {
+    emailBox.classList.add('isFocused');
+    form.classList.remove('inputError');
+});
+inputEmail.addEventListener('blur', () => {
+    emailBox.classList.remove('isFocused');
+    emailBox.classList.remove('isActive');
+});
+
+//Password input states
+inputPassword.addEventListener('input', () => {
+    passwordBox.classList.add('isActive');
+});
+inputPassword.addEventListener('click', () => {
+    passwordBox.classList.add('isActive');
+});
+inputPassword.addEventListener('focus', () => {
+    passwordBox.classList.add('isFocused');
+    form.classList.remove('inputError');
+});
+inputPassword.addEventListener('blur', () => {
+    passwordBox.classList.remove('isFocused');
+    passwordBox.classList.remove('isActive');
+});
+
+//Form validation
+loginButton.addEventListener('click', () => {
+    if (inputEmail.value === prueba[0] && inputPassword.value === prueba[1]) {
+        alert('To be continued...');
+    } else {
+        form.classList.add('inputError');
+        inputEmail.value = '';
+        inputPassword.value = '';
+    }
+})

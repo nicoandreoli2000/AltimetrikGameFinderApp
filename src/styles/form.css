@@ -1,5 +1,4 @@
 form {
-    margin-top: 34px;
     width: 330px;
 }
 
@@ -51,9 +50,20 @@ form {
     padding-left: 20px;
     font-size: 14px;
     color: #8F8F8F;
-    line-height: 19px;
     width: 278px;
+    line-height: 19px;
     outline: none;
+}
+
+.user-message,
+.pass-message {
+    width: 100%;
+    height: 19px;
+    margin-top: 7px;
+    color: #D24040;
+    font-size: 14px;
+    line-height: 19px;
+    display: none;
 }
 
 .pass-box {
@@ -115,10 +125,10 @@ form {
 
 .form-login {
     display: grid;
+    margin-top: 32px;
     grid-template-rows: auto;
     grid-template-columns: auto auto auto;
     grid-template-areas: 'remember . login';
-    margin-top: 32px;
 }
 
 .form-remember-me {
@@ -141,7 +151,7 @@ form {
     cursor: pointer;
 }
 
-.login-button {
+.login-button:enabled {
     grid-area: login;
     justify-self: end;
     border: 0;

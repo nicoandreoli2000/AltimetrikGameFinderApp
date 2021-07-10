@@ -1,6 +1,10 @@
-.checkbox-custom:focus-visible {
-    outline: none;
-    border-color: white;
+.btn-hidepass:focus-visible svg,
+.btn-hidepass:hover svg {
+    fill: white;
+}
+
+.btn-hidepass:active svg {
+    fill: #D1D1D1;
 }
 
 .checkbox-custom:checked {
@@ -11,12 +15,9 @@
     background-image: url(../assets/icons/check.svg);
 }
 
-.checkbox-custom:active {
-    background-color: #7CD235;
-    border-color: #7CD235;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-image: url(../assets/icons/check.svg);
+.checkbox-custom:focus-visible {
+    outline: none;
+    border-color: white;
 }
 
 .login-button:hover {
