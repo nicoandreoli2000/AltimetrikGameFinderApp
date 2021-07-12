@@ -17,7 +17,7 @@
     margin-top: 21px;
 }
 
-.inputError .container-first-button {
+.inputError .container-fb {
     margin-top: 23px;
 }
 
@@ -34,8 +34,8 @@
     color: #D24040;
 }
 
-.inputError .email-icon>svg,
-.inputError .pass-icon>svg {
+.inputError .svg-one,
+.inputError .svg-two {
     fill: #D24040;
 }
 
@@ -50,12 +50,13 @@
     border-color: white;
 }
 
-.isActive>div>svg {
-    fill: white;
-}
-
 
 /* Active */
+
+.isActive .svg-one,
+.isActive .svg-two {
+    fill: white;
+}
 
 .isActive .email-input,
 .isActive .pass-input {

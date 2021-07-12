@@ -37,6 +37,11 @@ S9.2,3.7,10,3.7c0.8,0,1.6,0.3,2.2,0.9S13.1,6,13.1,6.9z" />
 
 
 //Functions
+const validateEmail = (email) => {
+    let re = /^[^\s@]+@[^\s@]+$/;
+    return re.test(email);
+}
+
 const showPassword = () => {
 
     const div = document.createElement('div');
@@ -90,8 +95,16 @@ inputPassword.addEventListener('blur', () => {
 
 //Form validation
 loginButton.addEventListener('click', () => {
-    if (inputEmail.value === prueba[0] && inputPassword.value === prueba[1]) {
+
+    let email = inputEmail.value;
+    let pass = inputPassword.value;
+
+    if (validateEmail(email)) {
+        console.log('Agustin disigns...');
+
+    } else if (email === prueba[0] && pass === prueba[1]) {
         alert('To be continued...');
+
     } else {
         form.classList.add('inputError');
         inputEmail.value = '';

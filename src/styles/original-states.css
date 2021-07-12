@@ -1,11 +1,16 @@
-.btn-hidepass:focus-visible svg,
-.btn-hidepass:hover svg {
+/* Hidepass button */
+
+.btn-hidepass:focus-visible .svg-three,
+.btn-hidepass:hover .svg-three {
     fill: white;
 }
 
-.btn-hidepass:active svg {
+.btn-hidepass:active .svg-three {
     fill: #D1D1D1;
 }
+
+
+/* Checkbox */
 
 .checkbox-custom:checked {
     background-color: #7CD235;
@@ -19,6 +24,9 @@
     outline: none;
     border-color: white;
 }
+
+
+/*Login button*/
 
 .login-button:hover {
     background: #7CD235;

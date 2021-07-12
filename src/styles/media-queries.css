@@ -48,7 +48,7 @@ PC && TV:
     .title-box {
         height: 48px;
         line-height: 48px;
-        font-size: 32.4px;
+        font-size: 32px;
     }
     .email-box {
         margin-top: 38px;
@@ -67,7 +67,7 @@ PC && TV:
 
 /*Stop responsiveness...*/
 
-@media (max-width: 253px) {
+@media (max-width: 254px) {
     .form-box {
         display: none;
     }
