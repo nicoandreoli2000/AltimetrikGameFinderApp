@@ -76,7 +76,6 @@ form {
 
 .email-input,
 .pass-input {
-    width: 278px;
     padding-left: 20px;
     outline: none;
     font-size: 14px;
@@ -87,10 +86,12 @@ form {
 }
 
 .email-input {
+    width: 278px;
     border-radius: 0px 8px 8px 0px;
 }
 
 .pass-input {
+    width: 230px;
     border-right: none;
 }
 

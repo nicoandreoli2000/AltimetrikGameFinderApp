@@ -1,5 +1,5 @@
 // Data base
-const prueba = ['nandreoli', '123'];
+const prueba = ['123', '123'];
 
 // HTML references
 const form = document.querySelector('form');
@@ -103,7 +103,7 @@ loginButton.addEventListener('click', () => {
         console.log('Agustin disigns...');
 
     } else if (email === prueba[0] && pass === prueba[1]) {
-        alert('To be continued...');
+        window.location.href = "../pages/main-one-col.html"
 
     } else {
         form.classList.add('inputError');
