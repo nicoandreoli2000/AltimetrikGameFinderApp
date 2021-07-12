@@ -5,7 +5,7 @@ Mobile:
 Tablet:
 768 a 1023px tablet
 
-Original:
+PC && TV:
 1024 a 1279px laptop
 1280 a 1439px desktop
 1440 > big screens
@@ -20,18 +20,55 @@ Original:
     }
     .form-box {
         border-radius: 0;
-        width: 100%;
-        height: 100%;
-        padding-top: 105px;
-        padding-bottom: 348px;
+        margin-top: 105px;
+        margin-bottom: 348px;
     }
-    html {
+    .pass-box {
+        margin-top: 32px;
+    }
+    .login-box {
+        margin-top: 47px;
+    }
+    .form-lines {
+        margin-top: 20px;
+    }
+    body {
         background-color: #303030;
     }
 }
 
 @media (max-width: 767px) {
     form {
-        width: 253px;
+        width: 240px;
+    }
+    .form-box {
+        margin-top: 45px;
+        margin-bottom: 151px;
+    }
+    .title-box {
+        height: 48px;
+        line-height: 48px;
+        font-size: 32.4px;
+    }
+    .email-box {
+        margin-top: 38px;
+    }
+    .email-input {
+        width: 188px;
+    }
+    .pass-input {
+        width: 140px;
+    }
+    hr {
+        width: 90px
+    }
+}
+
+
+/*Stop responsiveness...*/
+
+@media (max-width: 253px) {
+    .form-box {
+        display: none;
     }
 }
