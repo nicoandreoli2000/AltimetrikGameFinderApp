@@ -1,14 +1,47 @@
+/*General styles*/
+
 * {
-    padding: 0;
     margin: 0;
+    padding: 0;
+}
+
+*,
+*:before,
+*:after {
     box-sizing: border-box;
 }
 
-body,
-html {
+body {
     background-color: #141414;
     font-family: 'Open Sans', sans-serif;
     font-style: normal;
     font-weight: 400;
     color: #8F8F8F;
 }
+
+
+/*General classes*/
+
+.flex-horizontal {
+    display: flex;
+    justify-content: center;
+}
+
+.flex-vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-box-generic {
+    height: 52px;
+    box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.1);
+}
+
+.icon-generic {
+    position: relative;
+    fill: #D1D1D1;
+}
+
+
+/* .input-generic {} */

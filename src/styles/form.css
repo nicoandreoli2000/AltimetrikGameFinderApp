@@ -1,280 +1,248 @@
-form {
-    width: 330px;
-}
-
-.form-title {
-    display: flex;
-    justify-content: center;
-    color: white;
-    font-size: 21px;
-    height: 61px;
-    line-height: 61px;
-    letter-spacing: 2.8px;
-}
-
-.form-title-normal {
-    font-weight: 400;
-}
-
-.form-title-strong {
-    font-weight: 800;
-}
-
-.user-box {
-    margin-top: 25px;
-    display: flex;
-    height: 52px;
-    box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.1);
-}
-
-.user-icon {
-    border: 1px solid #8F8F8F;
-    border-radius: 8px 0px 0px 8px;
-    border-right-width: 0px;
-    box-sizing: border-box;
-    width: 52px;
-}
-
-.user-icon svg {
-    position: relative;
-    top: 16px;
-    left: 16px;
-    fill: #D1D1D1;
-}
-
-.user-input {
-    -webkit-appearance: none;
-    background-color: #303030;
-    border: 1px solid #8F8F8F;
-    border-radius: 0px 8px 8px 0px;
-    padding-left: 20px;
-    font-size: 14px;
-    color: #8F8F8F;
-    width: 278px;
-    line-height: 19px;
-    outline: none;
-}
-
-.user-message,
-.pass-message {
-    width: 100%;
-    height: 19px;
-    margin-top: 7px;
-    color: #D24040;
-    font-size: 14px;
-    line-height: 19px;
-    display: none;
-}
-
-.pass-box {
-    margin-top: 20px;
-    display: flex;
-    height: 52px;
-    box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.1);
-}
-
-.pass-icon {
-    border: 1px solid #8F8F8F;
-    border-radius: 8px 0px 0px 8px;
-    border-right-width: 0px;
-    box-sizing: border-box;
-    width: 52px;
-}
-
-.pass-icon svg {
-    position: relative;
-    top: 15px;
-    left: 16px;
-    fill: #D1D1D1;
-}
-
-.pass-input {
-    background-color: #303030;
-    border: 1px solid #8F8F8F;
-    border-right-width: 0px;
-    padding-left: 20px;
-    font-size: 14px;
-    line-height: 19px;
-    box-sizing: border-box;
-    width: 230px;
-    outline: none;
-    color: #8F8F8F;
-}
-
-.hidepass-icon {
-    border: 1px solid #8F8F8F;
-    border-radius: 0px 8px 8px 0px;
-    border-left-width: 0px;
-    box-sizing: border-box;
-    width: 48px;
-}
-
-.btn-hidepass {
-    background-color: inherit;
-    border: 0;
-    cursor: pointer;
-    outline: none;
-}
-
-.btn-hidepass svg {
-    position: relative;
-    top: 18px;
-    left: 14px;
-    fill: #D1D1D1;
-}
-
-.form-login {
-    display: grid;
-    margin-top: 32px;
-    grid-template-rows: auto;
-    grid-template-columns: auto auto auto;
-    grid-template-areas: 'remember . login';
-}
-
-.form-remember-me {
-    grid-area: remember;
-    justify-self: start;
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-    line-height: 19px;
-}
-
-.checkbox-custom {
-    -webkit-appearance: none;
-    background-color: #303030;
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
-    border: 1px solid #8F8F8F;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.login-button:enabled {
-    grid-area: login;
-    justify-self: end;
-    border: 0;
-    background: linear-gradient(180deg, #7CD235 0%, #2BB34F 100%);
-    border-radius: 8px;
-    width: 100px;
-    height: 40px;
-    font-weight: 600;
-    line-height: 22px;
-    color: white;
-    cursor: pointer;
-}
-
-.placeholders {
-    margin-top: 15px;
-    font-size: 14px;
-    height: 19px;
-    line-height: 19px;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    cursor: pointer;
-}
-
-hr {
-    border: 1px solid white;
-    background-color: white;
-    width: 134px;
-}
-
-.form-lines {
-    height: 19px;
-    margin-top: 47px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.vertical-center {
-    display: flex;
-    align-items: center;
-}
-
-.form-text-or {
-    width: 61px;
-    color: white;
-    font-size: 14px;
-    line-height: 19px;
-    text-align: center;
-}
-
-.container-button {
-    width: 330px;
-    height: 40px;
-    margin-top: 24px;
-    display: flex;
-    justify-content: center;
-}
-
-.container-first-button {
-    margin-top: 21px;
-}
-
-.subcontainer-button {
-    width: 240px;
-    display: flex;
-    justify-content: center;
-}
-
-.buttons {
-    border-radius: 0px 8px 8px 0px;
-    width: 193.45px;
-    height: 40px;
-    font-weight: 700;
-    font-size: 12px;
-    color: white;
-    border: 0;
-    cursor: pointer;
-}
-
-.icon {
-    border-radius: 8px 0px 0px 8px;
-    width: 46.55px;
-    cursor: pointer;
-}
-
-.fb-icon {
-    background: #263C68;
-}
-
-.facebook {
-    background: #3B5998;
-}
-
-.fb-icon svg {
-    position: relative;
-    top: 11px;
-    left: 13.27px;
-}
-
-.tw-icon {
-    background: #0695CB;
-}
-
-.twitter {
-    background: #00ACED;
-}
-
-.tw-icon svg {
-    position: relative;
-    top: 12px;
-    left: 14.73px;
-}
-
-.g-icon {
-    background: #9D9D9D;
-}
-
-.google {
-    background: #C7C7C7;
-}
-
-.g-icon svg {
-    position: relative;
-    top: 13.56px;
-    left: 15.55px;
-}
+    form {
+        width: 330px;
+    }
+    
+    .title-box {
+        height: 61px;
+        font-size: 42.4px;
+        letter-spacing: 2.8px;
+        color: white;
+    }
+    
+    .title-strong {
+        font-weight: 800;
+    }
+    
+    .email-box {
+        margin-top: 25px;
+    }
+    
+    .pass-box {
+        margin-top: 20px;
+    }
+    
+    .email-icon,
+    .pass-icon {
+        width: 52px;
+        border: 1px solid #8F8F8F;
+        border-radius: 8px 0px 0px 8px;
+    }
+    
+    .svg-one {
+        top: 16px;
+        left: 16px;
+    }
+    
+    .svg-two {
+        top: 15px;
+        left: 16px;
+    }
+    
+    .svg-three {
+        top: 20px;
+        left: 14px;
+    }
+    
+    .email-input::placeholder,
+    .pass-input::placeholder {
+        line-height: 19px;
+        position: absolute;
+        top: 16px;
+    }
+    
+    .email-input,
+    .pass-input {
+        flex: 1;
+        padding-left: 20px;
+        outline: none;
+        font-size: 14px;
+        color: #8F8F8F;
+        border: 1px solid #8F8F8F;
+        border-left: none;
+        border-radius: 0px 8px 8px 0px;
+        background-color: #303030;
+    }
+    
+    .pass-input {
+        border-right: none;
+        border-radius: 0;
+    }
+    
+    .hidepass-icon {
+        width: 48px;
+        border: 1px solid #8F8F8F;
+        border-radius: 0px 8px 8px 0px;
+        border-left: none;
+    }
+    
+    .btn-hidepass {
+        border: 0;
+        outline: none;
+        cursor: pointer;
+        background-color: #303030;
+    }
+    
+    .error-message {
+        display: none;
+        height: 19px;
+        margin-top: 7px;
+        font-size: 14px;
+        color: #D24040;
+        line-height: 19px;
+    }
+    
+    .login-box {
+        margin-top: 32px;
+        display: grid;
+        grid-template-rows: auto;
+        grid-template-columns: auto auto auto;
+        grid-template-areas: 'remember . login';
+    }
+    
+    .form-remember-me {
+        grid-area: remember;
+        justify-self: start;
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        line-height: 19px;
+    }
+    
+    .checkbox-custom {
+        -webkit-appearance: none;
+        background-color: #303030;
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+        border: 1px solid #8F8F8F;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    
+    .login-button:enabled {
+        grid-area: login;
+        justify-self: end;
+        border: 0;
+        background: linear-gradient(180deg, #7CD235 0%, #2BB34F 100%);
+        border-radius: 8px;
+        width: 100px;
+        height: 40px;
+        font-weight: 600;
+        line-height: 22px;
+        color: white;
+        cursor: pointer;
+    }
+    
+    .placeholders {
+        margin-top: 15px;
+        font-size: 14px;
+        height: 19px;
+        line-height: 19px;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+    }
+    
+    hr {
+        border: 1px solid white;
+        background-color: white;
+        width: 134px;
+    }
+    
+    .form-lines {
+        height: 19px;
+        margin-top: 47px;
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .vertical-center {
+        display: flex;
+        align-items: center;
+    }
+    
+    .form-text-or {
+        width: 61px;
+        color: white;
+        font-size: 14px;
+        line-height: 19px;
+        text-align: center;
+    }
+    
+    .container-button {
+        width: 330px;
+        height: 40px;
+        margin-top: 24px;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .container-first-button {
+        margin-top: 21px;
+    }
+    
+    .subcontainer-button {
+        width: 240px;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .buttons {
+        border-radius: 0px 8px 8px 0px;
+        width: 193.45px;
+        height: 40px;
+        font-weight: 700;
+        font-size: 12px;
+        color: white;
+        border: 0;
+        cursor: pointer;
+    }
+    
+    .icon {
+        border-radius: 8px 0px 0px 8px;
+        width: 46.55px;
+        cursor: pointer;
+    }
+    
+    .fb-icon {
+        background: #263C68;
+    }
+    
+    .facebook {
+        background: #3B5998;
+    }
+    
+    .fb-icon svg {
+        position: relative;
+        top: 11px;
+        left: 13.27px;
+    }
+    
+    .tw-icon {
+        background: #0695CB;
+    }
+    
+    .twitter {
+        background: #00ACED;
+    }
+    
+    .tw-icon svg {
+        position: relative;
+        top: 12px;
+        left: 14.73px;
+    }
+    
+    .g-icon {
+        background: #9D9D9D;
+    }
+    
+    .google {
+        background: #C7C7C7;
+    }
+    
+    .g-icon svg {
+        position: relative;
+        top: 13.56px;
+        left: 15.55px;
+    }

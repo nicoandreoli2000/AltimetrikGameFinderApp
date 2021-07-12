@@ -5,13 +5,13 @@ const prueba = ['nandreoli', '123'];
 const form = document.querySelector('form');
 const loginButton = document.querySelector('.login-button');
 const buttonHidePassword = document.querySelector('.btn-hidepass');
-const inputEmail = document.querySelector('.user-input');
-const emailBox = document.querySelector('.user-box');
+const inputEmail = document.querySelector('.email-input');
+const emailBox = document.querySelector('.email-box');
 const inputPassword = document.querySelector('.pass-input');
 const passwordBox = document.querySelector('.pass-box');
 
 //Show/Hide password icons
-const hidepassIcon = `<svg width="20" height="13.75" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+const hidepassIcon = `<svg class="icon-generic svg-three" width="20" height="13.75" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 viewBox="0 0 20 14" style="enable-background:new 0 0 20 14;" xml:space="preserve">
 <path class="st0" d="M10,0C8.5,0,7.1,0.4,5.9,1l2,2C8.6,2.7,9.3,2.5,10,2.5c1.2,0,2.3,0.5,3.1,1.3c0.8,0.8,1.3,1.9,1.3,3.1
    c0,0.7-0.2,1.4-0.5,2.1l2.4,2.4c2.4-2,3.8-4.4,3.8-4.4S16.2,0,10,0z"/>
@@ -23,7 +23,7 @@ viewBox="0 0 20 14" style="enable-background:new 0 0 20 14;" xml:space="preserve
    C11.4,11.1,10.7,11.2,10,11.2z"/>
 </svg>`;
 
-const showpassIcon = `<svg width="20" height="13.75" version="1.1" xmlns="http://www.w3.org/2000/svg"
+const showpassIcon = `<svg class="icon-generic svg-three" width="20" height="13.75" version="1.1" xmlns="http://www.w3.org/2000/svg"
 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 14"
 style="enable-background:new 0 0 20 14;" xml:space="preserve">
 <path class="st0" d="M0,6.9C0,6.9,3.8,0,10,0s10,6.9,10,6.9s-3.8,6.9-10,6.9S0,6.9,0,6.9z M10,11.2c1.2,0,2.3-0.5,3.1-1.3
