@@ -1,0 +1,30 @@
+/*General styles*/
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+
+/*General flex classes*/
+
+.flex-horizontal {
+    display: flex;
+    justify-content: center;
+}
+
+.flex-vertical {
+    display: flex;
+    align-items: center;
+}
+
+.flex-space {
+    display: flex;
+    justify-content: space-between;
+}

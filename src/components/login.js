@@ -22,7 +22,6 @@ viewBox="0 0 20 14" style="enable-background:new 0 0 20 14;" xml:space="preserve
    l0.9,0.9C6.9,6.1,6.9,6.5,6.9,6.9c0,0.8,0.3,1.6,0.9,2.2C8.4,9.7,9.2,10,10,10c0.4,0,0.8-0.1,1.1-0.2l0.9,0.9
    C11.4,11.1,10.7,11.2,10,11.2z"/>
 </svg>`;
-
 const showpassIcon = `<svg class="svg-three" width="20" height="13.75" version="1.1" xmlns="http://www.w3.org/2000/svg"
 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 14"
 style="enable-background:new 0 0 20 14;" xml:space="preserve">
@@ -36,13 +35,15 @@ S9.2,3.7,10,3.7c0.8,0,1.6,0.3,2.2,0.9S13.1,6,13.1,6.9z" />
 </svg>`;
 
 
-//Functions
+//Validation function
 const validateEmail = (email) => {
     let re = /^[^\s@]+@[^\s@]+$/;
     return re.test(email);
 }
 
-const showPassword = () => {
+
+//Show/Hide password
+buttonHidePassword.addEventListener('click', () => {
 
     const div = document.createElement('div');
     const svg = document.querySelector('.btn-hidepass svg');
@@ -58,7 +59,7 @@ const showPassword = () => {
         div.innerHTML = hidepassIcon;
         buttonHidePassword.append(div.firstChild);
     }
-}
+});
 
 
 //Email input states
@@ -103,7 +104,7 @@ loginButton.addEventListener('click', () => {
         console.log('Agustin disigns...');
 
     } else if (email === prueba[0] && pass === prueba[1]) {
-        window.location.href = "../pages/main-one-col.html"
+        window.location.href = "../pages/main.html"
 
     } else {
         form.classList.add('inputError');

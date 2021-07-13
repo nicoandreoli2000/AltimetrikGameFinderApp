@@ -1,0 +1,62 @@
+/*General*/
+
+.header {
+    flex-direction: column;
+    padding-top: 29.33px;
+    height: 120px;
+    background: linear-gradient(180deg, #7CD235 0%, #2BB34F 100%);
+    box-shadow: 1px -3px 36px rgba(0, 0, 0, 0.5);
+}
+
+
+/* Containers */
+
+.header-top-box,
+.header-line-box {
+    width: 1360px;
+}
+
+.header-top-box {
+    align-items: center;
+    height: 45.33px;
+    margin-bottom: 15.33px;
+}
+
+
+/* Title */
+
+.header-title {
+    width: 198px;
+    height: 38px;
+    line-height: 38px;
+    letter-spacing: 1.7px;
+    font-size: 25px;
+}
+
+.header-title-strong {
+    font-weight: 800;
+}
+
+
+/*Logout*/
+
+.header-logout {
+    margin-right: 32.32px;
+}
+
+
+/* User */
+
+.header-user {
+    width: 43.87px;
+    height: 45.33px;
+    border: 1px solid black;
+}
+
+
+/* Lines */
+
+.header-line {
+    background: white;
+    border: 1px solid white;
+}
