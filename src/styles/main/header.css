@@ -1,7 +1,6 @@
 /*General*/
 
 .header {
-    flex-direction: column;
     padding-top: 29.33px;
     height: 120px;
     background: linear-gradient(180deg, #7CD235 0%, #2BB34F 100%);
@@ -25,7 +24,7 @@
 
 /* Title */
 
-.header-title {
+.header-title-box {
     width: 198px;
     height: 38px;
     line-height: 38px;
@@ -57,6 +56,6 @@
 /* Lines */
 
 .header-line {
-    background: white;
     border: 1px solid white;
+    background-color: white;
 }

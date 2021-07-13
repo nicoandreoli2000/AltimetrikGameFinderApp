@@ -12,7 +12,6 @@ body {
 }
 
 .form-box {
-    flex-direction: column;
     width: 630px;
     height: 660px;
     padding-top: 34px;
