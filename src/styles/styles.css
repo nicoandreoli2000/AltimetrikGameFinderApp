@@ -29,6 +29,12 @@
     justify-content: space-between;
 }
 
+.flex-horizontal-vertical {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .flex-vertical-column {
     display: flex;
     flex-direction: column;
