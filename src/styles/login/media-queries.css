@@ -67,7 +67,7 @@ PC && TV:
 
 /*Stop responsiveness...*/
 
-@media (max-width: 254px) {
+@media (max-width: 255px) {
     .form-box {
         display: none;
     }

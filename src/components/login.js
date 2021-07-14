@@ -1,5 +1,5 @@
 // Data base
-const prueba = ['123', '123'];
+const prueba = ['1@2.3', '123'];
 
 // HTML references
 const form = document.querySelector('form');
@@ -97,18 +97,19 @@ inputPassword.addEventListener('blur', () => {
 //Form validation
 loginButton.addEventListener('click', () => {
 
-    let email = inputEmail.value;
-    let pass = inputPassword.value;
+    const email = inputEmail.value;
+    const pass = inputPassword.value;
 
-    if (validateEmail(email)) {
-        console.log('Agustin disigns...');
+    if (!validateEmail(email)) {
+        alert('Agustin disigns...');
 
     } else if (email === prueba[0] && pass === prueba[1]) {
         window.location.href = "../pages/main.html"
 
     } else {
-        form.classList.add('inputError');
         inputEmail.value = '';
         inputPassword.value = '';
+        form.classList.add('inputError');
     }
+
 })

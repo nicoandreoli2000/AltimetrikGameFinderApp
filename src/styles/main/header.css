@@ -1,4 +1,4 @@
-/*General*/
+/* General */
 
 .header {
     padding-top: 32px;
@@ -11,14 +11,14 @@
 
 /* Containers */
 
-.header-top-box,
-.header-line-box {
+.header__top,
+.header__bottom {
     width: 100%;
     padding-right: 40px;
     padding-left: 40px;
 }
 
-.header-top-box {
+.header__top {
     height: 40px;
     margin-bottom: 18px;
 }
@@ -26,7 +26,7 @@
 
 /* Title */
 
-.header-title-box {
+.header__title {
     width: 198px;
     height: 38px;
     line-height: 38px;
@@ -34,24 +34,24 @@
     font-size: 25px;
 }
 
-.header-title-strong {
+.header__title-strong {
     font-weight: 800;
 }
 
 
 /*Search bar*/
 
-.header-search-box {
+.header__search {
     width: 362px;
 }
 
-.header-search-icon-box {
+.header__search-icon {
     width: 56px;
     border-radius: 20px 0px 0px 20px;
     background-color: #F1F1F1;
 }
 
-.header-search-input {
+.header__search-input {
     width: 306px;
     border: none;
     border-radius: 0px 20px 20px 0px;
@@ -62,12 +62,12 @@
     font-weight: 300;
 }
 
-.header-search-input::placeholder {
+.header__search-input::placeholder {
     color: #A6A6A6;
     line-height: 22px;
 }
 
-.header-search-button {
+.header__search-button {
     position: relative;
     top: 13px;
     left: 20px;
@@ -76,14 +76,18 @@
     background-color: inherit;
 }
 
-.header-search-svg {
+.header__search-svg {
     fill: #A6A6A6;
 }
 
 
 /*Logout*/
 
-.header-logout-text-box {
+.header__logout {
+    width: 147px;
+}
+
+.header__logout-text {
     width: 46px;
     height: 19px;
     font-size: 14px;
@@ -91,7 +95,7 @@
     margin-right: 11px;
 }
 
-.header-logout-button {
+.header__logout-button {
     width: 16px;
     height: 12px;
     margin-right: 32.32px;
@@ -100,11 +104,11 @@
     background-color: inherit;
 }
 
-.header-logout-button-svg {
+.header__logout-svg {
     fill: white;
 }
 
-.header-logout-user-box {
+.header__photo {
     width: 40px;
     height: 40px;
     border: 1px solid black;
@@ -113,7 +117,7 @@
 
 /* Lines */
 
-.header-line {
+.header__line {
     border: 1px solid white;
     background-color: white;
 }
