@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../styles/styles.css">
     <link rel="stylesheet" href="../styles/main/general.css">
     <link rel="stylesheet" href="../styles/main/header.css">
+    <link rel="stylesheet" href="../styles/main/nav.css">
 </head>
 
 <body>
@@ -18,16 +19,22 @@
 
         <header class="header flex-vertical-column">
 
-            <div class="header__top flex-space">
+            <div class="header__top flex-horizontal">
 
                 <div class="header__title">
                     <p>GAME<strong class="header__title-strong">FINDER</strong></p>
                 </div>
 
+                <div class="header__spacing-one">
+
+                </div>
                 <div class="header__search flex-horizontal ">
                     <div class="header__search-icon">
                         <button class="header__search-button">
-                            <svg class="header__search-svg" version="1.1 " width="16 " height="16 " xmlns="http://www.w3.org/2000/svg " xmlns:xlink="http://www.w3.org/1999/xlink " x="0px " y="0px " viewBox="0 0 16 16 " style="enable-background:new 0 0 16 16; " xml:space="preserve ">
+                            <svg class="header__search-svg" version="1.1 " width="16 " height="16 "
+                                xmlns="http://www.w3.org/2000/svg " xmlns:xlink="http://www.w3.org/1999/xlink " x="0px "
+                                y="0px " viewBox="0 0 16 16 " style="enable-background:new 0 0 16 16; "
+                                xml:space="preserve ">
                                 <path class="st0 " d="M11.7,10.3c2.1-2.9,1.5-7-1.4-9.1s-7-1.5-9.1,1.4s-1.5,7,1.4,9.1c2.3,1.7,5.4,1.7,7.7,0h0c0,0,0.1,0.1,0.1,0.1 l3.8,3.8c0.4,0.4,1,0.4,1.4,0c0.4-0.4,0.4-1,0-1.4l-3.8-3.9C11.8,10.4,11.8,10.4,11.7,10.3L11.7,10.3z
                         M12,6.5c0,3-2.5,5.5-5.5,5.5 S1,9.5,1,6.5S3.5,1,6.5,1S12,3.5,12,6.5z " />
                             </svg>
@@ -36,7 +43,9 @@
                     </div>
                     <input class="header__search-input" type="text " placeholder="Type name game or console " name="search ">
                 </div>
+                <div class="header__spacing-two">
 
+                </div>
                 <div class="header__logout flex-horizontal-vertical">
                     <div class="header__logout-text">
                         <p>Logout</p>
@@ -63,13 +72,48 @@
 
         </header>
 
-        <nav class="nav">
+        <div class="sub-wrapper">
+            <nav>
+                <ul class="nav">
+                    <li class="nav__item">
+                        <a>Home</a>
+                    </li>
+                    <li class="nav__item">
+                        <a>Reviews</a>
+                    </li>
+                    <li class="nav__item">
+                        <a>New Releases</a>
+                        <ul class="nav__list">
+                            <li class="nav__item nav__item--small">
+                                <a>This week</a>
+                            </li>
+                            <li class="nav__item nav__item--small">
+                                <a>This month</a>
+                            </li>
+                            <li class="nav__item nav__item--small">
+                                <a>Coming soon</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav__item nav__item--popular">
+                        <a>Popular</a>
+                        <ul class="nav__list">
+                            <li class="nav__item nav__item--small">
+                                <a>Last searches</a>
+                            </li>
+                            <li class="nav__item nav__item--small">
+                                <a>Best of the year</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
 
-        </nav>
+            <main class="main">
 
-        <main class="main">
+            </main>
+        </div>
 
-        </main>
 
     </div>
 

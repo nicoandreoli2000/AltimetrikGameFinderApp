@@ -1,0 +1,19 @@
+.nav {
+    width: 192px;
+    height: 424px;
+    margin-top: 33px;
+    margin-left: 39px;
+}
+
+.nav__item {
+    width: 100%;
+    list-style-type: none;
+}
+
+.nav__list {
+    margin-top: 33px;
+}
+
+.nav__item--popular {
+    margin-top: 33px;
+}

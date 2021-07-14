@@ -24,6 +24,17 @@
 }
 
 
+/* Spacing divs... */
+
+.header__spacing-one {
+    flex: 302px 1;
+}
+
+.header__spacing-two {
+    flex: 352px 1;
+}
+
+
 /* Title */
 
 .header__title {
