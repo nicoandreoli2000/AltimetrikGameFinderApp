@@ -80,7 +80,7 @@
 
 .header__search-button {
     position: relative;
-    top: 13px;
+    top: 12px;
     left: 20px;
     cursor: pointer;
     border: none;
@@ -107,8 +107,8 @@
 }
 
 .header__logout-button {
-    width: 16px;
-    height: 12px;
+    width: 19px;
+    height: 15px;
     margin-right: 34px;
     border: none;
     cursor: pointer;

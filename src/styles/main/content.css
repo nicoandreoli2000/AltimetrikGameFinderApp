@@ -2,4 +2,65 @@
     flex: 100% 1;
     margin-top: 24px;
     margin-right: 40px;
+    margin-left: 31px;
+}
+
+
+/*---------Top----------*/
+
+
+/*Titles*/
+
+.main__top-title {
+    height: 75px;
+    font-size: 55px;
+    font-weight: 800;
+    line-height: 75px;
+}
+
+.main__top-subtitle {
+    margin-top: -10px;
+    height: 25px;
+    font-size: 18px;
+    line-height: 25px;
+}
+
+
+/*Displays*/
+
+.main__top-button {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background-color: black;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.main__top-button--first {
+    margin-right: 24px;
+}
+
+.main__top-svg-one .st1,
+.main__top-svg-two .st1 {
+    fill: none;
+    stroke: #000000;
+    stroke-width: 6;
+    stroke-miterlimit: 10;
+}
+
+.main__top-svg-two .st2 {
+    fill: none;
+    stroke: #000000;
+    stroke-width: 6;
+    stroke-linecap: round;
+    stroke-miterlimit: 10;
+}
+
+.main__top-svg-one .st0 {
+    fill: #515151;
+}
+
+.main__top-svg-two .st0 {
+    fill: #303030;
 }
