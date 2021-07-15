@@ -49,3 +49,9 @@
     flex-direction: column;
     align-items: center;
 }
+
+.flex-start-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}

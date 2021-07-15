@@ -1,8 +1,6 @@
 .main {
     flex: 100% 1;
-    margin-top: 24px;
-    margin-right: 40px;
-    margin-left: 31px;
+    margin: 24px 40px 0px 31px;
 }
 
 
@@ -11,14 +9,14 @@
 
 /*Titles*/
 
-.main__top-title {
+.main__title {
     height: 75px;
     font-size: 55px;
     font-weight: 800;
     line-height: 75px;
 }
 
-.main__top-subtitle {
+.main__subtitle {
     margin-top: -10px;
     height: 25px;
     font-size: 18px;
@@ -28,7 +26,7 @@
 
 /*Displays*/
 
-.main__top-button {
+.main__button {
     width: 40px;
     height: 40px;
     border: none;
@@ -37,19 +35,22 @@
     cursor: pointer;
 }
 
-.main__top-button--first {
+.main__button--first {
     margin-right: 24px;
 }
 
-.main__top-svg-one .st1,
-.main__top-svg-two .st1 {
+
+/*SVG management*/
+
+.main__svg-one .st1,
+.main__svg-two .st1 {
     fill: none;
     stroke: #000000;
     stroke-width: 6;
     stroke-miterlimit: 10;
 }
 
-.main__top-svg-two .st2 {
+.main__svg-two .st2 {
     fill: none;
     stroke: #000000;
     stroke-width: 6;
@@ -57,10 +58,105 @@
     stroke-miterlimit: 10;
 }
 
-.main__top-svg-one .st0 {
+.main__svg-one .st0 {
     fill: #515151;
 }
 
-.main__top-svg-two .st0 {
+.main__svg-two .st0 {
     fill: #303030;
+}
+
+
+/*------------Bot-------------*/
+
+
+/*General*/
+
+.main__bot {
+    margin-top: 30px;
+}
+
+.main__card {
+    width: 363px;
+    height: 314px;
+    list-style-type: none;
+}
+
+
+/*Image*/
+
+.main__image-box {
+    height: 204.25px;
+    border-radius: 10px 10px 0px 0px;
+    background-image: url(/src/assets/images/card-pic.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+/*Info container*/
+
+.main__info-container {
+    height: 109.75px;
+    padding: 9.75px 20px 0 20px;
+    border-radius: 0px 0px 10px 10px;
+    background-color: #303030;
+}
+
+
+/*Game title*/
+
+.main__title-game {
+    height: 31px;
+    font-size: 23px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 31px;
+}
+
+
+/*Box styles general*/
+
+.main__line-one {
+    margin-top: 3px;
+}
+
+.main__line-two {
+    margin-top: 6px;
+}
+
+.main__text-container {
+    width: 186px;
+}
+
+
+/*Text small format*/
+
+.main__text {
+    height: 16px;
+    font-size: 12px;
+    line-height: 16px;
+    color: #939393;
+}
+
+
+/*Line format*/
+
+.main__hr-box {
+    margin-top: 2.5px;
+}
+
+.main__hr {
+    border: 1px solid #3D3D3D;
+    background-color: #3D3D3D;
+}
+
+
+/* #1,#2,#3 format */
+
+.main__number {
+    height: 22px;
+    line-height: 22px;
+    font-weight: 700;
+    color: #2BB34F;
 }
