@@ -10,7 +10,7 @@ form {
 .title-box {
     height: 61px;
     line-height: 61px;
-    font-size: 42.4px;
+    font-size: 45px;
     letter-spacing: 2.8px;
     color: white;
 }
@@ -88,6 +88,7 @@ form {
 .email-input {
     width: 278px;
     border-radius: 0px 8px 8px 0px;
+    padding-right: 48px;
 }
 
 .pass-input {

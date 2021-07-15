@@ -104,7 +104,7 @@ loginButton.addEventListener('click', () => {
         alert('Agustin disigns...');
 
     } else if (email === prueba[0] && pass === prueba[1]) {
-        window.location.href = "../pages/main.html"
+        window.location.href = "main.html";
 
     } else {
         inputEmail.value = '';
