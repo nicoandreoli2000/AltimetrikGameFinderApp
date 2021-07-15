@@ -42,7 +42,7 @@
     height: 38px;
     line-height: 38px;
     letter-spacing: 1.7px;
-    font-size: 25px;
+    font-size: 28px;
 }
 
 .header__title-strong {
@@ -109,7 +109,7 @@
 .header__logout-button {
     width: 16px;
     height: 12px;
-    margin-right: 32.32px;
+    margin-right: 34px;
     border: none;
     cursor: pointer;
     background-color: inherit;
@@ -122,7 +122,10 @@
 .header__photo {
     width: 40px;
     height: 40px;
-    border: 1px solid black;
+}
+
+.header__photo-img {
+    border-radius: 50%;
 }
 
 
