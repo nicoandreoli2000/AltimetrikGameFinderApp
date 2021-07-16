@@ -1,0 +1,7 @@
+/*Zoom out image fitting...*/
+
+@media (min-width: 1800px) {
+    .main__image-box {
+        background-size: cover;
+    }
+}

@@ -17,7 +17,6 @@
     height: 314px;
     list-style-type: none;
     margin-bottom: 3.2%;
-    /* margin-bottom: 20vh; */
 }
 
 .main__bot {
@@ -29,12 +28,11 @@
 
 .main__image-box {
     height: 204.25px;
-    /* height: 20vh; */
     border-radius: 10px 10px 0px 0px;
     background-image: url(/src/assets/images/card-pic.jpg);
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    /* background-size: 100%; */
 }
 
 
