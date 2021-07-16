@@ -1,10 +1,41 @@
+/*General*/
+
 .main {
     flex: 100% 1;
     margin: 24px 40px 0px 31px;
 }
 
+.main__ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
 
-/*---------Top----------*/
+.main__card {
+    flex: 0 0 31%;
+    width: 363px;
+    height: 314px;
+    list-style-type: none;
+    margin-bottom: 3.2%;
+    /* margin-bottom: 20vh; */
+}
+
+.main__bot {
+    margin-top: 30px;
+}
+
+
+/*Image*/
+
+.main__image-box {
+    height: 204.25px;
+    /* height: 20vh; */
+    border-radius: 10px 10px 0px 0px;
+    background-image: url(/src/assets/images/card-pic.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
 
 /*Titles*/
@@ -64,33 +95,6 @@
 
 .main__svg-two .st0 {
     fill: #303030;
-}
-
-
-/*------------Bot-------------*/
-
-
-/*General*/
-
-.main__bot {
-    margin-top: 30px;
-}
-
-.main__card {
-    width: 363px;
-    height: 314px;
-    list-style-type: none;
-}
-
-
-/*Image*/
-
-.main__image-box {
-    height: 204.25px;
-    border-radius: 10px 10px 0px 0px;
-    background-image: url(/src/assets/images/card-pic.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
 }
 
 
@@ -159,4 +163,19 @@
     line-height: 22px;
     font-weight: 700;
     color: #2BB34F;
+}
+
+
+/* Gift */
+
+.main__gift {
+    width: 47px;
+    height: 24px;
+    padding-left: 7px;
+    background: linear-gradient(180deg, #7CD235 0%, #2BB34F 100%);
+    border-radius: 10px;
+}
+
+.main__plus-margin {
+    margin-right: 2px;
 }
