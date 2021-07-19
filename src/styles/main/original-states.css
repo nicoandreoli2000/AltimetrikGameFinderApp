@@ -1,0 +1,7 @@
+.main__radio--first:checked {
+    background-image: url(/src/assets/icons/main/display1-hidden.svg);
+}
+
+.main__radio--second:checked {
+    background-image: url(/src/assets/icons/main/display2-hidden.svg);
+}

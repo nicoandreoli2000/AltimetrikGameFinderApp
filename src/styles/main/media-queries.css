@@ -1,7 +1,19 @@
-/*Zoom out image fitting...*/
+/*Custom*/
 
-@media (min-width: 1800px) {
-    .main__image-box {
-        background-size: cover;
+@media (max-width: 1166px) {
+    .main__ul {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas: 'card card';
+    }
+}
+
+@media (max-width: 1024px) {
+    .main__ul {}
+}
+
+@media (max-width: 873px) {
+    .main__ul {
+        grid-template-columns: 1fr;
+        grid-template-areas: 'card';
     }
 }

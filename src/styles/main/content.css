@@ -2,21 +2,20 @@
 
 .main {
     flex: 100% 1;
-    margin: 24px 40px 0px 31px;
+    margin: 24px 40px 40px 31px;
 }
 
-.main__ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+.main__ul-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: 'card card card';
+    gap: 24px;
 }
 
 .main__card {
-    flex: 0 0 31%;
-    width: 363px;
+    grid-area: 'grid';
     height: 314px;
     list-style-type: none;
-    margin-bottom: 3.2%;
 }
 
 .main__bot {
@@ -32,7 +31,7 @@
     background-image: url(/src/assets/images/card-pic.jpg);
     background-position: center;
     background-repeat: no-repeat;
-    /* background-size: 100%; */
+    background-size: 100% 314px;
 }
 
 
@@ -55,44 +54,22 @@
 
 /*Displays*/
 
-.main__button {
+.main__radio {
+    appearance: none;
     width: 40px;
     height: 40px;
     border: none;
-    background-color: black;
     border-radius: 10px;
     cursor: pointer;
 }
 
-.main__button--first {
+.main__radio--first {
     margin-right: 24px;
+    background-image: url(/src/assets/icons/main/display1.svg);
 }
 
-
-/*SVG management*/
-
-.main__svg-one .st1,
-.main__svg-two .st1 {
-    fill: none;
-    stroke: #000000;
-    stroke-width: 6;
-    stroke-miterlimit: 10;
-}
-
-.main__svg-two .st2 {
-    fill: none;
-    stroke: #000000;
-    stroke-width: 6;
-    stroke-linecap: round;
-    stroke-miterlimit: 10;
-}
-
-.main__svg-one .st0 {
-    fill: #515151;
-}
-
-.main__svg-two .st0 {
-    fill: #303030;
+.main__radio--second {
+    background-image: url(/src/assets/icons/main/display2.svg);
 }
 
 
