@@ -1,9 +1,10 @@
 /* Search button */
 
 .header__search-button:hover .header__search-svg,
-.header__search-button:focus-visible .header__search-svg{
+.header__search-button:focus-visible .header__search-svg {
     fill: black;
 }
+
 
 /* Logout button */
 
@@ -11,6 +12,7 @@
 .header__logout-button:focus-visible .header__logout-svg {
     fill: black;
 }
+
 
 /* Radio displays */
 
@@ -24,5 +26,12 @@
 
 .main__radio:hover,
 .main__radio:focus-visible {
-    border: 2px solid rgba(255, 255, 255, 0.904);
+    outline: 2px solid white;
+}
+
+
+/* Cards */
+.main__card:nth-child(n):hover,
+.main__card:nth-child(n):focus-visible {
+    outline: 2px solid white;
 }
