@@ -84,6 +84,7 @@
 
 .header__search-button {
     position: relative;
+    outline: none;
     top: 12px;
     left: 20px;
     cursor: pointer;
@@ -151,6 +152,7 @@
     margin-right: 34px;
     border: none;
     cursor: pointer;
+    outline: none;
     background-color: inherit;
 }
 

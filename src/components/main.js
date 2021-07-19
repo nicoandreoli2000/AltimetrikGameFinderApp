@@ -2,8 +2,17 @@
 const logoutButton = document.querySelector('.header__logout-button');
 const searchInput = document.querySelector('.header__search-input');
 const searchBox = document.querySelector('.header__search');
-const radioDisplays = document.querySelectorAll('.main__radio');
 const listCards = document.querySelector('.main__ul-grid');
+
+//Radio button displays
+const addGrid = () => {
+    listCards.classList.add('main__ul-grid');
+    listCards.classList.remove('main__ul-flex');
+}
+const addFlex = () => {
+    listCards.classList.remove('main__ul-grid');
+    listCards.classList.add('main__ul-flex');
+}
 
 //Events for search bar
 logoutButton.addEventListener('click', () => {
@@ -19,8 +28,3 @@ searchInput.addEventListener('blur', () => {
     searchBox.classList.remove('searchSuggestion');
 });
 
-
-//Events for radio displays
-radioDisplays.addEventListener('click', () => {
-    listCards.classList.toggle('main__ul-grid');
-})
