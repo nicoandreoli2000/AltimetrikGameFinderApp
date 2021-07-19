@@ -5,6 +5,10 @@
     margin: 24px 40px 50px 31px;
 }
 
+.main__bot {
+    margin-top: 30px;
+}
+
 .main__ul-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -24,9 +28,6 @@
     text-decoration: none;
 }
 
-.main__bot {
-    margin-top: 30px;
-}
 
 
 /*Image*/
@@ -36,10 +37,7 @@
     border-radius: 10px 10px 0px 0px;
     background-image: url(/src/assets/images/card-pic.jpg);
     background-position: center;
-    background-repeat: no-repeat;
-    background-size: 100% 314px;
 }
-
 
 /*Titles*/
 
@@ -160,4 +158,20 @@
 
 .main__plus-margin {
     margin-right: 2px;
+}
+
+/* 1 col style*/
+.main__ul-flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.main__ul-flex .main__card {
+    width: 696px;
+    height: 538px;
+    margin-bottom: 50px;
+}
+.main__ul-flex .main__image-box {
+    height: 430px;
+    background-size: 100% 600px;
 }
