@@ -77,7 +77,7 @@ inputEmail.addEventListener('click', () => {
 });
 inputEmail.addEventListener('focus', () => {
     emailBox.classList.add('isFocused');
-    form.classList.remove('inputError');
+    form.classList.remove('errorGeneral','userEmpty','userValid','passEmpty','passValid','wrong');
 });
 inputEmail.addEventListener('blur', () => {
     emailBox.classList.remove('isFocused');
@@ -93,7 +93,7 @@ inputPassword.addEventListener('click', () => {
 });
 inputPassword.addEventListener('focus', () => {
     passwordBox.classList.add('isFocused');
-    form.classList.remove('inputError');
+    form.classList.remove('errorGeneral','userEmpty','userValid','passEmpty','passValid','wrong');
 });
 inputPassword.addEventListener('blur', () => {
     passwordBox.classList.remove('isFocused');
@@ -106,18 +106,30 @@ loginButton.addEventListener('click', () => {
     const email = inputEmail.value;
     const pass = inputPassword.value;
 
-    if (email === '' || pass === '' || !validateEmail(email)) {
-        inputEmail.value = '';
-        inputPassword.value = '';
-        form.classList.add('inputError');
+    inputEmail.value = '';
+    inputPassword.value = '';
 
+    if (email === '') {
+        form.classList.add('errorGeneral','userEmpty');
+
+    } else if (pass === '') {
+        form.classList.add('errorGeneral','passEmpty');
+    
+    } else if (!validateEmail(email)) {
+        form.classList.add('errorGeneral','userValid');
+    
+    } else if (pass.length < 3) {
+        form.classList.add('errorGeneral','passValid');
+    
     } else if (email === prueba[0] && pass === prueba[1]) {
         window.location.href = "main.html";
 
-    } else {
+    } else if (email === '500' && pass === '500') {
         snackbar.classList.remove('display-none');
         snackbar.classList.add('flex-horizontal');
-    
+
+    } else {
+        form.classList.add('errorGeneral','wrong');
     }
 
 })

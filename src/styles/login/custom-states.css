@@ -1,44 +1,60 @@
 /* Error */
 
-.inputError .error-message {
+.userEmpty .error--user-empty,
+.passEmpty .error--pass-empty,
+.userValid .error--user-valid,
+.passValid .error--pass-valid,
+.wrong .error--wrong {
     display: flex;
 }
 
-.inputError .form-lines {
-    height: 16px;
-}
-
-.inputError .pass-box {
-    margin-top: 6px;
-}
-
-.inputError .login-box,
-.inputError .form-lines {
+.errorGeneral .login-box {
     margin-top: 21px;
 }
 
-.inputError .container-fb {
-    margin-top: 23px;
+.errorGeneral .formlines {
+    margin-top: 20.5px;
 }
 
-.inputError .email-input,
-.inputError .email-icon,
-.inputError .pass-input,
-.inputError .pass-icon,
-.inputError .hidepass-icon {
+.errorGeneral .pass-box {
+    margin-top: 6px;
+}
+
+.userEmpty .email-input,
+.userEmpty .email-icon,
+.userValid .email-input,
+.userValid .email-icon,
+.passEmpty .pass-input,
+.passEmpty .pass-icon,
+.passEmpty .hidepass-icon,
+.passValid .pass-input,
+.passValid .pass-icon,
+.passValid .hidepass-icon
+.wrong .email-input,
+.wrong .email-icon,
+.wrong .pass-input,
+.wrong .pass-icon,
+.wrong .hidepass-icon {
     border-color: #D24040;
 }
 
-.inputError .email-input::placeholder,
-.inputError .pass-input::placeholder {
+.userEmpty .email-input::placeholder,
+.userValid .email-input::placeholder,
+.passEmpty .pass-input::placeholder,
+.passValid .pass-input::placeholder,
+.wrong .email-input::placeholder,
+.wrong .pass-input::placeholder {
     color: #D24040;
 }
 
-.inputError .svg-one,
-.inputError .svg-two {
+.userEmpty .svg-one,
+.userValid .svg-one,
+.passEmpty .svg-two,
+.passValid .svg-two,
+.wrong .svg-one,
+.wrong .svg-two {
     fill: #D24040;
 }
-
 
 /* Focus */
 
