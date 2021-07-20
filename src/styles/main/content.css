@@ -1,0 +1,177 @@
+/*General*/
+
+.main {
+    flex: 100% 1;
+    margin: 24px 40px 50px 31px;
+}
+
+.main__bot {
+    margin-top: 30px;
+}
+
+.main__ul-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: 'card card card';
+    gap: 24px;
+}
+
+.main__card {
+    grid-area: 'grid';
+    height: 314px;
+    list-style-type: none;
+    cursor: pointer;
+}
+
+.main__card-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+
+/*Image*/
+
+.main__image-box {
+    height: 204.25px;
+    border-radius: 10px 10px 0px 0px;
+    background-image: url(/src/assets/images/card-pic.jpg);
+    background-position: center;
+}
+
+/*Titles*/
+
+.main__title {
+    height: 75px;
+    font-size: 55px;
+    font-weight: 800;
+    line-height: 75px;
+}
+
+.main__subtitle {
+    margin-top: -10px;
+    height: 25px;
+    font-size: 18px;
+    line-height: 25px;
+}
+
+
+/*Displays*/
+
+.main__radio {
+    appearance: none;
+    outline: none;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.main__radio--first {
+    margin-right: 24px;
+    background-image: url(/src/assets/icons/main/display1-hidden.svg);
+}
+
+.main__radio--second {
+    background-image: url(/src/assets/icons/main/display2-hidden.svg);
+}
+
+
+/*Info container*/
+
+.main__info-container {
+    height: 109.75px;
+    padding: 9.75px 20px 0 20px;
+    border-radius: 0px 0px 10px 10px;
+    background-color: #303030;
+}
+
+
+/*Game title*/
+
+.main__title-game {
+    height: 31px;
+    font-size: 23px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 31px;
+}
+
+
+/*Box styles general*/
+
+.main__line-one {
+    margin-top: 3px;
+}
+
+.main__line-two {
+    margin-top: 6px;
+}
+
+.main__text-container {
+    width: 186px;
+}
+
+
+/*Text small format*/
+
+.main__text {
+    height: 16px;
+    font-size: 12px;
+    line-height: 16px;
+    color: #939393;
+}
+
+
+/*Line format*/
+
+.main__hr-box {
+    margin-top: 2.5px;
+}
+
+.main__hr {
+    border: 1px solid #3D3D3D;
+    background-color: #3D3D3D;
+}
+
+
+/* #1,#2,#3 format */
+
+.main__number {
+    height: 22px;
+    line-height: 22px;
+    font-weight: 700;
+    color: #2BB34F;
+}
+
+
+/* Gift */
+
+.main__gift {
+    width: 47px;
+    height: 24px;
+    padding-left: 7px;
+    background: linear-gradient(180deg, #7CD235 0%, #2BB34F 100%);
+    border-radius: 10px;
+}
+
+.main__plus-margin {
+    margin-right: 2px;
+}
+
+/* 1 col style*/
+.main__ul-flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.main__ul-flex .main__card {
+    width: 696px;
+    height: 538px;
+    margin-bottom: 50px;
+}
+.main__ul-flex .main__image-box {
+    height: 430px;
+    background-size: 100% 600px;
+}
