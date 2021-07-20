@@ -118,7 +118,7 @@ loginButton.addEventListener('click', () => {
     } else if (!validateEmail(email)) {
         form.classList.add('errorGeneral','userValid');
     
-    } else if (pass.length <= 3) {
+    } else if (pass.length < 3) {
         form.classList.add('errorGeneral','passValid');
     
     } else if (email === prueba[0] && pass === prueba[1]) {
