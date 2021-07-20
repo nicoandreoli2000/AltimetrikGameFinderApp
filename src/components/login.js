@@ -118,14 +118,13 @@ loginButton.addEventListener('click', () => {
     } else if (!validateEmail(email)) {
         form.classList.add('errorGeneral','userValid');
     
-    } else if (pass.length < 3) {
+    } else if (pass.length <= 3) {
         form.classList.add('errorGeneral','passValid');
     
     } else if (email === prueba[0] && pass === prueba[1]) {
         window.location.href = "main.html";
 
-    } else if (email === '500' && pass === '500') {
-        snackbar.classList.remove('display-none');
+    } else if (email === '5@5.0' && pass === 'error') {
         snackbar.classList.add('flex-horizontal');
 
     } else {

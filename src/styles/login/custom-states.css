@@ -13,11 +13,17 @@
 }
 
 .errorGeneral .formlines {
-    margin-top: 20.5px;
+    margin-top: 21px;
 }
 
-.errorGeneral .pass-box {
+.userEmpty .pass-box,
+.userValid .pass-box,
+.wrong .pass-box {
     margin-top: 6px;
+}
+.passEmpty .pass-box,
+.passValid .pass-box {
+    margin-top: 32px;
 }
 
 .userEmpty .email-input,
@@ -29,7 +35,7 @@
 .passEmpty .hidepass-icon,
 .passValid .pass-input,
 .passValid .pass-icon,
-.passValid .hidepass-icon
+.passValid .hidepass-icon,
 .wrong .email-input,
 .wrong .email-icon,
 .wrong .pass-input,

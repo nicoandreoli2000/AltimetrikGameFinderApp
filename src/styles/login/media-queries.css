@@ -66,7 +66,7 @@ PC && TV:
         top: 20px;
     }
     .snackbar__child {
-        width: 300px;
+        width: 280px;
         height: 35px;
     }
     hr {
@@ -79,6 +79,9 @@ PC && TV:
 
 @media (max-width: 255px) {
     .form-box {
+        display: none;
+    }
+    .snackbar {
         display: none;
     }
 }

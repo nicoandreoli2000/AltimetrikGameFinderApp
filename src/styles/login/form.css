@@ -65,15 +65,6 @@ form {
     left: 14px;
 }
 
-
-/* 
-.email-input::placeholder,
-.pass-input::placeholder {
-    position: absolute;
-    top: 16px;
-    line-height: 19px;
-} */
-
 .email-input,
 .pass-input {
     padding-left: 20px;
