@@ -9,6 +9,8 @@ const inputEmail = document.querySelector('.email-input');
 const emailBox = document.querySelector('.email-box');
 const inputPassword = document.querySelector('.pass-input');
 const passwordBox = document.querySelector('.pass-box');
+const snackbar = document.querySelector('.snackbar')
+const snackbarCross = document.querySelector('.snackbar__button');
 
 //Show/Hide password icons
 const hidepassIcon = `<svg class="svg-three" width="20" height="13.75" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -41,7 +43,6 @@ const validateEmail = (email) => {
     return re.test(email);
 }
 
-
 //Show/Hide password
 buttonHidePassword.addEventListener('click', () => {
 
@@ -61,6 +62,11 @@ buttonHidePassword.addEventListener('click', () => {
     }
 });
 
+//Snackbar close
+snackbarCross.addEventListener('click', () => {
+    snackbar.classList.remove('flex-horizontal');
+    snackbar.classList.add('display-none');
+})
 
 //Email input states
 inputEmail.addEventListener('input', () => {
@@ -100,16 +106,18 @@ loginButton.addEventListener('click', () => {
     const email = inputEmail.value;
     const pass = inputPassword.value;
 
-    if (!validateEmail(email)) {
-        alert('Agustin disigns...');
+    if (email === '' || pass === '' || !validateEmail(email)) {
+        inputEmail.value = '';
+        inputPassword.value = '';
+        form.classList.add('inputError');
 
     } else if (email === prueba[0] && pass === prueba[1]) {
         window.location.href = "main.html";
 
     } else {
-        inputEmail.value = '';
-        inputPassword.value = '';
-        form.classList.add('inputError');
+        snackbar.classList.remove('display-none');
+        snackbar.classList.add('flex-horizontal');
+    
     }
 
 })

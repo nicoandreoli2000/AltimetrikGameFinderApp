@@ -32,6 +32,9 @@ PC && TV:
     .form-lines {
         margin-top: 20px;
     }
+    .snackbar__child {
+        width: 400px;
+    }
     body {
         background-color: #303030;
     }
@@ -58,6 +61,13 @@ PC && TV:
     }
     .pass-input {
         width: 140px;
+    }
+    .snackbar {
+        top: 20px;
+    }
+    .snackbar__child {
+        width: 300px;
+        height: 35px;
     }
     hr {
         width: 90px

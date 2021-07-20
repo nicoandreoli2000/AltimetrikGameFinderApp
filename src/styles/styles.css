@@ -55,3 +55,7 @@
     flex-direction: column;
     justify-content: flex-start;
 }
+
+.display-none {
+    display: none;
+}
