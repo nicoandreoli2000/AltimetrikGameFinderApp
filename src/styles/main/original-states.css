@@ -31,7 +31,7 @@
 
 
 /* Cards */
-.main__card:nth-child(n):hover,
-.main__card:nth-child(n):focus-visible {
+.main__card-button:hover,
+.main__card-button:focus-visible {
     outline: 2px solid white;
 }

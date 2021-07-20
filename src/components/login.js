@@ -78,6 +78,7 @@ inputEmail.addEventListener('click', () => {
 inputEmail.addEventListener('focus', () => {
     emailBox.classList.add('isFocused');
     form.classList.remove('errorGeneral','userEmpty','userValid','passEmpty','passValid','wrong');
+    snackbar.classList.remove('flex-horizontal');
 });
 inputEmail.addEventListener('blur', () => {
     emailBox.classList.remove('isFocused');
@@ -94,6 +95,7 @@ inputPassword.addEventListener('click', () => {
 inputPassword.addEventListener('focus', () => {
     passwordBox.classList.add('isFocused');
     form.classList.remove('errorGeneral','userEmpty','userValid','passEmpty','passValid','wrong');
+    snackbar.classList.remove('flex-horizontal');
 });
 inputPassword.addEventListener('blur', () => {
     passwordBox.classList.remove('isFocused');

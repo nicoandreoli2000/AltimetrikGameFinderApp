@@ -23,9 +23,12 @@
     cursor: pointer;
 }
 
-.main__card-link {
+.main__card-button {
+    background-color: inherit;
+    border:none;
     color: inherit;
-    text-decoration: none;
+    width: 100%;
+    cursor: pointer;
 }
 
 
