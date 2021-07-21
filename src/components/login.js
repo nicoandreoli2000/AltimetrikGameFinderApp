@@ -1,6 +1,3 @@
-// Data base
-const prueba = ['1@2.3', '123'];
-
 // HTML references
 const form = document.querySelector('form');
 const loginButton = document.querySelector('.login-button');
@@ -123,14 +120,19 @@ loginButton.addEventListener('click', () => {
     } else if (pass.length < 3) {
         form.classList.add('errorGeneral','passValid');
     
-    } else if (email === prueba[0] && pass === prueba[1]) {
-        window.location.href = "main.html";
-
-    } else if (email === '5@5.0' && pass === 'error') {
-        snackbar.classList.add('flex-horizontal');
-
     } else {
-        form.classList.add('errorGeneral','wrong');
+
     }
 
-})
+});
+
+
+// else if (ok) {
+//     window.location.href = "main.html";
+
+// } else if (email === '5@5.0' && pass === 'error') {
+//     snackbar.classList.add('flex-horizontal');
+
+// } else {
+//     form.classList.add('errorGeneral','wrong');
+// };
