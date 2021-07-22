@@ -47,6 +47,10 @@ const httpRequest = (email, pass) => {
 
         method: 'POST',
 
+        headers: {
+            "Content-Type": "application/json",
+        },
+
         body: JSON.stringify({
             email: `${email}`,
             password: `${pass}`
@@ -55,15 +59,19 @@ const httpRequest = (email, pass) => {
 
         .then(async (resp) => {
 
-            const responseJson = await response.json();
+            const respJson = await resp.json();
 
-            if (response.status === 200) {
-                document.cookie = 'authToken=' + responseJson.accessToken;
+            console.log(respJson, resp);
+
+            if (resp.status === 200) {
+                // JSON.parse(respJson)
+                localStorage.setItem('Access token', 'ok');
                 window.location.href = 'main.html';
-            }
+            };
 
-            if (response.status === 400) {
-            }
+            if (resp.status === 400) {
+                form.classList.add('errorGeneral', 'wrong');
+            };
         })
 
         .catch(() => {
