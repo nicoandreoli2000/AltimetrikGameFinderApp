@@ -38,7 +38,38 @@ S9.2,3.7,10,3.7c0.8,0,1.6,0.3,2.2,0.9S13.1,6,13.1,6.9z" />
 const validateEmail = (email) => {
     let re = /^[^\s@]+@[^\s@]+$/;
     return re.test(email);
-}
+};
+
+//Http request to json server
+const httpRequest = (email, pass) => {
+
+    fetch('http://localhost:3000/login', {
+
+        method: 'POST',
+
+        body: JSON.stringify({
+            email: `${email}`,
+            password: `${pass}`
+        })
+    })
+
+        .then(async (resp) => {
+
+            const responseJson = await response.json();
+
+            if (response.status === 200) {
+                document.cookie = 'authToken=' + responseJson.accessToken;
+                window.location.href = 'main.html';
+            }
+
+            if (response.status === 400) {
+            }
+        })
+
+        .catch(() => {
+            snackbar.classList.add('flex-horizontal');
+        });
+};
 
 //Show/Hide password
 buttonHidePassword.addEventListener('click', () => {
@@ -47,13 +78,13 @@ buttonHidePassword.addEventListener('click', () => {
     const svg = document.querySelector('.btn-hidepass svg');
     svg.remove();
 
-    if (inputPassword.type === "password") {
-        inputPassword.type = "text";
+    if (inputPassword.type === 'password') {
+        inputPassword.type = 'text';
         div.innerHTML = showpassIcon;
         buttonHidePassword.append(div.firstChild);
 
     } else {
-        inputPassword.type = "password";
+        inputPassword.type = 'password';
         div.innerHTML = hidepassIcon;
         buttonHidePassword.append(div.firstChild);
     }
@@ -74,7 +105,7 @@ inputEmail.addEventListener('click', () => {
 });
 inputEmail.addEventListener('focus', () => {
     emailBox.classList.add('isFocused');
-    form.classList.remove('errorGeneral','userEmpty','userValid','passEmpty','passValid','wrong');
+    form.classList.remove('errorGeneral', 'userEmpty', 'userValid', 'passEmpty', 'passValid', 'wrong');
     snackbar.classList.remove('flex-horizontal');
 });
 inputEmail.addEventListener('blur', () => {
@@ -91,7 +122,7 @@ inputPassword.addEventListener('click', () => {
 });
 inputPassword.addEventListener('focus', () => {
     passwordBox.classList.add('isFocused');
-    form.classList.remove('errorGeneral','userEmpty','userValid','passEmpty','passValid','wrong');
+    form.classList.remove('errorGeneral', 'userEmpty', 'userValid', 'passEmpty', 'passValid', 'wrong');
     snackbar.classList.remove('flex-horizontal');
 });
 inputPassword.addEventListener('blur', () => {
@@ -109,19 +140,21 @@ loginButton.addEventListener('click', () => {
     inputPassword.value = '';
 
     if (email === '') {
-        form.classList.add('errorGeneral','userEmpty');
+        form.classList.add('errorGeneral', 'userEmpty');
 
-    } else if (pass === '') {
-        form.classList.add('errorGeneral','passEmpty');
-    
     } else if (!validateEmail(email)) {
-        form.classList.add('errorGeneral','userValid');
-    
-    } else if (pass.length < 3) {
-        form.classList.add('errorGeneral','passValid');
-    
-    } else {
+        form.classList.add('errorGeneral', 'userValid');
+    }
 
+    if (pass === '') {
+        form.classList.add('errorGeneral', 'passEmpty');
+
+    } else if (pass.length < 4) {
+        form.classList.add('errorGeneral', 'passValid');
+    }
+
+    if (!form.classList.contains('errorGeneral')) {
+        httpRequest(email, pass);
     }
 
 });
