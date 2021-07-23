@@ -8,6 +8,8 @@ const inputPassword = document.querySelector('.form__input--pass');
 const passwordBox = document.querySelector('.form__input-box--pass');
 const snackbar = document.querySelector('.snackbar')
 const snackbarCross = document.querySelector('.snackbar__button');
+const userMessage = document.querySelector('.form__error--user p');
+const passMessage = document.querySelector('.form__error--pass p');
 
 //Show/Hide password icons
 const hidepassIcon = `<svg class="form__svg-input form__svg-input--hidepass" width="20" height="13.75" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -40,10 +42,13 @@ const validateEmail = (email) => {
     return re.test(email);
 };
 
+
 //Http request to json server
+const urlLogin = 'http://localhost:3000/login';
+
 const httpRequest = (email, pass) => {
 
-    fetch('http://localhost:3000/login', {
+    fetch(urlLogin, {
 
         method: 'POST',
 
@@ -64,18 +69,21 @@ const httpRequest = (email, pass) => {
             console.log(respJson, resp);
 
             if (resp.status === 200) {
-                // JSON.parse(respJson)
                 localStorage.setItem('Access token', 'ok');
                 window.location.href = 'main.html';
             };
 
             if (resp.status === 400) {
-                form.classList.add('errorGeneral', 'wrong');
+                inputEmail.value = '';
+                inputPassword.value = '';
+                form.classList.add('errorGeneral', 'userError', 'passError');
+                passMessage.innerHTML = 'Wrong credentials';
             };
         })
 
-        .catch(() => {
-            snackbar.classList.add('flex-horizontal');
+        .catch((error) => {
+            snackbar.classList.add('snackbarShow');
+            throw error;
         });
 };
 
@@ -100,8 +108,7 @@ buttonHidePassword.addEventListener('click', () => {
 
 //Snackbar close
 snackbarCross.addEventListener('click', () => {
-    snackbar.classList.remove('flex-horizontal');
-    snackbar.classList.add('display-none');
+    snackbar.classList.remove('snackbarShow');
 })
 
 //Email input states
@@ -113,7 +120,8 @@ inputEmail.addEventListener('click', () => {
 });
 inputEmail.addEventListener('focus', () => {
     emailBox.classList.add('isFocused');
-    form.classList.remove('errorGeneral');
+    form.classList.remove('errorGeneral', 'errorUser', 'errorPass');
+    snackbar.classList.remove('snackbarShow');
 });
 inputEmail.addEventListener('blur', () => {
     emailBox.classList.remove('isFocused', 'isActive');
@@ -128,7 +136,8 @@ inputPassword.addEventListener('click', () => {
 });
 inputPassword.addEventListener('focus', () => {
     passwordBox.classList.add('isFocused');
-    form.classList.remove('errorGeneral');
+    form.classList.remove('errorGeneral', 'errorUser', 'errorPass');
+    snackbar.classList.remove('snackbarShow');
 });
 inputPassword.addEventListener('blur', () => {
     passwordBox.classList.remove('isFocused', 'isActive');
@@ -140,25 +149,43 @@ loginButton.addEventListener('click', () => {
     const email = inputEmail.value;
     const pass = inputPassword.value;
 
-    inputEmail.value = '';
-    inputPassword.value = '';
+    userMessage.innerHTML = '';
+    passMessage.innerHTML = '';
 
     if (email === '') {
-        form.classList.add('errorGeneral');
+        form.classList.add('errorGeneral', 'errorUser');
+        userMessage.innerHTML = 'An email is required';
 
     } else if (!validateEmail(email)) {
-        form.classList.add('errorGeneral');
+        form.classList.add('errorGeneral', 'errorUser');
+        userMessage.innerHTML = 'Invalid email';
     }
 
     if (pass === '') {
-        form.classList.add('errorGeneral');
+        form.classList.add('errorGeneral', 'errorPass');
+        passMessage.innerHTML = 'A password is required';
 
     } else if (pass.length < 4) {
-        form.classList.add('errorGeneral');
+        form.classList.add('errorGeneral', 'errorPass');
+        passMessage.innerHTML = 'Invalid password';
+
+    }
+
+    if (form.classList.contains('errorUser')) {
+        inputEmail.value = '';
+    }
+    if (form.classList.contains('errorPass')) {
+        inputPassword.value = '';
     }
 
     if (!form.classList.contains('errorGeneral')) {
-        httpRequest(email, pass);
+
+        try {
+            httpRequest(email, pass);
+
+        } catch (error) {
+            console.log(error);
+        }
     }
 
 });

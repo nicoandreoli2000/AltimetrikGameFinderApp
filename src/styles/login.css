@@ -34,7 +34,6 @@ body {
 }
 
 
-/* Form */
 /*Form*/
 
 form {
@@ -291,7 +290,8 @@ hr {
     background-color: #C7C7C7;
 }
 
-/* States */
+
+/* Original states */
 
 /* Hidepass button */
 
@@ -337,28 +337,42 @@ hr {
     background: linear-gradient(180deg, #7CD235 0%, #2BB34F 100%);
 }
 
+/* Custom states */
 
 /* Error */
 
-.errorGeneral .error {
+.errorGeneral .form__error {
     display: flex;
 }
 
-.errorGeneral .login-box {
+.errorGeneral .form__login {
     margin-top: 21px;
 }
 
-.errorGeneral .formlines {
-    margin-top: 21px;
+.errorGeneral .form__lines {
+    margin-top: 20px;
 }
 
-.errorGeneral .pass-box {
+.errorGeneral .form__input-box--pass {
     margin-top: 6px;
 }
 
-/* border-color: #D24040;
-color: #D24040;
-fill: #D24040; */
+.errorUser .form__input-box--email,
+.errorPass .form__input-box--pass,
+.errorUser .form__input--email,
+.errorPass .form__input--pass {
+    border-color: #E07979;
+}
+
+.errorUser .form__input--email::placeholder,
+.errorPass .form__input--pass::placeholder {
+    color: #E07979;
+}
+
+.errorUser .form__svg-input--user,
+.errorPass .form__svg-input--pass {
+    fill: #E07979;
+}
 
 /* Focus */
 
@@ -386,6 +400,10 @@ fill: #D24040; */
     position: fixed;
     top: 40px;
     width: 100%;
+}
+
+.snackbarShow {
+    display: flex;
 }
 
 .snackbar__child {
