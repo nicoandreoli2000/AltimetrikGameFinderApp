@@ -67,7 +67,6 @@ form {
     font-size: 14px;
     color: #8F8F8F;
     border-left: 1px solid #8F8F8F;
-    background: #303030;
     background-color: transparent;
 }
 
@@ -88,7 +87,7 @@ form {
     border: 0;
     outline: none;
     cursor: pointer;
-    background-color: #303030;
+    background-color: inherit;
 }
 
 
@@ -128,7 +127,6 @@ form {
     border: 1px solid #8F8F8F;
     border-radius: 4px;
     cursor: pointer;
-    background-color: #303030;
 }
 
 .form__login-button:enabled {

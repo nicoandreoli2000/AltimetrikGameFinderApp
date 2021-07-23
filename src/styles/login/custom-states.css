@@ -22,7 +22,7 @@ fill: #D24040; */
 
 /* Focus */
 
-.isFocused .form__input-box,
+.isFocused,
 .isFocused .form__input {
     border-color: white;
 }
