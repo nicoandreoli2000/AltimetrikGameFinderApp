@@ -7,7 +7,7 @@ form {
 
 /*Title*/
 
-.title-box {
+.form__title {
     height: 61px;
     line-height: 61px;
     font-size: 45px;
@@ -15,87 +15,76 @@ form {
     color: white;
 }
 
-.title-strong {
+.form__title-strong{
     font-weight: 800;
 }
 
 
 /*Inputs*/
 
-.email-box,
-.pass-box {
+.form__input-box {
     height: 52px;
-    box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.1);
+    border: 1px solid #8F8F8F;
+    border-radius: 8px;
 }
 
-.email-box {
+.form__input-box--email {
     margin-top: 25px;
 }
 
-.pass-box {
+.form__input-box--pass {
     margin-top: 20px;
 }
 
-.email-icon,
-.pass-icon {
+.form__input-icon {
     width: 52px;
-    border: 1px solid #8F8F8F;
-    border-radius: 8px 0px 0px 8px;
 }
 
-.svg-one,
-.svg-two,
-.svg-three {
+.form__svg-input {
     position: relative;
     fill: #D1D1D1;
 }
 
-.svg-one {
+.form__svg-input--user {
     top: 16px;
     left: 16px;
 }
 
-.svg-two {
+.form__svg-input--pass {
     top: 15px;
     left: 16px;
 }
 
-.svg-three {
+.form__svg-input--hidepass {
     top: 16.5px;
     left: 14px;
 }
 
-.email-input,
-.pass-input {
+.form__input {
     padding-left: 20px;
     outline: none;
+    border: none;
     font-size: 14px;
     color: #8F8F8F;
-    border: 1px solid #8F8F8F;
-    border-left: none;
+    border-left: 1px solid #8F8F8F;
     background: #303030;
     background-color: transparent;
 }
 
-.email-input {
+.form__input--email {
     width: 278px;
-    border-radius: 0px 8px 8px 0px;
     padding-right: 47px;
 }
 
-.pass-input {
+.form__input--pass {
     width: 230px;
-    border-right: none;
 }
 
-.hidepass-icon {
+.form__hidepass-box {
     width: 48px;
-    border: 1px solid #8F8F8F;
-    border-radius: 0px 8px 8px 0px;
-    border-left: none;
 }
 
-.btn-hidepass {
+.form__hidepass-btn {
     border: 0;
     outline: none;
     cursor: pointer;
@@ -105,18 +94,17 @@ form {
 
 /*Error message*/
 
-.error {
+.form__error {
     display: none;
     margin-top: 7px;
     height: 19px;
     font-size: 14px;
-    line-height: 19px;
-    color: #D24040;
+    color: #E07979;
 }
 
 /*Remember me && LOGIN*/
 
-.login-box {
+.form__login {
     margin-top: 32px;
     display: grid;
     grid-template-rows: auto;
@@ -124,15 +112,16 @@ form {
     grid-template-areas: 'remember . login';
 }
 
-.form-remember-me {
+.form__login-remember {
     grid-area: remember;
     justify-self: start;
     font-size: 14px;
     line-height: 19px;
+    color: #979797;
 }
 
-.checkbox-custom {
-    -webkit-appearance: none;
+.form__login-checkbox {
+    appearance: none;
     width: 20px;
     height: 20px;
     margin-right: 10px;
@@ -142,7 +131,7 @@ form {
     background-color: #303030;
 }
 
-.login-button:enabled {
+.form__login-button:enabled {
     grid-area: login;
     justify-self: end;
     width: 100px;
@@ -158,7 +147,7 @@ form {
 
 /*Register && Forgot password?*/
 
-.placeholders {
+.form__placeholders {
     margin-top: 15px;
     font-size: 14px;
     height: 19px;
@@ -169,7 +158,7 @@ form {
 
 /*---or---*/
 
-.form-lines {
+.form__lines {
     height: 19px;
     margin-top: 47px;
 }
@@ -180,7 +169,7 @@ hr {
     background-color: white;
 }
 
-.form-text-or {
+.form__lines-text {
     color: white;
     font-size: 14px;
     line-height: 19px;
@@ -190,31 +179,60 @@ hr {
 
 /*Social media buttons*/
 
-.container-fb,
-.container-tw,
-.container-g {
+.form__wrapper-fb {
     height: 40px;
-}
-
-.container-fb {
     margin-top: 21px;
 }
 
-.container-tw,
-.container-g {
+.form__wrapper-tw,
+.form__wrapper-g {
+    height: 40px;
     margin-top: 24px;
 }
+.form__wrapper-fb {
+    height: 40px;
+    margin-top: 21px;
+}
 
-.subcontainer-button {
+.form__social-subwrapper {
     width: 240px;
 }
 
-.icon {
+.form__social-icon {
     border-radius: 8px 0px 0px 8px;
     width: 46.55px;
 }
+.form__social-icon--fb {
+    background-color: #263C68;
+}
 
-.buttons {
+.form__social-icon--tw {
+    background-color: #0695CB;
+}
+
+.form__social-icon--g {
+    background-color: #9D9D9D;
+}
+
+.form__svg-fb {
+    position: relative;
+    top: 11.3px;
+    left: 14px;
+}
+
+.form__svg-tw {
+    position: relative;
+    top: 12px;
+    left: 14.5px;
+}
+
+.form__svg-g {
+    position: relative;
+    top: 11px;
+    left: 15.7px;
+}
+
+.form__buttons {
     width: 193.45px;
     text-align: left;
     padding-left: 24px;
@@ -226,47 +244,14 @@ hr {
     border: 0;
 }
 
-.svg-fb,
-.svg-tw,
-.svg-g {
-    position: relative;
-}
-
-.svg-fb {
-    top: 11.3px;
-    left: 14px;
-}
-
-.svg-tw {
-    top: 12px;
-    left: 14.5px;
-}
-
-.svg-g {
-    top: 11px;
-    left: 15.7px;
-}
-
-.fb-icon {
-    background-color: #263C68;
-}
-
-.tw-icon {
-    background-color: #0695CB;
-}
-
-.g-icon {
-    background-color: #9D9D9D;
-}
-
-.facebook {
+.form__buttons--fb {
     background-color: #3B5998;
 }
 
-.twitter {
+.form__buttons--tw {
     background-color: #00ACED;
 }
 
-.google {
+.form__buttons--g {
     background-color: #C7C7C7;
 }

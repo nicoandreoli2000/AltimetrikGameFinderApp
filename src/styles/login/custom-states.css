@@ -1,10 +1,6 @@
 /* Error */
 
-.userEmpty .error--user-empty,
-.passEmpty .error--pass-empty,
-.userValid .error--user-valid,
-.passValid .error--pass-valid,
-.wrong .error--wrong {
+.errorGeneral .error {
     display: flex;
 }
 
@@ -16,14 +12,8 @@
     margin-top: 21px;
 }
 
-.userEmpty .pass-box,
-.userValid .pass-box,
-.wrong .pass-box {
+.errorGeneral .pass-box {
     margin-top: 6px;
-}
-.passEmpty .pass-box,
-.passValid .pass-box {
-    margin-top: 32px;
 }
 
 .userEmpty .email-input,

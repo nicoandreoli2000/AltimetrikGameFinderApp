@@ -15,21 +15,21 @@ PC && TV:
     .wrapper {
         margin: 0;
     }
-    .carousel-box {
+    .carousel {
         display: none;
     }
-    .form-box {
+    .form {
         border-radius: 0;
         margin-top: 105px;
         margin-bottom: 348px;
     }
-    .pass-box {
+    .form__input-box--pass {
         margin-top: 32px;
     }
-    .login-box {
+    .form__login {
         margin-top: 47px;
     }
-    .form-lines {
+    .form__lines {
         margin-top: 20px;
     }
     .snackbar__child {
@@ -44,22 +44,22 @@ PC && TV:
     form {
         width: 240px;
     }
-    .form-box {
+    .form {
         margin-top: 45px;
         margin-bottom: 151px;
     }
-    .title-box {
+    .form__title {
         height: 48px;
         line-height: 48px;
         font-size: 35px;
     }
-    .email-box {
+    .form__input-box--email {
         margin-top: 38px;
     }
-    .email-input {
+    .form__input--email {
         width: 188px;
     }
-    .pass-input {
+    .form__input--pass {
         width: 140px;
     }
     .snackbar {
@@ -78,7 +78,7 @@ PC && TV:
 /*Stop responsiveness...*/
 
 @media (max-width: 255px) {
-    .form-box {
+    .form {
         display: none;
     }
     .snackbar {
