@@ -66,17 +66,15 @@ const httpRequest = (email, pass) => {
 
             const respJson = await resp.json();
 
-            console.log(respJson, resp);
-
             if (resp.status === 200) {
-                localStorage.setItem('Access token', 'ok');
+                localStorage.setItem('Access token', respJson.authToken);
                 window.location.href = 'main.html';
             };
 
             if (resp.status === 400) {
                 inputEmail.value = '';
                 inputPassword.value = '';
-                form.classList.add('errorGeneral', 'userError', 'passError');
+                form.classList.add('errorGeneral', 'errorUser', 'errorPass');
                 passMessage.innerHTML = 'Wrong credentials';
             };
         })
