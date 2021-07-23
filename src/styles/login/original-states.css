@@ -1,18 +1,18 @@
 /* Hidepass button */
 
-.btn-hidepass:focus-visible .svg-three,
-.btn-hidepass:hover .svg-three {
+.form__hidepass-btn:focus-visible .form__svg-input--hidepass,
+.form__hidepass-btn:hover .form__svg-input--hidepass {
     fill: white;
 }
 
-.btn-hidepass:active .svg-three {
+.form__hidepass-btn:active .svg-three {
     fill: #D1D1D1;
 }
 
 
 /* Checkbox */
 
-.checkbox-custom:checked {
+.form__login-checkbox:checked {
     background-color: #7CD235;
     border-color: #7CD235;
     background-repeat: no-repeat;
@@ -20,7 +20,7 @@
     background-image: url(/src/assets/icons/login/check.svg);
 }
 
-.checkbox-custom:focus-visible {
+.form__login-checkbox:focus-visible {
     outline: none;
     border-color: white;
 }
@@ -28,16 +28,16 @@
 
 /*Login button*/
 
-.login-button:hover {
+.form__login-button:hover {
     background: #7CD235;
 }
 
-.login-button:focus-visible {
+.form__login-button:focus-visible {
     outline: none;
     border: 1px solid #FFFFFF;
 }
 
-.login-button:active {
+.form__login-button:active {
     box-shadow: inset 0px 4px 4px rgba(43, 179, 79, 0.63);
     background: linear-gradient(180deg, #7CD235 0%, #2BB34F 100%);
 }

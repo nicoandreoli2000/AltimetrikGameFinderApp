@@ -16,61 +16,25 @@
     margin-top: 6px;
 }
 
-.userEmpty .email-input,
-.userEmpty .email-icon,
-.userValid .email-input,
-.userValid .email-icon,
-.passEmpty .pass-input,
-.passEmpty .pass-icon,
-.passEmpty .hidepass-icon,
-.passValid .pass-input,
-.passValid .pass-icon,
-.passValid .hidepass-icon,
-.wrong .email-input,
-.wrong .email-icon,
-.wrong .pass-input,
-.wrong .pass-icon,
-.wrong .hidepass-icon {
-    border-color: #D24040;
-}
-
-.userEmpty .email-input::placeholder,
-.userValid .email-input::placeholder,
-.passEmpty .pass-input::placeholder,
-.passValid .pass-input::placeholder,
-.wrong .email-input::placeholder,
-.wrong .pass-input::placeholder {
-    color: #D24040;
-}
-
-.userEmpty .svg-one,
-.userValid .svg-one,
-.passEmpty .svg-two,
-.passValid .svg-two,
-.wrong .svg-one,
-.wrong .svg-two {
-    fill: #D24040;
-}
+/* border-color: #D24040;
+color: #D24040;
+fill: #D24040; */
 
 /* Focus */
 
-.isFocused .email-icon,
-.isFocused .email-input,
-.isFocused .pass-icon,
-.isFocused .pass-input,
-.isFocused .hidepass-icon {
+.isFocused .form__input-box,
+.isFocused .form__input {
     border-color: white;
 }
 
 
 /* Active */
 
-.isActive .svg-one,
-.isActive .svg-two {
+.isActive .form__svg-input--user,
+.isActive .form__svg-input--pass {
     fill: white;
 }
 
-.isActive .email-input,
-.isActive .pass-input {
+.isActive .form__input {
     color: white;
 }

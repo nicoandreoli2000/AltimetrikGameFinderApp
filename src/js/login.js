@@ -1,13 +1,11 @@
 // HTML references
 const form = document.querySelector('form');
-
 const loginButton = document.querySelector('.form__login-button');
 const buttonHidePassword = document.querySelector('.form__hidepass-btn');
 const inputEmail = document.querySelector('.form__input--email');
 const emailBox = document.querySelector('.form__input-box--email');
 const inputPassword = document.querySelector('.form__input--pass');
 const passwordBox = document.querySelector('.form__input-box--pass');
-
 const snackbar = document.querySelector('.snackbar')
 const snackbarCross = document.querySelector('.snackbar__button');
 
@@ -116,11 +114,9 @@ inputEmail.addEventListener('click', () => {
 inputEmail.addEventListener('focus', () => {
     emailBox.classList.add('isFocused');
     form.classList.remove('errorGeneral');
-    snackbar.classList.remove('flex-horizontal');
 });
 inputEmail.addEventListener('blur', () => {
-    emailBox.classList.remove('isFocused');
-    emailBox.classList.remove('isActive');
+    emailBox.classList.remove('isFocused', 'isActive');
 });
 
 //Password input states
@@ -133,11 +129,9 @@ inputPassword.addEventListener('click', () => {
 inputPassword.addEventListener('focus', () => {
     passwordBox.classList.add('isFocused');
     form.classList.remove('errorGeneral');
-    snackbar.classList.remove('flex-horizontal');
 });
 inputPassword.addEventListener('blur', () => {
-    passwordBox.classList.remove('isFocused');
-    passwordBox.classList.remove('isActive');
+    passwordBox.classList.remove('isFocused', 'isActive');
 });
 
 //Form validation
