@@ -7,11 +7,11 @@ const listCards = document.querySelector('.main__ul-grid');
 //Radio button displays
 const addGrid = () => {
     listCards.classList.add('main__ul-grid');
-    listCards.classList.remove('main__ul-flex');
+    listCards.classList.remove('flex-vertical-column');
 }
 const addFlex = () => {
     listCards.classList.remove('main__ul-grid');
-    listCards.classList.add('main__ul-flex');
+    listCards.classList.add('flex-vertical-column');
 }
 
 //Events for search bar

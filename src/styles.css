@@ -23,6 +23,9 @@ body {
     background-color: #141414;
 }
 
+::selection {
+    background-color: #7CD235;
+}
 
 /* Custom flex framework */
 
