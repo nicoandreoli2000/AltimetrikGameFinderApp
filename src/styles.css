@@ -49,6 +49,11 @@ body {
     justify-content: flex-start;
 }
 
+.flex-end {
+    display: flex;
+    justify-content: flex-end;
+}
+
 .flex-horizontal-vertical {
     display: flex;
     align-items: center;

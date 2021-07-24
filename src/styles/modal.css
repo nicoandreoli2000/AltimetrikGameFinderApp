@@ -1,0 +1,64 @@
+/* body {
+    background: rgba(0, 0, 0, 0.784937);
+    The magic here is when it goes with the content of main
+} */
+
+/* Containers */
+.wrapper {
+    height: 793.26px;
+    margin-top: 115.37px;
+    margin-bottom: 115.37px;
+}
+
+.subwrapper {
+    position: relative;
+    width: 1052px;
+    background-color: #303030;
+    border-radius: 10px;
+}
+
+/* Cross */
+.cross__button {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 16px;
+    height: 16px;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+
+/* Modal containers */
+
+.modal {
+    width: 910px;
+    margin-top: 34px;
+    margin-left: 74px;
+    background-color: white;
+}
+
+.modal__information {
+    width: 468px;
+    background-color: red;
+}
+
+.modal__graphics {
+    width: 382px;
+    margin-top: 135px;
+    background-color: blue;
+}
+
+
+/*Information*/
+
+
+
+
+/* Videos */
+.modal__main-video {
+    height: 217px;
+}
