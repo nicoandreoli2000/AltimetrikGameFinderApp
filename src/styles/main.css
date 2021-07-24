@@ -68,6 +68,7 @@ body {
     line-height: 38px;
     letter-spacing: 1.7px;
     font-size: 28px;
+    user-select: none;
 }
 
 .header__title-strong {
@@ -99,6 +100,7 @@ body {
     font-family: inherit;
     font-size: inherit;
     color: #A6A6A6;
+    user-select: none;
 }
 
 .header__search-input::placeholder {
@@ -169,6 +171,7 @@ body {
     font-size: 14px;
     line-height: 19px;
     margin-right: 11px;
+    user-select: none;
 }
 
 .header__logout-button {
@@ -192,6 +195,7 @@ body {
 
 .header__photo-img {
     border-radius: 50%;
+    user-select: none;
 }
 
 
@@ -321,6 +325,7 @@ body {
     width: 100%;
     cursor: pointer;
     outline: none;
+    user-select: none;
 }
 
 
