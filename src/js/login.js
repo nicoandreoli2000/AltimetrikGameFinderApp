@@ -66,6 +66,10 @@ const httpRequest = (email, pass) => {
 
             const respJson = await resp.json();
 
+            loginButton.classList.remove('disabled');
+            loginButton.setAttribute('value', 'LOGIN');
+
+
             if (resp.status === 200) {
                 localStorage.setItem('Access token', respJson.authToken);
                 window.location.href = 'main.html';
@@ -77,12 +81,20 @@ const httpRequest = (email, pass) => {
                 form.classList.add('errorGeneral', 'errorUser', 'errorPass');
                 passMessage.innerHTML = 'Wrong credentials';
             };
+
+
         })
 
         .catch((error) => {
+
+            loginButton.classList.remove('disabled');
+            loginButton.setAttribute('value', 'LOGIN');
+
             snackbar.classList.add('snackbarShow');
             throw error;
         });
+
+
 };
 
 //Show/Hide password
@@ -178,12 +190,17 @@ loginButton.addEventListener('click', () => {
 
     if (!form.classList.contains('errorGeneral')) {
 
+        loginButton.classList.add('disabled');
+        loginButton.setAttribute('value', 'LOGGING');
+
         try {
             httpRequest(email, pass);
 
         } catch (error) {
             console.log(error);
         }
+
+
     }
 
 });
