@@ -159,25 +159,27 @@ loginButton.addEventListener('click', () => {
     const email = inputEmail.value;
     const pass = inputPassword.value;
 
+    snackbar.classList.remove('snackbarShow');
+
     userMessage.innerHTML = '';
     passMessage.innerHTML = '';
 
     if (email === '') {
         form.classList.add('errorGeneral', 'errorUser');
-        userMessage.innerHTML = 'An email is required';
+        userMessage.innerHTML = 'Enter an email';
 
     } else if (!validateEmail(email)) {
         form.classList.add('errorGeneral', 'errorUser');
-        userMessage.innerHTML = 'Invalid email';
+        userMessage.innerHTML = 'The email is invalid';
     }
 
     if (pass === '') {
         form.classList.add('errorGeneral', 'errorPass');
-        passMessage.innerHTML = 'A password is required';
+        passMessage.innerHTML = 'Enter a password';
 
     } else if (pass.length < 4) {
         form.classList.add('errorGeneral', 'errorPass');
-        passMessage.innerHTML = 'Invalid password';
+        passMessage.innerHTML = 'The password is too short';
 
     }
 
