@@ -4,6 +4,7 @@
 // }
 // localStorage.setItem('Access token', JSON.stringify('pepe'));
 
+
 //HTML references
 const logoutButton = document.querySelector('.header__logout-button');
 const searchInput = document.querySelector('.header__search-input');
@@ -33,4 +34,3 @@ searchInput.addEventListener('click', () => {
 searchInput.addEventListener('blur', () => {
     searchBox.classList.remove('searchSuggestion');
 });
-

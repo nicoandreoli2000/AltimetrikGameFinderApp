@@ -98,7 +98,7 @@ body {
     padding-left: 5px;
     background-color: #F1F1F1;
     font-family: inherit;
-    font-size: inherit;
+    font-size: 16px;
     color: #A6A6A6;
     user-select: none;
 }
@@ -106,7 +106,6 @@ body {
 .header__search-input::placeholder {
     font-weight: 300;
     color: #A6A6A6;
-    line-height: 22px;
 }
 
 .header__search-button {
