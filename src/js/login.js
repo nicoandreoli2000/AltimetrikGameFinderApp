@@ -10,6 +10,7 @@ const snackbar = document.querySelector('.snackbar')
 const snackbarCross = document.querySelector('.snackbar__button');
 const userMessage = document.querySelector('.form__error--user p');
 const passMessage = document.querySelector('.form__error--pass p');
+const loginLabel = document.querySelector('.form__login-label');
 
 //Show/Hide password icons
 const hidepassIcon = `<svg class="form__svg-input form__svg-input--hidepass" width="20" height="13.75" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -42,60 +43,10 @@ const validateEmail = (email) => {
     return re.test(email);
 };
 
-
-//Http request to json server
-const urlLogin = 'http://localhost:3000/login';
-
-const httpRequest = (email, pass) => {
-
-    fetch(urlLogin, {
-
-        method: 'POST',
-
-        headers: {
-            "Content-Type": "application/json",
-        },
-
-        body: JSON.stringify({
-            email: `${email}`,
-            password: `${pass}`
-        })
-    })
-
-        .then(async (resp) => {
-
-            const respJson = await resp.json();
-
-            loginButton.classList.remove('disabled');
-            loginButton.setAttribute('value', 'LOGIN');
-
-
-            if (resp.status === 200) {
-                localStorage.setItem('Access token', respJson.authToken);
-                window.location.href = 'main.html';
-            };
-
-            if (resp.status === 400) {
-                inputEmail.value = '';
-                inputPassword.value = '';
-                form.classList.add('errorGeneral', 'errorUser', 'errorPass');
-                passMessage.innerHTML = 'Wrong credentials';
-            };
-
-
-        })
-
-        .catch((error) => {
-
-            loginButton.classList.remove('disabled');
-            loginButton.setAttribute('value', 'LOGIN');
-
-            snackbar.classList.add('snackbarShow');
-            throw error;
-        });
-
-
-};
+//Prevent defaul of label remember
+loginLabel.addEventListener('click', (e) => {
+    e.preventDefault();
+})
 
 //Show/Hide password
 buttonHidePassword.addEventListener('click', () => {
@@ -153,6 +104,60 @@ inputPassword.addEventListener('blur', () => {
     passwordBox.classList.remove('isFocused', 'isActive');
 });
 
+
+//Http request to json server
+const urlLogin = 'http://localhost:3000/login';
+
+const httpRequest = (email, pass) => {
+
+    fetch(urlLogin, {
+
+        method: 'POST',
+
+        headers: {
+            "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify({
+            email: `${email}`,
+            password: `${pass}`
+        })
+    })
+
+        .then(async (resp) => {
+
+            const respJson = await resp.json();
+
+            loginButton.classList.remove('disabled');
+            loginButton.setAttribute('value', 'LOGIN');
+
+
+            if (resp.status === 200) {
+                localStorage.setItem('Access token', respJson.authToken);
+                window.location.href = 'main.html';
+            };
+
+            if (resp.status === 400) {
+                inputEmail.value = '';
+                inputPassword.value = '';
+                form.classList.add('errorGeneral', 'errorUser', 'errorPass');
+                passMessage.innerHTML = 'Wrong credentials';
+            };
+
+
+        })
+
+        .catch((error) => {
+
+            loginButton.classList.remove('disabled');
+            loginButton.setAttribute('value', 'LOGIN');
+            snackbar.classList.add('snackbarShow');
+            throw error;
+        });
+
+
+};
+
 //Form validation
 loginButton.addEventListener('click', () => {
 
@@ -193,16 +198,15 @@ loginButton.addEventListener('click', () => {
     if (!form.classList.contains('errorGeneral')) {
 
         loginButton.classList.add('disabled');
-        loginButton.setAttribute('value', 'LOGGING');
+        loginButton.setAttribute('value', 'LOGIN...');
 
         try {
             httpRequest(email, pass);
 
         } catch (error) {
             console.log(error);
+
         }
-
-
     }
 
 });
