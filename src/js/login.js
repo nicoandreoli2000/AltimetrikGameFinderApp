@@ -1,3 +1,6 @@
+// Custom security
+localStorage.clear();
+
 // HTML references
 const form = document.querySelector('form');
 const loginButton = document.querySelector('.form__login-button');
@@ -36,6 +39,9 @@ S9.2,3.7,10,3.7c0.8,0,1.6,0.3,2.2,0.9S13.1,6,13.1,6.9z" />
 <rect x="23.5" y="3.2" class="st1" width="1.3" height="11.9" />
 </svg>`;
 
+//Helper
+inputEmail.value = 'probando@hotmail.com';
+inputPassword.value = 'password';
 
 //Validation function
 const validateEmail = (email) => {
@@ -133,7 +139,7 @@ const httpRequest = (email, pass) => {
 
 
             if (resp.status === 200) {
-                localStorage.setItem('Access token', respJson.authToken);
+                localStorage.setItem('Access token', JSON.stringify(respJson.accessToken));
                 window.location.href = 'main.html';
             };
 
