@@ -1,0 +1,534 @@
+/* General */
+
+body {
+    color: #8F8F8F;
+}
+
+.wrapper {
+    margin-top: 180px;
+    margin-bottom: 184px;
+}
+
+.form {
+    width: 630px;
+    height: 660px;
+    padding-top: 34px;
+    border-radius: 10px 0px 0px 10px;
+    background-color: #303030;
+}
+
+.carousel {
+    width: 453px;
+    height: 660px;
+}
+
+
+/* Image */
+
+.carousel__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0px 10px 10px 0px;
+    user-select: none;
+}
+
+
+/*Form*/
+
+form {
+    width: 330px;
+}
+
+
+/*Title*/
+
+.form__title {
+    height: 61px;
+    line-height: 61px;
+    font-size: 45px;
+    font-weight: ;
+    letter-spacing: 2.8px;
+    color: white;
+}
+
+
+
+.form__title-strong{
+    font-weight: 800;
+}
+
+
+/*Inputs*/
+
+.form__input-box {
+    height: 52px;
+    border: 1px solid #8F8F8F;
+    border-radius: 8px;
+}
+
+.form__input-box--email {
+    margin-top: 25px;
+}
+
+.form__input-box--pass {
+    margin-top: 20px;
+}
+
+.form__input-icon {
+    width: 51px;
+}
+
+.form__svg-input {
+    position: relative;
+    fill: #D1D1D1;
+}
+
+.form__svg-input--user {
+    top: 16px;
+    left: 16px;
+}
+
+.form__svg-input--pass {
+    top: 14px;
+    left: 16px;
+}
+
+.form__svg-input--hidepass {
+    top: 16.5px;
+    left: 14px;
+}
+
+.form__input {
+    padding-left: 20px;
+    outline: none;
+    border: none;
+    font-family: inherit;
+    font-size: 14px;
+    color: #8F8F8F;
+    border-left: 1px solid #8F8F8F;
+    background-color: transparent;
+    user-select: none;
+}
+
+.form__input--email {
+    width: 278px;
+    padding-right: 47px;
+}
+
+.form__input--pass {
+    width: 230px;
+}
+
+.form__hidepass-box {
+    width: 48px;
+}
+
+.form__hidepass-btn {
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    background-color: inherit;
+}
+
+
+/*Error message*/
+
+.form__error {
+    display: none;
+    margin-top: 7px;
+    height: 19px;
+    font-size: 14px;
+    color: #E07979;
+}
+
+/*Remember me && LOGIN*/
+
+.form__login {
+    margin-top: 32px;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: auto auto auto;
+    grid-template-areas: 'remember . login';
+}
+
+.form__login-remember {
+    grid-area: remember;
+    justify-self: start;
+    font-size: 14px;
+    line-height: 19px;
+    color: #979797;
+    user-select: none;
+}
+
+.form__login-checkbox {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border: 1px solid #8F8F8F;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.form__login-button:enabled {
+    grid-area: login;
+    justify-self: end;
+    width: 100px;
+    height: 40px;
+    border: 0;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    background: linear-gradient(180deg, #7CD235 0%, #2BB34F 100%);
+}
+
+
+/*Register && Forgot password?*/
+
+.form__placeholders {
+    margin-top: 15px;
+    font-size: 14px;
+    height: 19px;
+    line-height: 19px;
+    color: white;
+}
+
+
+/*---or---*/
+
+.form__lines {
+    height: 19px;
+    margin-top: 47px;
+}
+
+hr {
+    width: 134px;
+    border: 1px solid white;
+    background-color: white;
+}
+
+.form__lines-text {
+    color: white;
+    font-size: 14px;
+    line-height: 19px;
+    text-align: center;
+    user-select: none;
+}
+
+
+/*Social media buttons*/
+
+.form__wrapper-fb {
+    height: 40px;
+    margin-top: 21px;
+}
+
+.form__wrapper-tw,
+.form__wrapper-g {
+    height: 40px;
+    margin-top: 24px;
+}
+.form__wrapper-fb {
+    height: 40px;
+    margin-top: 21px;
+}
+
+.form__social-subwrapper {
+    width: 240px;
+}
+
+.form__social-icon {
+    border-radius: 8px 0px 0px 8px;
+    width: 46.55px;
+}
+.form__social-icon--fb {
+    background-color: #263C68;
+}
+
+.form__social-icon--tw {
+    background-color: #0695CB;
+}
+
+.form__social-icon--g {
+    background-color: #9D9D9D;
+}
+
+.form__svg-fb {
+    position: relative;
+    top: 11.3px;
+    left: 14px;
+}
+
+.form__svg-tw {
+    position: relative;
+    top: 12px;
+    left: 14.5px;
+}
+
+.form__svg-g {
+    position: relative;
+    top: 11px;
+    left: 15.7px;
+}
+
+.form__buttons {
+    width: 193.45px;
+    text-align: left;
+    padding-left: 24px;
+    padding-top: 3px;
+    line-height: 16px;
+    border-radius: 0px 8px 8px 0px;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 12px;
+    color: white;
+    border: 0;
+    user-select: none;
+}
+
+.form__buttons--fb {
+    background-color: #3B5998;
+}
+
+.form__buttons--tw {
+    background-color: #00ACED;
+}
+
+.form__buttons--g {
+    background-color: #C7C7C7;
+}
+
+
+/* Original states */
+
+/* Hidepass button */
+
+.form__hidepass-btn:focus-visible .form__svg-input--hidepass,
+.form__hidepass-btn:hover .form__svg-input--hidepass {
+    fill: white;
+}
+
+.form__hidepass-btn:active .svg-three {
+    fill: #D1D1D1;
+}
+
+
+/* Checkbox */
+
+.form__login-checkbox:checked {
+    background-color: #7CD235;
+    border-color: #7CD235;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(/src/assets/images/svg/login/check.svg);
+}
+
+.form__login-checkbox:focus-visible {
+    outline: none;
+    border-color: white;
+}
+
+
+/*Login button*/
+
+.form__login-button:hover {
+    background: #7CD235;
+}
+
+.form__login-button:focus-visible {
+    outline: none;
+    border: 1px solid #FFFFFF;
+}
+
+.form__login-button:active {
+    box-shadow: inset 0px 4px 4px rgba(43, 179, 79, 0.63);
+    background: linear-gradient(180deg, #7CD235 0%, #2BB34F 100%);
+}
+
+/* Custom states */
+
+/* Error */
+
+.errorGeneral .form__error {
+    display: flex;
+}
+
+.errorGeneral .form__login {
+    margin-top: 21px;
+}
+
+.errorGeneral .form__lines {
+    margin-top: 20px;
+}
+
+.errorGeneral .form__input-box--pass {
+    margin-top: 6px;
+}
+
+.errorUser .form__input-box--email,
+.errorPass .form__input-box--pass,
+.errorUser .form__input--email,
+.errorPass .form__input--pass {
+    border-color: #E07979;
+}
+
+.errorUser .form__input--email::placeholder,
+.errorPass .form__input--pass::placeholder {
+    color: #E07979;
+}
+
+.errorUser .form__svg-input--user,
+.errorPass .form__svg-input--pass {
+    fill: #E07979;
+}
+
+/* Focus */
+
+.isFocused,
+.isFocused .form__input {
+    border-color: white;
+}
+
+
+/* Active */
+
+.isActive .form__svg-input--user,
+.isActive .form__svg-input--pass {
+    fill: white;
+}
+
+.isActive .form__input {
+    color: white;
+}
+
+/* Snackbar */
+
+.snackbar {
+    display: none;
+    position: fixed;
+    top: 40px;
+    width: 100%;
+}
+
+.snackbarShow {
+    display: flex;
+}
+
+.snackbar__child {
+    width: 630px;
+    height: 40px;
+    padding: 0px 12px 0px 20px;
+    border-radius: 5px;
+    background-color: #ED7474;
+    filter: drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.25));
+}
+
+.snackbar__text {
+    line-height: 19px;
+    font-size: 14px;
+    color: white;
+}
+
+.snackbar__button {
+    border: none;
+    outline: none;
+    background-color: inherit;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+/* Media queries */
+
+/*
+Mobile:
+320 a 767px mobile
+
+Tablet:
+768 a 1023px tablet
+
+PC && TV:
+1024 a 1279px laptop
+1280 a 1439px desktop
+1440 > big screens
+*/
+
+@media (max-width: 1024px) {
+    .wrapper {
+        margin: 0;
+    }
+    .carousel {
+        display: none;
+    }
+    .form {
+        border-radius: 0;
+        margin-top: 105px;
+        margin-bottom: 348px;
+    }
+    .form__input-box--pass {
+        margin-top: 32px;
+    }
+    .form__login {
+        margin-top: 47px;
+    }
+    .form__lines {
+        margin-top: 20px;
+    }
+    .snackbar__child {
+        width: 400px;
+    }
+    body {
+        background-color: #303030;
+    }
+}
+
+@media (max-width: 767px) {
+    form {
+        width: 240px;
+    }
+    .form {
+        margin-top: 45px;
+        margin-bottom: 151px;
+    }
+    .form__title {
+        height: 48px;
+        line-height: 48px;
+        font-size: 35px;
+    }
+    .form__input-box--email {
+        margin-top: 38px;
+    }
+    .form__input--email {
+        width: 188px;
+    }
+    .form__input--pass {
+        width: 140px;
+    }
+    .snackbar {
+        top: 20px;
+    }
+    .snackbar__child {
+        width: 280px;
+        height: 35px;
+    }
+    hr {
+        width: 90px
+    }
+}
+
+
+/*Stop responsiveness...*/
+
+@media (max-width: 255px) {
+    .form {
+        display: none;
+    }
+    .snackbar {
+        display: none;
+    }
+}

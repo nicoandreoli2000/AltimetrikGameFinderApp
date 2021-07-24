@@ -2,6 +2,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
 
+
 /*General styles*/
 
 * {
@@ -15,8 +16,18 @@
     box-sizing: border-box;
 }
 
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    background-color: #141414;
+}
 
-/*General flex classes*/
+::selection {
+    background-color: #7CD235;
+}
+
+/* Custom flex framework */
 
 .flex-horizontal {
     display: flex;
