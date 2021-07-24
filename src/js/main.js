@@ -1,7 +1,8 @@
 //Custom security
-if (!JSON.parse(localStorage.getItem('Access token'))) {
-    window.location.href = 'login.html';
-}
+// if (!JSON.parse(localStorage.getItem('Access token'))) {
+//     window.location.href = 'login.html';
+// }
+// localStorage.setItem('Access token', JSON.stringify('pepe'));
 
 //HTML references
 const logoutButton = document.querySelector('.header__logout-button');
