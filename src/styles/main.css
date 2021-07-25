@@ -195,8 +195,7 @@ body {
 
 .nav {
     width: 192px;
-    margin-top: 33px;
-    margin-left: 39px;
+    margin: 33px 0px 20px 39px;
     list-style-type: none;
     font-weight: 800;
     font-size: 22px;
@@ -276,7 +275,9 @@ body {
     grid-template-areas: 'card card card';
     gap: 24px;
     padding-right: 20px;
-    height: calc(100vh - 280px);
+    max-height: calc(100vh - 265px);
+    min-height: 305px;
+    padding-bottom: 30px;
     overflow-y: auto;
 }
 
