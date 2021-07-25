@@ -134,9 +134,7 @@ const httpRequest = (email, pass) => {
 
             const respJson = await resp.json();
 
-            loginButton.classList.remove('disabled');
-            loginButton.setAttribute('value', 'LOGIN');
-
+            finishLoading();
 
             if (resp.status === 200) {
                 localStorage.setItem('Access token', JSON.stringify(respJson.accessToken));
@@ -155,8 +153,7 @@ const httpRequest = (email, pass) => {
 
         .catch((error) => {
 
-            loginButton.classList.remove('disabled');
-            loginButton.setAttribute('value', 'LOGIN');
+            finishLoading();
             snackbar.classList.add('snackbarShow');
             throw error;
         });
@@ -203,16 +200,29 @@ loginButton.addEventListener('click', () => {
 
     if (!form.classList.contains('errorGeneral')) {
 
-        loginButton.classList.add('disabled');
-        loginButton.setAttribute('value', 'LOGIN...');
+        loadingAttributes();
 
         try {
             httpRequest(email, pass);
 
         } catch (error) {
             console.log(error);
-
         }
     }
 
 });
+
+const loadingAttributes = () => {
+    loginButton.classList.add('disabled');
+    loginButton.setAttribute('value', 'LOGGING');
+    inputEmail.setAttribute('disabled', 'true');
+    inputPassword.setAttribute('disabled', 'true');
+}
+
+const finishLoading = () => {
+    loginButton.classList.remove('disabled');
+    loginButton.setAttribute('value', 'LOGIN');
+    inputEmail.removeAttribute('disabled');
+    inputPassword.removeAttribute('disabled');
+    console.log('holi');
+}
