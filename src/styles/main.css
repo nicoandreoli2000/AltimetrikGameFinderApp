@@ -500,7 +500,11 @@ body {
 
 /* Search box */
 .isFocused .header__search-svg {
-    fill: 
+    fill: red
+}
+
+.isFocused .header__search-input::placeholder {
+    color: red;
 }
 
 /* Logout button */

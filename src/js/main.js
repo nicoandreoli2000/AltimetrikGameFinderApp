@@ -21,16 +21,21 @@ const addFlex = () => {
     listCards.classList.add('flex-vertical-column');
 }
 
-//Events for search bar
+//Logout event
 logoutButton.addEventListener('click', () => {
     window.location.href = 'login.html';
 });
+
+//Events for search bar
 searchInput.addEventListener('input', () => {
     searchBox.classList.add('searchSuggestion');
+    searchBox.classList.add('isFocused');
 });
 searchInput.addEventListener('click', () => {
     searchBox.classList.add('searchSuggestion');
+    searchBox.classList.add('isFocused');
 });
 searchInput.addEventListener('blur', () => {
     searchBox.classList.remove('searchSuggestion');
+    searchBox.classList.remove('isFocused');
 });
