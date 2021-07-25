@@ -43,22 +43,10 @@ body {
     margin-bottom: 18px;
 }
 
-
-/* Spacing divs... */
-
-.header__spacing-one {
-    flex: 302px 1;
-}
-
-.header__spacing-two {
-    flex: 352px 1;
-}
-
-
 /* Title */
 
 .header__title {
-    width: 198px;
+    flex: 520px 1 1;
     height: 38px;
     line-height: 38px;
     letter-spacing: 1.7px;
@@ -157,7 +145,7 @@ body {
 /*Logout*/
 
 .header__logout {
-    width: 147px;
+    flex: 497.32px 1 1;
 }
 
 .header__logout-text {
