@@ -384,15 +384,18 @@ body {
     border: none;
     border-radius: 10px;
     cursor: pointer;
+    background-color: #515151;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .main__radio--first {
     margin-right: 24px;
-    background-image: url(/src/assets/images/svg/main/display1-hidden.svg);
+    background-image: url(/src/assets/images/svg/main/display1.svg);
 }
 
 .main__radio--second {
-    background-image: url(/src/assets/images/svg/main/display2-hidden.svg);
+    background-image: url(/src/assets/images/svg/main/display2.svg);
 }
 
 /*Game title*/
@@ -492,31 +495,31 @@ body {
 
 .header__search-button:hover .header__search-svg,
 .header__search-button:focus-visible .header__search-svg {
-    fill: black;
+    fill: #7D7D7D;
 }
 
+/* Search box */
+.isFocused .header__search-svg {
+    fill: 
+}
 
 /* Logout button */
 
 .header__logout-button:hover .header__logout-svg,
 .header__logout-button:focus-visible .header__logout-svg {
-    fill: black;
+    fill: #7D7D7D;
 }
 
 
 /* Radio displays */
 
-.main__radio--first:checked {
-    background-image: url(/src/assets/images/svg/main/display1.svg);
-}
-
-.main__radio--second:checked {
-    background-image: url(/src/assets/images/svg/main/display2.svg);
+.main__radio:checked {
+    background-color: #303030;
 }
 
 .main__radio:hover,
 .main__radio:focus-visible {
-    outline: 2px solid white;
+    background-color: #7D7D7D;
 }
 
 /* Menu */
