@@ -27,15 +27,17 @@ logoutButton.addEventListener('click', () => {
 });
 
 //Events for search bar
-searchInput.addEventListener('input', () => {
-    searchBox.classList.add('searchSuggestion');
-    searchBox.classList.add('isFocused');
-});
-searchInput.addEventListener('click', () => {
+searchInput.addEventListener('focus', () => {
     searchBox.classList.add('searchSuggestion');
     searchBox.classList.add('isFocused');
 });
 searchInput.addEventListener('blur', () => {
-    searchBox.classList.remove('searchSuggestion');
     searchBox.classList.remove('isFocused');
+    auxSearch();
 });
+
+const auxSearch = () => {
+    setTimeout(() => {
+        searchBox.classList.remove('searchSuggestion');
+    }, 3000);
+}
