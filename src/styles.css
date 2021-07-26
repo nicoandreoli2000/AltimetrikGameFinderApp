@@ -27,6 +27,26 @@ body {
     background-color: #7CD235;
 }
 
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 20px;
+    box-shadow: inset 0 0 5px black;
+    background: #969393;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    box-shadow: inset 0 0 5px black;
+    background: #585858;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #6e6d6d;
+}
+
 /* Custom flex framework */
 
 .flex-horizontal {

@@ -10,6 +10,9 @@ const logoutButton = document.querySelector('.header__logout-button');
 const searchInput = document.querySelector('.header__search-input');
 const searchBox = document.querySelector('.header__search');
 const listCards = document.querySelector('.main__ul-grid');
+const customMenu = document.querySelector('.menu');
+const menuButton = document.querySelector('.header__menu-button');
+const wrapper = document.querySelector('.wrapper');
 
 //Radio button displays
 const addGrid = () => {
@@ -25,6 +28,19 @@ const addFlex = () => {
 logoutButton.addEventListener('click', () => {
     window.location.href = 'login.html';
 });
+
+//Menu pop up
+// wrapper.addEventListener('click', () => {
+//     if (customMenu.classList.contains('tabletMenu')) {
+//         customMenu.classList.remove('tabletMenu');
+//     }
+// });
+menuButton.addEventListener('click', () => {
+    customMenu.classList.add('tabletMenu');
+});
+customMenu.addEventListener('click', () => {
+    customMenu.classList.remove('tabletMenu');
+})
 
 //Events for search bar
 searchInput.addEventListener('focus', () => {
