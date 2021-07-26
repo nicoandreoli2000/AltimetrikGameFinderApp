@@ -49,11 +49,7 @@ searchInput.addEventListener('focus', () => {
 });
 searchInput.addEventListener('blur', () => {
     searchBox.classList.remove('isFocused');
-    auxSearch();
+    searchBox.classList.remove('searchSuggestion');
+    // setTimeout(() => {
+    // }, 3000);
 });
-
-const auxSearch = () => {
-    setTimeout(() => {
-        searchBox.classList.remove('searchSuggestion');
-    }, 3000);
-}

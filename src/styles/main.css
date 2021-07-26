@@ -136,23 +136,27 @@ body {
 }
 
 .header__list {
-    padding-top: 13px;
-    padding-left: 17px;
-    padding-bottom: 7px;
+    width: 100%;
+    padding: 8px 10px 7px 10px;
     list-style-type: none;
 }
 
 .header__item {
-    height: 22px;
-    margin-bottom: 15px;
+    height: 27px;
+    margin-bottom: 10px;
 }
 
 .header__button-suggestion {
+    width: 100%;
     outline: none;
     border: none;
+    border-radius: 2px;
+    padding: 2.5px 7px 2.5px 7px;
     font-family: inherit;
     color: inherit;
     font-size: 16px;
+    text-align: start;
+    cursor: pointer;
 }
 
 
@@ -657,7 +661,7 @@ body {
 /* Option suggestion */
 .header__button-suggestion:hover,
 .header__button-suggestion:focus-visible {
-    background-color: rgb(104, 101, 101);
+    background-color: rgb(216, 212, 212);
 }
 
 /* Menu button */
