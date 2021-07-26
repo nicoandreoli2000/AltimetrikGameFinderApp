@@ -244,6 +244,19 @@ body {
     margin-right: 7px;
 }
 
+.menu.tabletMenu {
+    display: block;
+    position: fixed;
+    overflow-y: auto;
+    padding-bottom: 100px;
+    top: 0px;
+    left: 0px;
+    height: 100vh;
+    padding-right: 71px;
+    background-color: #151515;
+    box-shadow: 14px 0px 36px 5px rgba(0, 0, 0, 0.62);
+}
+
 
 /* Principal items */
 
@@ -690,19 +703,6 @@ PC && TV:
 
     .header__menu-button {
         display: flex;
-    }
-
-    .menu.tabletMenu {
-        display: block;
-        position: fixed;
-        overflow-y: auto;
-        padding-bottom: 100px;
-        top: 0px;
-        left: 0px;
-        height: 100vh;
-        padding-right: 71px;
-        background-color: #151515;
-        box-shadow: 14px 0px 36px 5px rgba(0, 0, 0, 0.62);
     }
 
     .menu__title,
