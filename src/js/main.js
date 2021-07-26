@@ -14,11 +14,11 @@ const listCards = document.querySelector('.main__ul-grid');
 //Radio button displays
 const addGrid = () => {
     listCards.classList.add('main__ul-grid');
-    listCards.classList.remove('flex-vertical-column');
+    listCards.classList.remove('main__ul-flex');
 }
 const addFlex = () => {
     listCards.classList.remove('main__ul-grid');
-    listCards.classList.add('flex-vertical-column');
+    listCards.classList.add('main__ul-flex');
 }
 
 //Logout event

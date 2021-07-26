@@ -322,6 +322,7 @@ body {
 }
 
 .main__card-button {
+    height: 100%;
     background-color: transparent;
     font-family: inherit;
     font-size: inherit;
@@ -337,7 +338,7 @@ body {
 
 .main__info-container {
     height: 109.75px;
-    padding: 9.75px 20px 0 20px;
+    padding: 9px 20px 0 20px;
     border-radius: 0px 0px 10px 10px;
     background-color: #303030;
     z-index: -1;
@@ -347,6 +348,7 @@ body {
 /*Image*/
 
 .main__image-box {
+    width: 100%;
     height: 204.25px;
     z-index: -1;
 }
@@ -432,6 +434,19 @@ body {
     color: #939393;
 }
 
+/* Description */
+.main__card-description {
+    display: none;
+    margin-top: 19.5px;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 19px;
+    text-align: left;
+}
+
+.main__card-description p {
+    flex: 583px 0 1;
+}
 
 /*Line format*/
 
@@ -471,17 +486,72 @@ body {
 }
 
 /* 1 col style*/
-.flex-vertical-column .main__card {
-    width: 696px;
+
+.main__card-subtitles {
+    display: none;
+}
+.main__ul-flex .main__card-subtitles {
+    display: flex;
+}
+.main__ul-flex .main__line-one,
+.main__ul-flex .main__line-two {
+    display: none;
+}
+.main__ul-flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.main__ul-flex .main__card-button {
+    width: 697px;
+}
+
+.main__ul-flex .main__card {
     height: 538px;
-    margin-bottom: 50px;
+    margin-bottom: 24px;
 }
 
-.flex-vertical-column .main__image-box {
-    height: 430px;
-    background-size: 100% 600px;
+.main__ul-flex .main__image-box {
+    height: 315px;
 }
 
+.main__ul-flex .main__info-container {
+    padding: 20px 40px 0 40px;
+    flex: 1;
+}
+
+.main__ul-flex .main__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.main__ul-flex .main__text-container {
+    width: 155px;
+}
+
+.main__ul-flex .main__hr-box {
+    width: 100%;
+}
+
+.main__ul-flex .main__text {
+    width: 100%;
+}
+
+.main__ul-flex .main__text p:nth-child(2) {
+    color: white;
+}
+.main__text-box {
+    width: 409px;
+}
+
+.main__card-subtitles {
+    margin-top: 17px;
+}
+
+.main__card-description {
+    display: block;
+}
 
 /* --- STATES --- */
 
@@ -559,7 +629,7 @@ body {
 /* Option suggestion */
 .header__button-suggestion:hover,
 .header__button-suggestion:focus-visible {
-    background-color: red;
+    background-color: rgb(104, 101, 101);
 }
 
 /* Menu button */
