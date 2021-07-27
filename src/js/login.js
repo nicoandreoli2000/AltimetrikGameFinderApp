@@ -185,7 +185,7 @@ loginButton.addEventListener('click', () => {
         form.classList.add('errorGeneral', 'errorPass');
         passMessage.innerHTML = 'Enter a password';
 
-    } else if (pass.length < 4) {
+    } else if (pass.length < 4 || pass.length > 256) {
         form.classList.add('errorGeneral', 'errorPass');
         passMessage.innerHTML = 'The password is too short';
 
