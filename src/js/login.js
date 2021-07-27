@@ -43,9 +43,9 @@ S9.2,3.7,10,3.7c0.8,0,1.6,0.3,2.2,0.9S13.1,6,13.1,6.9z" />
 inputEmail.value = 'probando@hotmail.com';
 inputPassword.value = 'password';
 
-//Validation function
+//Validation functions for email
 const validateEmail = (email) => {
-    let re = /^[^\s@]+@[^\s@]+$/;
+    let re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
 };
 
@@ -176,7 +176,7 @@ loginButton.addEventListener('click', () => {
         form.classList.add('errorGeneral', 'errorUser');
         userMessage.innerHTML = 'Enter an email';
 
-    } else if (!validateEmail(email)) {
+    } else if (email.length > 320 || !validateEmail(email)) {
         form.classList.add('errorGeneral', 'errorUser');
         userMessage.innerHTML = 'The email is invalid';
     }
