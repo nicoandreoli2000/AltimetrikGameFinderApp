@@ -43,9 +43,9 @@ S9.2,3.7,10,3.7c0.8,0,1.6,0.3,2.2,0.9S13.1,6,13.1,6.9z" />
 inputEmail.value = 'probando@hotmail.com';
 inputPassword.value = 'password';
 
-//Validation function
+//Validation functions for email
 const validateEmail = (email) => {
-    let re = /^[^\s@]+@[^\s@]+$/;
+    let re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
 };
 
@@ -134,9 +134,7 @@ const httpRequest = (email, pass) => {
 
             const respJson = await resp.json();
 
-            loginButton.classList.remove('disabled');
-            loginButton.setAttribute('value', 'LOGIN');
-
+            finishLoading();
 
             if (resp.status === 200) {
                 localStorage.setItem('Access token', JSON.stringify(respJson.accessToken));
@@ -155,8 +153,7 @@ const httpRequest = (email, pass) => {
 
         .catch((error) => {
 
-            loginButton.classList.remove('disabled');
-            loginButton.setAttribute('value', 'LOGIN');
+            finishLoading();
             snackbar.classList.add('snackbarShow');
             throw error;
         });
@@ -179,7 +176,7 @@ loginButton.addEventListener('click', () => {
         form.classList.add('errorGeneral', 'errorUser');
         userMessage.innerHTML = 'Enter an email';
 
-    } else if (!validateEmail(email)) {
+    } else if (email.length > 320 || !validateEmail(email)) {
         form.classList.add('errorGeneral', 'errorUser');
         userMessage.innerHTML = 'The email is invalid';
     }
@@ -188,7 +185,7 @@ loginButton.addEventListener('click', () => {
         form.classList.add('errorGeneral', 'errorPass');
         passMessage.innerHTML = 'Enter a password';
 
-    } else if (pass.length < 4) {
+    } else if (pass.length < 4 || pass.length > 256) {
         form.classList.add('errorGeneral', 'errorPass');
         passMessage.innerHTML = 'The password is too short';
 
@@ -203,16 +200,29 @@ loginButton.addEventListener('click', () => {
 
     if (!form.classList.contains('errorGeneral')) {
 
-        loginButton.classList.add('disabled');
-        loginButton.setAttribute('value', 'LOGIN...');
+        loadingAttributes();
 
         try {
             httpRequest(email, pass);
 
         } catch (error) {
             console.log(error);
-
         }
     }
 
 });
+
+const loadingAttributes = () => {
+    loginButton.classList.add('disabled');
+    loginButton.setAttribute('value', 'LOGGING');
+    inputEmail.setAttribute('disabled', 'true');
+    inputPassword.setAttribute('disabled', 'true');
+}
+
+const finishLoading = () => {
+    loginButton.classList.remove('disabled');
+    loginButton.setAttribute('value', 'LOGIN');
+    inputEmail.removeAttribute('disabled');
+    inputPassword.removeAttribute('disabled');
+    console.log('holi');
+}
