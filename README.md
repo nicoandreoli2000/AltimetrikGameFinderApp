@@ -19,8 +19,8 @@ npx json-server db.json
 
 4. For logging in use the following credentials:
 
--email: probando@hotmail.com
--password: password
+- email: probando@hotmail.com
+- password: password
 
 
 ## Considerations
