@@ -839,6 +839,7 @@ PC && TV:
         padding-right: 0;
     }
     .main__ul-flex {
+        flex: 100% 0 1;
         padding-right: 0;
     }
     .main__card {
