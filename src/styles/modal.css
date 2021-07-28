@@ -223,6 +223,10 @@ body {
     text-decoration: none;
 }
 
+.bottom__link-space {
+    height: 4px;
+}
+
 
 /*Media queries*/
 
