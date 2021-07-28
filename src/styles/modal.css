@@ -32,6 +32,10 @@ body {
 
 .title {
     height: 54px;
+    margin-bottom: 39px;
+}
+
+.title h1 {
     font-weight: 800;
     font-size: 40px;
 }
@@ -39,8 +43,74 @@ body {
 
 /* Add ons */
 
+.adds__box {
+    width: 108px;
+    height: 27px;
+    background-color: white;
+    color: #303030;
+}
 
-/* Why has height?? */
+.adds__box strong {
+    font-weight: 800;
+    font-size: 20px;
+    color: #2BB34F;
+    margin-right: 6px;
+}
+
+.adds__box--date,
+.adds__box--rating {
+    margin-bottom: 15px;
+}
+
+.adds__box--rating {
+    margin-right: 5px;
+}
+
+.adds__box--type {
+    margin-right: 7px;
+}
+
+.adds__button {
+    height: 50px;
+    width: 108px;
+    line-height: 17px;
+    border-radius: 10px;
+    cursor: pointer;
+    padding-left: 9px;
+    text-align: start;
+    font-size: 12px;
+}
+
+.adds__button--buy {
+    margin-bottom: 10px;
+    padding-right: 6px;
+    border: 1px solid #979797;
+}
+
+.adds__buy-text {
+    width: 61px;
+}
+
+.adds__plus-text {
+    width: 21px;
+    text-align: center;
+}
+
+.adds__buy-text b,
+.adds__button--wish b {
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.adds__plus-text b {
+    font-size: 24px;
+    /* Strong default 700 */
+}
+
+.adds__button--wish {
+    padding-right: 1px;
+    background: linear-gradient(180deg, #7CD235 0%, #2BB34F 100%);
+}
 
 
 /*Media queries*/
