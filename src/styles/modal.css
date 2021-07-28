@@ -1,64 +1,52 @@
-/* body {
-    background: rgba(0, 0, 0, 0.784937);
-    The magic here is when it goes with the content of main
-} */
+body {
+    color: white;
+}
 
-/* Containers */
+
+/*Play && Cross*/
+
 .wrapper {
-    height: 793.26px;
-    margin-top: 115.37px;
-    margin-bottom: 115.37px;
-}
-
-.subwrapper {
-    position: relative;
-    width: 1052px;
     background-color: #303030;
-    border-radius: 10px;
+    padding: 26px 40px 40px 40px;
 }
 
-/* Cross */
-.cross__button {
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    width: 16px;
-    height: 16px;
-    border: none;
-    outline: none;
-    border-radius: 50%;
+.cross {
+    margin-bottom: 14px;
+}
+
+.cross__play-svg {
+    fill: white;
+    width: 91.95px;
+    height: 20px;
+}
+
+.cross__button-svg {
+    fill: white;
+    width: 25px;
+    height: 25px;
     cursor: pointer;
-    background-color: transparent;
 }
 
 
-/* Modal containers */
+/*Title*/
 
-.modal {
-    width: 910px;
-    margin-top: 34px;
-    margin-left: 74px;
-    background-color: white;
-}
-
-.modal__information {
-    width: 468px;
-    background-color: red;
-}
-
-.modal__graphics {
-    width: 382px;
-    margin-top: 135px;
-    background-color: blue;
+.title {
+    height: 54px;
+    font-weight: 800;
+    font-size: 40px;
 }
 
 
-/*Information*/
+/* Add ons */
 
 
+/* Why has height?? */
 
 
-/* Videos */
-.modal__main-video {
-    height: 217px;
+/*Media queries*/
+
+@media (max-width: 300px) {
+    .wrapper {
+        display: none;
+    }
 }
