@@ -8,11 +8,11 @@
 //HTML references
 const logoutButton1 = document.querySelector('.header__logout-button');
 const logoutButton2 = document.querySelector('.menu__logout-button');
-const searchInput = document.querySelector('.header__search-input');
-const searchBox = document.querySelector('.header__search');
+const searchInputs = document.querySelectorAll('.header__search-input');
 const listCards = document.querySelector('.main__ul-grid');
 const customMenu = document.querySelector('.menu');
 const menuButton = document.querySelector('.header__menu-button');
+const menuCloseButton = document.querySelector('.menu__button-close');
 const searchButton = document.querySelector('.header__search-button');
 const searchMobile = document.querySelector('.header__search--mobile');
 const header = document.querySelector('.header');
@@ -36,66 +36,47 @@ logoutButton2.addEventListener('click', () => {
 });
 
 //Menu pop up
-menuButton.addEventListener('click', (event) => {
+document.addEventListener('click', ({ path }) => {
 
-    customMenu.classList.add('tabletMenu');
-    // console.log('agrego menu');
-    // setTimeout(() => {
-    //     listen();
-    // }, 100);
-});
-
-customMenu.addEventListener('click', () => {
-    customMenu.classList.remove('tabletMenu');
-});
-
-// const listen = () => {
-//     document.addEventListener('click', (event) => {
-
-//         if (customMenu.classList.contains('tabletMenu')) {
-
-//             const path = event.path;
-//             const actual = document.querySelector('.menu.tabletMenu');
-//             let has = true;
-
-//             path.forEach(element => {
-//                 if (actual === element) {
-//                     has = false;
-//                 }
-
-//             });
-
-//             if (has) {
-//                 customMenu.classList.remove('tabletMenu');
-//                 document.removeEventListener();
-//                 console.log('remuevo menu');
-//             }
-//         }
-//     })
-// };
-
-
-//Search bar pop up
-searchButton.addEventListener('click', () => {
-
-    searchMobile.classList.toggle('flex-horizontal');
-
-    if (searchMobile.classList.contains('flex-horizontal')) {
-        header.style.height = '166px';
+    if (checkParent(path, menuButton)) {
+        customMenu.classList.add('show');
 
     } else {
-        header.style.height = '';
+        if (!checkParent(path, document.querySelector('.menu')) || checkParent(path, menuCloseButton)) {
+            customMenu.classList.remove('show');
+        }
     }
+});
 
+const checkParent = (path, ref) => {
+    let has = false;
+
+    path.forEach(element => {
+        if (element === ref) {
+            has = true;
+        }
+    });
+
+    return has;
+};
+
+//Search bar pop in mobile
+searchButton.addEventListener('click', () => {
+    searchMobile.classList.toggle('show');
+    header.classList.toggle('expand');
 });
 
 
 //Events for search bar
-searchInput.addEventListener('focus', () => {
-    searchBox.classList.add('searchSuggestion');
-    searchBox.classList.add('isFocused');
+searchInputs.forEach(ref => {
+    ref.addEventListener('focus', () => {
+        ref.parentElement.classList.add('searchSuggestion');
+        ref.parentElement.classList.add('isFocused');
+    });
 });
-searchInput.addEventListener('blur', () => {
-    searchBox.classList.remove('isFocused');
-    searchBox.classList.remove('searchSuggestion');
+searchInputs.forEach(ref => {
+    ref.addEventListener('blur', () => {
+        ref.parentElement.classList.remove('searchSuggestion');
+        ref.parentElement.classList.remove('isFocused');
+    });
 });

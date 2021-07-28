@@ -269,23 +269,23 @@ body {
     fill: white;
 }
 
-.menu.tabletMenu {
-    display: block;
-    position: fixed;
-    overflow-y: auto;
-    padding-bottom: 100px;
-    top: 0px;
-    left: 0px;
-    height: 100vh;
-    padding-right: 71px;
-    background-color: #151515;
-    box-shadow: 14px 0px 36px 5px rgba(0, 0, 0, 0.62);
+.menu__button-close svg {
+    fill: white;
+}
+
+.menu__button-close {
+    display: none;
+    border: none;
+    background: none;
+    outline: none;
+    cursor: pointer;
 }
 
 
 /*Search mobile*/
 
 .header__search-button {
+    display: none;
     border: none;
     background: none;
     outline: none;
@@ -766,6 +766,20 @@ PC && TV:
     .header__logout-text {
         display: none;
     }
+    .show {
+        display: block;
+    }
+    .menu {
+        position: fixed;
+        overflow-y: auto;
+        padding-bottom: 100px;
+        top: 0px;
+        left: 0px;
+        height: 100vh;
+        padding-right: 71px;
+        background-color: #151515;
+        box-shadow: 14px 0px 36px 5px rgba(0, 0, 0, 0.62);
+    }
     .header__top {
         justify-content: space-between;
     }
@@ -779,6 +793,9 @@ PC && TV:
     .menu__logout {
         display: flex;
     }
+    .header__search--mobile {
+        display: none;
+    }
 }
 
 @media (max-width: 768px) {
@@ -786,8 +803,13 @@ PC && TV:
     .header__photo,
     .header__search,
     .header__logout,
-    .main__radio {
+    .main__radio,
+    .header__search-icon {
         display: none;
+    }
+    .header__search-button,
+    .menu__button-close {
+        display: flex;
     }
     .main__title {
         height: auto;
@@ -822,12 +844,40 @@ PC && TV:
     .main__card {
         border-radius: 0;
     }
+    .menu {
+        width: 100%;
+        padding-right: 22.5px;
+    }
+    .menu__logout {
+        margin-top: 62px;
+    }
+    .header__search--mobile.show {
+        display: flex;
+    }
+    .header.expand {
+        height: 166px;
+    }
+    .header__search-input {
+        height: 40px;
+        width: 246px;
+        border-radius: 20px;
+        padding: 0px 22px 0px 22px;
+    }
+    .header__autocomplete {
+        width: 246px;
+    }
+    .header__hr {
+        width: 214px;
+    }
+    .searchSuggestion .header__search-input {
+        border-radius: 20px 20px 0px 0px;
+    }
 }
 
 
 /* Stop responsiveness*/
 
-@media (max-width: 305px) {
+@media (max-width: 326px) {
     .wrapper {
         display: none;
     }
