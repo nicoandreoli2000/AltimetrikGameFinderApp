@@ -1,13 +1,21 @@
-body {
-    color: white;
+body .modal-wrapper.show {
     background-color: #303030;
 }
 
 
 /*Background*/
 
-.wrapper {
+.modal-wrapper {
+    display: none;
     padding: 26px 40px 40px 40px;
+}
+
+.show {
+    display: block;
+}
+
+.hidden {
+    display: none;
 }
 
 .bg {

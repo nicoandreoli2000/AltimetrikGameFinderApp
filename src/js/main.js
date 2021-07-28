@@ -16,6 +16,9 @@ const menuCloseButton = document.querySelector('.menu__button-close');
 const searchButton = document.querySelector('.header__search-button');
 const searchMobile = document.querySelector('.header__search--mobile');
 const header = document.querySelector('.header');
+const modalButton = document.querySelector('.main__card-button');
+const modalView = document.querySelector('.modal-wrapper');
+var subwrapperMain = document.querySelector('.sub-wrapper');
 
 //Radio button displays
 const addGrid = () => {
@@ -79,4 +82,11 @@ searchInputs.forEach(ref => {
         ref.parentElement.classList.remove('searchSuggestion');
         ref.parentElement.classList.remove('isFocused');
     });
+});
+
+
+//Opening modal view
+modalButton.addEventListener('click', () => {
+    modalView.classList.add('show');
+    subwrapperMain.classList.add('hidden');
 });
