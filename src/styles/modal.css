@@ -109,6 +109,7 @@ body {
     cursor: pointer;
     text-align: start;
     font-size: 12px;
+    user-select: none;
 }
 
 .adds__button--buy {
@@ -164,6 +165,8 @@ body {
     border-radius: 10px;
     font-size: 12px;
     line-height: 16px;
+    cursor: pointer;
+    user-select: none;
 }
 
 .bottom__button--margin {
@@ -196,7 +199,7 @@ body {
 /* Images */
 
 .bottom__img-principal {
-    max-width: 245px;
+    width: 245px;
     height: 135.62px;
     overflow: hidden;
     margin-bottom: 10px;
@@ -220,6 +223,7 @@ body {
     height: 100%;
     width: 100%;
     object-fit: cover;
+    user-select: none;
 }
 
 .bottom__images {
@@ -232,18 +236,28 @@ body {
 .bottom__img-view-all {
     position: relative;
     width: 100%;
+    user-select: none;
+}
+
+.bottom__img-view-all div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(45, 45, 45, 0.770282);
 }
 
 .bottom__img-view-all svg {
-    position: relative;
-    top: 0;
-    z-index: 2;
+    position: absolute;
+    right: 53px;
+    top: 41.38px;
     width: 9px;
     height: 2px;
 }
 
 .bottom__img-view-all p {
     position: absolute;
+    top: 23.38px;
+    right: 37px;
     font-size: 12px;
     line-height: 16px;
 }
@@ -265,10 +279,12 @@ body {
 .bottom__link a {
     color: white;
     text-decoration-line: underline;
+    cursor: pointer;
 }
 
 .bottom__link--modified a {
     text-decoration: none;
+    cursor: default;
 }
 
 .bottom__link-space {
