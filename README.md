@@ -1,9 +1,9 @@
 # GameFINDER
 
-Webpage for searching games and more... :P
+Webpage for searching games.
 
 
-## Speficied instructions for JSON server
+## JSON server instructions
 
 1. Download the source code from Github.
 
@@ -12,12 +12,12 @@ Webpage for searching games and more... :P
 npm install
 ```
 
-3. Raise the json-server on port 300 running:
+3. Raise a json-server (verify you are on port 300, if not change the url at src/js/login.js):
 ```
 npx json-server db.json
 ```
 
-4. For logging in use the following credentials:
+4. For logging in, use the following credentials:
 
 - email: probando@hotmail.com
 - password: password
@@ -26,5 +26,4 @@ npx json-server db.json
 ## Considerations
 
 1. No headings are used due to the fact FIGMA styles correspond to paragraphs
-2. Hey
-3. klasdfa
+2. Future considerations
