@@ -132,7 +132,7 @@ body {
 /* Buttons comment/write */
 
 .bottom__button {
-    width: 100%;
+    width: 240px;
     height: 40px;
     background-color: #515151;
     border-radius: 10px;
@@ -162,10 +162,71 @@ body {
     padding-top: 1.5px;
 }
 
+.bottom__buttons-box {
+    margin-bottom: 32px;
+}
+
+
+/* Images */
+
+.bottom__img-principal {
+    max-width: 245px;
+    height: 135.62px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.bottom__img-other {
+    width: 245px;
+    height: 65px;
+    overflow: hidden;
+}
+
+.bottom__img-other--margin {
+    margin-bottom: 10px;
+}
+
+.bottom__img-col-margin {
+    margin-right: 8.75px;
+}
+
+.bottom__images img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.bottom__images {
+    margin-bottom: 32.37px;
+}
+
+
+/* Page info */
+
+.bottom__links {
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 300;
+    color: #939393
+}
+
+.bottom__link {
+    margin-bottom: 20px;
+}
+
+.bottom__link a {
+    color: white;
+    text-decoration-line: underline;
+}
+
+.bottom__link--modified a {
+    text-decoration: none;
+}
+
 
 /*Media queries*/
 
-@media (max-width: 300px) {
+@media (max-width: 302px) {
     .wrapper {
         display: none;
     }
