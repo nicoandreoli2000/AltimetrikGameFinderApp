@@ -2,7 +2,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
 
-
 /*General styles*/
 
 * {
@@ -47,6 +46,18 @@ body {
     background: #6e6d6d;
 }
 
+
+/*Reset button*/
+
+.button-reset {
+    border: none;
+    background: none;
+    outline: none;
+    color: inherit;
+    font-family: inherit;
+}
+
+
 /* Custom flex framework */
 
 .flex-horizontal {
@@ -66,7 +77,7 @@ body {
 
 .flex-start {
     display: flex;
-    justify-content: flex-start;
+    /*justify-content: flex-start (default)*/
 }
 
 .flex-end {
@@ -89,5 +100,5 @@ body {
 .flex-start-column {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    /*justify-content: flex-start (default)*/
 }

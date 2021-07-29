@@ -1,9 +1,11 @@
-//Custom security
-// if (!JSON.parse(localStorage.getItem('Access token'))) {
+// Custom security
+// const token = JSON.parse(localStorage.getItem('Access token'));
+// if (!token || token.length !== 183) {
 //     window.location.href = 'login.html';
 // }
-// localStorage.setItem('Access token', JSON.stringify('pepe'));
 
+// Issue
+// localStorage.setItem('Access token', JSON.stringify('custom'));
 
 //HTML references
 const logoutButton1 = document.querySelector('.header__logout-button');
@@ -16,6 +18,9 @@ const menuCloseButton = document.querySelector('.menu__button-close');
 const searchButton = document.querySelector('.header__search-button');
 const searchMobile = document.querySelector('.header__search--mobile');
 const header = document.querySelector('.header');
+const modalButton = document.querySelector('.main__card-button');
+const modalView = document.querySelector('.modal-wrapper');
+var subwrapperMain = document.querySelector('.sub-wrapper');
 
 //Radio button displays
 const addGrid = () => {
@@ -66,7 +71,6 @@ searchButton.addEventListener('click', () => {
     header.classList.toggle('expand');
 });
 
-
 //Events for search bar
 searchInputs.forEach(ref => {
     ref.addEventListener('focus', () => {
@@ -80,3 +84,16 @@ searchInputs.forEach(ref => {
         ref.parentElement.classList.remove('isFocused');
     });
 });
+
+
+//Opening modal view
+modalButton.addEventListener('click', () => {
+    modalView.classList.add('show');
+    subwrapperMain.classList.add('hidden');
+});
+
+//Close modal function
+const closeModal = () => {
+    document.querySelector('.modal-wrapper').classList.remove('show');
+    subwrapperMain.classList.remove('hidden');
+}

@@ -1,64 +1,311 @@
-/* body {
-    background: rgba(0, 0, 0, 0.784937);
-    The magic here is when it goes with the content of main
-} */
-
-/* Containers */
-.wrapper {
-    height: 793.26px;
-    margin-top: 115.37px;
-    margin-bottom: 115.37px;
-}
-
-.subwrapper {
-    position: relative;
-    width: 1052px;
+body .modal-wrapper.show {
     background-color: #303030;
-    border-radius: 10px;
 }
 
-/* Cross */
-.cross__button {
+
+/*Background*/
+
+.modal-wrapper {
+    display: none;
+    padding: 26px 40px 40px 40px;
+}
+
+.show {
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
+
+.bg {
     position: absolute;
-    right: 20px;
-    top: 20px;
-    width: 16px;
-    height: 16px;
-    border: none;
-    outline: none;
-    border-radius: 50%;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 466px;
+    z-index: -1;
+}
+
+.bg img {
+    height: 323px;
+    width: 100%;
+    opacity: 0.47;
+    object-fit: cover;
+}
+
+.bg__shadow {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(48, 48, 48, 0.0001) 0%, #303030 84.4%);
+}
+
+
+/*Play && Cross*/
+
+.cross {
+    margin-bottom: 14px;
+}
+
+.cross__play-svg {
+    fill: white;
+    width: 91.95px;
+    height: 20px;
+}
+
+.cross__button-svg {
+    fill: white;
+    width: 25px;
+    height: 25px;
     cursor: pointer;
-    background-color: transparent;
 }
 
 
-/* Modal containers */
+/*Title*/
 
-.modal {
-    width: 910px;
-    margin-top: 34px;
-    margin-left: 74px;
+.title {
+    height: 54px;
+    margin-bottom: 39px;
+}
+
+.title h1 {
+    font-weight: 800;
+    font-size: 40px;
+}
+
+
+/* Add ons */
+
+.adds {
+    margin-bottom: 32px;
+}
+
+.adds__box {
+    width: 108px;
+    height: 27px;
     background-color: white;
+    color: #303030;
 }
 
-.modal__information {
-    width: 468px;
-    background-color: red;
+.adds__box strong {
+    font-weight: 800;
+    font-size: 20px;
+    color: #2BB34F;
 }
 
-.modal__graphics {
-    width: 382px;
-    margin-top: 135px;
-    background-color: blue;
+.adds__box--date,
+.adds__box--rating {
+    margin-bottom: 15px;
+}
+
+.adds__box--rating strong {
+    margin-right: 5px;
+}
+
+.adds__box--type strong {
+    margin-right: 7px;
+}
+
+.adds__button {
+    height: 50px;
+    width: 108px;
+    border-radius: 10px;
+    line-height: 17px;
+    padding-left: 6px;
+    cursor: pointer;
+    text-align: start;
+    font-size: 12px;
+    user-select: none;
+}
+
+.adds__button--buy {
+    margin-bottom: 10px;
+    border: 1px solid #979797;
+}
+
+.adds__buy-text {
+    height: 34px;
+    width: 61px;
+    margin-right: 14px;
+}
+
+.adds__plus-text {
+    height: 33px;
+    width: 21px;
+}
+
+.adds__buy-text b,
+.adds__button--wish b {
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.adds__plus-text b {
+    font-size: 24px;
+    /* Strong default 700 */
+}
+
+.adds__button--wish {
+    background: linear-gradient(180deg, #7CD235 0%, #2BB34F 100%);
 }
 
 
-/*Information*/
+/* Description */
+
+.description {
+    font-size: 14px;
+    line-height: 19px;
+    margin-bottom: 32px;
+}
 
 
+/* Bottom container */
 
 
-/* Videos */
-.modal__main-video {
-    height: 217px;
+/* Buttons comment/write */
+
+.bottom__button {
+    width: 240px;
+    height: 40px;
+    background-color: #515151;
+    border-radius: 10px;
+    font-size: 12px;
+    line-height: 16px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.bottom__button--margin {
+    margin-bottom: 24px;
+}
+
+.bottom__box-comment {
+    margin-right: 15px;
+}
+
+.bottom__box-write {
+    margin-right: 10px;
+}
+
+.bottom__box-plus b {
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.bottom__box-plus {
+    width: 21px;
+    padding-top: 1.5px;
+}
+
+.bottom__buttons-box {
+    margin-bottom: 32px;
+}
+
+
+/* Images */
+
+.bottom__img-principal {
+    width: 245px;
+    height: 135.62px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.bottom__img-other {
+    width: 245px;
+    height: 65px;
+    overflow: hidden;
+}
+
+.bottom__img-other--margin {
+    margin-bottom: 10px;
+}
+
+.bottom__img-col-margin {
+    margin-right: 8.75px;
+}
+
+.bottom__images img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    user-select: none;
+}
+
+.bottom__images {
+    margin-bottom: 32.37px;
+}
+
+
+/*View all image*/
+
+.bottom__img-view-all {
+    position: relative;
+    width: 100%;
+    user-select: none;
+}
+
+.bottom__img-view-all div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(45, 45, 45, 0.770282);
+}
+
+.bottom__img-view-all svg {
+    position: absolute;
+    right: 53px;
+    top: 41.38px;
+    width: 9px;
+    height: 2px;
+}
+
+.bottom__img-view-all p {
+    position: absolute;
+    top: 23.38px;
+    right: 37px;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+
+/* Page info */
+
+.bottom__links {
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 300;
+    color: #939393
+}
+
+.bottom__link {
+    margin-bottom: 20px;
+}
+
+.bottom__link a {
+    color: white;
+    text-decoration-line: underline;
+    cursor: pointer;
+}
+
+.bottom__link--modified a {
+    text-decoration: none;
+    cursor: default;
+}
+
+.bottom__link-space {
+    height: 4px;
+}
+
+
+/*Media queries*/
+
+@media (min-width: 768px) {}
+
+@media (max-width: 302px) {
+    .wrapper {
+        display: none;
+    }
 }
