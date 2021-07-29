@@ -1,9 +1,11 @@
-//Custom security
-// if (!JSON.parse(localStorage.getItem('Access token'))) {
+// Custom security
+// const token = JSON.parse(localStorage.getItem('Access token'));
+// if (!token || token.length !== 183) {
 //     window.location.href = 'login.html';
 // }
-// localStorage.setItem('Access token', JSON.stringify('pepe'));
 
+// Issue
+// localStorage.setItem('Access token', JSON.stringify('custom'));
 
 //HTML references
 const logoutButton1 = document.querySelector('.header__logout-button');
@@ -69,7 +71,6 @@ searchButton.addEventListener('click', () => {
     header.classList.toggle('expand');
 });
 
-
 //Events for search bar
 searchInputs.forEach(ref => {
     ref.addEventListener('focus', () => {
@@ -90,3 +91,9 @@ modalButton.addEventListener('click', () => {
     modalView.classList.add('show');
     subwrapperMain.classList.add('hidden');
 });
+
+//Close modal function
+const closeModal = () => {
+    document.querySelector('.modal-wrapper').classList.remove('show');
+    subwrapperMain.classList.remove('hidden');
+}

@@ -250,7 +250,6 @@ const changeRadio = (value) => {
         carouselRadio[0].setAttribute('checked', '');
         showImage(0);
     }
-    console.log(lastValue);
 }
 
 
