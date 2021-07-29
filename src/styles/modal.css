@@ -305,7 +305,7 @@ body .modal-wrapper.show {
 @media (min-width: 768px) {}
 
 @media (max-width: 302px) {
-    .wrapper {
+    .modal-wrapper {
         display: none;
     }
 }
