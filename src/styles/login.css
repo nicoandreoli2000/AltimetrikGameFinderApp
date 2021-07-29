@@ -4,21 +4,27 @@ body {
     color: #8F8F8F;
 }
 
-.wrapper {
+.line-wrapper {
+    height: 660px;
     margin-top: 180px;
     margin-bottom: 184px;
 }
 
+.wrapper {
+    width: 1083px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
 .form {
-    width: 630px;
+    flex: 630px 0 1;
     height: 660px;
     padding-top: 34px;
-    border-radius: 10px 0px 0px 10px;
     background-color: #303030;
 }
 
 .carousel {
-    width: 453px;
+    flex: 453px 0 1;
     height: 660px;
 }
 
@@ -29,7 +35,6 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 0px 10px 10px 0px;
     user-select: none;
 }
 
@@ -52,9 +57,7 @@ form {
     color: white;
 }
 
-
-
-.form__title-strong{
+.form__title-strong {
     font-weight: 800;
 }
 
@@ -141,6 +144,7 @@ form {
     font-size: 14px;
     color: #E07979;
 }
+
 
 /*Remember me && LOGIN*/
 
@@ -232,6 +236,7 @@ hr {
     height: 40px;
     margin-top: 24px;
 }
+
 .form__wrapper-fb {
     height: 40px;
     margin-top: 21px;
@@ -245,6 +250,7 @@ hr {
     border-radius: 8px 0px 0px 8px;
     width: 46.55px;
 }
+
 .form__social-icon--fb {
     background-color: #263C68;
 }
@@ -305,6 +311,7 @@ hr {
 
 /* Original states */
 
+
 /* Hidepass button */
 
 .form__hidepass-btn:focus-visible .form__svg-input--hidepass,
@@ -349,7 +356,9 @@ hr {
     background: linear-gradient(180deg, #7CD235 0%, #2BB34F 100%);
 }
 
+
 /* Custom states */
+
 
 /* Error */
 
@@ -386,6 +395,7 @@ hr {
     fill: #E07979;
 }
 
+
 /* Focus */
 
 .isFocused,
@@ -404,6 +414,7 @@ hr {
 .isActive .form__input {
     color: white;
 }
+
 
 /* Snackbar */
 
@@ -443,7 +454,9 @@ hr {
     cursor: pointer;
 }
 
+
 /* Media queries */
+
 
 /*
 Mobile:
@@ -459,16 +472,15 @@ PC && TV:
 */
 
 @media (max-width: 1024px) {
-    .wrapper {
-        margin: 0;
+    .line-wrapper {
+        margin: 105px 0px 259px 0px;
     }
     .carousel {
         display: none;
     }
     .form {
         border-radius: 0;
-        margin-top: 105px;
-        margin-bottom: 348px;
+        padding: 0;
     }
     .form__input-box--pass {
         margin-top: 32px;
@@ -491,9 +503,8 @@ PC && TV:
     form {
         width: 240px;
     }
-    .form {
-        margin-top: 45px;
-        margin-bottom: 151px;
+    .line-wrapper {
+        margin: 45px 0px 62px 0px;
     }
     .form__title {
         height: 48px;
