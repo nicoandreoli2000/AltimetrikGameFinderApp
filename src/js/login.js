@@ -130,33 +130,33 @@ const httpRequest = (email, pass) => {
         })
     })
 
-        .then(async (resp) => {
+    .then(async(resp) => {
 
-            const respJson = await resp.json();
+        const respJson = await resp.json();
 
-            finishLoading();
+        finishLoading();
 
-            if (resp.status === 200) {
-                localStorage.setItem('Access token', JSON.stringify(respJson.accessToken));
-                window.location.href = 'main.html';
-            };
+        if (resp.status === 200) {
+            localStorage.setItem('Access token', JSON.stringify(respJson.accessToken));
+            window.location.href = 'main.html';
+        };
 
-            if (resp.status === 400) {
-                inputEmail.value = '';
-                inputPassword.value = '';
-                form.classList.add('errorGeneral', 'errorUser', 'errorPass');
-                passMessage.innerHTML = 'Wrong credentials';
-            };
+        if (resp.status === 400) {
+            inputEmail.value = '';
+            inputPassword.value = '';
+            form.classList.add('errorGeneral', 'errorUser', 'errorPass');
+            passMessage.innerHTML = 'Wrong credentials';
+        };
 
 
-        })
+    })
 
-        .catch((error) => {
+    .catch((error) => {
 
-            finishLoading();
-            snackbar.classList.add('snackbarShow');
-            throw error;
-        });
+        finishLoading();
+        snackbar.classList.add('snackbarShow');
+        throw error;
+    });
 
 
 };
@@ -225,4 +225,29 @@ const finishLoading = () => {
     inputEmail.removeAttribute('disabled');
     inputPassword.removeAttribute('disabled');
     console.log('holi');
+}
+
+/* Carousel */
+
+const carouselImages = document.querySelectorAll('.carousel__img');
+let lastValue = 0;
+
+const showImage = (value) => {
+    carouselImages[lastValue].classList.add('hidden');
+    carouselImages[value].classList.remove('hidden');
+    lastValue = value;
+    setTimeout(() => {
+        swapImages(lastValue);
+    }, 2000);
+}
+
+showImage(lastValue);
+
+const swapImages = () => {
+    if (lastValue !== 6) {
+        carouselImages[lastValue].classList.add('hidden');
+        showImage(lastValue + 1);
+    } else {
+        showImage(0);
+    }
 }

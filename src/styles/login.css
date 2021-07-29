@@ -26,16 +26,58 @@ body {
 .carousel {
     flex: 453px 0 1;
     height: 660px;
+    position: relative;
 }
 
 
-/* Image */
+/* Images carousel */
 
 .carousel__img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     user-select: none;
+}
+
+
+/* Radio buttons carousel */
+
+.carousel__radio {
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    bottom: 20px;
+    user-select: none;
+}
+
+.carousel__radio input {
+    appearance: none;
+    outline: none;
+    width: 7px;
+    height: 7px;
+    border-radius: 100%;
+    background: #000000;
+    opacity: 0.3;
+    margin-right: 7px;
+    cursor: pointer;
+}
+
+.carousel__radio input:last-child {
+    margin-right: 0;
+}
+
+.carousel__radio input:checked {
+    background: white;
+    opacity: 1;
+}
+
+.carousel__radio input:hover,
+.carousel__radio input:focus-visible {
+    opacity: 0.7;
+}
+
+.hidden {
+    display: none;
 }
 
 
