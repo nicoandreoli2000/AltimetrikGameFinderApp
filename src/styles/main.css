@@ -368,6 +368,7 @@ body {
 
 .main__bot {
     margin-top: 30px;
+    margin-bottom: 50px;
 }
 
 
@@ -419,10 +420,6 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 24px;
-    padding-right: 20px;
-    max-height: calc(100vh - 265px);
-    min-height: 305px;
-    overflow-y: auto;
 }
 
 /* Cards */
@@ -582,9 +579,14 @@ body {
 /* 1 col style*/
 
 .main__ul-grid--display {
-    grid-template-columns: 697px;
+    grid-template-columns: 100%;
+    
 }
 
+.main__ul-grid--display .main__card {
+    width: 687px;
+    justify-self: center;
+}
 .main__ul-grid--display .main__image-box {
     height: 315px;
 }
