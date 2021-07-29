@@ -22,9 +22,15 @@ body {
     background-color: #141414;
 }
 
+
+/* Selection text color */
+
 ::selection {
     background-color: #7CD235;
 }
+
+
+/* Scroll bar */
 
 ::-webkit-scrollbar {
     width: 10px;

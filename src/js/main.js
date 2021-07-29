@@ -25,11 +25,11 @@ var subwrapperMain = document.querySelector('.sub-wrapper');
 //Radio button displays
 const addGrid = () => {
     listCards.classList.add('main__ul-grid');
-    listCards.classList.remove('main__ul-flex');
+    listCards.classList.remove('main__ul-grid--display');
 }
-const addFlex = () => {
+const addGridSpecial = () => {
     listCards.classList.remove('main__ul-grid');
-    listCards.classList.add('main__ul-flex');
+    listCards.classList.add('main__ul-grid--display');
 }
 
 //Logout event
