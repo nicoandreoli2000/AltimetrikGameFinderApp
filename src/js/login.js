@@ -224,30 +224,46 @@ const finishLoading = () => {
     loginButton.setAttribute('value', 'LOGIN');
     inputEmail.removeAttribute('disabled');
     inputPassword.removeAttribute('disabled');
-    console.log('holi');
 }
 
-/* Carousel */
+
+/* Carousel vanilla - like it*/
 
 const carouselImages = document.querySelectorAll('.carousel__img');
+const carouselRadio = document.querySelectorAll('.carousel__radio input');
 let lastValue = 0;
+let click = false;
 
 const showImage = (value) => {
     carouselImages[lastValue].classList.add('hidden');
     carouselImages[value].classList.remove('hidden');
     lastValue = value;
-    setTimeout(() => {
-        swapImages(lastValue);
-    }, 2000);
 }
 
-showImage(lastValue);
-
-const swapImages = () => {
-    if (lastValue !== 6) {
-        carouselImages[lastValue].classList.add('hidden');
-        showImage(lastValue + 1);
+const changeRadio = (value) => {
+    if (value < 6) {
+        carouselRadio[value].removeAttribute('checked');
+        carouselRadio[value + 1].setAttribute('checked', '');
+        showImage(value + 1);
     } else {
+        carouselRadio[value].removeAttribute('checked');
+        carouselRadio[0].setAttribute('checked', '');
         showImage(0);
     }
+    console.log(lastValue);
 }
+
+
+carouselRadio.forEach((element) => {
+    element.addEventListener('click', () => {
+        click = true;
+    });
+})
+
+const interval = setInterval(() => {
+    if (!click) {
+        changeRadio(lastValue);
+    } else {
+        click = false;
+    }
+}, 1800);

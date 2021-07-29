@@ -67,7 +67,7 @@ body {
 }
 
 .carousel__radio input:checked {
-    background: white;
+    background: rgb(250, 3, 229);
     opacity: 1;
 }
 
