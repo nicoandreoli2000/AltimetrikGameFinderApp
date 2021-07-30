@@ -23,6 +23,8 @@ body {
 /* Header */
 
 .header {
+    position: fixed;
+    top: 0;
     padding-top: 32px;
     width: 100%;
     height: 120px;
@@ -591,6 +593,7 @@ body {
     height: 315px;
 }
 .main__ul-grid--display .main__info-container {
+    grid-template-columns: auto 40px auto 40px auto 147px auto;
     grid-template-areas:
     'title . . . . . play'
     'date . genre . number . gift'
@@ -646,15 +649,18 @@ body {
 }
 
 
-/* Logout button */
-
+/* Logout button && search button mobile*/
 .header__logout-button:hover .header__logout-svg,
-.header__logout-button:focus-visible .header__logout-svg {
-    fill: #6c6c6d;
+.header__logout-button:focus-visible .header__logout-svg,
+.header__search-button:hover svg,
+.header__search-button:focus-visible svg {
+    fill: #32630a;
 }
 
 .menu__logout-button:hover .menu__logout-svg,
-.menu__logout-button:focus-visible .menu__logout-svg {
+.menu__logout-button:focus-visible .menu__logout-svg,
+.menu__button-close:hover svg,
+.menu__button-close:focus-visible svg {
     fill: #7CD235;
 }
 
@@ -695,6 +701,8 @@ body {
 }
 
 
+
+
 /* Search suggestion pop down*/
 
 .searchSuggestion .header__autocomplete {
@@ -722,7 +730,7 @@ body {
 
 .header__menu-button:hover svg,
 .header__menu-button:focus-visible svg {
-    fill: #888889;
+    fill: #32630a;
 }
 
 

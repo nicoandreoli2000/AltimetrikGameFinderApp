@@ -30,6 +30,15 @@ const addGridSpecial = () => {
     listCards.classList.add('main__ul-grid--display');
 }
 
+//Media queries
+
+// const displayOneCol = () => {
+
+
+// };
+// const mediaQuery = window.matchMedia("(max-width: 768px)")
+// mediaQuery.addEventListener(add)
+
 //Logout event
 logoutButton1.addEventListener('click', () => {
     window.location.href = 'login.html';
