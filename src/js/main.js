@@ -20,7 +20,9 @@ const searchMobile = document.querySelector('.header__search--mobile');
 const header = document.querySelector('.header');
 const modalButton = document.querySelector('.main__card-button');
 const modalView = document.querySelector('.modal-wrapper');
-var subwrapperMain = document.querySelector('.sub-wrapper');
+// const subwrapperMain = document.querySelector('.sub-wrapper');
+const searchFor = document.querySelector('.main__title')
+const searchValue = document.querySelector('.main__subtitle')
 
 //Radio button displays
 const addGrid = () => {
@@ -31,12 +33,15 @@ const addGridSpecial = () => {
 }
 
 //Media queries
+const mediaQuery = window.matchMedia("(max-width: 768px)");
 
-// const displayOneCol = () => {
-// };
+const handleChangeMedia = (mq) => {
+    if (mq.matches) {
+        addGrid();
+    }
+}
 
-// const mediaQuery = window.matchMedia("(max-width: 768px)")
-// mediaQuery.addEventListener(add)
+mediaQuery.addEventListener('change', () => { handleChangeMedia(mediaQuery) });
 
 //Logout event
 logoutButton1.addEventListener('click', () => {
@@ -89,6 +94,25 @@ searchInputs.forEach(ref => {
         ref.parentElement.classList.remove('isFocused');
     });
 });
+
+//Searching
+let firstSearch = false;
+
+searchInputs.forEach(ref => {
+    ref.addEventListener('keyup', (evt) => {
+        const inputValue = ref.value;
+        if (inputValue.trim() !== '' && (evt.key === 'Enter' || evt.keyCode === 13)) {
+
+            if (!firstSearch) {
+                searchFor.innerHTML = '<p>Search results</p>';
+                firstSearch = true;
+            }
+
+            searchValue.innerHTML = `<p>${inputValue}</p>`;
+        }
+    });
+});
+
 
 
 //Opening modal view
