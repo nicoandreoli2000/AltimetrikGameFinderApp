@@ -33,9 +33,8 @@ const addGridSpecial = () => {
 //Media queries
 
 // const displayOneCol = () => {
-
-
 // };
+
 // const mediaQuery = window.matchMedia("(max-width: 768px)")
 // mediaQuery.addEventListener(add)
 
@@ -51,11 +50,11 @@ logoutButton2.addEventListener('click', () => {
 document.addEventListener('click', ({ path }) => {
 
     if (checkParent(path, menuButton)) {
-        customMenu.classList.add('show');
+        customMenu.classList.add('showMenu');
 
     } else {
         if (!checkParent(path, document.querySelector('.menu')) || checkParent(path, menuCloseButton)) {
-            customMenu.classList.remove('show');
+            customMenu.classList.remove('showMenu');
         }
     }
 });
@@ -74,8 +73,7 @@ const checkParent = (path, ref) => {
 
 //Search bar pop in mobile
 searchButton.addEventListener('click', () => {
-    searchMobile.classList.toggle('show');
-    header.classList.toggle('expand');
+    searchMobile.classList.toggle('showSearch');
 });
 
 //Events for search bar
@@ -94,13 +92,13 @@ searchInputs.forEach(ref => {
 
 
 //Opening modal view
-modalButton.addEventListener('click', () => {
-    modalView.classList.add('show');
-    subwrapperMain.classList.add('hidden');
-});
+// modalButton.addEventListener('click', () => {
+//     modalView.classList.add('show');
+//     subwrapperMain.classList.add('hidden');
+// });
 
-//Close modal function
-const closeModal = () => {
-    document.querySelector('.modal-wrapper').classList.remove('show');
-    subwrapperMain.classList.remove('hidden');
-}
+// //Close modal function
+// const closeModal = () => {
+//     document.querySelector('.modal-wrapper').classList.remove('show');
+//     subwrapperMain.classList.remove('hidden');
+// }

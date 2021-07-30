@@ -10,14 +10,6 @@ body .modal-wrapper.show {
     padding: 26px 40px 40px 40px;
 }
 
-.show {
-    display: block;
-}
-
-.hidden {
-    display: none;
-}
-
 .bg {
     position: absolute;
     top: 0;
