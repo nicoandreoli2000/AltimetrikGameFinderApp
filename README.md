@@ -27,4 +27,4 @@ npx json-server db.json
 
 1. No headings are used due to the fact FIGMA styles correspond to paragraphs.
 2. In the main view at the mobile breakpoint, two rows are left for the first 200px, because it looks better that just keeping one too streched.
-3. 
+3. Hey.
