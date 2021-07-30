@@ -16,7 +16,6 @@ const customMenu = document.querySelector('.menu');
 const menuButton = document.querySelector('.header__menu-button');
 const menuCloseButton = document.querySelector('.menu__button-close');
 const searchButton = document.querySelector('.header__search-button');
-const searchMobile = document.querySelector('.header__search--mobile');
 const header = document.querySelector('.header');
 const modalButton = document.querySelector('.main__card-button');
 const modalView = document.querySelector('.modal-wrapper');
@@ -78,7 +77,7 @@ const checkParent = (path, ref) => {
 
 //Search bar pop in mobile
 searchButton.addEventListener('click', () => {
-    searchMobile.classList.toggle('showSearch');
+    header.classList.toggle('showSearch');
 });
 
 //Events for search bar
