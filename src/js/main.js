@@ -20,17 +20,28 @@ const searchMobile = document.querySelector('.header__search--mobile');
 const header = document.querySelector('.header');
 const modalButton = document.querySelector('.main__card-button');
 const modalView = document.querySelector('.modal-wrapper');
-var subwrapperMain = document.querySelector('.sub-wrapper');
+// const subwrapperMain = document.querySelector('.sub-wrapper');
+const searchFor = document.querySelector('.main__title')
+const searchValue = document.querySelector('.main__subtitle')
 
 //Radio button displays
 const addGrid = () => {
-    listCards.classList.add('main__ul-grid');
-    listCards.classList.remove('main__ul-flex');
+    listCards.classList.remove('main__ul-grid--display');
 }
-const addFlex = () => {
-    listCards.classList.remove('main__ul-grid');
-    listCards.classList.add('main__ul-flex');
+const addGridSpecial = () => {
+    listCards.classList.add('main__ul-grid--display');
 }
+
+//Media queries
+const mediaQuery = window.matchMedia("(max-width: 768px)");
+
+const handleChangeMedia = (mq) => {
+    if (mq.matches) {
+        addGrid();
+    }
+}
+
+mediaQuery.addEventListener('change', () => { handleChangeMedia(mediaQuery) });
 
 //Logout event
 logoutButton1.addEventListener('click', () => {
@@ -44,11 +55,11 @@ logoutButton2.addEventListener('click', () => {
 document.addEventListener('click', ({ path }) => {
 
     if (checkParent(path, menuButton)) {
-        customMenu.classList.add('show');
+        customMenu.classList.add('showMenu');
 
     } else {
         if (!checkParent(path, document.querySelector('.menu')) || checkParent(path, menuCloseButton)) {
-            customMenu.classList.remove('show');
+            customMenu.classList.remove('showMenu');
         }
     }
 });
@@ -67,8 +78,7 @@ const checkParent = (path, ref) => {
 
 //Search bar pop in mobile
 searchButton.addEventListener('click', () => {
-    searchMobile.classList.toggle('show');
-    header.classList.toggle('expand');
+    searchMobile.classList.toggle('showSearch');
 });
 
 //Events for search bar
@@ -85,15 +95,34 @@ searchInputs.forEach(ref => {
     });
 });
 
+//Searching
+let firstSearch = false;
 
-//Opening modal view
-modalButton.addEventListener('click', () => {
-    modalView.classList.add('show');
-    subwrapperMain.classList.add('hidden');
+searchInputs.forEach(ref => {
+    ref.addEventListener('keyup', (evt) => {
+        const inputValue = ref.value;
+        if (inputValue.trim() !== '' && (evt.key === 'Enter' || evt.keyCode === 13)) {
+
+            if (!firstSearch) {
+                searchFor.innerHTML = '<p>Search results</p>';
+                firstSearch = true;
+            }
+
+            searchValue.innerHTML = `<p>${inputValue}</p>`;
+        }
+    });
 });
 
-//Close modal function
-const closeModal = () => {
-    document.querySelector('.modal-wrapper').classList.remove('show');
-    subwrapperMain.classList.remove('hidden');
-}
+
+
+//Opening modal view
+// modalButton.addEventListener('click', () => {
+//     modalView.classList.add('show');
+//     subwrapperMain.classList.add('hidden');
+// });
+
+// //Close modal function
+// const closeModal = () => {
+//     document.querySelector('.modal-wrapper').classList.remove('show');
+//     subwrapperMain.classList.remove('hidden');
+// }

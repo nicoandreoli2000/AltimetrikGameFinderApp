@@ -253,7 +253,8 @@ form {
 
 hr {
     width: 134px;
-    border: 1px solid white;
+    border: none;
+    height: 1px;
     background-color: white;
 }
 
