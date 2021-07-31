@@ -18,8 +18,8 @@ const menuCloseButton = document.querySelector('.menu__button-close');
 const searchButton = document.querySelector('.header__search-button');
 const header = document.querySelector('.header');
 const modalButton = document.querySelector('.main__card-button');
-const searchFor = document.querySelector('.main__title');
-const searchValue = document.querySelector('.main__subtitle');
+const searchFor = document.querySelector('.main__title>p');
+const searchValue = document.querySelector('.main__subtitle>p');
 const homeButton = document.querySelector('.nav__item--first>a');
 
 const modalView = document.querySelector('.modal-wrapper');
@@ -217,16 +217,29 @@ const loadCards = (results) => {
 
 }
 
-const urlApi = 'https://api.rawg.io/api/games';
 const key = 'e47665a812c8462aa8519397b488ec98';
+const urlApi = `https://api.rawg.io/api/games?key=${key}`;
 
 const gamesRequest = (name) => {
 
-    fetch(`${urlApi}?key=${key}&search=${name}`, {
-        method: 'GET',
+    let url = urlApi;
+
+    if (name) {
+        url = `${urlApi}&search=${name}`;
+    }
+
+    fetch(url, {
+        method: "GET",
 
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            // "Access-Control-Allow-Headers": "Access-Control-Allow-Origin",
+            // "Access-Control-Allow-Origin": "http://127.0.0.1:5500",
+            // "Access-Control-Allow-Credentials": "true",
+            // "Set-Cookie": "cross-site-cookie=whatever; SameSite=None; Secure",
+            // "User-Agent": "Nicolás Andreoli",
+            // "Same-Site": "None",
+            // "Set-Cookie": "promo_shown=1; SameSite=Secure"
         }
     }).
         then(async (resp) => {
@@ -234,7 +247,9 @@ const gamesRequest = (name) => {
             const respJson = await resp.json();
 
             if (resp.status === 200) {
+
                 const results = JSON.parse(JSON.stringify(respJson.results));
+
                 if (results.length === 0) {
 
                     listCards.innerHTML = '<p>No results found :(</p>';
@@ -257,10 +272,10 @@ searchInputs.forEach(ref => {
         if (inputValue.trim() !== '' && (evt.key === 'Enter' || evt.keyCode === 13)) {
 
             if (!firstSearch) {
-                searchFor.innerHTML = '<p>Search results</p>';
+                searchFor.innerHTML = 'Search results';
                 firstSearch = true;
             }
-            searchValue.innerHTML = `<p>${inputValue}</p>`;
+            searchValue.innerHTML = `${inputValue}`;
 
             try {
                 gamesRequest(inputValue);
@@ -273,12 +288,16 @@ searchInputs.forEach(ref => {
 
 homeButton.addEventListener('click', () => {
     if (firstSearch) {
-        searchFor.innerHTML = '<p>New and trending</p>';
-        searchValue.innerHTML = `<p>Based on player counts and release date</p>`;
+        searchFor.innerHTML = 'New and trending';
+        searchValue.innerHTML = `Based on player counts and release date`;
         firstSearch = false;
+        gamesRequest();
     }
 
 });
+
+//First default page
+gamesRequest();
 
 
 
