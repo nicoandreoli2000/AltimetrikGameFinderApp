@@ -470,7 +470,7 @@ body {
 .main__info-container {
     display: grid;
     grid-template-areas:
-    'title . play'
+    'title title play'
     'date . number'
     'genre . gift';
     row-gap: 3px;
@@ -491,9 +491,13 @@ body {
     grid-area: title;
     justify-self: start;
     height: 31px;
+    width: 100%;
+    text-align: start;
     font-size: 23px;
     font-weight: 800;
     line-height: 31px;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .main__play-icons {
@@ -510,6 +514,8 @@ body {
 .main__card-genre {
     grid-area: genre;
     width: 186px;
+    overflow: hidden;
+    /* text-overflow: ellipsis; */
 }
 
 .main__hr {
@@ -825,6 +831,8 @@ body {
     .menu__logout {
         margin-top: 62px;
     }
+
+    /*Header search mobile*/
     .header__search-input {
         height: 40px;
         width: 246px;
@@ -841,8 +849,8 @@ body {
         border-radius: 20px 20px 0px 0px;
     }
 
-    /*Header mobile*/
-    .showSearch .header__search-mobile {
+    .showSearch .header__search {
+        margin-top: 70px;
         display: flex;
     }
 
