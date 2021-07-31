@@ -4,13 +4,15 @@ body {
     color: #FFFFFF;
 }
 
-.wrapper,
-.sub-wrapper {
-    width: 100%;
+.wrapper {
     height: 100%;
 }
+.hidden {
+    display: none;
+}
 
-.sub-wrapper__shadow {
+/*Footer*/
+.shadow {
     width: 100%;
     height: 108px;
     position: fixed;
@@ -19,14 +21,14 @@ body {
     pointer-events: none;
 }
 
-.hidden {
-    display: none;
-}
+
 
 /* Header */
 
 .header {
-    padding-top: 32px;
+    position: fixed;
+    top: 0;
+    padding: 32px 40px 0px 40px;
     width: 100%;
     height: 120px;
     background: linear-gradient(180deg, #7CD235 0%, #2BB34F 100%);
@@ -39,8 +41,6 @@ body {
 .header__top,
 .header__bottom {
     width: 100%;
-    padding-right: 40px;
-    padding-left: 40px;
 }
 
 .header__top {
@@ -216,9 +216,11 @@ body {
 
 
 /* Nav */
-
 .menu {
-    padding: 33px 0px 20px 39px;
+    position: fixed;
+    top: 120px;
+    padding: 33px 0px 30px 39px;
+    overflow-y: auto;
 }
 
 .nav {
@@ -303,7 +305,6 @@ body {
 
 .header__search-mobile {
     display: none;
-    margin-top: 12px;
 }
 
 /* Principal items */
@@ -365,13 +366,11 @@ body {
 /*General*/
 
 .main {
-    flex: 100% 1;
-    margin: 24px 40px 0px 31px;
+    padding: 144px 40px 50px 262px;
 }
 
 .main__bot {
     margin-top: 30px;
-    margin-bottom: 50px;
 }
 
 
@@ -742,15 +741,14 @@ body {
     .header__logout-text {
         display: none;
     }
-    
+    .main {
+        padding-left: 40px;
+    }
     .menu {
-        position: fixed;
-        overflow-y: auto;
         padding-bottom: 100px;
-        top: 0px;
-        left: 0px;
-        height: 100vh;
         padding-right: 71px;
+        top: 0;
+        height: 100vh;
         background-color: #151515;
         box-shadow: 14px 0px 36px 5px rgba(0, 0, 0, 0.62);
     }
@@ -782,6 +780,10 @@ body {
     .menu__button-close {
         display: flex;
     }
+    .main {
+        padding-left: 0;
+        padding-right: 0;
+    }
     .main__title {
         height: auto;
         width: 100%;
@@ -797,7 +799,6 @@ body {
         padding-left: 40px;
     }
     .header {
-        position: fixed;
         height: 104px;
     }
     .main {
@@ -839,6 +840,10 @@ body {
 
     .showSearch.header {
         height: 166px;
+    }
+
+    .showSearch .header__top {
+        margin-bottom: 22px;
     }
 
     /*Card*/
