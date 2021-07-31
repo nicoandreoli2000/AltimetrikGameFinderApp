@@ -316,6 +316,7 @@ body {
 }
 
 .nav__item>a {
+    outline: none;
     cursor: pointer;
 }
 
@@ -345,6 +346,10 @@ body {
     margin-top: 11px;
     cursor: pointer;
     user-select: none;
+}
+
+.nav__list-item>a {
+    outline: none;
 }
 
 .nav__list-item--first {
@@ -682,18 +687,21 @@ body {
 /* Menu */
 
 .nav__item>a:hover,
-.nav__list-item:hover>a {
+.nav__item>a:focus,
+.nav__list-item:hover>a,
+.nav__list-item:focus-within a {
     color: #7CD235;
 }
 
-.nav__list-item:hover svg {
+.nav__list-item:hover svg,
+.nav__list-item:focus-within svg {
     fill: #7CD235;
 }
 
 /* Cards */
 
 .main__card-button:hover,
-.main__card-button:focus-visible {
+.main__card-button:focus {
     box-shadow: inset 0px 0px 20px #151515;
 }
 
