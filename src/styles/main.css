@@ -575,19 +575,12 @@ body {
     color: #939393;
 }
 
-.main__text p:nth-child(2) {
+.main__card-genre .main__text p:nth-child(2) {
     text-align: end;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-}
-
-.main__card-genre .main__text p:nth-child(2) {
     width: 130px;
-}
-
-.main__card-date .main__text p:nth-child(2) {
-    width: 110px;
 }
 
 
@@ -660,10 +653,6 @@ body {
 
 .main__ul-grid--display .main__text p:nth-child(2) {
     color: white;
-}
-
-.main__ul-grid--display .main__card-date .main__text p:nth-child(2) {
-    width: 78px;
 }
 
 .main__ul-grid--display .main__card-genre .main__text p:nth-child(2) {
@@ -818,7 +807,7 @@ body {
 }
 
 @media (max-width: 764px) {
-    .header__line,
+    .header__bottom,
     .header__photo,
     .header__search,
     .header__logout,
@@ -887,7 +876,7 @@ body {
     }
 
     .showSearch .header__search {
-        margin-top: 70px;
+        margin: 62px -40px 0px -40px;
         display: flex;
     }
 
@@ -938,9 +927,6 @@ body {
         margin-top: 3.5px;
     }
 
-    .main__card-date .main__text p:nth-child(2) {
-        width: 200px;
-    }
     .main__card-genre .main__text p:nth-child(2) {
         width: 220px;
     }

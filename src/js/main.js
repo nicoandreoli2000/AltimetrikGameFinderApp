@@ -356,7 +356,9 @@ const loadCards = (results) => {
 }
 
 const key = 'e47665a812c8462aa8519397b488ec98';
-const urlApi = `https://api.rawg.io/api/games?key=${key}`;
+const size = 20;
+
+const urlApi = `https://api.rawg.io/api/games?key=${key}&page_size=${size}`;
 
 const gamesRequest = (name) => {
 
@@ -395,11 +397,8 @@ const gamesRequest = (name) => {
                 if (results.length === 0) {
                     listCards.innerHTML = '<p>No search results found</p>';
 
-                } else if (results.length <= 20) {
-                    loadCards(results);
-
                 } else {
-                    loadCards(results.slice(0, 20));
+                    loadCards(results);
                 }
             };
         })
