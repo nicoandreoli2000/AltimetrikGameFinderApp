@@ -851,6 +851,9 @@ body {
         width: 100%;
         padding-right: 22.5px;
     }
+    .showMenu.menu + .main {
+        display: none;
+    }
     .menu__logout {
         margin-top: 62px;
     }
