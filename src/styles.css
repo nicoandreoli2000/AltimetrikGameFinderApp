@@ -52,18 +52,6 @@ body {
     background: #6e6d6d;
 }
 
-
-/*Reset button*/
-
-.button-reset {
-    border: none;
-    background: none;
-    outline: none;
-    color: inherit;
-    font-family: inherit;
-}
-
-
 /* Custom flex framework */
 
 .flex-horizontal {

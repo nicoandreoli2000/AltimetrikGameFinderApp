@@ -17,12 +17,11 @@ const menuButton = document.querySelector('.header__menu-button');
 const menuCloseButton = document.querySelector('.menu__button-close');
 const searchButton = document.querySelector('.header__search-button');
 const header = document.querySelector('.header');
-const modalButton = document.querySelector('.main__card-button');
 const searchFor = document.querySelector('.main__title>p');
 const searchValue = document.querySelector('.main__subtitle>p');
 const homeButton = document.querySelector('.nav__item--first>a');
-
-// const modalView = document.querySelector('.modal-wrapper');
+const modalView = document.querySelector('.modal');
+const modalButton = document.querySelectorAll('.main__card-button');
 
 //Radio button displays
 const addGrid = () => {
@@ -253,7 +252,7 @@ const loadCards = (results) => {
 
 
 
-    results.forEach(({ name: title, genres, background_image: img, released, parent_platforms: platforms }) => {
+    results.forEach(({ name: title, genres, background_image: img, released, parent_platforms: platforms, id }) => {
         let aux = 'None';
 
         if (genres.length !== 0) {
@@ -280,7 +279,7 @@ const loadCards = (results) => {
         let svgs = createSvgs(ids);
 
         div.innerHTML = `<li class="main__card">
-            <button class="main__card-button flex-start-column">
+            <button class="main__card-button flex-start-column" onclick="openModal(${id})">
                 <div class="main__image-box">
                     <img class="main__image" src="${img}" alt="Game image">
                 </div>
@@ -445,14 +444,12 @@ gamesRequest();
 
 
 
-//Opening modal view
-// modalButton.addEventListener('click', () => {
-//     modalView.classList.add('show');
-//     subwrapperMain.classList.add('hidden');
-// });
+// Opening modal view
+const openModal = (id) => {
+    modalView.classList.add('show');
+}
 
-// //Close modal function
-// const closeModal = () => {
-//     document.querySelector('.modal-wrapper').classList.remove('show');
-//     subwrapperMain.classList.remove('hidden');
-// }
+//Close modal function
+const closeModal = () => {
+    modalView.classList.remove('show');
+}

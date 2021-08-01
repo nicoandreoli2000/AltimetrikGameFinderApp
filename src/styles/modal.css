@@ -1,15 +1,33 @@
-body .modal-wrapper.show {
-    background-color: #303030;
-}
+/*General*/
 
-
-/*Background*/
-
-.modal-wrapper {
+.modal {
+    position: fixed;
+    top: 200px;
+    right: 200px;
     display: none;
     padding: 26px 40px 40px 40px;
 }
 
+.modal.show {
+    display: grid;
+    grid-template-areas:
+    'icons . .'
+    'title . images'
+    'adds . images'
+    'description . images'
+    'buttons . images'
+    'links . images';
+}
+
+.button-reset {
+    border: none;
+    background: none;
+    outline: none;
+    color: inherit;
+    font-family: inherit;
+}
+
+/* Background */
 .bg {
     position: absolute;
     top: 0;
@@ -37,11 +55,11 @@ body .modal-wrapper.show {
 
 /*Play && Cross*/
 
-.cross {
-    margin-bottom: 14px;
-}
 
 .cross__play-svg {
+    position: absolute;
+    /* top: 20px; */
+    right: 20px;
     fill: white;
     width: 91.95px;
     height: 20px;
@@ -151,9 +169,6 @@ body .modal-wrapper.show {
     line-height: 19px;
     margin-bottom: 32px;
 }
-
-
-/* Bottom container */
 
 
 /* Buttons comment/write */
@@ -296,8 +311,3 @@ body .modal-wrapper.show {
 
 @media (min-width: 768px) {}
 
-@media (max-width: 302px) {
-    .modal-wrapper {
-        display: none;
-    }
-}
