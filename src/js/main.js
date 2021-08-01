@@ -1,4 +1,4 @@
-// Custom security
+// // Custom security
 // const token = JSON.parse(localStorage.getItem('Access token'));
 // if (!token || token.length !== 183) {
 //     window.location.href = 'login.html';
@@ -226,10 +226,6 @@ const createSvgs = (ids) => {
             case 3:
                 svgs += xbox;
                 break;
-            case 4:
-                svgs += '';
-                //IOS
-                break;
             case 5:
                 svgs += apple;
                 break;
@@ -257,19 +253,26 @@ const loadCards = (results) => {
 
 
 
-    results.forEach(({ name: title, genres, background_image: img, released: date, parent_platforms: platforms }) => {
-        let aux = '';
+    results.forEach(({ name: title, genres, background_image: img, released, parent_platforms: platforms }) => {
+        let aux = 'None';
 
+        if (genres.length !== 0) {
+            aux = '';
+            genres.forEach(({ name }) => {
+                if (aux !== '') {
+                    aux += ', ' + name;
+                } else {
+                    aux = name;
+                }
+            });
+        }
 
-        genres.forEach(({ name }) => {
-            if (aux !== '') {
-                aux += ', ' + name;
-            } else {
-                aux = name;
-            }
-        });
+        const dateArr = (new Date(released)).toString().split(' ');
+        const date = `${dateArr[1]} ${dateArr[2]} ${dateArr[3]}`;
+
 
         let ids = [];
+
         platforms.forEach(({ platform }) => {
             ids.push(platform.id);
         });
