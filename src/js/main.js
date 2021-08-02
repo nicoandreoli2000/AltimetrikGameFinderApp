@@ -20,7 +20,7 @@ const header = document.querySelector('.header');
 const searchFor = document.querySelector('.main__title>p');
 const searchValue = document.querySelector('.main__subtitle>p');
 const homeButton = document.querySelector('.nav__item--first>a');
-const modalView = document.querySelector('.modal');
+const modalView = document.querySelector('.modal-wrapper');
 const modalButton = document.querySelectorAll('.main__card-button');
 
 //Radio button displays

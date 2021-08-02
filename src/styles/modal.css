@@ -1,14 +1,26 @@
 /*General*/
 
-.modal {
-    position: fixed;
-    top: 200px;
-    right: 200px;
+.modal-wrapper {
     display: none;
-    padding: 26px 40px 40px 40px;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    background: rgba(0, 0, 0, 0.784937);
 }
 
-.modal.show {
+.modal-wrapper.show {
+    display: flex;
+}
+
+.modal {
+    position: relative;
+    width: 1082px;
+    height: 793.63px;
+    padding: 26px 91px 0px 79px;
+    background-color: #303030;
+    border-radius: 10px;
+    overflow: hidden;
     display: grid;
     grid-template-areas:
     'icons . .'
@@ -306,8 +318,6 @@
     height: 4px;
 }
 
-
 /*Media queries*/
 
 @media (min-width: 768px) {}
-
