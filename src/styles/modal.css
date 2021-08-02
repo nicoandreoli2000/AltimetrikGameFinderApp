@@ -34,14 +34,6 @@
     'links . images';
 }
 
-.button-reset {
-    border: none;
-    background: none;
-    outline: none;
-    color: inherit;
-    font-family: inherit;
-}
-
 /* Background */
 .modal__bg {
     position: absolute;
@@ -78,11 +70,14 @@
     background: none;
     outline: none;
     cursor: pointer;
+    height: 16px;
+    width: 16px;
 }
 
 .modal__cross svg {
     fill: white;
-    width: 25px;
+    width: 100%;
+    height: 100%;
 }
 
 /*Cross states*/
@@ -228,7 +223,7 @@
     grid-area: description;
     text-align: justify;
     width: 468px;
-    height: 90px;
+    height: 95px;
     font-size: 14px;
     line-height: 19px;
     margin-top: 32px;
@@ -260,7 +255,7 @@
 }
 
 .modal__button-bot p:nth-child(1) {
-    margin-right: 8px;
+    margin-right: 10px;
 }
 
 .modal__button-bot--comment {
@@ -281,67 +276,65 @@
 
 /* Images */
 
-.bottom__img-principal {
-    width: 245px;
-    height: 135.62px;
-    overflow: hidden;
-    margin-bottom: 10px;
+.modal__images {
+    grid-area: images;
+    flex-wrap: wrap;
+    width: 384px;
+    height: 457px;
 }
 
-.bottom__img-other {
-    width: 245px;
-    height: 65px;
-    overflow: hidden;
-}
-
-.bottom__img-other--margin {
-    margin-bottom: 10px;
-}
-
-.bottom__img-col-margin {
-    margin-right: 8.75px;
-}
-
-.bottom__images img {
+.modal__images img {
     height: 100%;
     width: 100%;
     object-fit: cover;
     user-select: none;
 }
 
-.bottom__images {
-    grid-area: images;
-    margin-bottom: 32.37px;
+.modal__images div:nth-child(1) {
+    width: 100%;
+    height: 217px;
+}
+
+.modal__images div:nth-child(n+2) {
+    width: 185px;
+    height: 104px;
+    margin-top: 16px;
+}
+
+.modal__images div:nth-child(2n+2) {
+    margin-right: 14px;
 }
 
 
 /*View all image*/
 
-.bottom__img-view-all {
+.modal__img-special {
     position: relative;
-    width: 100%;
     user-select: none;
+    /* height: 104px; */
 }
 
-.bottom__img-view-all div {
+.modal__img-special div {
     position: absolute;
+    top: 0;
     width: 100%;
-    height: 100%;
+    height: 104px;
     background-color: rgba(45, 45, 45, 0.770282);
 }
 
-.bottom__img-view-all svg {
+.modal__img-special svg {
     position: absolute;
-    right: 53px;
-    top: 41.38px;
+    top: 52.5px;
+    right: 50%;
+    transform: translate(50%);
     width: 9px;
-    height: 2px;
 }
 
-.bottom__img-view-all p {
+.modal__img-special p {
     position: absolute;
-    top: 23.38px;
-    right: 37px;
+    right: 50%;
+    top: 32px;
+    transform: translate(50%);
     font-size: 12px;
     line-height: 16px;
 }
