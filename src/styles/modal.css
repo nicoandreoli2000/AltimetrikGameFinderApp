@@ -119,6 +119,7 @@
 .modal__title {
     grid-area: title;
     height: 82px;
+    margin-top: 9px;
 }
 
 .modal__title h1 {
@@ -132,6 +133,7 @@
 
 .modal__top {
     grid-area: top;
+    margin-top: 44px;
 }
 
 .modal__top-box {
@@ -167,6 +169,7 @@
 /*Buttons*/
 .modal__buttons {
     grid-area: buttons;
+    margin-top: 32px;
 }
 
 .modal__button {
@@ -175,101 +178,106 @@
     outline: none;
     color: inherit;
     font-family: inherit;
+    user-select: none;
     height: 50px;
-    width: 108px;
     border-radius: 10px;
-    line-height: 17px;
-    padding-left: 6px;
     text-align: start;
     font-size: 12px;
-    user-select: none;
+    line-height: 17px;
 }
 
-.modal__button--buy {
-    margin-bottom: 10px;
-    border: 1px solid #979797;
-}
-
-.modal__button--wish {
-    background: linear-gradient(180deg, #7CD235 0%, #2BB34F 100%);
-}
-
-/*here...*/
-.adds__button {
-    height: 34px;
-    width: 61px;
-    margin-right: 14px;
-}
-
-.adds__plus-text {
-    height: 33px;
-    width: 21px;
-}
-
-.adds__buy-text b,
-.adds__button--wish b {
+.modal__button p:nth-child(1) b {
     font-size: 18px;
     font-weight: 800;
 }
 
-.adds__plus-text b {
+.modal__button p:nth-child(2) b {
     font-size: 24px;
-    /* Strong default 700 */
 }
 
+/*BUY*/
+.modal__button--buy {
+    border: 1px solid #979797;
+    width: 125px;
+    margin-right: 20px;
+}
+
+.modal__button--buy p:nth-child(1) {
+    width: 61px;
+    margin-right: 8px;
+}
+
+/*Wish*/
+.modal__button--wish {
+    background: linear-gradient(180deg, #7CD235 0%, #2BB34F 100%);
+    width: 151px;
+}
+
+.modal__button--wish p {
+    width: 98px;
+    margin-right: 8px;
+}
+
+.modal__button--wish svg {
+    width: 25px;
+}
 
 /* Description */
 
 .modal__description {
     grid-area: description;
     text-align: justify;
+    width: 468px;
+    height: 90px;
     font-size: 14px;
     line-height: 19px;
-    margin-bottom: 32px;
+    margin-top: 32px;
+    overflow: hidden;
 }
 
 
 /* Buttons comment/write */
 
-.bottom__button {
-    
-    width: 240px;
+.modal__comment-review {
+    grid-area: comments;
+    margin-top: 32px;
+}
+
+.modal__button-bot {
+    border: none;
+    background: none;
+    outline: none;
+    color: inherit;
+    font-family: inherit;
+    user-select: none;
     height: 40px;
-    background-color: #515151;
+    width: 141px;
     border-radius: 10px;
+    text-align: start;
     font-size: 12px;
     line-height: 16px;
-    cursor: pointer;
-    user-select: none;
+    background-color: #515151;
 }
 
-.bottom__button--margin {
-    margin-bottom: 24px;
+.modal__button-bot p:nth-child(1) {
+    margin-right: 8px;
 }
 
-.bottom__box-comment {
-    margin-right: 15px;
+.modal__button-bot--comment {
+    margin-right: 24px;
+}
+.modal__button-bot--comment  svg{
+    width: 16px;
 }
 
-.bottom__box-write {
-    margin-right: 10px;
+.modal__button-bot--write p:nth-child(2) {
+    margin-top: 4px;
 }
 
-.bottom__box-plus b {
+.modal__button-bot--write p:nth-child(2) b {
     font-size: 24px;
     font-weight: 800;
 }
-
-.bottom__box-plus {
-    width: 21px;
-    padding-top: 1.5px;
-}
-
-.bottom__buttons-box {
-    grid-area: comments;
-    margin-bottom: 32px;
-}
-
 
 /* Images */
 
