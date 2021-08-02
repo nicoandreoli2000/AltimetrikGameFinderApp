@@ -132,32 +132,35 @@
 
 .modal__top {
     grid-area: top;
+}
+
+.modal__top-box {
     height: 27px;
     background-color: white;
     color: #303030;
 }
 
-.modal__top strong {
+.modal__top-box strong {
     font-weight: 800;
     font-size: 20px;
     color: #2BB34F;
 }
 
-.modal__top:nth-last-child(n+1) {
+.modal__top-box:nth-last-child(n+1) {
     margin-right: 20px;
 }
 
-.modal__top strong:nth-child(n+1) {
+.modal__top-box strong:nth-child(n+1) {
     margin-right: 6px;
 }
 
-.modal__top:nth-child(1) {
+.modal__top-box:nth-child(1) {
     width: 125px;
 }
-.modal__top:nth-child(2) {
+.modal__top-box:nth-child(2) {
     width: 119px;
 }
-.modal__top:nth-child(3) {
+.modal__top-box:nth-child(3) {
     width: 104px;
 }
 
@@ -165,7 +168,8 @@
 .modal__buttons {
     grid-area: buttons;
 }
-.adds__button {
+
+.modal__button {
     border: none;
     background: none;
     outline: none;
@@ -181,12 +185,17 @@
     user-select: none;
 }
 
-.adds__button--buy {
+.modal__button--buy {
     margin-bottom: 10px;
     border: 1px solid #979797;
 }
 
-.adds__buy-text {
+.modal__button--wish {
+    background: linear-gradient(180deg, #7CD235 0%, #2BB34F 100%);
+}
+
+/*here...*/
+.adds__button {
     height: 34px;
     width: 61px;
     margin-right: 14px;
@@ -206,10 +215,6 @@
 .adds__plus-text b {
     font-size: 24px;
     /* Strong default 700 */
-}
-
-.adds__button--wish {
-    background: linear-gradient(180deg, #7CD235 0%, #2BB34F 100%);
 }
 
 
