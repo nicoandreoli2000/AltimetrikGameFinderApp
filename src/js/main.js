@@ -267,8 +267,6 @@ const loadCards = (results) => {
         }
 
         const dateArr = (new Date(released)).toString().split(' ');
-        const date = `${dateArr[1]} ${dateArr[2]} ${dateArr[3]}`;
-
 
         let ids = [];
 
@@ -277,6 +275,10 @@ const loadCards = (results) => {
         });
 
         let svgs = createSvgs(ids);
+
+        if (svgs === '') {
+            svgs = '<p>Other</p>'
+        }
 
         div.innerHTML = `<li class="main__card">
             <button class="main__card-button flex-start-column" onclick="openModal(${id})">
@@ -295,7 +297,7 @@ const loadCards = (results) => {
 
                         <div class="main__text flex-space">
                             <p>Release date</p>
-                            <p>${date}</p>
+                            <p>${dateArr[1]} ${dateArr[2]} ${dateArr[3]}</p>
                         </div>
                         <div class="main__hr">
                             <hr>
