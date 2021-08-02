@@ -2,11 +2,12 @@
 
 .modal-wrapper {
     display: none;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     position: fixed;
     top: 0;
     background: rgba(0, 0, 0, 0.784937);
+
 }
 
 .modal-wrapper.show {
@@ -15,6 +16,7 @@
 
 .modal {
     position: relative;
+    z-index: -1;
     width: 1082px;
     height: 793.63px;
     padding: 26px 91px 0px 79px;
@@ -24,10 +26,11 @@
     display: grid;
     grid-template-areas:
     'icons . .'
-    'title . images'
-    'adds . images'
-    'description . images'
+    'title . .'
+    'top . images'
     'buttons . images'
+    'description . images'
+    'comments . images'
     'links . images';
 }
 
@@ -40,23 +43,24 @@
 }
 
 /* Background */
-.bg {
+.modal__bg {
     position: absolute;
     top: 0;
     right: 0;
     width: 100%;
-    height: 466px;
+    height: 645px;
     z-index: -1;
+    user-select: none;
 }
 
-.bg img {
-    height: 323px;
+.modal__bg img {
+    height: 100%;
     width: 100%;
     opacity: 0.47;
     object-fit: cover;
 }
 
-.bg__shadow {
+.modal__bg-shadow {
     position: absolute;
     top: 0;
     width: 100%;
@@ -65,78 +69,113 @@
 }
 
 
-/*Play && Cross*/
-
-
-.cross__play-svg {
+/*Cross*/
+.modal__cross {
     position: absolute;
-    /* top: 20px; */
     right: 20px;
-    fill: white;
-    width: 91.95px;
-    height: 20px;
-}
-
-.cross__button-svg {
-    fill: white;
-    width: 25px;
-    height: 25px;
+    top: 20px;
+    border: none;
+    background: none;
+    outline: none;
     cursor: pointer;
 }
 
+.modal__cross svg {
+    fill: white;
+    width: 25px;
+}
+
+/*Cross states*/
+
+.modal__cross:hover svg,
+.modal__cross:focus-visible svg  {
+    fill:#7CD235;
+}
+
+.modal__cross:active svg {
+    fill: #4d8320;
+}
+
+/*Platforms*/
+
+.modal__icons {
+    grid-area: icons;
+    height: 30px;
+    user-select: none;
+}
+
+.modal__icons svg {
+    fill: white;
+    width: 20px;
+    margin-right: 6px;
+}
+
+.modal__icons svg:nth-last-child(1) {
+    margin-right: 0;
+}
 
 /*Title*/
 
-.title {
-    height: 54px;
-    margin-bottom: 39px;
+.modal__title {
+    grid-area: title;
+    height: 82px;
 }
 
-.title h1 {
+.modal__title h1 {
     font-weight: 800;
+    line-height: 82px;
     font-size: 40px;
 }
 
 
-/* Add ons */
+/* TOP text*/
 
-.adds {
-    margin-bottom: 32px;
-}
-
-.adds__box {
-    width: 108px;
+.modal__top {
+    grid-area: top;
     height: 27px;
     background-color: white;
     color: #303030;
 }
 
-.adds__box strong {
+.modal__top strong {
     font-weight: 800;
     font-size: 20px;
     color: #2BB34F;
 }
 
-.adds__box--date,
-.adds__box--rating {
-    margin-bottom: 15px;
+.modal__top:nth-last-child(n+1) {
+    margin-right: 20px;
 }
 
-.adds__box--rating strong {
-    margin-right: 5px;
+.modal__top strong:nth-child(n+1) {
+    margin-right: 6px;
 }
 
-.adds__box--type strong {
-    margin-right: 7px;
+.modal__top:nth-child(1) {
+    width: 125px;
+}
+.modal__top:nth-child(2) {
+    width: 119px;
+}
+.modal__top:nth-child(3) {
+    width: 104px;
 }
 
+/*Buttons*/
+.modal__buttons {
+    grid-area: buttons;
+}
 .adds__button {
+    border: none;
+    background: none;
+    outline: none;
+    color: inherit;
+    font-family: inherit;
     height: 50px;
     width: 108px;
     border-radius: 10px;
     line-height: 17px;
     padding-left: 6px;
-    cursor: pointer;
     text-align: start;
     font-size: 12px;
     user-select: none;
@@ -176,7 +215,9 @@
 
 /* Description */
 
-.description {
+.modal__description {
+    grid-area: description;
+    text-align: justify;
     font-size: 14px;
     line-height: 19px;
     margin-bottom: 32px;
@@ -186,6 +227,7 @@
 /* Buttons comment/write */
 
 .bottom__button {
+    
     width: 240px;
     height: 40px;
     background-color: #515151;
@@ -219,6 +261,7 @@
 }
 
 .bottom__buttons-box {
+    grid-area: comments;
     margin-bottom: 32px;
 }
 
@@ -254,6 +297,7 @@
 }
 
 .bottom__images {
+    grid-area: images;
     margin-bottom: 32.37px;
 }
 
@@ -293,6 +337,7 @@
 /* Page info */
 
 .bottom__links {
+    grid-area: links;
     font-size: 12px;
     line-height: 16px;
     font-weight: 300;

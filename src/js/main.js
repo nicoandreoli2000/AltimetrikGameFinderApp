@@ -93,7 +93,7 @@ searchInput.addEventListener('blur', () => {
 
 
 //Svg consts
-const play = `<svg width="17" viewBox="0 0 17 13" xmlns="http://www.w3.org/2000/svg" fill="white">
+const play = `<svg width="17" heigth="13" viewBox="0 0 17 13" xmlns="http://www.w3.org/2000/svg" fill="white">
 <path
     d="M6.5 0.149317L6.5 12.0296L9.07955 12.8818L9.07955 2.92038C9.07955 2.45098 9.28024 2.13932 9.60212 2.2465C10.023 2.36823 10.1048 2.80063 10.1048 3.2648L10.1048 7.24326C11.7104 8.05369 12.9745 7.24283 12.9745 5.10456C12.9745 2.91953 12.2334 1.94614 10.0527 1.16352C9.19249 0.864854 7.59836 0.360857 6.5 0.149317Z" />
 <path
@@ -211,247 +211,247 @@ C438.532,174.822,435.679,167.921,429.964,162.306z" />
 
 //API connection
 
-const createSvgs = (ids) => {
-    let svgs = '';
+// const createSvgs = (ids) => {
+//     let svgs = '';
 
-    ids.forEach(id => {
-        switch (id) {
-            case 1:
-                svgs += windows;
-                break;
-            case 2:
-                svgs += play;
-                break;
-            case 3:
-                svgs += xbox;
-                break;
-            case 5:
-                svgs += apple;
-                break;
-            case 6:
-                svgs += linux;
-                break;
-            case 7:
-                svgs += nintendo;
-                break;
-            case 8:
-                svgs += android;
-                break;
-            default:
-                break;
-        }
-    });
-    return svgs;
-}
+//     ids.forEach(id => {
+//         switch (id) {
+//             case 1:
+//                 svgs += windows;
+//                 break;
+//             case 2:
+//                 svgs += play;
+//                 break;
+//             case 3:
+//                 svgs += xbox;
+//                 break;
+//             case 5:
+//                 svgs += apple;
+//                 break;
+//             case 6:
+//                 svgs += linux;
+//                 break;
+//             case 7:
+//                 svgs += nintendo;
+//                 break;
+//             case 8:
+//                 svgs += android;
+//                 break;
+//             default:
+//                 break;
+//         }
+//     });
+//     return svgs;
+// }
 
-const loadCards = (results) => {
+// const loadCards = (results) => {
 
-    console.log(results);
-    let number = 1;
-    const div = document.createElement('div');
-
-
-
-    results.forEach(({ name: title, genres, background_image: img, released, parent_platforms: platforms, id }) => {
-        let aux = 'None';
-
-        if (genres.length !== 0) {
-            aux = '';
-            genres.forEach(({ name }) => {
-                if (aux !== '') {
-                    aux += ', ' + name;
-                } else {
-                    aux = name;
-                }
-            });
-        }
-
-        const dateArr = (new Date(released)).toString().split(' ');
-
-        let ids = [];
-
-        platforms.forEach(({ platform }) => {
-            ids.push(platform.id);
-        });
-
-        let svgs = createSvgs(ids);
-
-        if (svgs === '') {
-            svgs = '<p>Other</p>'
-        }
-
-        div.innerHTML = `<li class="main__card">
-            <button class="main__card-button flex-start-column" onclick="openModal(${id})">
-                <div class="main__image-box">
-                    <img class="main__image" src="${img}" alt="Game image">
-                </div>
-
-                <div class="main__info-container">
-                    <div class="main__title-game">
-                        <p>${title}</p>
-                    </div>
-                    <div class="main__play-icons flex-vertical">
-                        ${svgs}
-                    </div>
-                    <div class="main__card-date --date-mobile">
-
-                        <div class="main__text flex-space">
-                            <p>Release date</p>
-                            <p>${dateArr[1]} ${dateArr[2]} ${dateArr[3]}</p>
-                        </div>
-                        <div class="main__hr">
-                            <hr>
-                        </div>
-
-                    </div>
-
-                    <div class="main__number ">
-                        <p>#${number}</p>
-                    </div>
-
-                    <div class="main__card-genre --margin-row --genre-mobile">
-
-                        <div class="main__text flex-space">
-                            <p>Genres</p>
-                            <p>${aux}</p>
-                        </div>
-
-                        <div class="main__hr">
-                            <hr>
-                        </div>
-
-                    </div>
-
-                    <div class="main__gift --margin-row flex-horizontal-vertical">
-                        <p><b>+</b></p>
-                        <svg width="15" height="15" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 16 16"
-                            style="enable-background:new 0 0 16 16;" xml:space="preserve">
-
-                            <path fill="white" class="st0" d="M3,2.5C3,1.1,4.1,0,5.5,0S8,1.1,8,2.5C8,1.1,9.1,0,10.5,0S13,1.1,13,2.5v0c0,0.1,0,0.3,0,0.5h2c0.6,0,1,0.4,1,1
-    v1c0,0.6-0.4,1-1,1H1C0.4,6,0,5.6,0,5V4c0-0.6,0.4-1,1-1h2C3,2.8,3,2.7,3,2.5L3,2.5z M4.1,3H7V2.5C7,1.7,6.3,1,5.5,1S4,1.7,4,2.5
-    C4,2.6,4,2.8,4.1,3C4.1,3,4.1,3,4.1,3z M9,3h2.9c0,0,0,0,0-0.1c0-0.2,0-0.3,0-0.4C12,1.7,11.3,1,10.5,1S9,1.7,9,2.5V3z M15,7v7.5
-    c0,0.8-0.7,1.5-1.5,1.5l0,0H9V7H15z M2.5,16C1.7,16,1,15.3,1,14.5l0,0V7h6v9H2.5z" />
-                        </svg>
-                    </div>
-
-                    <div class="main__card-description">
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro aliquam
-                            nihil, perferendis enim ipsum, unde officiis recusandae fugit rerum incidunt
-                            laudantium vel eius. Ab porro perspiciatis reiciendis nisi! Beatae,
-                            repellendus?Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam,
-                            at sunt. Consequuntur tempore nobis dolorum vitae. Cum consequuntur, quam
-                        </p>
-                    </div>
-                </div>
-
-            </button>
-
-        </li>`;
-
-        listCards.append(div.firstChild);
-        number++;
-    });
-
-
-}
-
-const key = 'e47665a812c8462aa8519397b488ec98';
-const size = 20;
-
-const urlApi = `https://api.rawg.io/api/games?key=${key}&page_size=${size}`;
-
-const gamesRequest = (name) => {
-
-    let url = urlApi;
-
-    if (name) {
-        url = `${urlApi}&search=${name}`;
-    }
-
-    listCards.innerHTML = '<p>Loading... Please wait</p>';
-
-    fetch(url, {
-        method: "GET",
-
-        headers: {
-            "Content-Type": "application/json",
-            // "Access-Control-Allow-Headers": "Access-Control-Allow-Origin",
-            // "Access-Control-Allow-Origin": "http://127.0.0.1:5500",
-            // "Access-Control-Allow-Credentials": "true",
-            // "Set-Cookie": "cross-site-cookie=whatever; SameSite=None; Secure",
-            // "User-Agent": "Nicolás Andreoli",
-            // "Same-Site": "None",
-            // "Set-Cookie": "promo_shown=1; SameSite=Secure"
-        }
-    }).
-        then(async (resp) => {
-
-            const respJson = await resp.json();
-
-            if (resp.status === 200) {
-
-                const results = JSON.parse(JSON.stringify(respJson.results));
-
-                listCards.innerHTML = '';
-
-                if (results.length === 0) {
-                    listCards.innerHTML = '<p>No search results found</p>';
-
-                } else {
-                    loadCards(results);
-                }
-            };
-        })
-
-        .catch((error) => {
-            throw error;
-        });
-}
-// //Searching
-let firstSearch = false;
-
-searchInput.addEventListener('keyup', (evt) => {
-
-    const inputValue = searchInput.value;
-
-    if (inputValue.trim() !== '' && (evt.key === 'Enter' || evt.keyCode === 13)) {
-
-        if (!firstSearch) {
-            searchFor.innerHTML = 'Search results';
-            firstSearch = true;
-        }
-        searchValue.innerHTML = `${inputValue}`;
-
-        try {
-            gamesRequest(inputValue);
-        } catch (error) {
-            console.log(error);
-        }
-    }
-});
-
-homeButton.addEventListener('click', () => {
-    if (firstSearch) {
-        searchFor.innerHTML = 'New and trending';
-        searchValue.innerHTML = `Based on player counts and release date`;
-        firstSearch = false;
-        gamesRequest();
-    }
-
-});
-
-//First default page
-gamesRequest();
+//     console.log(results);
+//     let number = 1;
+//     const div = document.createElement('div');
 
 
 
-// Opening modal view
-const openModal = (id) => {
-    modalView.classList.add('show');
-}
+//     results.forEach(({ name: title, genres, background_image: img, released, parent_platforms: platforms, id }) => {
+//         let aux = 'None';
 
-//Close modal function
-const closeModal = () => {
-    modalView.classList.remove('show');
-}
+//         if (genres.length !== 0) {
+//             aux = '';
+//             genres.forEach(({ name }) => {
+//                 if (aux !== '') {
+//                     aux += ', ' + name;
+//                 } else {
+//                     aux = name;
+//                 }
+//             });
+//         }
+
+//         const dateArr = (new Date(released)).toString().split(' ');
+
+//         let ids = [];
+
+//         platforms.forEach(({ platform }) => {
+//             ids.push(platform.id);
+//         });
+
+//         let svgs = createSvgs(ids);
+
+//         if (svgs === '') {
+//             svgs = '<p>Other</p>'
+//         }
+
+//         div.innerHTML = `<li class="main__card">
+//             <button class="main__card-button flex-start-column" onclick="openModal(${id})">
+//                 <div class="main__image-box">
+//                     <img class="main__image" src="${img}" alt="Game image">
+//                 </div>
+
+//                 <div class="main__info-container">
+//                     <div class="main__title-game">
+//                         <p>${title}</p>
+//                     </div>
+//                     <div class="main__play-icons flex-vertical">
+//                         ${svgs}
+//                     </div>
+//                     <div class="main__card-date --date-mobile">
+
+//                         <div class="main__text flex-space">
+//                             <p>Release date</p>
+//                             <p>${dateArr[1]} ${dateArr[2]} ${dateArr[3]}</p>
+//                         </div>
+//                         <div class="main__hr">
+//                             <hr>
+//                         </div>
+
+//                     </div>
+
+//                     <div class="main__number ">
+//                         <p>#${number}</p>
+//                     </div>
+
+//                     <div class="main__card-genre --margin-row --genre-mobile">
+
+//                         <div class="main__text flex-space">
+//                             <p>Genres</p>
+//                             <p>${aux}</p>
+//                         </div>
+
+//                         <div class="main__hr">
+//                             <hr>
+//                         </div>
+
+//                     </div>
+
+//                     <div class="main__gift --margin-row flex-horizontal-vertical">
+//                         <p><b>+</b></p>
+//                         <svg width="15" height="15" version="1.1" xmlns="http://www.w3.org/2000/svg"
+//                             xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 16 16"
+//                             style="enable-background:new 0 0 16 16;" xml:space="preserve">
+
+//                             <path fill="white" class="st0" d="M3,2.5C3,1.1,4.1,0,5.5,0S8,1.1,8,2.5C8,1.1,9.1,0,10.5,0S13,1.1,13,2.5v0c0,0.1,0,0.3,0,0.5h2c0.6,0,1,0.4,1,1
+//     v1c0,0.6-0.4,1-1,1H1C0.4,6,0,5.6,0,5V4c0-0.6,0.4-1,1-1h2C3,2.8,3,2.7,3,2.5L3,2.5z M4.1,3H7V2.5C7,1.7,6.3,1,5.5,1S4,1.7,4,2.5
+//     C4,2.6,4,2.8,4.1,3C4.1,3,4.1,3,4.1,3z M9,3h2.9c0,0,0,0,0-0.1c0-0.2,0-0.3,0-0.4C12,1.7,11.3,1,10.5,1S9,1.7,9,2.5V3z M15,7v7.5
+//     c0,0.8-0.7,1.5-1.5,1.5l0,0H9V7H15z M2.5,16C1.7,16,1,15.3,1,14.5l0,0V7h6v9H2.5z" />
+//                         </svg>
+//                     </div>
+
+//                     <div class="main__card-description">
+//                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro aliquam
+//                             nihil, perferendis enim ipsum, unde officiis recusandae fugit rerum incidunt
+//                             laudantium vel eius. Ab porro perspiciatis reiciendis nisi! Beatae,
+//                             repellendus?Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam,
+//                             at sunt. Consequuntur tempore nobis dolorum vitae. Cum consequuntur, quam
+//                         </p>
+//                     </div>
+//                 </div>
+
+//             </button>
+
+//         </li>`;
+
+//         listCards.append(div.firstChild);
+//         number++;
+//     });
+
+
+// }
+
+// const key = 'e47665a812c8462aa8519397b488ec98';
+// const size = 20;
+
+// const urlApi = `https://api.rawg.io/api/games?key=${key}&page_size=${size}`;
+
+// const gamesRequest = (name) => {
+
+//     let url = urlApi;
+
+//     if (name) {
+//         url = `${urlApi}&search=${name}`;
+//     }
+
+//     listCards.innerHTML = '<p>Loading... Please wait</p>';
+
+//     fetch(url, {
+//         method: "GET",
+
+//         headers: {
+//             "Content-Type": "application/json",
+//             // "Access-Control-Allow-Headers": "Access-Control-Allow-Origin",
+//             // "Access-Control-Allow-Origin": "http://127.0.0.1:5500",
+//             // "Access-Control-Allow-Credentials": "true",
+//             // "Set-Cookie": "cross-site-cookie=whatever; SameSite=None; Secure",
+//             // "User-Agent": "Nicolás Andreoli",
+//             // "Same-Site": "None",
+//             // "Set-Cookie": "promo_shown=1; SameSite=Secure"
+//         }
+//     }).
+//         then(async (resp) => {
+
+//             const respJson = await resp.json();
+
+//             if (resp.status === 200) {
+
+//                 const results = JSON.parse(JSON.stringify(respJson.results));
+
+//                 listCards.innerHTML = '';
+
+//                 if (results.length === 0) {
+//                     listCards.innerHTML = '<p>No search results found</p>';
+
+//                 } else {
+//                     loadCards(results);
+//                 }
+//             };
+//         })
+
+//         .catch((error) => {
+//             throw error;
+//         });
+// }
+// // //Searching
+// let firstSearch = false;
+
+// searchInput.addEventListener('keyup', (evt) => {
+
+//     const inputValue = searchInput.value;
+
+//     if (inputValue.trim() !== '' && (evt.key === 'Enter' || evt.keyCode === 13)) {
+
+//         if (!firstSearch) {
+//             searchFor.innerHTML = 'Search results';
+//             firstSearch = true;
+//         }
+//         searchValue.innerHTML = `${inputValue}`;
+
+//         try {
+//             gamesRequest(inputValue);
+//         } catch (error) {
+//             console.log(error);
+//         }
+//     }
+// });
+
+// homeButton.addEventListener('click', () => {
+//     if (firstSearch) {
+//         searchFor.innerHTML = 'New and trending';
+//         searchValue.innerHTML = `Based on player counts and release date`;
+//         firstSearch = false;
+//         gamesRequest();
+//     }
+
+// });
+
+// //First default page
+// gamesRequest();
+
+
+
+// // Opening modal view
+// const openModal = (id) => {
+//     modalView.classList.add('show');
+// }
+
+// //Close modal function
+// const closeModal = () => {
+//     modalView.classList.remove('show');
+// }
