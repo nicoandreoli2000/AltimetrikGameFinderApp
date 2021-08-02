@@ -120,7 +120,7 @@
 .modal__title h1 {
     font-weight: 800;
     line-height: 82px;
-    font-size: 40px;
+    font-size: 60px;
 }
 
 
@@ -223,7 +223,7 @@
     grid-area: description;
     text-align: justify;
     width: 468px;
-    height: 95px;
+    height: 90px;
     font-size: 14px;
     line-height: 19px;
     margin-top: 32px;
@@ -278,9 +278,11 @@
 
 .modal__images {
     grid-area: images;
+    justify-self: end;
     flex-wrap: wrap;
     width: 384px;
     height: 457px;
+    margin-top: 44px;
 }
 
 .modal__images img {
@@ -349,27 +351,26 @@
     line-height: 16px;
     font-weight: 300;
     color: #939393;
+    width: 300px;
     flex-flow: column wrap;
-    height: 210px;
+    height: 250px;
 }
 
 .bottom__link {
+    width: 160px;
     margin-bottom: 20px;
+    margin-right: 40px;
 }
 
 .bottom__link a {
     color: white;
     text-decoration-line: underline;
-    cursor: pointer;
+    margin-top: 4px;
 }
 
-.bottom__link--modified a {
+.bottom__link:nth-child(2) a,
+.bottom__link:nth-child(7) a {
     text-decoration: none;
-    cursor: default;
-}
-
-.bottom__link-space {
-    height: 4px;
 }
 
 /*Media queries*/
