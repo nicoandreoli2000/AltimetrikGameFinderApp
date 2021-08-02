@@ -1,32 +1,58 @@
-body .modal-wrapper.show {
-    background-color: #303030;
-}
-
-
-/*Background*/
+/*General*/
 
 .modal-wrapper {
     display: none;
-    padding: 26px 40px 40px 40px;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    background: rgba(0, 0, 0, 0.784937);
+
 }
 
-.bg {
+.modal-wrapper.show {
+    display: flex;
+}
+
+.modal {
+    position: relative;
+    z-index: -1;
+    width: 1082px;
+    height: 793.63px;
+    padding: 26px 91px 65.53px 79px;
+    background-color: #303030;
+    border-radius: 10px;
+    overflow: hidden;
+    display: grid;
+    grid-template-areas:
+    'icons . .'
+    'title . .'
+    'top . images'
+    'buttons . images'
+    'description . images'
+    'comments . images'
+    'links . images';
+}
+
+/* Background */
+.modal__bg {
     position: absolute;
     top: 0;
     right: 0;
     width: 100%;
-    height: 466px;
+    height: 645px;
     z-index: -1;
+    user-select: none;
 }
 
-.bg img {
-    height: 323px;
+.modal__bg img {
+    height: 100%;
     width: 100%;
     opacity: 0.47;
     object-fit: cover;
 }
 
-.bg__shadow {
+.modal__bg-shadow {
     position: absolute;
     top: 0;
     width: 100%;
@@ -35,229 +61,280 @@ body .modal-wrapper.show {
 }
 
 
-/*Play && Cross*/
-
-.cross {
-    margin-bottom: 14px;
-}
-
-.cross__play-svg {
-    fill: white;
-    width: 91.95px;
-    height: 20px;
-}
-
-.cross__button-svg {
-    fill: white;
-    width: 25px;
-    height: 25px;
+/*Cross*/
+.modal__cross {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    border: none;
+    background: none;
+    outline: none;
     cursor: pointer;
+    height: 16px;
+    width: 16px;
 }
 
+.modal__cross svg {
+    fill: white;
+    width: 100%;
+    height: 100%;
+}
+
+/*Cross states*/
+
+.modal__cross:hover svg,
+.modal__cross:focus-visible svg  {
+    fill:#7CD235;
+}
+
+.modal__cross:active svg {
+    fill: #4d8320;
+}
+
+/*Platforms*/
+
+.modal__icons {
+    grid-area: icons;
+    height: 30px;
+    user-select: none;
+}
+
+.modal__icons svg {
+    fill: white;
+    width: 20px;
+    margin-right: 6px;
+}
+
+.modal__icons svg:nth-last-child(1) {
+    margin-right: 0;
+}
 
 /*Title*/
 
-.title {
-    height: 54px;
-    margin-bottom: 39px;
+.modal__title {
+    grid-area: title;
+    height: 82px;
+    margin-top: 9px;
 }
 
-.title h1 {
+.modal__title h1 {
     font-weight: 800;
+    line-height: 82px;
     font-size: 40px;
 }
 
 
-/* Add ons */
+/* TOP text*/
 
-.adds {
-    margin-bottom: 32px;
+.modal__top {
+    grid-area: top;
+    margin-top: 44px;
 }
 
-.adds__box {
-    width: 108px;
+.modal__top-box {
     height: 27px;
     background-color: white;
     color: #303030;
 }
 
-.adds__box strong {
+.modal__top-box strong {
     font-weight: 800;
     font-size: 20px;
     color: #2BB34F;
 }
 
-.adds__box--date,
-.adds__box--rating {
-    margin-bottom: 15px;
+.modal__top-box:nth-last-child(n+1) {
+    margin-right: 20px;
 }
 
-.adds__box--rating strong {
-    margin-right: 5px;
+.modal__top-box strong:nth-child(n+1) {
+    margin-right: 6px;
 }
 
-.adds__box--type strong {
-    margin-right: 7px;
+.modal__top-box:nth-child(1) {
+    width: 125px;
+}
+.modal__top-box:nth-child(2) {
+    width: 119px;
+}
+.modal__top-box:nth-child(3) {
+    width: 104px;
 }
 
-.adds__button {
+/*Buttons*/
+.modal__buttons {
+    grid-area: buttons;
+    margin-top: 32px;
+}
+
+.modal__button {
+    border: none;
+    background: none;
+    outline: none;
+    color: inherit;
+    font-family: inherit;
+    user-select: none;
     height: 50px;
-    width: 108px;
     border-radius: 10px;
-    line-height: 17px;
-    padding-left: 6px;
-    cursor: pointer;
     text-align: start;
     font-size: 12px;
-    user-select: none;
+    line-height: 17px;
 }
 
-.adds__button--buy {
-    margin-bottom: 10px;
-    border: 1px solid #979797;
-}
-
-.adds__buy-text {
-    height: 34px;
-    width: 61px;
-    margin-right: 14px;
-}
-
-.adds__plus-text {
-    height: 33px;
-    width: 21px;
-}
-
-.adds__buy-text b,
-.adds__button--wish b {
+.modal__button p:nth-child(1) b {
     font-size: 18px;
     font-weight: 800;
 }
 
-.adds__plus-text b {
+.modal__button p:nth-child(2) b {
     font-size: 24px;
-    /* Strong default 700 */
 }
 
-.adds__button--wish {
+/*BUY*/
+.modal__button--buy {
+    border: 1px solid #979797;
+    width: 125px;
+    margin-right: 20px;
+}
+
+.modal__button--buy p:nth-child(1) {
+    width: 61px;
+    margin-right: 8px;
+}
+
+/*Wish*/
+.modal__button--wish {
     background: linear-gradient(180deg, #7CD235 0%, #2BB34F 100%);
+    width: 151px;
 }
 
+.modal__button--wish p {
+    width: 98px;
+    margin-right: 8px;
+}
+
+.modal__button--wish svg {
+    width: 25px;
+}
 
 /* Description */
 
-.description {
+.modal__description {
+    grid-area: description;
+    text-align: justify;
+    width: 468px;
+    height: 95px;
     font-size: 14px;
     line-height: 19px;
-    margin-bottom: 32px;
+    margin-top: 32px;
+    overflow: hidden;
 }
-
-
-/* Bottom container */
 
 
 /* Buttons comment/write */
 
-.bottom__button {
-    width: 240px;
+.modal__comment-review {
+    grid-area: comments;
+    margin-top: 32px;
+}
+
+.modal__button-bot {
+    border: none;
+    background: none;
+    outline: none;
+    color: inherit;
+    font-family: inherit;
+    user-select: none;
     height: 40px;
-    background-color: #515151;
+    width: 141px;
     border-radius: 10px;
+    text-align: start;
     font-size: 12px;
     line-height: 16px;
-    cursor: pointer;
-    user-select: none;
+    background-color: #515151;
 }
 
-.bottom__button--margin {
-    margin-bottom: 24px;
-}
-
-.bottom__box-comment {
-    margin-right: 15px;
-}
-
-.bottom__box-write {
+.modal__button-bot p:nth-child(1) {
     margin-right: 10px;
 }
 
-.bottom__box-plus b {
+.modal__button-bot--comment {
+    margin-right: 24px;
+}
+.modal__button-bot--comment  svg{
+    width: 16px;
+}
+
+.modal__button-bot--write p:nth-child(2) {
+    margin-top: 4px;
+}
+
+.modal__button-bot--write p:nth-child(2) b {
     font-size: 24px;
     font-weight: 800;
 }
 
-.bottom__box-plus {
-    width: 21px;
-    padding-top: 1.5px;
-}
-
-.bottom__buttons-box {
-    margin-bottom: 32px;
-}
-
-
 /* Images */
 
-.bottom__img-principal {
-    width: 245px;
-    height: 135.62px;
-    overflow: hidden;
-    margin-bottom: 10px;
+.modal__images {
+    grid-area: images;
+    flex-wrap: wrap;
+    width: 384px;
+    height: 457px;
 }
 
-.bottom__img-other {
-    width: 245px;
-    height: 65px;
-    overflow: hidden;
-}
-
-.bottom__img-other--margin {
-    margin-bottom: 10px;
-}
-
-.bottom__img-col-margin {
-    margin-right: 8.75px;
-}
-
-.bottom__images img {
+.modal__images img {
     height: 100%;
     width: 100%;
     object-fit: cover;
     user-select: none;
 }
 
-.bottom__images {
-    margin-bottom: 32.37px;
+.modal__images div:nth-child(1) {
+    width: 100%;
+    height: 217px;
+}
+
+.modal__images div:nth-child(n+2) {
+    width: 185px;
+    height: 104px;
+    margin-top: 16px;
+}
+
+.modal__images div:nth-child(2n+2) {
+    margin-right: 14px;
 }
 
 
 /*View all image*/
 
-.bottom__img-view-all {
+.modal__img-special {
     position: relative;
-    width: 100%;
     user-select: none;
+    /* height: 104px; */
 }
 
-.bottom__img-view-all div {
+.modal__img-special div:nth-child(1) {
     position: absolute;
+    top: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(45, 45, 45, 0.770282);
 }
 
-.bottom__img-view-all svg {
+.modal__img-special svg {
     position: absolute;
-    right: 53px;
-    top: 41.38px;
+    top: 52.5px;
+    right: 50%;
+    transform: translate(50%);
     width: 9px;
-    height: 2px;
 }
 
-.bottom__img-view-all p {
+.modal__img-special p {
     position: absolute;
-    top: 23.38px;
-    right: 37px;
+    right: 50%;
+    top: 32px;
+    transform: translate(50%);
     font-size: 12px;
     line-height: 16px;
 }
@@ -265,11 +342,15 @@ body .modal-wrapper.show {
 
 /* Page info */
 
-.bottom__links {
+.modal__links {
+    grid-area: links;
+    margin-top: 32px;
     font-size: 12px;
     line-height: 16px;
     font-weight: 300;
-    color: #939393
+    color: #939393;
+    flex-flow: column wrap;
+    height: 210px;
 }
 
 .bottom__link {
@@ -291,13 +372,6 @@ body .modal-wrapper.show {
     height: 4px;
 }
 
-
 /*Media queries*/
 
 @media (min-width: 768px) {}
-
-@media (max-width: 302px) {
-    .modal-wrapper {
-        display: none;
-    }
-}
