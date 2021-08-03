@@ -289,6 +289,7 @@ body {
     background: none;
     outline: none;
     cursor: pointer;
+    /* width: 30px; */
 }
 
 /* Principal items */
@@ -862,7 +863,6 @@ body {
 
     .header__search-mobile,
     .menu__button-close {
-        width: 50%;
         display: flex;
     }
     .header__search {

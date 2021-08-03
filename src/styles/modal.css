@@ -488,7 +488,7 @@
     /*Description*/
     .modal__description {
         width: auto;
-        height: 240px;
+        height: auto;
         justify-self: center;
     }
     
