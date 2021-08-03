@@ -289,6 +289,7 @@ body {
     background: none;
     outline: none;
     cursor: pointer;
+    /* width: 30px; */
 }
 
 /* Principal items */
@@ -862,7 +863,6 @@ body {
 
     .header__search-mobile,
     .menu__button-close {
-        width: 50%;
         display: flex;
     }
     .header__search {
@@ -944,13 +944,5 @@ body {
     /*Loading message*/
     .main__ul-grid>p {
         margin-left: 40px;
-    }
-}
-
-/* Stop responsiveness*/
-
-@media (max-width: 329px) {
-    .wrapper {
-        display: none;
     }
 }
