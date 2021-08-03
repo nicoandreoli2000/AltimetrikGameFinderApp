@@ -22,6 +22,10 @@ body {
     background-color: #141414;
 }
 
+/*Hidden class*/
+.hidden {
+    display: none !important;
+}
 
 /* Selection text color */
 

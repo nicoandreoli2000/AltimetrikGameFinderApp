@@ -719,7 +719,7 @@ const openModal = async (id) => {
 
     // const urlId = `${urlDetail}${id}?key=${key}`;
     // const urlImg = `${urlDetail}${id}?key=${key}`;
-    modalWrapper.classList.add('show');
+    modalWrapper.classList.remove('hidden');
     // modalView.innerHTML = 'Loading... Please wait';
 
     // loadModal(await modalRequest(urlId));
@@ -727,5 +727,5 @@ const openModal = async (id) => {
 
 //Close modal function
 const closeModal = () => {
-    modalWrapper.classList.remove('show');
+    modalWrapper.classList.add('hidden');
 }

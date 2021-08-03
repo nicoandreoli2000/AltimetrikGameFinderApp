@@ -696,7 +696,7 @@ body {
     background-color: #303030;
 }
 
-.main__radio:hover,
+.main__radio:not(:checked):hover,
 .main__radio:focus-visible {
     background-color: #7D7D7D;
 }

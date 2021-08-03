@@ -76,11 +76,6 @@ body {
     opacity: 0.7;
 }
 
-.hidden {
-    display: none;
-}
-
-
 /*Form*/
 
 form {
@@ -462,14 +457,9 @@ hr {
 /* Snackbar */
 
 .snackbar {
-    display: none;
     position: fixed;
     top: 40px;
     width: 100%;
-}
-
-.snackbarShow {
-    display: flex;
 }
 
 .snackbar__child {

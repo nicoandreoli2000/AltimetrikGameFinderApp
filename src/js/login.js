@@ -75,7 +75,7 @@ buttonHidePassword.addEventListener('click', () => {
 
 //Snackbar close
 snackbarCross.addEventListener('click', () => {
-    snackbar.classList.remove('snackbarShow');
+    snackbar.classList.add('hidden');
 })
 
 //Email input states
@@ -88,7 +88,7 @@ inputEmail.addEventListener('click', () => {
 inputEmail.addEventListener('focus', () => {
     emailBox.classList.add('isFocused');
     form.classList.remove('errorGeneral', 'errorUser', 'errorPass');
-    snackbar.classList.remove('snackbarShow');
+    snackbar.classList.add('hidden');
 });
 inputEmail.addEventListener('blur', () => {
     emailBox.classList.remove('isFocused', 'isActive');
@@ -104,7 +104,7 @@ inputPassword.addEventListener('click', () => {
 inputPassword.addEventListener('focus', () => {
     passwordBox.classList.add('isFocused');
     form.classList.remove('errorGeneral', 'errorUser', 'errorPass');
-    snackbar.classList.remove('snackbarShow');
+    snackbar.classList.add('hidden');
 });
 inputPassword.addEventListener('blur', () => {
     passwordBox.classList.remove('isFocused', 'isActive');
@@ -130,33 +130,33 @@ const httpRequest = (email, pass) => {
         })
     })
 
-    .then(async(resp) => {
+        .then(async (resp) => {
 
-        const respJson = await resp.json();
+            const respJson = await resp.json();
 
-        finishLoading();
+            finishLoading();
 
-        if (resp.status === 200) {
-            localStorage.setItem('Access token', JSON.stringify(respJson.accessToken));
-            window.location.href = 'main.html';
-        };
+            if (resp.status === 200) {
+                localStorage.setItem('Access token', JSON.stringify(respJson.accessToken));
+                window.location.href = 'main.html';
+            };
 
-        if (resp.status === 400) {
-            inputEmail.value = '';
-            inputPassword.value = '';
-            form.classList.add('errorGeneral', 'errorUser', 'errorPass');
-            passMessage.innerHTML = 'Wrong credentials';
-        };
+            if (resp.status === 400) {
+                inputEmail.value = '';
+                inputPassword.value = '';
+                form.classList.add('errorGeneral', 'errorUser', 'errorPass');
+                passMessage.innerHTML = 'Wrong credentials';
+            };
 
 
-    })
+        })
 
-    .catch((error) => {
+        .catch((error) => {
 
-        finishLoading();
-        snackbar.classList.add('snackbarShow');
-        throw error;
-    });
+            finishLoading();
+            snackbar.classList.remove('hidden');
+            throw error;
+        });
 
 
 };
@@ -167,7 +167,7 @@ loginButton.addEventListener('click', () => {
     const email = inputEmail.value;
     const pass = inputPassword.value;
 
-    snackbar.classList.remove('snackbarShow');
+    snackbar.classList.add('hidden');
 
     userMessage.innerHTML = '';
     passMessage.innerHTML = '';
