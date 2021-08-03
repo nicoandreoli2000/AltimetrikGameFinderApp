@@ -17,7 +17,7 @@
 .modal {
     position: relative;
     z-index: -1;
-    width: 1082px;
+    flex: 1082px 0 1;
     height: 793.63px;
     padding: 26px 91px 0px 79px;
     background-color: #303030;
@@ -370,4 +370,25 @@
 
 /*Media queries*/
 
-@media (min-width: 768px) {}
+@media (max-width: 1024px) {
+    .modal-wrapper {
+        position: absolute;
+        background: none;
+        width: 100%;
+        height: auto;
+    }
+    .modal {
+        position: relative;
+        top: 120px;
+        border-radius: 0;
+        height: auto;
+        /* z-index: 1; */
+    }
+    .header {
+        z-index: 1;
+    }
+
+    .main {
+        display: none;
+    }
+}
