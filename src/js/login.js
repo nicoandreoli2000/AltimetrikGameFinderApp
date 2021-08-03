@@ -227,42 +227,42 @@ const finishLoading = () => {
 }
 
 
-/* Carousel vanilla - like it*/
+/* Carousel vanilla JavaScript - Like it or not */
 
 const carouselImages = document.querySelectorAll('.carousel__img');
 const carouselRadio = document.querySelectorAll('.carousel__radio input');
 let lastValue = 0;
 let click = false;
 
-const showImage = (value) => {
-    carouselImages[lastValue].classList.add('hidden');
-    carouselImages[value].classList.remove('hidden');
-    lastValue = value;
-}
-
-const changeRadio = (value) => {
-    if (value < 6) {
-        carouselRadio[value].removeAttribute('checked');
-        carouselRadio[value + 1].setAttribute('checked', '');
-        showImage(value + 1);
-    } else {
-        carouselRadio[value].removeAttribute('checked');
-        carouselRadio[0].setAttribute('checked', '');
-        showImage(0);
-    }
-}
-
-
 carouselRadio.forEach((element) => {
     element.addEventListener('click', () => {
         click = true;
     });
-})
+});
+
+const showImageRadio = (value) => {
+    carouselRadio[lastValue].checked = false;
+    carouselRadio[value].checked = true;
+    carouselImages[lastValue].classList.add('hidden');
+    carouselImages[value].classList.remove('hidden');
+    lastValue = value;
+};
+
+const decideValue = (value) => {
+    if (value < 6) {
+        showImageRadio(value + 1);
+    } else {
+        showImageRadio(0);
+    }
+}
 
 const interval = setInterval(() => {
     if (!click) {
-        changeRadio(lastValue);
+        decideValue(lastValue);
     } else {
         click = false;
     }
 }, 1800);
+
+//First image
+showImageRadio(lastValue);

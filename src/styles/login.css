@@ -58,16 +58,15 @@ body {
     border-radius: 100%;
     background: #000000;
     opacity: 0.3;
-    margin-right: 7px;
     cursor: pointer;
 }
 
-.carousel__radio input:last-child {
-    margin-right: 0;
+.carousel__radio input:nth-last-child(n+1) {
+    margin-right: 7px;
 }
 
 .carousel__radio input:checked {
-    background: rgb(250, 3, 229);
+    background: white;
     opacity: 1;
 }
 
