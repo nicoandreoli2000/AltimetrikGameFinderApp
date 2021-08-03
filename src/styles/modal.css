@@ -18,7 +18,7 @@
     position: relative;
     z-index: -1;
     flex: 1082px 0 1;
-    height: 793.63px;
+    height: auto;
     padding: 26px 91px 0px 79px;
     background-color: #303030;
     border-radius: 10px;
@@ -372,10 +372,6 @@
 @media (max-width: 1024px) {
     .modal-wrapper {
         position: absolute;
-        background: none;
-        width: 100%;
-        max-height: 100%;
-        min-height: 1000px;
         background-color: #303030;
     }
     .modal {
@@ -384,7 +380,7 @@
         top: 120px;
         border-radius: 0;
         z-index: 1;
-        padding: 39px 30px 0px 30px;
+        padding: 39px 30px 50px 30px;
         grid-template-areas:
         'icons . '
         'title title'
@@ -392,10 +388,17 @@
         'buttons .'
         'description description'
         'comments images'
-        'links images';
+        'links images'
+        'links images'
+        '. images';
     }
-    .header {
+    .header,
+    .shadow,
+    .menu {
         z-index: 2;
+    }
+    .modal__bg {
+        height: 768px;
     }
     .modal__cross {
         top: 39px;
@@ -406,4 +409,37 @@
         height: 25px;
         width: 25px;
     }
+    .modal__description {
+        width: 570px;
+    }
+    .modal__images {
+        margin-top: 32px;
+    }
+    .modal__links {
+        width: 320px;
+    }
+    .bottom__link {
+        width: 145px;
+    }
+}
+
+@media (max-width: 768px) {
+    .modal {
+        top: 104px;
+        padding: 31px 40px 50px 40px;
+        grid-template-areas:
+        'icons . '
+        'title title'
+        'top buttons'
+        'description description'
+        'comments comments'
+        'images images'
+        'links links';
+    }
+    .modal__bg {
+        height: 466px;
+    }
+    .modal__cross {
+        top: 26px;
+        right: 40px;
 }
