@@ -133,11 +133,6 @@ form {
     left: 16px;
 }
 
-.form__svg-input--hidepass {
-    top: 16.5px;
-    left: 14px;
-}
-
 .form__input {
     padding-left: 20px;
     outline: none;
@@ -168,6 +163,9 @@ form {
     outline: none;
     cursor: pointer;
     background-color: inherit;
+    position: relative;
+    top: 16.5px;
+    left: 14px;
 }
 
 
@@ -489,20 +487,6 @@ hr {
 
 /* Media queries */
 
-
-/*
-Mobile:
-320 a 767px mobile
-
-Tablet:
-768 a 1023px tablet
-
-PC && TV:
-1024 a 1279px laptop
-1280 a 1439px desktop
-1440 > big screens
-*/
-
 @media (max-width: 1024px) {
     .line-wrapper {
         margin: 105px 0px 259px 0px;
@@ -565,9 +549,9 @@ PC && TV:
 }
 
 
-/*Stop responsiveness...*/
+/*Stop responsiveness*/
 
-@media (max-width: 255px) {
+@media (max-width: 300px) {
     .form {
         display: none;
     }

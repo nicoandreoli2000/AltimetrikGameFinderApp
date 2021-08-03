@@ -43,13 +43,7 @@ S9.2,3.7,10,3.7c0.8,0,1.6,0.3,2.2,0.9S13.1,6,13.1,6.9z" />
 inputEmail.value = 'probando@hotmail.com';
 inputPassword.value = 'password';
 
-//Validation functions for email
-const validateEmail = (email) => {
-    let re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(email);
-};
-
-//Prevent defaul of label remember
+//Prevent default of label remember me - When clicking it checks
 loginLabel.addEventListener('click', (e) => {
     e.preventDefault();
 })
@@ -57,19 +51,15 @@ loginLabel.addEventListener('click', (e) => {
 //Show/Hide password
 buttonHidePassword.addEventListener('click', () => {
 
-    const div = document.createElement('div');
-    const svg = document.querySelector('.form__svg-input--hidepass');
-    svg.remove();
+    buttonHidePassword.innerHTML = '';
 
     if (inputPassword.type === 'password') {
         inputPassword.type = 'text';
-        div.innerHTML = showpassIcon;
-        buttonHidePassword.append(div.firstChild);
+        buttonHidePassword.innerHTML = showpassIcon;
 
     } else {
         inputPassword.type = 'password';
-        div.innerHTML = hidepassIcon;
-        buttonHidePassword.append(div.firstChild);
+        buttonHidePassword.innerHTML = hidepassIcon;
     }
 });
 
@@ -110,6 +100,55 @@ inputPassword.addEventListener('blur', () => {
     passwordBox.classList.remove('isFocused', 'isActive');
 });
 
+
+/* Carousel vanilla JavaScript - Like it or not */
+
+const carouselImages = document.querySelectorAll('.carousel__img');
+const carouselRadio = document.querySelectorAll('.carousel__radio input');
+let lastValue = 0;
+let click = false;
+
+carouselRadio.forEach((element) => {
+    element.addEventListener('click', () => {
+        click = true;
+    });
+});
+
+const showImageRadio = (value) => {
+    carouselRadio[lastValue].checked = false;
+    carouselRadio[value].checked = true;
+    carouselImages[lastValue].classList.add('hidden');
+    carouselImages[value].classList.remove('hidden');
+    lastValue = value;
+};
+
+const decideValue = (value) => {
+    if (value < 6) {
+        showImageRadio(value + 1);
+    } else {
+        showImageRadio(0);
+    }
+}
+
+const interval = setInterval(() => {
+    if (!click) {
+        decideValue(lastValue);
+    } else {
+        click = false;
+    }
+}, 1800);
+
+//First image
+showImageRadio(lastValue);
+
+/*Server validations and requests*/
+
+
+//Validation functions for email
+const validateEmail = (email) => {
+    let re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+};
 
 //Http request to json server
 const urlLogin = 'http://localhost:3000/login';
@@ -225,44 +264,3 @@ const finishLoading = () => {
     inputEmail.removeAttribute('disabled');
     inputPassword.removeAttribute('disabled');
 }
-
-
-/* Carousel vanilla JavaScript - Like it or not */
-
-const carouselImages = document.querySelectorAll('.carousel__img');
-const carouselRadio = document.querySelectorAll('.carousel__radio input');
-let lastValue = 0;
-let click = false;
-
-carouselRadio.forEach((element) => {
-    element.addEventListener('click', () => {
-        click = true;
-    });
-});
-
-const showImageRadio = (value) => {
-    carouselRadio[lastValue].checked = false;
-    carouselRadio[value].checked = true;
-    carouselImages[lastValue].classList.add('hidden');
-    carouselImages[value].classList.remove('hidden');
-    lastValue = value;
-};
-
-const decideValue = (value) => {
-    if (value < 6) {
-        showImageRadio(value + 1);
-    } else {
-        showImageRadio(0);
-    }
-}
-
-const interval = setInterval(() => {
-    if (!click) {
-        decideValue(lastValue);
-    } else {
-        click = false;
-    }
-}, 1800);
-
-//First image
-showImageRadio(lastValue);
