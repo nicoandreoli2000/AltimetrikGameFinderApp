@@ -351,19 +351,19 @@
     height: 250px;
 }
 
-.bottom__link {
+.modal__link {
     width: 160px;
     margin-bottom: 20px;
 }
 
-.bottom__link a {
+.modal__link a {
     color: white;
     text-decoration-line: underline;
     margin-top: 4px;
 }
 
-.bottom__link:nth-child(2) a,
-.bottom__link:nth-child(7) a {
+.modal__link:nth-child(2) a,
+.modal__link:nth-child(7) a {
     text-decoration: none;
 }
 
@@ -418,7 +418,7 @@
     .modal__links {
         width: 320px;
     }
-    .bottom__link {
+    .modal__link {
         width: 145px;
     }
 }
@@ -428,15 +428,14 @@
     .modal {
         top: 104px;
         padding: 31px 40px 50px 40px;
-        grid-template-columns: 1fr 1fr;
         grid-template-areas:
-        'icons icons '
-        'title title'
-        'top buttons'
-        'description description'
-        'comments comments'
-        'images images'
-        'links links';
+        'icons icons icons'
+        'title title title'
+        'top . buttons'
+        'description description description'
+        'comments comments comments'
+        'images images images'
+        'links links links';
     }
     .modal__bg {
         height: 466px;
@@ -460,6 +459,7 @@
     .modal__top,
     .modal__buttons {
         flex-flow: column wrap;
+        /* width: auto; */
         height: 111px;
         justify-content: space-between;
         margin-top: 36px;
@@ -468,7 +468,7 @@
         justify-self: end;
     }
     .modal__top-box:nth-last-child(n+1) {
-        width: 104px;
+        width: 108px;
         margin-right: 0;
     }
 
@@ -476,13 +476,19 @@
         margin-right: 0;
     }
     .modal__button:nth-child(n) {
-        width: 150px;
+        width: 108px;
+    }
+    .modal__button--wish svg {
+        display: none;
     }
 
+    .modal__button--wish p {
+        margin-right: -8px;
+    }
     /*Description*/
     .modal__description {
         width: auto;
-        height: 187px;
+        height: 240px;
         justify-self: center;
     }
     
@@ -490,8 +496,18 @@
     .modal__comment-review {
         justify-self: center;
         flex-flow: column wrap;
+        width: auto;
         height: 102px;
         justify-content: space-between;
+    }
+    .modal__button-bot {
+        width: 240px;
+    }
+    .modal__button-bot p:nth-child(1) {
+        margin-right: 15px;
+    }
+    .modal__button-bot--comment {
+        margin-right: 0;
     }
 
     /*Images*/
@@ -518,6 +534,21 @@
 
     /*Links*/
     .modal__links {
+        width: auto;
         height: auto;
+    }
+    .modal__link:nth-last-child(1) {
+        margin-bottom: 0;
+    } 
+}
+
+/* Stop responsiveness*/
+
+@media (max-width: 329px) {
+    .wrapper {
+        display: none;
+    }
+    .modal-wrapper.show {
+        display: none;
     }
 }

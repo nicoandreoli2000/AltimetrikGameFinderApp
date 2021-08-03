@@ -946,11 +946,3 @@ body {
         margin-left: 40px;
     }
 }
-
-/* Stop responsiveness*/
-
-@media (max-width: 329px) {
-    .wrapper {
-        display: none;
-    }
-}
