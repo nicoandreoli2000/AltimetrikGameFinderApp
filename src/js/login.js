@@ -184,24 +184,39 @@ const urlLogin = 'http://localhost:3000/login';
 
 const postRequest = async (email, pass) => {
 
+    const bodyLogin = {
+        method: 'POST',
+        headers: {
+            Accept: "aplication/json",
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            email: `${email}`,
+            password: `${pass}`
+        })
+    };
+
     try {
-        let resp = await fetch(urlLogin, {
-            method: 'POST',
-            headers: {
-                Accept: "aplication/json",
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                email: `${email}`,
-                password: `${pass}`
-            })
-        });
+        let resp = await fetch(urlLogin, bodyLogin);
+
+        if (resp.status === 200) {
+            localStorage.setItem('Access token', JSON.stringify(resp.accessToken));
+            window.location.href = 'main.html';
+
+        } else {
+            throw Error(resp);
+        }
 
         let respJson = await resp.json();
 
-        if (respJson.ok) {
-            localStorage.setItem('Access token', JSON.stringify(resp.accessToken));
-            window.location.href = 'main.html';
+
+
+    } catch (error) {
+
+        console.log(error);
+
+        if (resp.status === 500) {
+            snackbar.classList.remove('hidden');
 
         } else {
             inputEmail.value = '';
@@ -209,10 +224,6 @@ const postRequest = async (email, pass) => {
             form.classList.add('errorGeneral', 'errorUser', 'errorPass');
             passMessage.innerHTML = 'Wrong credentials';
         }
-
-    } catch (error) {
-
-        snackbar.classList.remove('hidden');
     }
 
     loadingState(false);
