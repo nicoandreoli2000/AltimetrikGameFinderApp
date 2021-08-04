@@ -1,7 +1,9 @@
+/* ----- Normal styling -----*/
+
 /* General */
 
 body {
-    color: #8F8F8F;
+    color: var(--light-grey);
 }
 
 .line-wrapper {
@@ -20,7 +22,7 @@ body {
     flex: 630px 0 1;
     height: 660px;
     padding-top: 34px;
-    background-color: #303030;
+    background-color: var(--dark-grey);
 }
 
 .carousel {
@@ -56,24 +58,11 @@ body {
     width: 7px;
     height: 7px;
     border-radius: 100%;
-    background: #000000;
+    background: var(--black);
     opacity: 0.3;
     cursor: pointer;
 }
 
-.carousel__radio input:nth-last-child(n+1) {
-    margin-right: 7px;
-}
-
-.carousel__radio input:checked {
-    background: white;
-    opacity: 1;
-}
-
-.carousel__radio input:hover,
-.carousel__radio input:focus-visible {
-    opacity: 0.7;
-}
 
 /*Form*/
 
@@ -86,11 +75,14 @@ form {
 
 .form__title {
     height: 61px;
+}
+
+.form__title h1 {
     line-height: 61px;
     font-size: 45px;
     font-weight: 300;
     letter-spacing: 2.8px;
-    color: white;
+    color: var(--white);
 }
 
 .form__title-strong {
@@ -102,7 +94,7 @@ form {
 
 .form__input-box {
     height: 52px;
-    border: 1px solid #8F8F8F;
+    border: 1px solid var(--light-grey);
     border-radius: 8px;
 }
 
@@ -120,7 +112,7 @@ form {
 
 .form__svg-input {
     position: relative;
-    fill: #D1D1D1;
+    fill: var(--icon-grey);
 }
 
 .form__svg-input--user {
@@ -139,8 +131,8 @@ form {
     border: none;
     font-family: inherit;
     font-size: 14px;
-    color: #8F8F8F;
-    border-left: 1px solid #8F8F8F;
+    color: var(--light-grey);
+    border-left: 1px solid var(--light-grey);
     background-color: transparent;
     user-select: none;
 }
@@ -159,13 +151,14 @@ form {
 }
 
 .form__hidepass-btn {
+    position: relative;
+    top: 16.5px;
+    left: 14px;
+    height: 14px;
     border: 0;
     outline: none;
     cursor: pointer;
     background-color: inherit;
-    position: relative;
-    top: 16.5px;
-    left: 14px;
 }
 
 
@@ -176,7 +169,7 @@ form {
     margin-top: 7px;
     height: 19px;
     font-size: 14px;
-    color: #E07979;
+    color: var(--error-red);
 }
 
 
@@ -185,8 +178,6 @@ form {
 .form__login {
     margin-top: 32px;
     display: grid;
-    grid-template-rows: auto;
-    grid-template-columns: auto auto auto;
     grid-template-areas: 'remember . login';
 }
 
@@ -195,7 +186,7 @@ form {
     justify-self: start;
     font-size: 14px;
     line-height: 19px;
-    color: #979797;
+    color: var(--light-grey);
     user-select: none;
 }
 
@@ -204,12 +195,12 @@ form {
     width: 20px;
     height: 20px;
     margin-right: 10px;
-    border: 1px solid #8F8F8F;
+    border: 1px solid var(--light-grey);
     border-radius: 4px;
     cursor: pointer;
 }
 
-.form__login-button:enabled {
+.form__login-button {
     grid-area: login;
     justify-self: end;
     width: 100px;
@@ -219,9 +210,9 @@ form {
     font-family: inherit;
     font-size: inherit;
     font-weight: 600;
-    color: white;
+    color: var(--white);
     cursor: pointer;
-    background: linear-gradient(180deg, #7CD235 0%, #2BB34F 100%);
+    background: linear-gradient(180deg, var(--light-green) 0%, var(--dark-green) 100%);
 }
 
 
@@ -232,11 +223,12 @@ form {
     font-size: 14px;
     height: 19px;
     line-height: 19px;
-    color: white;
+    color: var(--white);
+    user-select: none;
 }
 
 
-/*---or---*/
+/*Lines && or*/
 
 .form__lines {
     height: 19px;
@@ -247,11 +239,11 @@ hr {
     width: 134px;
     border: none;
     height: 1px;
-    background-color: white;
+    background-color: var(--white);
 }
 
 .form__lines-text {
-    color: white;
+    color: var(--white);
     font-size: 14px;
     line-height: 19px;
     text-align: center;
@@ -287,15 +279,15 @@ hr {
 }
 
 .form__social-icon--fb {
-    background-color: #263C68;
+    background-color: var(--facebook-dark);
 }
 
 .form__social-icon--tw {
-    background-color: #0695CB;
+    background-color: var(--twitter-dark);
 }
 
 .form__social-icon--g {
-    background-color: #9D9D9D;
+    background-color: var(--google-dark);
 }
 
 .form__svg-fb {
@@ -326,44 +318,77 @@ hr {
     font-family: inherit;
     font-weight: 600;
     font-size: 12px;
-    color: white;
+    color: var(--white);
     border: 0;
     user-select: none;
 }
 
 .form__buttons--fb {
-    background-color: #3B5998;
+    background-color: var(--facebook-light);
 }
 
 .form__buttons--tw {
-    background-color: #00ACED;
+    background-color: var(--twitter-light);
 }
 
 .form__buttons--g {
-    background-color: #C7C7C7;
+    background-color: var(--google-light);
 }
 
 
-/* Original states */
+/* Snackbar */
 
+.snackbar {
+    position: fixed;
+    top: 40px;
+    width: 100%;
+}
+
+.snackbar__child {
+    width: 630px;
+    height: 40px;
+    padding: 0px 12px 0px 20px;
+    border-radius: 5px;
+    background-color: var(--snackbar-red);
+    filter: drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.25));
+}
+
+.snackbar__text {
+    line-height: 19px;
+    font-size: 14px;
+    color: var(--white);
+}
+
+.snackbar__button {
+    border: none;
+    outline: none;
+    background-color: inherit;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.snackbar__button svg {
+    fill: var(--snackbar-white);
+}
+
+
+/* ----- Original states ----- */
 
 /* Hidepass button */
 
 .form__hidepass-btn:focus-visible .form__svg-input--hidepass,
 .form__hidepass-btn:hover .form__svg-input--hidepass {
-    fill: white;
-}
-
-.form__hidepass-btn:active .svg-three {
-    fill: #D1D1D1;
+    fill: var(--white);
 }
 
 
 /* Checkbox */
 
 .form__login-checkbox:checked {
-    background-color: #7CD235;
-    border-color: #7CD235;
+    background-color: var(--light-green);
+    border-color: var(--light-green);
     background-repeat: no-repeat;
     background-position: center;
     background-image: url(/src/assets/images/svg/login/check.svg);
@@ -371,29 +396,52 @@ hr {
 
 .form__login-checkbox:focus-visible {
     outline: none;
-    border-color: white;
+    border-color: var(--white);
 }
 
 
 /*Login button*/
 
 .form__login-button:hover {
-    background: #7CD235;
+    background: var(--light-green);
 }
 
 .form__login-button:focus-visible {
     outline: none;
-    border: 1px solid #FFFFFF;
+    border: 1px solid var(--white);
 }
 
 .form__login-button:active {
     box-shadow: inset 0px 4px 4px rgba(43, 179, 79, 0.63);
-    background: linear-gradient(180deg, #7CD235 0%, #2BB34F 100%);
+    background: linear-gradient(180deg, var(--light-green) 0%, var(--dark-green) 100%);
+}
+
+/*Carousel*/
+
+.carousel__radio input:nth-last-child(n+1) {
+    margin-right: 7px;
+}
+
+.carousel__radio input:checked {
+    background: var(--white);
+    opacity: 1;
+}
+
+.carousel__radio input:hover,
+.carousel__radio input:focus-visible {
+    opacity: 0.7;
 }
 
 
-/* Custom states */
+/* Snackbar */
 
+.snackbar__button:hover svg,
+.snackbar__button:focus-visible svg {
+    fill: var(--white);
+}
+
+
+/* ----- Custom states ----- */
 
 /* Error */
 
@@ -417,17 +465,17 @@ hr {
 .errorPass .form__input-box--pass,
 .errorUser .form__input--email,
 .errorPass .form__input--pass {
-    border-color: #E07979;
+    border-color: var(--error-red);
 }
 
 .errorUser .form__input--email::placeholder,
 .errorPass .form__input--pass::placeholder {
-    color: #E07979;
+    color: var(--error-red);
 }
 
 .errorUser .form__svg-input--user,
 .errorPass .form__svg-input--pass {
-    fill: #E07979;
+    fill: var(--error-red);
 }
 
 
@@ -435,7 +483,7 @@ hr {
 
 .isFocused,
 .isFocused .form__input {
-    border-color: white;
+    border-color: var(--white);
 }
 
 
@@ -443,53 +491,22 @@ hr {
 
 .isActive .form__svg-input--user,
 .isActive .form__svg-input--pass {
-    fill: white;
+    fill: var(--white);
 }
 
 .isActive .form__input {
-    color: white;
+    color: var(--white);
 }
 
 
-/* Snackbar */
-
-.snackbar {
-    position: fixed;
-    top: 40px;
-    width: 100%;
-}
-
-.snackbar__child {
-    width: 630px;
-    height: 40px;
-    padding: 0px 12px 0px 20px;
-    border-radius: 5px;
-    background-color: #ED7474;
-    filter: drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.25));
-}
-
-.snackbar__text {
-    line-height: 19px;
-    font-size: 14px;
-    color: white;
-}
-
-.snackbar__button {
-    border: none;
-    outline: none;
-    background-color: inherit;
-    border-radius: 50%;
-    width: 16px;
-    height: 16px;
-    cursor: pointer;
-}
-
-
-/* Media queries */
+/* ----- Media queries ----- */
 
 @media (max-width: 1024px) {
     .line-wrapper {
         margin: 105px 0px 259px 0px;
+    }
+    body {
+        background-color: var(--dark-grey);
     }
     .carousel {
         display: none;
@@ -510,9 +527,6 @@ hr {
     .snackbar__child {
         width: 400px;
     }
-    body {
-        background-color: #303030;
-    }
 }
 
 @media (max-width: 767px) {
@@ -524,6 +538,8 @@ hr {
     }
     .form__title {
         height: 48px;
+    }
+    .form__title h1 {
         line-height: 48px;
         font-size: 35px;
     }
@@ -544,14 +560,14 @@ hr {
         height: 35px;
     }
     hr {
-        width: 90px
+        width: 90px;
     }
 }
 
 
 /*Stop responsiveness*/
 
-@media (max-width: 300px) {
+@media (max-width: 260px) {
     .form {
         display: none;
     }
