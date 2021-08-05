@@ -20,15 +20,16 @@ const logoutButtonMenu = document.querySelector('.menu__logout-button');
 
 //Menu
 const homeButton = document.querySelector('.nav__item:first-child a');
-const lastSearchesButton = document.querySelector('.nav__item:nth-last-child(2)')
 const menuOpenButton = document.querySelector('.header__menu-button');
 const menuCloseButton = document.querySelector('.menu__button-close');
 
 //Search
+const buttonsSuggestion = document.querySelectorAll('.header__button-suggestion');
 const searchButton = document.querySelector('.header__search-button');
 const searchInput = document.querySelector('.header__search-input');
 const searchFor = document.querySelector('.main__title h2');
 const searchValue = document.querySelector('.main__subtitle p');
+const searchParent = document.querySelector('.header__search');
 
 //Modal
 const modalButton = document.querySelectorAll('.main__card-button');
@@ -198,6 +199,10 @@ document.addEventListener('click', ({ path }) => {
             menu.classList.remove('showMenu');
         }
     }
+
+    if (!checkParent(path, searchParent)) {
+        searchParent.classList.remove('searchSuggestion')
+    }
 });
 
 //Search bar pop in mobile
@@ -211,10 +216,10 @@ const imgNotFound = (img) => {
     img.src = '../assets/images/img/main/img-not-found.jpg';
 };
 
+
 //API connection
 const url = 'https://api.rawg.io/api/games';
 const key = 'e47665a812c8462aa8519397b488ec98';
-// const size = 20;
 
 const urlPopular = `${url}?key=${key}`;
 const optionalInfo = {
@@ -225,11 +230,19 @@ const optionalInfo = {
     }
 };
 
-//API request
-const gamesRequest = async (url = urlPopular, cards = true) => {
+//action = 0 ---> Load cards
+//action = 1 ---> Load suggestions
+//action = 2 ---> Load modal
 
-    if (cards) {
+const gamesRequest = async (url = urlPopular, action = 0) => {
+
+    if (action === 0) {
         listCards.innerHTML = '<p>Loading... Please wait</p>';
+
+    } else if (action === 1) {
+        clearSuggestions();
+    } else {
+        //Modal
     }
 
     try {
@@ -238,14 +251,15 @@ const gamesRequest = async (url = urlPopular, cards = true) => {
         if (resp.ok) {
             let respJson = await resp.json();
 
-            if (cards) {
+            if (action === 0) {
                 loadCards(respJson.results);
 
-            } else {
+            } else if (action === 1) {
                 loadSuggestions(respJson.results);
-            }
 
-            console.log(respJson);
+            } else {
+                //Modal
+            }
         }
 
     } catch (error) {
@@ -253,10 +267,7 @@ const gamesRequest = async (url = urlPopular, cards = true) => {
     }
 }
 
-const loadSuggestions = () => {
-
-}
-
+//Load cards
 const createSvgs = (ids) => {
     let svgs = '';
 
@@ -289,7 +300,6 @@ const createSvgs = (ids) => {
     });
     return svgs;
 }
-
 const loadCards = (results) => {
 
     listCards.innerHTML = '';
@@ -324,7 +334,7 @@ const loadCards = (results) => {
         div.innerHTML = `<li class="main__card">
             <button class="main__card-button flex-start-column" onclick="openModal(${id})">
                 <div class="main__image-box">
-                    <img class="main__image" src="${img}" alt="Game image">
+                    <img class="main__image" src="${img}" onerror="imgNotFound(this)"  alt="${title} image">
                 </div>
 
                 <div class="main__info-container">
@@ -397,15 +407,52 @@ const loadCards = (results) => {
 
 }
 
-//Searching and menu managment
-const buttonsSuggestion = document.querySelector('.header__button-suggestion');
+//Suggestion functions
+const loadSuggestions = (results) => {
+    let count = 0;
+    results.forEach(({ name, id }) => {
+        buttonsSuggestion[count].innerHTML = `${name}`;
+        buttonsSuggestion[count].setAttribute('value', `${name}`);
+        count++;
+    });
+}
+
+buttonsSuggestion.forEach(button => {
+    button.addEventListener('click', () => {
+        const inputValue = button.getAttribute('value');
+        searchParent.classList.remove('searchSuggestion');
+        searchInput.value = inputValue
+        hasSearch = true;
+        searchFor.innerHTML = 'Search results';
+        searchValue.innerHTML = `${inputValue}`;
+        gamesRequest(`${urlPopular}&search=${inputValue}`);
+        lastSearch = inputValue;
+    });
+});
+
+searchInput.addEventListener('click', () => {
+    if (searchInput.value.trim().length > 2) {
+        searchParent.classList.add('searchSuggestion');
+    }
+});
+
+const clearSuggestions = () => {
+    buttonsSuggestion.forEach(button => {
+        button.innerHTML = '...';
+        button.setAttribute('value', '');
+    });
+}
+
+//On key up event
 let hasSearch = false;
+let lastSearch = '';
 
 searchInput.addEventListener('keyup', (evt) => {
 
     const inputValue = searchInput.value;
 
     if (inputValue.trim().length > 2) {
+
 
         if (evt.keyCode === 13) {
             hasSearch = true;
@@ -415,13 +462,24 @@ searchInput.addEventListener('keyup', (evt) => {
 
             gamesRequest(`${urlPopular}&search=${inputValue}`);
 
-        } else {
+        } else if (lastSearch !== inputValue) {
 
-            searchInput.parentElement.classList.add('searchSuggestion');
-            gamesRequest(`${urlPopular}&search=${inputValue}&page_size=3`, false);
+            searchParent.classList.add('searchSuggestion');
+            gamesRequest(`${urlPopular}&search=${inputValue}&page_size=3`, 1);
+
         }
+
+        lastSearch = inputValue;
+
+    } else {
+
+        searchParent.classList.remove('searchSuggestion');
+        clearSuggestions();
     }
 });
+
+//Popular page load
+gamesRequest();
 
 homeButton.addEventListener('click', () => {
     if (hasSearch) {
@@ -435,13 +493,6 @@ homeButton.addEventListener('click', () => {
     }
 
 });
-
-lastSearchesButton.addEventListener('click', () => {
-
-})
-
-//First default page
-gamesRequest();
 
 //Load modal
 const loadModal = (obj) => {
