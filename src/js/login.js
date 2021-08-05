@@ -44,7 +44,6 @@ viewBox="0 0 20 14" style="enable-background:new 0 0 20 14;" xml:space="preserve
    l0.9,0.9C6.9,6.1,6.9,6.5,6.9,6.9c0,0.8,0.3,1.6,0.9,2.2C8.4,9.7,9.2,10,10,10c0.4,0,0.8-0.1,1.1-0.2l0.9,0.9
    C11.4,11.1,10.7,11.2,10,11.2z"/>
 </svg>`;
-
 const showpassIcon = `<svg class="form__svg-input form__svg-input--hidepass" width="20" version="1.1" xmlns="http://www.w3.org/2000/svg"
 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 14"
 style="enable-background:new 0 0 20 14;" xml:space="preserve">
@@ -182,43 +181,32 @@ const urlLogin = 'http://localhost:3000/login';
 
 const postRequest = async (email, pass) => {
 
-    const infoLogin = {
-        method: 'POST',
-        headers: {
-            Accept: "aplication/json",
-            "Content-Type": "application/json"
-        },
-        body:
-            JSON.stringify({
-                email: `${email}`,
-                password: `${pass}`
-            })
-    };
-
     try {
 
-        let resp = await fetch(urlLogin, infoLogin);
+        let resp = await fetch(urlLogin, {
+            method: 'POST',
+            headers: {
+                Accept: "aplication/json",
+                "Content-Type": "application/json"
+            },
+            body:
+                JSON.stringify({
+                    email: `${email}`,
+                    password: `${pass}`
+                })
+        });
 
-        switch (resp.status) {
-            case 200:
-                let respJson = await resp.json();
-                localStorage.setItem('Access token', respJson.accessToken);
-                window.location.href = 'main.html';
-                break;
+        let respJson = await resp.json();
 
-            case 400:
-                form.classList.add('errorGeneral', 'errorUser', 'errorPass');
-                inputEmail.value = '';
-                inputPassword.value = '';
-                passMessage.innerHTML = 'Wrong credentials';
-                break;
+        if (resp.ok) {
+            localStorage.setItem('Access token', respJson.accessToken);
+            window.location.href = 'main.html';
 
-            // case 500:
-            //     snackbar.classList.remove('hidden');
-            //     break;
-
-            default:
-                break;
+        } else {
+            form.classList.add('errorGeneral', 'errorUser', 'errorPass');
+            inputEmail.value = '';
+            inputPassword.value = '';
+            passMessage.innerHTML = 'Wrong credentials';
         }
 
     } catch (error) {

@@ -1,18 +1,11 @@
-// Custom security
-// const token = JSON.parse(localStorage.getItem('Access token'));
-// if (!token || token.length !== 183) {
-//     window.location.href = 'login.html';
-// }
-
-// Issue - Set mannually an access token from the console
-// localStorage.setItem('Access token', JSON.stringify('custom'));
-
 //HTML references
 
 //General
 const header = document.querySelector('.header');
 const menu = document.querySelector('.menu');
+const main = document.querySelector('.main');
 const listCards = document.querySelector('.main__ul-grid');
+const groupRadio = document.querySelectorAll('.main__radio');
 
 //Logout
 const logoutButtonHeader = document.querySelector('.header__logout-button');
@@ -35,6 +28,129 @@ const searchParent = document.querySelector('.header__search');
 const modalButton = document.querySelectorAll('.main__card-button');
 const modalWrapper = document.querySelector('.modal-wrapper');
 const modalView = document.querySelector('.modal');
+
+
+//Radio buttons changing view
+groupRadio[0].addEventListener('input', () => {
+    listCards.classList.remove('main__ul-grid--display');
+});
+groupRadio[1].addEventListener('input', () => {
+    listCards.classList.add('main__ul-grid--display');
+});
+
+//Media querie - Hiding one column style when passing to mobile version
+const mediaQueryOneColHide = window.matchMedia("(max-width: 768px)");
+
+const handleChangeMedia = (mq) => {
+    if (mq.matches) {
+        listCards.classList.remove('main__ul-grid--display');
+        groupRadio[0].checked = 'checked';
+        groupRadio[1].checked = '';
+    }
+}
+
+mediaQueryOneColHide.addEventListener('change', () => { handleChangeMedia(mediaQueryOneColHide) });
+
+//Logout events
+[logoutButtonHeader, logoutButtonMenu].forEach(button => {
+    button.addEventListener('click', () => {
+        window.location.href = 'login.html';
+    });
+});
+
+//Menu pop up
+const checkParent = (path, ref) => {
+    let has = false;
+
+    path.forEach(element => {
+        if (element === ref) {
+            has = true;
+        }
+    });
+
+    return has;
+};
+
+document.addEventListener('click', ({ path }) => {
+
+    if (checkParent(path, menuOpenButton)) {
+        menu.classList.add('showMenu');
+
+    } else {
+        if (!checkParent(path, menu) || checkParent(path, menuCloseButton)) {
+            menu.classList.remove('showMenu');
+        }
+    }
+
+    if (!checkParent(path, searchParent)) {
+        searchParent.classList.remove('searchSuggestion')
+    }
+});
+
+//Search bar pop in mobile
+searchButton.addEventListener('click', () => {
+    header.classList.toggle('showSearch');
+});
+
+//Image not found
+const imgNotFound = (img) => {
+    img.onerror = null;
+    img.src = '../assets/images/img/main/img-not-found.jpg';
+};
+
+
+//API connection
+const url = 'https://api.rawg.io/api/games';
+const key = 'e47665a812c8462aa8519397b488ec98';
+
+const urlPopular = `${url}?key=${key}`;
+const optionalInfo = {
+    method: "GET",
+    headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+    }
+};
+
+//action = 0 ---> Load cards
+//action = 1 ---> Load suggestions
+//action = 2 ---> Load modal
+
+const gamesRequest = async (url = urlPopular, action = 0) => {
+
+    if (action === 0) {
+        listCards.innerHTML = '<p>Loading... Please wait</p>';
+
+    } else if (action === 1) {
+        clearSuggestions();
+
+    } else {
+
+        modalView.innerHTML = 'Loading... Please wait';
+    }
+
+    try {
+        let resp = await fetch(url, optionalInfo);
+
+        if (resp.ok) {
+            let respJson = await resp.json();
+
+            if (action === 0) {
+                loadCards(respJson.results);
+
+            } else if (action === 1) {
+                loadSuggestions(respJson.results);
+
+            } else {
+                console.log(respJson);
+                loadModal();
+            }
+        }
+
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 //Svg platforms
 const play = `<svg width="17" heigth="13" viewBox="0 0 17 13" xmlns="http://www.w3.org/2000/svg" fill="white">
@@ -153,123 +269,7 @@ const nintendo = `<svg width="13" height="13" viewBox="0 0 13 13" fill="white" x
     <path fill-rule="evenodd" clip-rule="evenodd" d="M3.45677 0H6.40457C6.45759 0 6.5 0.0408805 6.5 0.0919811V12.908C6.5 12.9591 6.45759 13 6.40457 13H3.45677C1.54812 13 0 11.5079 0 9.66824V3.33176C0 1.49214 1.54812 0 3.45677 0ZM3.45677 11.9575H5.41843V1.04245H3.45677C2.82055 1.04245 2.22675 1.28774 1.7814 1.71698C1.32545 2.14623 1.08157 2.71855 1.08157 3.33176V9.66824C1.08157 10.2814 1.33605 10.8538 1.7814 11.283C2.22675 11.7225 2.82055 11.9575 3.45677 11.9575Z" fill="white"/>
     </svg>`;
 
-//Radio button displays
-const addGrid = () => {
-    listCards.classList.toggle('main__ul-grid--display');
-}
-
-//Media querie - Hiding one column style when passing to mobile version
-const mediaQueryOneColHide = window.matchMedia("(max-width: 768px)");
-
-const handleChangeMedia = (mq) => {
-    if (mq.matches) {
-        listCards.classList.remove('main__ul-grid--display');
-    }
-}
-
-mediaQueryOneColHide.addEventListener('change', () => { handleChangeMedia(mediaQueryOneColHide) });
-
-//Logout events
-[logoutButtonHeader, logoutButtonMenu].forEach(button => {
-    button.addEventListener('click', () => {
-        window.location.href = 'login.html';
-    });
-});
-
-//Menu pop up
-const checkParent = (path, ref) => {
-    let has = false;
-
-    path.forEach(element => {
-        if (element === ref) {
-            has = true;
-        }
-    });
-
-    return has;
-};
-
-document.addEventListener('click', ({ path }) => {
-
-    if (checkParent(path, menuOpenButton)) {
-        menu.classList.add('showMenu');
-
-    } else {
-        if (!checkParent(path, menu) || checkParent(path, menuCloseButton)) {
-            menu.classList.remove('showMenu');
-        }
-    }
-
-    if (!checkParent(path, searchParent)) {
-        searchParent.classList.remove('searchSuggestion')
-    }
-});
-
-//Search bar pop in mobile
-searchButton.addEventListener('click', () => {
-    header.classList.toggle('showSearch');
-});
-
-//Image not found
-const imgNotFound = (img) => {
-    img.onerror = null;
-    img.src = '../assets/images/img/main/img-not-found.jpg';
-};
-
-
-//API connection
-const url = 'https://api.rawg.io/api/games';
-const key = 'e47665a812c8462aa8519397b488ec98';
-
-const urlPopular = `${url}?key=${key}`;
-const optionalInfo = {
-    method: "GET",
-    headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-    }
-};
-
-//action = 0 ---> Load cards
-//action = 1 ---> Load suggestions
-//action = 2 ---> Load modal
-
-const gamesRequest = async (url = urlPopular, action = 0) => {
-
-    if (action === 0) {
-        listCards.innerHTML = '<p>Loading... Please wait</p>';
-
-    } else if (action === 1) {
-        clearSuggestions();
-
-    } else {
-        modalView.innerHTML = 'Loading... Please wait';
-    }
-
-    try {
-        let resp = await fetch(url, optionalInfo);
-
-        if (resp.ok) {
-            let respJson = await resp.json();
-
-            if (action === 0) {
-                loadCards(respJson.results);
-
-            } else if (action === 1) {
-                loadSuggestions(respJson.results);
-
-            } else {
-                console.log(respJson);
-                loadModal();
-            }
-        }
-
-    } catch (error) {
-        console.log(error);
-    }
-}
-
-//Load cards
+//Create svg icons from ids
 const createSvgs = (ids) => {
     let svgs = '';
 
@@ -302,6 +302,8 @@ const createSvgs = (ids) => {
     });
     return svgs;
 }
+
+//Load cards
 const loadCards = (results) => {
 
     listCards.innerHTML = '';
@@ -405,8 +407,6 @@ const loadCards = (results) => {
         listCards.append(div.firstChild);
         number++;
     });
-
-
 }
 
 //Suggestion functions
@@ -493,12 +493,9 @@ homeButton.addEventListener('click', () => {
 
 const homeAction = () => {
     if (hasSearch) {
-
         hasSearch = false;
-
         searchFor.innerHTML = 'New and trending';
         searchValue.innerHTML = 'Based on player counts and release date';
-
         gamesRequest();
     }
 }
@@ -753,21 +750,19 @@ c0,0.8-0.7,1.5-1.5,1.5l0,0H9V7H15z M2.5,16C1.7,16,1,15.3,1,14.5l0,0V7h6v9H2.5z" 
     </div>
 
 </div>`;
-
-
 }
 
 // Opening modal view
 const openModal = (id) => {
 
     modalWrapper.classList.remove('hidden');
-
+    main.classList.add('modalView');
     gamesRequest(`${url}/${id}?key=${key}`, 2);
-
 }
 
 //Close modal function
 const closeModal = () => {
     modalWrapper.classList.add('hidden');
     modalView.innerHTML = '';
+    main.classList.remove('modalView');
 }
