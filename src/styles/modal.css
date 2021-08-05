@@ -13,7 +13,7 @@
     position: relative;
     z-index: -1;
     flex: 1082px 0 1;
-    height: auto;
+    height: 794px;
     padding: 26px 91px 0px 79px;
     background-color: #303030;
     border-radius: 10px;
@@ -373,6 +373,7 @@
         position: absolute;
         width: 100%;
         top: 120px;
+        height: 1000px;
         border-radius: 0;
         z-index: 1;
         padding: 39px 30px 50px 30px;
@@ -418,11 +419,17 @@
     .modal__link {
         width: 145px;
     }
+    
+    /* Hide main when showing modal */
+    .modalView.main {
+        display: none
+    }
 }
 
 @media (max-width: 768px) {
     /*General*/
     .modal {
+        height: 1487px;
         top: 104px;
         padding: 31px 40px 50px 40px;
         grid-template-areas:

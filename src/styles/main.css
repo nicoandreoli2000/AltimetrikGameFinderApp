@@ -582,7 +582,7 @@ body {
     'date . genre . number . gift'
     'description description description description description description description';
     row-gap: 13px;
-    padding: 20px 40px 21px 40px;
+    padding: 20px 40px 32px 40px;
 }
 
 .main__ul-grid--display .main__card {
@@ -751,7 +751,7 @@ body {
     }
 }
 
-@media (max-width: 764px) {
+@media (max-width: 768px) {
     .header__bottom,
     .header__photo,
     .header__search,
