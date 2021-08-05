@@ -14,7 +14,7 @@ Webpage for searching games.
 npm install
 ```
 
-4. Raise a json-server (verify you are on port 300, if not change the url at src/js/login.js):
+4. Raise a json-server (verify you are on port 3000, if not change the url at src/js/login.js):
 ```
 npx json-server db.json
 ```
@@ -34,9 +34,13 @@ password: password
 1. In the main view at the mobile breakpoint, two rows are left for the first 200px, because it looks better that just keeping one too streched.
 2. ...
 
-## Still need to finish
 
-1. Connection Modal to API
-2. Color variables in main and modal
-3. Separate scripts if they are too long
-4. Autocomplete search suggestions
+## Still need to finish:
+
+### Important
+1. Connection Modal to API (just do the request and fullfill it)
+2. Debounce time in suggestions
+
+### David tips
+1. Color variables in main and modal
+2. Separate scripts if they are too long
