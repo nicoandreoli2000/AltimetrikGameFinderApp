@@ -1,3 +1,5 @@
+/* ----- Normal styling ----- */
+
 /* General */
 
 body {
@@ -51,10 +53,15 @@ body {
 .header__title {
     flex: 520px 1 1;
     height: 38px;
+    user-select: none;
+}
+
+.header__title h1,
+.menu__title h1 {
+    font-weight: 400;
     line-height: 38px;
     letter-spacing: 1.7px;
     font-size: 28px;
-    user-select: none;
 }
 
 .header__title-strong,
@@ -244,9 +251,6 @@ body {
 
 .menu__title {
     height: 38px;
-    line-height: 38px;
-    letter-spacing: 1.7px;
-    font-size: 28px;
     margin-bottom: 81px;
 }
 
@@ -368,6 +372,9 @@ body {
 
 .main__title {
     height: 75px;
+}
+
+.main__title h2 {
     font-size: 55px;
     font-weight: 800;
     line-height: 75px;
@@ -475,12 +482,13 @@ body {
     justify-self: start;
     width: 100%;
     height: 31px;
+    
+}
+
+.main__title-game h3 {
     font-size: 23px;
     font-weight: 800;
     line-height: 31px;
-}
-
-.main__title-game p {
     text-align: start;
     width: 100%;
     white-space: nowrap;
@@ -591,10 +599,12 @@ body {
 }
 
 /*Grid row gap*/
-.--margin-row{
+.main__card-genre,
+.main__card-genre {
     margin-top: 1.5px;
 }
 
+/* ----- Custom states ----- */
 
 /* 1 col style*/
 
@@ -633,7 +643,7 @@ body {
     width: 155px;
 }
 
-.main__ul-grid--display .main__title-game p {
+.main__ul-grid--display .main__title-game h3 {
     width: 450px;
 }
 
@@ -645,16 +655,14 @@ body {
     width: 105px;
 }
 
-.main__ul-grid--display .--margin-row {
+.main__ul-grid--display .main__card-genre,
+.main__ul-grid--display .main__card-gift {
     margin-top: 0;
 }
 
 .main__ul-grid--display .main__play-icons svg:nth-child(n+4) {
     display: flex;
 }
-
-/* --- STATES --- */
-
 
 /* Search box */
 
@@ -674,6 +682,8 @@ body {
 .menu.showMenu {
     display: block;
 }
+
+/* ----- Original states ----- */
 
 /* Logout button && search button mobile*/
 .header__logout-button:hover .header__logout-svg,
@@ -757,7 +767,7 @@ body {
 }
 
 
-/* Media queries */
+/* ----- Media queries ----- */
 
 @media (max-width: 1024px) {
     .menu,
@@ -812,7 +822,7 @@ body {
         padding-left: 40px;
         padding-right: 40px;
     }
-    .main__title {
+    .main__title h2 {
         line-height: 49.5px;
         font-size: 45px;
     }
@@ -836,7 +846,7 @@ body {
         width: 100%;
         padding-right: 22.5px;
     }
-    .showMenu.menu + .main {
+    .menu.showSearch + .main {
         display: none;
     }
     .menu__logout {
@@ -903,9 +913,7 @@ body {
         padding-top: 10px;
     }
 
-    .main__title-game p,
-    .main__card-date,
-    .main__card-genre {
+    .main__title-game h3 {
         width: 100%;
     }
 
@@ -913,16 +921,23 @@ body {
         justify-self: start;
     }
 
-    .--margin-row {
-        margin: 0;
+    .main__card-date,
+    .main__card-genre {
+        width: 100%;
+        margin-top: 0;
     }
 
-    .--genre-mobile {
+    .main__card-date {
+        margin-bottom: 3px;
+    }
+
+    .main__card-genre {
         margin-bottom: 13px;
     }
 
-    .--date-mobile {
-        margin-top: 3.5px;
+    .main__card-genre,
+    .main__gift {
+        margin-top: 0;
     }
 
     .main__card-genre .main__text p:nth-child(2) {
