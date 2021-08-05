@@ -241,8 +241,9 @@ const gamesRequest = async (url = urlPopular, action = 0) => {
 
     } else if (action === 1) {
         clearSuggestions();
+
     } else {
-        //Modal
+        modalView.innerHTML = 'Loading... Please wait';
     }
 
     try {
@@ -258,7 +259,8 @@ const gamesRequest = async (url = urlPopular, action = 0) => {
                 loadSuggestions(respJson.results);
 
             } else {
-                //Modal
+                console.log(respJson);
+                loadModal();
             }
         }
 
@@ -420,13 +422,16 @@ const loadSuggestions = (results) => {
 buttonsSuggestion.forEach(button => {
     button.addEventListener('click', () => {
         const inputValue = button.getAttribute('value');
-        searchParent.classList.remove('searchSuggestion');
-        searchInput.value = inputValue
-        hasSearch = true;
-        searchFor.innerHTML = 'Search results';
-        searchValue.innerHTML = `${inputValue}`;
-        gamesRequest(`${urlPopular}&search=${inputValue}`);
-        lastSearch = inputValue;
+
+        if (inputValue === '') {
+            homeAction();
+
+        } else {
+            searchParent.classList.remove('searchSuggestion');
+            searchInput.value = inputValue
+            searchAction(inputValue);
+            lastSearch = inputValue;
+        }
     });
 });
 
@@ -453,20 +458,12 @@ searchInput.addEventListener('keyup', (evt) => {
 
     if (inputValue.trim().length > 2) {
 
-
         if (evt.keyCode === 13) {
-            hasSearch = true;
-
-            searchFor.innerHTML = 'Search results';
-            searchValue.innerHTML = `${inputValue}`;
-
-            gamesRequest(`${urlPopular}&search=${inputValue}`);
+            searchAction(inputValue);
 
         } else if (lastSearch !== inputValue) {
-
             searchParent.classList.add('searchSuggestion');
             gamesRequest(`${urlPopular}&search=${inputValue}&page_size=3`, 1);
-
         }
 
         lastSearch = inputValue;
@@ -478,10 +475,23 @@ searchInput.addEventListener('keyup', (evt) => {
     }
 });
 
+const searchAction = (input) => {
+    hasSearch = true;
+
+    searchFor.innerHTML = 'Search results';
+    searchValue.innerHTML = `${input}`;
+
+    gamesRequest(`${urlPopular}&search=${input}`);
+}
+
 //Popular page load
 gamesRequest();
 
 homeButton.addEventListener('click', () => {
+    homeAction();
+});
+
+const homeAction = () => {
     if (hasSearch) {
 
         hasSearch = false;
@@ -491,11 +501,10 @@ homeButton.addEventListener('click', () => {
 
         gamesRequest();
     }
-
-});
+}
 
 //Load modal
-const loadModal = (obj) => {
+const loadModal = () => {
     modalView.innerHTML = `<div class="modal__bg">
     <img src="../assets/images/img/main/card-pic.png" alt="">
     <div class="modal__bg-shadow">
@@ -751,12 +760,10 @@ c0,0.8-0.7,1.5-1.5,1.5l0,0H9V7H15z M2.5,16C1.7,16,1,15.3,1,14.5l0,0V7h6v9H2.5z" 
 // Opening modal view
 const openModal = (id) => {
 
-    // const urlId = `${urlApi}/${id}?key=${key}`;
-
     modalWrapper.classList.remove('hidden');
-    modalView.innerHTML = 'Loading... Please wait';
 
-    loadModal();
+    gamesRequest(`${url}/${id}?key=${key}`, 2);
+
 }
 
 //Close modal function
