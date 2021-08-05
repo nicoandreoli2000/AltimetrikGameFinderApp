@@ -396,13 +396,15 @@
         height: 768px;
     }
     .modal__cross {
-        top: 39px;
+        position: fixed;
+        top: 159px;
         right: 30px;
         height: 25px;
+        z-index: 1;
     }
     .modal__cross svg {
-        height: 25px;
         width: 25px;
+        height: 25px;
     }
     .modal__description {
         width: 570px;
@@ -436,7 +438,7 @@
         height: 466px;
     }
     .modal__cross {
-        top: 26px;
+        top: 130px;
         right: 40px;
     }
 

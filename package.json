@@ -4,7 +4,8 @@
   "description": "Webpage for searching games and more...",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    // "serve": "json-server-auth db.json"
   },
   "repository": {
     "type": "git",

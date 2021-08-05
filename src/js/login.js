@@ -1,7 +1,6 @@
 // Custom security
 localStorage.clear();
 
-
 //HTML references
 
 //General
@@ -58,8 +57,7 @@ S9.2,3.7,10,3.7c0.8,0,1.6,0.3,2.2,0.9S13.1,6,13.1,6.9z" />
 <rect x="23.5" y="3.2" width="1.3" height="11.9" />
 </svg>`;
 
-buttonHidePassword.addEventListener('click', (evt) => {
-    evt.preventDefault();
+buttonHidePassword.addEventListener('click', () => {
     buttonHidePassword.innerHTML = '';
 
     if (inputPassword.type === 'password') {
@@ -182,67 +180,59 @@ const formValidation = (email, pass) => {
 //JSON server post request
 const urlLogin = 'http://localhost:3000/login';
 
-const postRequest = (email, pass) => {
+const postRequest = async (email, pass) => {
+
+    const infoLogin = {
+        method: 'POST',
+        headers: {
+            Accept: "aplication/json",
+            "Content-Type": "application/json"
+        },
+        body:
+            JSON.stringify({
+                email: `${email}`,
+                password: `${pass}`
+            })
+    };
 
     try {
-        httpRequest(email, pass);
 
-    } catch (error) {
-        console.log(error);
-    }
-};
+        let resp = await fetch(urlLogin, infoLogin);
 
-//Http request to json server
-const httpRequest = (email, pass) => {
-
-    fetch(urlLogin, {
-
-        method: 'POST',
-
-        headers: {
-            "Content-Type": "application/json",
-        },
-
-        body: JSON.stringify({
-            email: `${email}`,
-            password: `${pass}`
-        })
-    })
-
-        .then(async (resp) => {
-
-            const respJson = await resp.json();
-
-            loadingState(false);
-
-            if (resp.status === 200) {
-                localStorage.setItem('Access token', JSON.stringify(respJson.accessToken));
+        switch (resp.status) {
+            case 200:
+                let respJson = await resp.json();
+                localStorage.setItem('Access token', respJson.accessToken);
                 window.location.href = 'main.html';
-            };
+                break;
 
-            if (resp.status === 400) {
+            case 400:
+                form.classList.add('errorGeneral', 'errorUser', 'errorPass');
                 inputEmail.value = '';
                 inputPassword.value = '';
-                form.classList.add('errorGeneral', 'errorUser', 'errorPass');
                 passMessage.innerHTML = 'Wrong credentials';
-            };
+                break;
 
+            // case 500:
+            //     snackbar.classList.remove('hidden');
+            //     break;
 
-        })
+            default:
+                break;
+        }
 
-        .catch((error) => {
+    } catch (error) {
 
-            loadingState(false);
-            snackbar.classList.remove('hidden');
-            throw error;
-        });
+        console.log(error);
+        snackbar.classList.remove('hidden');
+    }
 
-
+    loadingState(false);
 };
 
 //Login clicked
 loginButton.addEventListener('click', () => {
-    console.log('sadf');
+
     const email = inputEmail.value;
     const pass = inputPassword.value;
 
@@ -267,6 +257,8 @@ loginButton.addEventListener('click', () => {
     }
 });
 
+
+//Disable login button and inputs
 const loadingState = (bool) => {
 
     loginButton.disabled = bool;
