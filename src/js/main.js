@@ -205,17 +205,6 @@ searchButton.addEventListener('click', () => {
     header.classList.toggle('showSearch');
 });
 
-//Events for search bar
-searchInput.addEventListener('focus', () => {
-    searchInput.parentElement.classList.add('searchSuggestion');
-    searchInput.parentElement.classList.add('isFocused');
-});
-
-searchInput.addEventListener('blur', () => {
-    searchInput.parentElement.classList.remove('searchSuggestion');
-    searchInput.parentElement.classList.remove('isFocused');
-});
-
 //Image not found
 const imgNotFound = (img) => {
     img.onerror = null;
@@ -239,7 +228,9 @@ const optionalInfo = {
 //API request
 const gamesRequest = async (url = urlPopular, cards = true) => {
 
-    listCards.innerHTML = '<p>Loading... Please wait</p>';
+    if (cards) {
+        listCards.innerHTML = '<p>Loading... Please wait</p>';
+    }
 
     try {
         let resp = await fetch(url, optionalInfo);
@@ -248,17 +239,22 @@ const gamesRequest = async (url = urlPopular, cards = true) => {
             let respJson = await resp.json();
 
             if (cards) {
-                console.log(respJson);
                 loadCards(respJson.results);
 
             } else {
-
+                loadSuggestions(respJson.results);
             }
+
+            console.log(respJson);
         }
 
     } catch (error) {
         console.log(error);
     }
+}
+
+const loadSuggestions = () => {
+
 }
 
 const createSvgs = (ids) => {
@@ -296,8 +292,6 @@ const createSvgs = (ids) => {
 
 const loadCards = (results) => {
 
-    // console.log(results);
-    // console.log(results[0]);
     listCards.innerHTML = '';
     let number = 1;
     const div = document.createElement('div');
@@ -319,13 +313,13 @@ const loadCards = (results) => {
 
         const dateArr = (new Date(released)).toString().split(' ');
 
-        let ids = [];
+        let idsSvg = [];
 
         platforms.forEach(({ platform }) => {
-            ids.push(platform.id);
+            idsSvg.push(platform.id);
         });
 
-        let svgs = createSvgs(ids);
+        let svgs = createSvgs(idsSvg);
 
         div.innerHTML = `<li class="main__card">
             <button class="main__card-button flex-start-column" onclick="openModal(${id})">
@@ -404,20 +398,28 @@ const loadCards = (results) => {
 }
 
 //Searching and menu managment
+const buttonsSuggestion = document.querySelector('.header__button-suggestion');
 let hasSearch = false;
 
 searchInput.addEventListener('keyup', (evt) => {
 
     const inputValue = searchInput.value;
 
-    if (inputValue.trim().length > 2 && evt.keyCode === 13) {
+    if (inputValue.trim().length > 2) {
 
-        hasSearch = true;
+        if (evt.keyCode === 13) {
+            hasSearch = true;
 
-        searchFor.innerHTML = 'Search results';
-        searchValue.innerHTML = `${inputValue}`;
+            searchFor.innerHTML = 'Search results';
+            searchValue.innerHTML = `${inputValue}`;
 
-        gamesRequest(`${urlPopular}&search=${inputValue}`);
+            gamesRequest(`${urlPopular}&search=${inputValue}`);
+
+        } else {
+
+            searchInput.parentElement.classList.add('searchSuggestion');
+            gamesRequest(`${urlPopular}&search=${inputValue}&page_size=3`, false);
+        }
     }
 });
 

@@ -620,13 +620,13 @@ body {
 }
 
 /* Search box */
-.isFocused .header__search-svg {
+.header__search:focus-within .header__search-svg {
     fill: #888889;
 }
-.isFocused .header__search-input {
+.header__search:focus-within .header__search-input {
     color: #888889;
 }
-.isFocused .header__search-input::placeholder {
+.header__search:focus-within .header__search-input::placeholder {
     color: #888889;
 }
 
