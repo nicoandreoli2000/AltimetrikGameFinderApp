@@ -14,7 +14,7 @@ Webpage for searching games.
 npm install
 ```
 
-4. Raise a json-server (verify you are on port 300, if not change the url at src/js/login.js):
+4. Raise a json-server (verify you are on port 3000, if not change the url at src/js/login.js):
 ```
 npx json-server db.json
 ```
