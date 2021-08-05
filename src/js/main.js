@@ -92,6 +92,12 @@ searchInput.addEventListener('blur', () => {
     searchInput.parentElement.classList.remove('isFocused');
 });
 
+//Image not found
+
+const imgNotFound = (img) => {
+    img.onerror = null;
+    img.src = '../assets/images/img/main/img-not-found.jpg';
+};
 
 //Svg consts
 // const play = `<svg width="17" heigth="13" viewBox="0 0 17 13" xmlns="http://www.w3.org/2000/svg" fill="white">
