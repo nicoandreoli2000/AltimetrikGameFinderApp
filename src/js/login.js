@@ -216,6 +216,9 @@ const postRequest = async (email, pass) => {
             // case 500:
             //     snackbar.classList.remove('hidden');
             //     break;
+
+            default:
+                break;
         }
 
     } catch (error) {
