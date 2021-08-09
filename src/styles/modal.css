@@ -15,7 +15,7 @@
     flex: 1082px 0 1;
     height: 794px;
     padding: 26px 91px 0px 79px;
-    background-color: #303030;
+    background-color: var(--dark-grey);
     border-radius: 10px;
     overflow: hidden;
     display: grid;
@@ -52,7 +52,7 @@
     top: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(180deg, rgba(48, 48, 48, 0.0001) 0%, #303030 84.4%);
+    background: linear-gradient(180deg, rgba(48, 48, 48, 0.0001) 0%, var(--dark-grey) 84.4%);
 }
 
 
@@ -69,7 +69,7 @@
 }
 
 .modal__cross svg {
-    fill: white;
+    fill: var(--white);
     width: 16px;
     height: 16px;
 }
@@ -78,11 +78,11 @@
 
 .modal__cross:hover svg,
 .modal__cross:focus-visible svg  {
-    fill:#7CD235;
+    fill:var(--light-green);
 }
 
 .modal__cross:active svg {
-    fill: #4d8320;
+    fill: var(--custom-green);
 }
 
 /*Platforms*/
@@ -94,7 +94,7 @@
 }
 
 .modal__icons svg {
-    fill: white;
+    fill: var(--white);
     width: 20px;
     margin-right: 6px;
 }
@@ -127,14 +127,14 @@
 
 .modal__top-box {
     height: 27px;
-    background-color: white;
-    color: #303030;
+    background-color: var(--white);
+    color: var(--dark-grey);
 }
 
 .modal__top-box strong {
     font-weight: 800;
     font-size: 20px;
-    color: #2BB34F;
+    color: var(--strong-text);
 }
 
 .modal__top-box:nth-last-child(n+1) {
@@ -186,7 +186,7 @@
 
 /*BUY*/
 .modal__button--buy {
-    border: 1px solid #979797;
+    border: 1px solid var(--buy-button);
     width: 125px;
     margin-right: 20px;
 }
@@ -198,7 +198,7 @@
 
 /*Wish*/
 .modal__button--wish {
-    background: linear-gradient(180deg, #7CD235 0%, #2BB34F 100%);
+    background: var(--linear-gradient);
     width: 151px;
 }
 
@@ -245,7 +245,7 @@
     text-align: start;
     font-size: 12px;
     line-height: 16px;
-    background-color: #515151;
+    background-color: var(--radio-grey-default);
 }
 
 .modal__button-bot p:nth-child(1) {
@@ -339,7 +339,7 @@
     font-size: 12px;
     line-height: 16px;
     font-weight: 300;
-    color: #939393;
+    color: var(--text-grey);
     width: 360px;
     flex-flow: column wrap;
     align-content: space-between;
@@ -352,7 +352,7 @@
 }
 
 .modal__link a {
-    color: white;
+    color: var(--white);
     text-decoration-line: underline;
     margin-top: 4px;
 }
@@ -367,7 +367,7 @@
 @media (max-width: 1024px) {
     .modal-wrapper {
         position: absolute;
-        background-color: #303030;
+        background-color: var(--dark-grey);
     }
     .modal {
         position: absolute;
