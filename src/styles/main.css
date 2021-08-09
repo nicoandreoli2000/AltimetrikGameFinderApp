@@ -630,11 +630,6 @@ body {
     color: #888889;
 }
 
-/* Menu pop up*/
-.menu.showMenu {
-    display: block;
-}
-
 /* ----- Original states ----- */
 
 /* Logout button && search button mobile*/
@@ -749,6 +744,11 @@ body {
     .menu__logout {
         display: flex;
     }
+
+    /* Menu pop up*/
+    .showMenu {
+        display: block;
+    }
 }
 
 @media (max-width: 768px) {
@@ -795,7 +795,7 @@ body {
         width: 100%;
         padding-right: 22.5px;
     }
-    .menu.showMenu + .main {
+    .showMenu + .main {
         display: none;
     }
     .menu__logout {
