@@ -212,7 +212,7 @@ form {
     font-weight: 600;
     color: var(--white);
     cursor: pointer;
-    background: linear-gradient(180deg, var(--light-green) 0%, var(--dark-green) 100%);
+    background: var(--linear-gradient);
 }
 
 
@@ -413,7 +413,7 @@ hr {
 
 .form__login-button:active {
     box-shadow: inset 0px 4px 4px rgba(43, 179, 79, 0.63);
-    background: linear-gradient(180deg, var(--light-green) 0%, var(--dark-green) 100%);
+    background: var(--linear-gradient);
 }
 
 /*Carousel*/

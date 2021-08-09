@@ -3,7 +3,7 @@
 /* General */
 
 body {
-    color: #FFFFFF;
+    color: var(--white);
 }
 
 .wrapper {
@@ -16,7 +16,7 @@ body {
     height: 108px;
     position: fixed;
     bottom: 0;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.0001) 0%, #000000 100%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.0001) 0%, var(--black) 100%);
     pointer-events: none;
 }
 
@@ -28,7 +28,7 @@ body {
     padding: 32px 40px 0px 40px;
     width: 100%;
     height: 120px;
-    background: linear-gradient(180deg, #7CD235 0%, #2BB34F 100%);
+    background: var(--linear-gradient);
     box-shadow: 1px -3px 36px rgba(0, 0, 0, 0.5);
 }
 
@@ -83,7 +83,7 @@ body {
 
 .header__menu-button svg,
 .header__search-svg-button {
-    fill: white;
+    fill: var(--white);
 }
 
 /*Search bar*/
@@ -95,14 +95,14 @@ body {
 .header__search-icon {
     width: 56px;
     border-radius: 20px 0px 0px 20px;
-    background-color: #F1F1F1;
+    background-color: var(--search-white);
 }
 
 .header__search-svg {
     position: relative;
     top: 12px;
     left: 20px;
-    fill: #A6A6A6;
+    fill: var(--search-grey);
 }
 
 .header__search-input {
@@ -113,16 +113,16 @@ body {
     padding-right: 52.8px;
     outline: none;
     padding-left: 5px;
-    background-color: #F1F1F1;
+    background-color: var(--search-white);
     font-family: inherit;
     font-size: 16px;
-    color: #A6A6A6;
+    color: var(--search-grey);
     user-select: none;
 }
 
 .header__search-input::placeholder {
     font-weight: 300;
-    color: #A6A6A6;
+    color: var(--search-grey);
 }
 
 /*Autocomplete search thing*/
@@ -132,9 +132,9 @@ body {
     position: absolute;
     transform: translateY(40px);
     width: 362px;
-    background-color: #F1F1F1;
+    background-color: var(--search-white);
     border-radius: 0px 0px 20px 20px;
-    color: #888889;
+    color: var(--header-grey);
     user-select: none;
 }
 
@@ -142,7 +142,7 @@ body {
     width: 330px;
     border: none;
     height: 1px;
-    background-color: #888889;
+    background-color: var(--header-grey);
 }
 
 .header__list {
@@ -195,7 +195,7 @@ body {
 }
 
 .header__logout-svg {
-    fill: white;
+    fill: var(--white);
 }
 
 .header__photo {
@@ -214,7 +214,7 @@ body {
 .header__line {
     border: none;
     height: 1px;
-    background-color: white;
+    background-color: var(--white);
 }
 
 /* Nav */
@@ -272,11 +272,11 @@ body {
 }
 
 .menu__logout-svg {
-    fill: white;
+    fill: var(--white);
 }
 
 .menu__button-close svg {
-    fill: white;
+    fill: var(--white);
 }
 
 .menu__button-close {
@@ -314,7 +314,7 @@ body {
 /*SVG*/
 
 .nav__svg {
-    fill: white;
+    fill: var(--white);
     margin-right: 13px;
 }
 
@@ -357,7 +357,7 @@ body {
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    background-color: #515151;
+    background-color: var(--radio-grey-default);
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -428,7 +428,7 @@ body {
     align-items: center;
     width: 100%;
     padding: 9px 20px 18px 20px;
-    background-color: #303030;
+    background-color: var(--dark-grey);
     z-index: -1;
     overflow: hidden;
 }
@@ -486,7 +486,7 @@ body {
 .main__hr hr {
     border: none;
     height: 1px;
-    background-color: #3D3D3D;
+    background-color: var(--hr-grey);
 }
 
 /* #1,#2,#3*/
@@ -497,7 +497,7 @@ body {
     height: 22px;
     line-height: 22px;
     font-weight: 700;
-    color: #2BB34F;
+    color: var(--dark-green);
 }
 
 /* Gift */
@@ -507,7 +507,7 @@ body {
     justify-self: end;
     width: 47px;
     height: 24px;
-    background: linear-gradient(180deg, #7CD235 0%, #2BB34F 100%);
+    background: var(--linear-gradient);
     border-radius: 10px;
 }
 
@@ -523,7 +523,7 @@ body {
     height: 16px;
     font-size: 12px;
     line-height: 16px;
-    color: #939393;
+    color: var(--text-grey);
 }
 
 .main__card-genre .main__text p:nth-child(2) {
@@ -603,7 +603,7 @@ body {
 }
 
 .main__ul-grid--display .main__text p:nth-child(2) {
-    color: white;
+    color: var(--white);
 }
 
 .main__ul-grid--display .main__card-genre .main__text p:nth-child(2) {
@@ -621,13 +621,13 @@ body {
 
 /* Search box */
 .header__search:focus-within .header__search-svg {
-    fill: #888889;
+    fill: var(--header-grey);
 }
 .header__search:focus-within .header__search-input {
-    color: #888889;
+    color: var(--header-grey);
 }
 .header__search:focus-within .header__search-input::placeholder {
-    color: #888889;
+    color: var(--header-grey);
 }
 
 /* ----- Original states ----- */
@@ -637,47 +637,47 @@ body {
 .header__logout-button:focus-visible .header__logout-svg,
 .header__search-button:hover svg,
 .header__search-button:focus-visible svg {
-    fill: #32630a;
+    fill: var(--custom-green);
 }
 
 .menu__logout-button:hover .menu__logout-svg,
 .menu__logout-button:focus-visible .menu__logout-svg,
 .menu__button-close:hover svg,
 .menu__button-close:focus-visible svg {
-    fill: #7CD235;
+    fill: var(--light-green);
 }
 
 /* Radio displays */
 .main__radio:checked {
-    background-color: #303030;
+    background-color: var(--dark-grey);
 }
 
 .main__radio:not(:checked):hover,
 .main__radio:focus-visible {
-    background-color: #7D7D7D;
+    background-color: var(--radio-grey-focus);
 }
 
 /* Menu */
 
 .nav__item a:hover,
 .nav__item a:focus {
-    color: #7CD235;
+    color: var(--light-green);
 }
 
 .nav__item:hover svg,
 .nav__item:focus-within svg {
-    fill: #7CD235;
+    fill: var(--light-green);
 }
 
 /* Cards */
 
 .main__card-button:hover,
 .main__card-button:focus-visible {
-    box-shadow: inset 0px 0px 20px #151515;
+    box-shadow: inset 0px 0px 20px var(--card-black);
 }
 
 .main__card-button:active {
-    box-shadow: inset 0px 0px 20px #000000;
+    box-shadow: inset 0px 0px 20px var(--black);
 }
 
 /* Search suggestion pop down*/
@@ -707,7 +707,7 @@ body {
 
 .header__menu-button:hover svg,
 .header__menu-button:focus-visible svg {
-    fill: #32630a;
+    fill: var(--custom-green);
 }
 
 
@@ -728,7 +728,7 @@ body {
         padding-right: 71px;
         top: 0;
         height: 100vh;
-        background-color: #151515;
+        background-color: var(--card-black);
         box-shadow: 14px 0px 36px 5px rgba(0, 0, 0, 0.62);
     }
     .header__top {
