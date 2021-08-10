@@ -219,7 +219,9 @@ const postRequest = async (email, pass) => {
 };
 
 //Login clicked
-loginButton.addEventListener('click', () => {
+form.addEventListener('submit', (evt) => {
+
+    evt.preventDefault();
 
     const email = inputEmail.value;
     const pass = inputPassword.value;
