@@ -252,8 +252,6 @@ const gamesRequest = async (url = urlGeneral, action = 0) => {
     } else if (action === 1) {
         clearSuggestions();
 
-    } else {
-        modalView.innerHTML = loadingMsg;
     }
 
     try {
@@ -276,7 +274,7 @@ const gamesRequest = async (url = urlGeneral, action = 0) => {
 
             } else {
                 console.log(respJson);
-                loadModal(respJson);
+                return respJson;
             }
         }
 
@@ -535,7 +533,7 @@ homeAction();
 
 //Load modal
 
-const loadModal = ({ description_raw: description, background_image: img, name: title, released: date, genres, parent_platforms: platforms, website, publishers, developers, }) => {
+const loadModal = ([{ description_raw: description, background_image: img, name: title, released: date, genres, parent_platforms: platforms, website, publishers, developers }, { results: aditionalImgs }]) => {
 
     const release = auxDate(date);
     const genresInfo = auxPlats(platforms, true);
@@ -612,21 +610,21 @@ const loadModal = ({ description_raw: description, background_image: img, name: 
     <div class="modal__images flex-space">
 
         <div>
-            <img src="${img || urlImgNotFound}" alt="Modal first game image">
+            <img src="${additionalImgs[0] || urlImgNotFound}" alt="Modal first game image">
         </div>
         <div>
-            <img src="${img || urlImgNotFound}" alt="Modal second game image">
+            <img src="${additionalImgs[1] || urlImgNotFound}" alt="Modal second game image">
         </div>
         <div>
-            <img src="${img || urlImgNotFound}" alt="Modal third game image">
+            <img src="${additionalImgs[2] || urlImgNotFound}" alt="Modal third game image">
         </div>
         <div>
-            <img src="${img || urlImgNotFound}" alt="Modal fourth game image">
+            <img src="${additionalImgs[3] || urlImgNotFound}" alt="Modal fourth game image">
         </div>
         <div class="modal__img-special">
             <div>
             </div>
-            <img src="${img || urlImgNotFound}" alt="Modal fifth game image">
+            <img src="${additionalImgs[4] || urlImgNotFound}" alt="Modal fifth game image">
             <p>View all</p>
             <svg viewBox="0 0 9 2" fill="white" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -675,7 +673,14 @@ const openModal = (id, event) => {
     header.classList.remove('showSearch');
     modalWrapper.classList.remove('hidden');
     main.classList.add('modalView');
-    gamesRequest(`${url}/${id}?key=${key}`, 2);
+    modalRequest(`${url}/${id}?key=${key}`, `${url}/${id}/screenshots?key=${key}`);
+}
+
+const modalRequest = async (urlDetails, urlScreens) => {
+    modalView.innerHTML = loadingMsg;
+    Promise.all([gamesRequest(urlDetails, 2), gamesRequest(urlScreens, 2)]).then(values => {
+        loadModal(values);
+    });
 }
 
 //Close modal function
