@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    // "serve": "json-server-auth db.json"
+    "serve": "npx json-server-auth db.json"
   },
   "repository": {
     "type": "git",

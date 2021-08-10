@@ -4,6 +4,11 @@
       "email": "probando@hotmail.com",
       "password": "$2a$10$bQ/ImOzlXCMXz1WwTTvPDOfzpfuOXcFWlg8F/Qnwk8sElqyPSx69e",
       "id": 1
+    },
+    {
+      "email": "nicolas@altimetrik.com",
+      "password": "$2a$10$/B9nW9Y6wz2Dz3jlyjwJ0uI2w59e51kWhhuYSWApitY8HYcG0OtoK",
+      "id": 2
     }
   ]
 }
