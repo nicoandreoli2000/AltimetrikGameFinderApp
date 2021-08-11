@@ -166,18 +166,15 @@ groupRadio[1].addEventListener('input', () => {
     listCards.classList.add('main__ul-grid--display');
 });
 
-//Media querie - Hiding one column style when passing to mobile version
+//Media query - Hiding one column style when passing to mobile version
 const mediaQueryOneColHide = window.matchMedia("(max-width: 768px)");
-
-const handleChangeMedia = (mq) => {
-    if (mq.matches) {
+mediaQueryOneColHide.addEventListener('change', () => {
+    if (mediaQueryOneColHide.matches) {
         listCards.classList.remove('main__ul-grid--display');
         groupRadio[0].checked = 'checked';
         groupRadio[1].checked = '';
     }
-}
-
-mediaQueryOneColHide.addEventListener('change', () => { handleChangeMedia(mediaQueryOneColHide) });
+});
 
 //Logout events
 [logoutButtonHeader, logoutButtonMenu].forEach(button => {
@@ -223,6 +220,7 @@ const checkParent = (path, ref) => {
 searchButton.addEventListener('click', () => {
     header.classList.toggle('showSearch');
 });
+
 
 // ---------- API connection ------------
 
@@ -442,6 +440,23 @@ const loadCards = (results) => {
 }
 
 // ----------------- Modal ------------------
+const openModal = (id, event) => {
+    event.stopPropagation();
+    header.classList.remove('showSearch');
+    modalWrapper.classList.remove('hidden');
+    main.classList.add('modalView');
+    modalRequest(`${url}/${id}?key=${key}`, `${url}/${id}/screenshots?key=${key}`);
+}
+
+const modalRequest = async (urlDetails, urlScreens) => {
+    modalView.innerHTML = loadingMsg;
+
+    Promise.all([gamesRequest(urlDetails, 2), gamesRequest(urlScreens, 2)]).then(values => {
+        console.log(values);
+        loadModal(values);
+    }).catch(console.log);
+}
+
 const loadModal = ([{ description_raw: description, background_image: img, name: title, released: date, genres, parent_platforms: platforms, website, publishers, developers }, { results }]) => {
 
     const release = auxDate(date);
@@ -577,23 +592,6 @@ const loadModal = ([{ description_raw: description, background_image: img, name:
     </div>`;
 }
 
-// Opening modal view
-const openModal = (id, event) => {
-    event.stopPropagation();
-    header.classList.remove('showSearch');
-    modalWrapper.classList.remove('hidden');
-    main.classList.add('modalView');
-    modalRequest(`${url}/${id}?key=${key}`, `${url}/${id}/screenshots?key=${key}`);
-}
-const modalRequest = async (urlDetails, urlScreens) => {
-    modalView.innerHTML = loadingMsg;
-    Promise.all([gamesRequest(urlDetails, 2), gamesRequest(urlScreens, 2)]).then(values => {
-        console.log(values);
-        loadModal(values);
-    }).catch(console.log());
-}
-
-//Close modal function
 const closeModal = () => {
     modalWrapper.classList.add('hidden');
     modalView.innerHTML = '';
@@ -613,24 +611,25 @@ searchInput.addEventListener('keyup', (evt) => {
 
     if (inputValue.trim().length > 2) {
 
-        if (evt.keyCode === 13) {
+        if (evt.keyCode === 13 && inputValue !== lastSearch) {
             searchAction(inputValue);
-
-        } else if (lastSearch !== inputValue) {
-            searchParent.classList.add('searchSuggestion');
-            gamesRequest(`${urlGeneral}&search=${inputValue}&page_size=3`, 1);
         }
+
+        // else if (lastSearch !== inputValue) {
+        //     searchParent.classList.add('searchSuggestion');
+        //     gamesRequest(`${urlGeneral}&search=${inputValue}&page_size=3`, 1);
+        // }
 
         lastSearch = inputValue;
 
-    } else {
-
-        searchParent.classList.remove('searchSuggestion');
-        clearSuggestions();
     }
+    // else {
+
+    //     searchParent.classList.remove('searchSuggestion');
+    //     clearSuggestions();
+    // }
 });
 
-//Search input
 const searchAction = (input) => {
     hasSearch = true;
 
@@ -660,43 +659,43 @@ homeAction();
 
 // ------------- Suggestions --------------
 
-//Load suggestions
-const loadSuggestions = (results) => {
-    let count = 0;
-    results.forEach(({ name, id }) => {
-        buttonsSuggestion[count].innerHTML = `${name}`;
-        buttonsSuggestion[count].setAttribute('value', `${name}`);
-        count++;
-    });
-}
+// //Load suggestions
+// const loadSuggestions = (results) => {
+//     let count = 0;
+//     results.forEach(({ name, id }) => {
+//         buttonsSuggestion[count].innerHTML = `${name}`;
+//         buttonsSuggestion[count].setAttribute('value', `${name}`);
+//         count++;
+//     });
+// }
 
-//Suggestion addings
-buttonsSuggestion.forEach(button => {
-    button.addEventListener('click', () => {
-        const inputValue = button.getAttribute('value');
+// //Suggestion addings
+// buttonsSuggestion.forEach(button => {
+//     button.addEventListener('click', () => {
+//         const inputValue = button.getAttribute('value');
 
-        if (inputValue === '') {
-            homeAction();
+//         if (inputValue === '') {
+//             homeAction();
 
-        } else {
-            searchParent.classList.remove('searchSuggestion');
-            searchInput.value = inputValue
-            searchAction(inputValue);
-            lastSearch = inputValue;
-        }
-    });
-});
+//         } else {
+//             searchParent.classList.remove('searchSuggestion');
+//             searchInput.value = inputValue
+//             searchAction(inputValue);
+//             lastSearch = inputValue;
+//         }
+//     });
+// });
 
-searchInput.addEventListener('click', () => {
-    if (searchInput.value.trim().length > 2) {
-        searchParent.classList.add('searchSuggestion');
-    }
-});
+// searchInput.addEventListener('click', () => {
+//     if (searchInput.value.trim().length > 2) {
+//         searchParent.classList.add('searchSuggestion');
+//     }
+// });
 
-const clearSuggestions = () => {
-    buttonsSuggestion.forEach(button => {
-        button.innerHTML = '...';
-        button.setAttribute('value', '');
-    });
-}
+// const clearSuggestions = () => {
+//     buttonsSuggestion.forEach(button => {
+//         button.innerHTML = '...';
+//         button.setAttribute('value', '');
+//     });
+// }
 
