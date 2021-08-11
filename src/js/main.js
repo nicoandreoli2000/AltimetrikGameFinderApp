@@ -273,7 +273,6 @@ const gamesRequest = async (url = urlGeneral, action = 0) => {
                 loadSuggestions(respJson.results);
 
             } else {
-                console.log(respJson);
                 return respJson;
             }
         }
@@ -283,7 +282,7 @@ const gamesRequest = async (url = urlGeneral, action = 0) => {
     }
 }
 
-//Load cards
+// ----------------- Cards --------------------
 
 const auxGenres = (genres) => {
     let genreString = 'None';
@@ -436,107 +435,22 @@ const loadCards = (results) => {
     });
 }
 
-//Load suggestions
-const loadSuggestions = (results) => {
-    let count = 0;
-    results.forEach(({ name, id }) => {
-        buttonsSuggestion[count].innerHTML = `${name}`;
-        buttonsSuggestion[count].setAttribute('value', `${name}`);
-        count++;
+// ----------------- Modal ------------------
+
+const auxImgs = (results) => {
+    let imgs = [];
+
+    results.forEach(({ image }) => {
+        imgs.push(image);
     });
+
+    return imgs;
 }
-
-//Suggestion addings
-buttonsSuggestion.forEach(button => {
-    button.addEventListener('click', () => {
-        const inputValue = button.getAttribute('value');
-
-        if (inputValue === '') {
-            homeAction();
-
-        } else {
-            searchParent.classList.remove('searchSuggestion');
-            searchInput.value = inputValue
-            searchAction(inputValue);
-            lastSearch = inputValue;
-        }
-    });
-});
-
-searchInput.addEventListener('click', () => {
-    if (searchInput.value.trim().length > 2) {
-        searchParent.classList.add('searchSuggestion');
-    }
-});
-
-const clearSuggestions = () => {
-    buttonsSuggestion.forEach(button => {
-        button.innerHTML = '...';
-        button.setAttribute('value', '');
-    });
-}
-
-//On key up event
-let hasSearch = true;
-let lastSearch = '';
-
-searchInput.addEventListener('keyup', (evt) => {
-
-    const inputValue = searchInput.value;
-
-    if (inputValue.trim().length > 2) {
-
-        if (evt.keyCode === 13) {
-            searchAction(inputValue);
-
-        } else if (lastSearch !== inputValue) {
-            searchParent.classList.add('searchSuggestion');
-            gamesRequest(`${urlGeneral}&search=${inputValue}&page_size=3`, 1);
-        }
-
-        lastSearch = inputValue;
-
-    } else {
-
-        searchParent.classList.remove('searchSuggestion');
-        clearSuggestions();
-    }
-});
-
-//Search input
-const searchAction = (input) => {
-    hasSearch = true;
-
-    searchFor.innerHTML = 'Search results';
-    searchValue.innerHTML = `${input}`;
-
-    gamesRequest(`${urlGeneral}&search=${input}`);
-};
-
-
-//Home event
-homeButton.addEventListener('click', () => {
-    homeAction();
-});
-
-const homeAction = () => {
-    if (hasSearch) {
-        hasSearch = false;
-        searchFor.innerHTML = 'New and trending';
-        searchValue.innerHTML = 'Based on player counts and release date';
-        gamesRequest();
-    }
-};
-
-//Popular page load
-homeAction();
-
-//Load modal
-
-const loadModal = ([{ description_raw: description, background_image: img, name: title, released: date, genres, parent_platforms: platforms, website, publishers, developers }, { results: aditionalImgs }]) => {
+const loadModal = ([{ description_raw: description, background_image: img, name: title, released: date, genres, parent_platforms: platforms, website, publishers, developers }, { results }]) => {
 
     const release = auxDate(date);
     const genresInfo = auxPlats(platforms, true);
+    const screenshots = auxImgs(results);
 
     modalView.innerHTML = `<div class="modal__bg">
         <img src="${img || urlImgNotFound}" alt="${title} principal image">
@@ -610,21 +524,21 @@ const loadModal = ([{ description_raw: description, background_image: img, name:
     <div class="modal__images flex-space">
 
         <div>
-            <img src="${additionalImgs[0] || urlImgNotFound}" alt="Modal first game image">
+            <img src="${screenshots[0] || urlImgNotFound}" alt="Modal first game image">
         </div>
         <div>
-            <img src="${additionalImgs[1] || urlImgNotFound}" alt="Modal second game image">
+            <img src="${screenshots[1] || urlImgNotFound}" alt="Modal second game image">
         </div>
         <div>
-            <img src="${additionalImgs[2] || urlImgNotFound}" alt="Modal third game image">
+            <img src="${screenshots[2] || urlImgNotFound}" alt="Modal third game image">
         </div>
         <div>
-            <img src="${additionalImgs[3] || urlImgNotFound}" alt="Modal fourth game image">
+            <img src="${screenshots[3] || urlImgNotFound}" alt="Modal fourth game image">
         </div>
         <div class="modal__img-special">
             <div>
             </div>
-            <img src="${additionalImgs[4] || urlImgNotFound}" alt="Modal fifth game image">
+            <img src="${screenshots[4] || urlImgNotFound}" alt="Modal fifth game image">
             <p>View all</p>
             <svg viewBox="0 0 9 2" fill="white" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -645,11 +559,11 @@ const loadModal = ([{ description_raw: description, background_image: img, name:
         </div>
         <div class="modal__link flex-start-column">
             <p>Publisher</p>
-            <a>${publishers.length !== 0 ? publishers[0].name : 'None'}</a>
+            <a>${publishers[0]?.name || 'Unknown'}</a>
         </div>
         <div class="modal__link flex-start-column">
             <p>Website</p>
-            <a>${website || 'None'}</a>
+            <a>${website}</a>
         </div>
         <div class="modal__link flex-start-column">
             <p>Genre</p>
@@ -675,12 +589,12 @@ const openModal = (id, event) => {
     main.classList.add('modalView');
     modalRequest(`${url}/${id}?key=${key}`, `${url}/${id}/screenshots?key=${key}`);
 }
-
 const modalRequest = async (urlDetails, urlScreens) => {
     modalView.innerHTML = loadingMsg;
     Promise.all([gamesRequest(urlDetails, 2), gamesRequest(urlScreens, 2)]).then(values => {
+        console.log(values);
         loadModal(values);
-    });
+    }).catch(console.log());
 }
 
 //Close modal function
@@ -689,3 +603,103 @@ const closeModal = () => {
     modalView.innerHTML = '';
     main.classList.remove('modalView');
 }
+
+
+// ------------ Search -----------------
+//On key up event
+let hasSearch = true;
+let lastSearch = '';
+
+searchInput.addEventListener('keyup', (evt) => {
+
+    const inputValue = searchInput.value;
+
+    if (inputValue.trim().length > 2) {
+
+        if (evt.keyCode === 13) {
+            searchAction(inputValue);
+
+        } else if (lastSearch !== inputValue) {
+            searchParent.classList.add('searchSuggestion');
+            gamesRequest(`${urlGeneral}&search=${inputValue}&page_size=3`, 1);
+        }
+
+        lastSearch = inputValue;
+
+    } else {
+
+        searchParent.classList.remove('searchSuggestion');
+        clearSuggestions();
+    }
+});
+
+//Search input
+const searchAction = (input) => {
+    hasSearch = true;
+
+    searchFor.innerHTML = 'Search results';
+    searchValue.innerHTML = `${input}`;
+
+    gamesRequest(`${urlGeneral}&search=${input}`);
+};
+
+//Home event
+homeButton.addEventListener('click', () => {
+    homeAction();
+});
+
+const homeAction = () => {
+    if (hasSearch) {
+        hasSearch = false;
+        searchFor.innerHTML = 'New and trending';
+        searchValue.innerHTML = 'Based on player counts and release date';
+        gamesRequest();
+    }
+};
+
+//Popular page load
+homeAction();
+
+
+// ------------- Suggestions --------------
+
+//Load suggestions
+const loadSuggestions = (results) => {
+    let count = 0;
+    results.forEach(({ name, id }) => {
+        buttonsSuggestion[count].innerHTML = `${name}`;
+        buttonsSuggestion[count].setAttribute('value', `${name}`);
+        count++;
+    });
+}
+
+//Suggestion addings
+buttonsSuggestion.forEach(button => {
+    button.addEventListener('click', () => {
+        const inputValue = button.getAttribute('value');
+
+        if (inputValue === '') {
+            homeAction();
+
+        } else {
+            searchParent.classList.remove('searchSuggestion');
+            searchInput.value = inputValue
+            searchAction(inputValue);
+            lastSearch = inputValue;
+        }
+    });
+});
+
+searchInput.addEventListener('click', () => {
+    if (searchInput.value.trim().length > 2) {
+        searchParent.classList.add('searchSuggestion');
+    }
+});
+
+const clearSuggestions = () => {
+    buttonsSuggestion.forEach(button => {
+        button.innerHTML = '...';
+        button.setAttribute('value', '');
+    });
+}
+
