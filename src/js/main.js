@@ -1,4 +1,4 @@
-//HTML references
+// ------------ Variables -----------
 
 //General
 const header = document.querySelector('.header');
@@ -146,7 +146,17 @@ const nintendo = `<svg width="13" height="13" viewBox="0 0 13 13" fill="white" x
     <path fill-rule="evenodd" clip-rule="evenodd" d="M3.45677 0H6.40457C6.45759 0 6.5 0.0408805 6.5 0.0919811V12.908C6.5 12.9591 6.45759 13 6.40457 13H3.45677C1.54812 13 0 11.5079 0 9.66824V3.33176C0 1.49214 1.54812 0 3.45677 0ZM3.45677 11.9575H5.41843V1.04245H3.45677C2.82055 1.04245 2.22675 1.28774 1.7814 1.71698C1.32545 2.14623 1.08157 2.71855 1.08157 3.33176V9.66824C1.08157 10.2814 1.33605 10.8538 1.7814 11.283C2.22675 11.7225 2.82055 11.9575 3.45677 11.9575Z" fill="white"/>
     </svg>`;
 
-// ---------- Simple actions ------------
+//Msgs for errors
+const loadingMsg = '<p>Loading... Please wait</p>';
+const notFoundMsg = '<p>No serach results found</p>';
+const urlImgNotFound = '../assets/images/img/main/img-not-found.jpg';
+const svgMsg = 'Agustin did not upload all svgs!!';
+const descriptionMsg = 'The description of this game is not available';
+const unknownMsg = 'Unknown';
+const noneMsg = 'None';
+
+
+// ----------- Simple actions -------------
 
 //Radio buttons changing view
 groupRadio[0].addEventListener('input', () => {
@@ -176,21 +186,7 @@ mediaQueryOneColHide.addEventListener('change', () => { handleChangeMedia(mediaQ
     });
 });
 
-//Menu pop up
-const checkParent = (path, ref) => {
-    let has = false;
-
-    path.forEach(element => {
-        if (element === ref) {
-            has = true;
-        }
-    });
-
-    return has;
-};
-
-
-//Menu, suggestion and modal events
+//Clicking outside box events - Modal, Menu and Suggestions
 document.addEventListener('click', ({ path }) => {
 
     if (checkParent(path, menuOpenButton)) {
@@ -205,13 +201,23 @@ document.addEventListener('click', ({ path }) => {
     if (!checkParent(path, searchParent)) {
         searchParent.classList.remove('searchSuggestion')
     }
-});
 
-document.addEventListener('click', ({ path }) => {
     if (!modalView.classList.contains('hidden') && !checkParent(path, modalView)) {
         closeModal();
     }
 });
+
+const checkParent = (path, ref) => {
+    let has = false;
+
+    path.forEach(element => {
+        if (element === ref) {
+            has = true;
+        }
+    });
+
+    return has;
+};
 
 //Search bar pop in mobile
 searchButton.addEventListener('click', () => {
@@ -232,13 +238,6 @@ const optionalInfo = {
         "Content-Type": "application/json"
     }
 };
-
-//Msgs
-const loadingMsg = '<p>Loading... Please wait</p>';
-const notFoundMsg = '<p>No serach results found</p>';
-
-//Image not found
-const urlImgNotFound = '../assets/images/img/main/img-not-found.jpg';
 
 //action = 0 ---> Load cards
 //action = 1 ---> Load suggestions
@@ -282,7 +281,7 @@ const gamesRequest = async (url = urlGeneral, action = 0) => {
     }
 }
 
-// ----------------- Cards --------------------
+// ---------------- Aux functions ---------------
 
 const auxGenres = (genres) => {
     let genreString = 'None';
@@ -347,6 +346,18 @@ const auxPlats = (platforms) => {
 
     return [svgs, titles];
 }
+const auxImgs = (results) => {
+    let imgs = [];
+
+    results.forEach(({ image }) => {
+        imgs.push(image);
+    });
+
+    return imgs;
+}
+
+
+// ----------------- Cards --------------------
 
 const loadCards = (results) => {
 
@@ -431,21 +442,11 @@ const loadCards = (results) => {
 }
 
 // ----------------- Modal ------------------
-
-// const auxImgs = (results) => {
-//     let imgs = [];
-
-//     results.forEach(({ image }) => {
-//         imgs.push(image);
-//     });
-
-//     return imgs;
-// }
-const loadModal = ([{ description_raw: description, background_image: img, name: title, released: date, genres, parent_platforms: platforms, website, publishers, developers }, { results: [{ image: img1 }, { image: img2 }, { image: img3 }, { image: img4 }, { image: img5 }] }]) => {
+const loadModal = ([{ description_raw: description, background_image: img, name: title, released: date, genres, parent_platforms: platforms, website, publishers, developers }, { results }]) => {
 
     const release = auxDate(date);
     const genresInfo = auxPlats(platforms);
-    // const screenshots = auxImgs(results);
+    const screenshots = auxImgs(results);
 
     modalView.innerHTML = `<div class="modal__bg">
         <img src="${img || urlImgNotFound}" alt="${title} principal image">
@@ -498,7 +499,7 @@ const loadModal = ([{ description_raw: description, background_image: img, name:
     </div>
 
     <div class="modal__description">
-        <p>${description}</p>
+        <p>${description || descriptionMsg}</p>
     </div>
 
     <div class="modal__comment-review flex-start">
@@ -519,21 +520,21 @@ const loadModal = ([{ description_raw: description, background_image: img, name:
     <div class="modal__images flex-space">
 
         <div>
-            <img src="${img1 || urlImgNotFound}" alt="Modal first game image">
+            <img src="${screenshots[1] || urlImgNotFound}" alt="Modal first game image">
         </div>
         <div>
-            <img src="${img2 || urlImgNotFound}" alt="Modal second game image">
+            <img src="${screenshots[2] || urlImgNotFound}" alt="Modal second game image">
         </div>
         <div>
-            <img src="${img3 || urlImgNotFound}" alt="Modal third game image">
+            <img src="${screenshots[3] || urlImgNotFound}" alt="Modal third game image">
         </div>
         <div>
-            <img src="${img4 || urlImgNotFound}" alt="Modal fourth game image">
+            <img src="${screenshots[4] || urlImgNotFound}" alt="Modal fourth game image">
         </div>
         <div class="modal__img-special">
             <div>
             </div>
-            <img src="${img5 || urlImgNotFound}" alt="Modal fifth game image">
+            <img src="${screenshots[5] || urlImgNotFound}" alt="Modal fifth game image">
             <p>View all</p>
             <svg viewBox="0 0 9 2" fill="white" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -554,7 +555,7 @@ const loadModal = ([{ description_raw: description, background_image: img, name:
         </div>
         <div class="modal__link flex-start-column">
             <p>Publisher</p>
-            <a>${publishers[0]?.name || 'Unknown'}</a>
+            <a>${publishers?.[0].name || unknownMsg}</a>
         </div>
         <div class="modal__link flex-start-column">
             <p>Website</p>
@@ -566,7 +567,7 @@ const loadModal = ([{ description_raw: description, background_image: img, name:
         </div>
         <div class="modal__link flex-start-column">
             <p>Developer</p>
-            <a>${publishers.length !== 0 ? developers[0].name : 'None'}</a>
+            <a>${developers?.[0].name || unknownMsg}</a>
         </div>
         <div class="modal__link flex-start-column">
             <p>Age rating</p>
@@ -601,6 +602,7 @@ const closeModal = () => {
 
 
 // ------------ Search -----------------
+
 //On key up event
 let hasSearch = true;
 let lastSearch = '';
