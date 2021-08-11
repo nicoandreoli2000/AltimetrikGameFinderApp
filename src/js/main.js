@@ -304,25 +304,20 @@ const auxDate = (date) => {
     const dateArr = (new Date(date)).toString().split(' ');
     return `${dateArr[1]} ${dateArr[2]} ${dateArr[3]}`;
 }
-const auxPlats = (platforms, names = false) => {
+const auxPlats = (platforms) => {
 
-    let ids = [];
     let titles = '';
-
-    platforms.forEach(({ platform }) => {
-        ids.push(platform.id);
-
-        if (titles === '') {
-            titles = platform.name;
-        } else {
-            titles += ', ' + platform.name;
-
-        }
-    });
-
     let svgs = '';
 
-    ids.forEach(id => {
+    platforms.forEach(({ platform: { id, name } }) => {
+
+        if (titles === '') {
+            titles = name;
+
+        } else {
+            titles += ', ' + name;
+        }
+
         switch (id) {
             case 1:
                 svgs += windows;
@@ -437,20 +432,20 @@ const loadCards = (results) => {
 
 // ----------------- Modal ------------------
 
-const auxImgs = (results) => {
-    let imgs = [];
+// const auxImgs = (results) => {
+//     let imgs = [];
 
-    results.forEach(({ image }) => {
-        imgs.push(image);
-    });
+//     results.forEach(({ image }) => {
+//         imgs.push(image);
+//     });
 
-    return imgs;
-}
-const loadModal = ([{ description_raw: description, background_image: img, name: title, released: date, genres, parent_platforms: platforms, website, publishers, developers }, { results }]) => {
+//     return imgs;
+// }
+const loadModal = ([{ description_raw: description, background_image: img, name: title, released: date, genres, parent_platforms: platforms, website, publishers, developers }, { results: [{ image: img1 }, { image: img2 }, { image: img3 }, { image: img4 }, { image: img5 }] }]) => {
 
     const release = auxDate(date);
-    const genresInfo = auxPlats(platforms, true);
-    const screenshots = auxImgs(results);
+    const genresInfo = auxPlats(platforms);
+    // const screenshots = auxImgs(results);
 
     modalView.innerHTML = `<div class="modal__bg">
         <img src="${img || urlImgNotFound}" alt="${title} principal image">
@@ -524,21 +519,21 @@ const loadModal = ([{ description_raw: description, background_image: img, name:
     <div class="modal__images flex-space">
 
         <div>
-            <img src="${screenshots[0] || urlImgNotFound}" alt="Modal first game image">
+            <img src="${img1 || urlImgNotFound}" alt="Modal first game image">
         </div>
         <div>
-            <img src="${screenshots[1] || urlImgNotFound}" alt="Modal second game image">
+            <img src="${img2 || urlImgNotFound}" alt="Modal second game image">
         </div>
         <div>
-            <img src="${screenshots[2] || urlImgNotFound}" alt="Modal third game image">
+            <img src="${img3 || urlImgNotFound}" alt="Modal third game image">
         </div>
         <div>
-            <img src="${screenshots[3] || urlImgNotFound}" alt="Modal fourth game image">
+            <img src="${img4 || urlImgNotFound}" alt="Modal fourth game image">
         </div>
         <div class="modal__img-special">
             <div>
             </div>
-            <img src="${screenshots[4] || urlImgNotFound}" alt="Modal fifth game image">
+            <img src="${img5 || urlImgNotFound}" alt="Modal fifth game image">
             <p>View all</p>
             <svg viewBox="0 0 9 2" fill="white" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd"
