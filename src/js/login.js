@@ -1,6 +1,3 @@
-// Custom security
-localStorage.clear();
-
 //HTML references
 
 //General

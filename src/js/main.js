@@ -180,6 +180,7 @@ mediaQueryOneColHide.addEventListener('change', () => {
 [logoutButtonHeader, logoutButtonMenu].forEach(button => {
     button.addEventListener('click', () => {
         window.location.href = 'login.html';
+        localStorage.clear();
     });
 });
 
