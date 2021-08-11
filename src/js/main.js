@@ -146,15 +146,21 @@ const nintendo = `<svg width="13" height="13" viewBox="0 0 13 13" fill="white" x
     <path fill-rule="evenodd" clip-rule="evenodd" d="M3.45677 0H6.40457C6.45759 0 6.5 0.0408805 6.5 0.0919811V12.908C6.5 12.9591 6.45759 13 6.40457 13H3.45677C1.54812 13 0 11.5079 0 9.66824V3.33176C0 1.49214 1.54812 0 3.45677 0ZM3.45677 11.9575H5.41843V1.04245H3.45677C2.82055 1.04245 2.22675 1.28774 1.7814 1.71698C1.32545 2.14623 1.08157 2.71855 1.08157 3.33176V9.66824C1.08157 10.2814 1.33605 10.8538 1.7814 11.283C2.22675 11.7225 2.82055 11.9575 3.45677 11.9575Z" fill="white"/>
     </svg>`;
 
-//Msgs for errors
-const loadingMsg = '<p>Loading... Please wait</p>';
+//Information msgs
+const searchMsg = 'Search results';
+const newMsg = 'New and trending';
+const basedMsg = 'Based on player counts and release date';
 const notFoundMsg = '<p>No serach results found</p>';
-const urlImgNotFound = '../assets/images/img/main/img-not-found.jpg';
+const loadingMsg = '<p>Loading... Please wait</p>';
+
+//Error msgs
 const svgMsg = 'Agustin did not upload all svgs!!';
 const descriptionMsg = 'The description of this game is not available';
 const unknownMsg = 'Unknown';
 const noneMsg = 'None';
 
+//Img not found
+const urlImgNotFound = '../assets/images/img/main/img-not-found.jpg';
 
 // ----------- Simple actions -------------
 
@@ -602,28 +608,22 @@ const closeModal = () => {
 
 // ------------ Search -----------------
 
-//On key up event
 let hasSearch = true;
 let lastSearch = '';
 
 searchInput.addEventListener('keyup', (evt) => {
 
-    const inputValue = searchInput.value;
+    const inputValue = searchInput.value.trim();
 
-    if (inputValue.trim().length > 2) {
-
-        if (evt.keyCode === 13 && inputValue !== lastSearch) {
-            searchAction(inputValue);
-        }
-
+    if (inputValue.length > 2 && evt.keyCode === 13 && inputValue !== lastSearch) {
+        searchAction(inputValue);
         // else if (lastSearch !== inputValue) {
         //     searchParent.classList.add('searchSuggestion');
         //     gamesRequest(`${urlGeneral}&search=${inputValue}&page_size=3`, 1);
         // }
-
         lastSearch = inputValue;
-
     }
+
     // else {
 
     //     searchParent.classList.remove('searchSuggestion');
@@ -633,8 +633,7 @@ searchInput.addEventListener('keyup', (evt) => {
 
 const searchAction = (input) => {
     hasSearch = true;
-
-    searchFor.innerHTML = 'Search results';
+    searchFor.innerHTML = searchMsg;
     searchValue.innerHTML = `${input}`;
 
     gamesRequest(`${urlGeneral}&search=${input}`);
@@ -648,8 +647,8 @@ homeButton.addEventListener('click', () => {
 const homeAction = () => {
     if (hasSearch) {
         hasSearch = false;
-        searchFor.innerHTML = 'New and trending';
-        searchValue.innerHTML = 'Based on player counts and release date';
+        searchFor.innerHTML = newMsg;
+        searchValue.innerHTML = basedMsg;
         gamesRequest();
     }
 };
