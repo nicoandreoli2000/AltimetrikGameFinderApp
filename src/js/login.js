@@ -208,7 +208,6 @@ const postRequest = async (email, pass) => {
 
     } catch (error) {
 
-        console.log(error);
         snackbar.classList.remove('hidden');
     }
 

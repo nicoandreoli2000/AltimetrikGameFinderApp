@@ -151,7 +151,7 @@ const searchMsg = 'Search results';
 const newMsg = 'New and trending';
 const basedMsg = 'Based on player counts and release date';
 const notFoundMsg = '<p>No serach results found</p>';
-const loadingMsg = '<p>Loading... Please wait</p>';
+const loadingMsg = `<img width="30" src="../assets/gifs/loading.gif">`;
 
 //Error msgs
 const svgMsg = 'Agustin did not upload all svgs!!';
@@ -248,41 +248,18 @@ const optionalInfo = {
 //action = 1 ---> Load suggestions
 //action = 2 ---> Load modal
 
-const gamesRequest = async (url = urlGeneral, action = 0) => {
-
-    if (action === 0) {
-        listCards.innerHTML = loadingMsg;
-
-    } else if (action === 1) {
-        clearSuggestions();
-
-    }
+const gamesRequest = async (url = urlGeneral) => {
 
     try {
+
         let resp = await fetch(url, optionalInfo);
 
         if (resp.ok) {
-            let respJson = await resp.json();
-
-            if (action === 0) {
-                const results = respJson.results;
-
-                if (results.length > 0) {
-                    loadCards(results);
-                } else {
-                    listCards.innerHTML = notFoundMsg;
-                }
-
-            } else if (action === 1) {
-                loadSuggestions(respJson.results);
-
-            } else {
-                return respJson;
-            }
+            return await resp.json();
         }
 
     } catch (error) {
-        // console.log(error);
+        console.log(error);
     }
 }
 
@@ -313,41 +290,44 @@ const auxPlats = (platforms) => {
     let titles = '';
     let svgs = '';
 
-    platforms.forEach(({ platform: { id, name } }) => {
+    if (platforms !== []) {
+        platforms.forEach(({ platform: { id, name } }) => {
 
-        if (titles === '') {
-            titles = name;
+            if (titles === '') {
+                titles = name;
 
-        } else {
-            titles += ', ' + name;
-        }
+            } else {
+                titles += ', ' + name;
+            }
 
-        switch (id) {
-            case 1:
-                svgs += windows;
-                break;
-            case 2:
-                svgs += play;
-                break;
-            case 3:
-                svgs += xbox;
-                break;
-            case 5:
-                svgs += apple;
-                break;
-            case 6:
-                svgs += linux;
-                break;
-            case 7:
-                svgs += nintendo;
-                break;
-            case 8:
-                svgs += android;
-                break;
-            default:
-                break;
-        }
-    });
+            switch (id) {
+                case 1:
+                    svgs += windows;
+                    break;
+                case 2:
+                    svgs += play;
+                    break;
+                case 3:
+                    svgs += xbox;
+                    break;
+                case 5:
+                    svgs += apple;
+                    break;
+                case 6:
+                    svgs += linux;
+                    break;
+                case 7:
+                    svgs += nintendo;
+                    break;
+                case 8:
+                    svgs += android;
+                    break;
+                default:
+                    break;
+            }
+        });
+    }
+
 
     return [svgs, titles];
 }
@@ -361,7 +341,6 @@ const auxImgs = (results) => {
     return imgs;
 }
 
-
 // ----------------- Cards --------------------
 
 const loadCards = (results) => {
@@ -370,7 +349,7 @@ const loadCards = (results) => {
     let number = 1;
     const div = document.createElement('div');
 
-    results.forEach(({ name: title, genres, background_image: img, released: date, parent_platforms: platforms, id }) => {
+    results.forEach(({ name: title, genres, background_image: img, released: date, parent_platforms: platforms = [], id }) => {
 
         div.innerHTML = `<li class="main__card">
             <button class="main__card-button flex-start-column" onclick="openModal(${id}, event)">
@@ -455,16 +434,18 @@ const openModal = (id, event) => {
     modalRequest(`${url}/${id}?key=${key}`, `${url}/${id}/screenshots?key=${key}`);
 }
 
-const modalRequest = async (urlDetails, urlScreens) => {
+const modalRequest = (urlDetails, urlScreens) => {
     modalView.innerHTML = loadingMsg;
 
-    Promise.all([gamesRequest(urlDetails, 2), gamesRequest(urlScreens, 2)]).then(values => {
-        console.log(values);
-        loadModal(values);
-    }).catch(console.log);
+    Promise.all([gamesRequest(urlDetails), gamesRequest(urlScreens)])
+        .then(values => {
+            console.log(values);
+            loadModal(values);
+        })
+        .catch(console.log);
 }
 
-const loadModal = ([{ description_raw: description, background_image: img, name: title, released: date, genres, parent_platforms: platforms, website, publishers, developers }, { results }]) => {
+const loadModal = ([{ description_raw: description, background_image: img, name: title, released: date, genres, parent_platforms: platforms, website, publishers: [publisher], developers: [developer] }, { results }]) => {
 
     const release = auxDate(date);
     const genresInfo = auxPlats(platforms);
@@ -577,7 +558,7 @@ const loadModal = ([{ description_raw: description, background_image: img, name:
         </div>
         <div class="modal__link flex-start-column">
             <p>Publisher</p>
-            <a>${publishers?.[0].name || unknownMsg}</a>
+            <a>${publisher?.name || unknownMsg}</a>
         </div>
         <div class="modal__link flex-start-column">
             <p>Website</p>
@@ -589,7 +570,7 @@ const loadModal = ([{ description_raw: description, background_image: img, name:
         </div>
         <div class="modal__link flex-start-column">
             <p>Developer</p>
-            <a>${developers?.[0].name || unknownMsg}</a>
+            <a>${developer?.name || unknownMsg}</a>
         </div>
         <div class="modal__link flex-start-column">
             <p>Age rating</p>
@@ -613,45 +594,86 @@ let lastSearch = '';
 
 searchInput.addEventListener('keyup', (evt) => {
 
-    const inputValue = searchInput.value.trim();
+    const inputValue = (searchInput.value).trim();
 
-    if (inputValue.length > 2 && evt.keyCode === 13 && inputValue !== lastSearch) {
-        searchAction(inputValue);
-        // else if (lastSearch !== inputValue) {
-        //     searchParent.classList.add('searchSuggestion');
-        //     gamesRequest(`${urlGeneral}&search=${inputValue}&page_size=3`, 1);
-        // }
-        lastSearch = inputValue;
+    if (inputValue.length > 2) {
+
+        if (evt.keyCode === 13) {
+
+            if (inputValue !== lastSearch) {
+                hasSearch = true;
+                lastSearch = inputValue;
+                searchRequest(inputValue);
+            }
+        } else {
+
+            // suggestionRequest(inputValue);
+        }
+
     }
 
-    // else {
-
-    //     searchParent.classList.remove('searchSuggestion');
-    //     clearSuggestions();
-    // }
 });
 
-const searchAction = (input) => {
-    hasSearch = true;
+const searchRequest = (input) => {
+
     searchFor.innerHTML = searchMsg;
     searchValue.innerHTML = `${input}`;
+    listCards.innerHTML = loadingMsg;
+    loadingState(true);
 
-    gamesRequest(`${urlGeneral}&search=${input}`);
+
+    gamesRequest(`${urlGeneral}&search=${input}`)
+        .then(({ results }) => {
+            if (results.length > 0) {
+                loadCards(results);
+            } else {
+                listCards.innerHTML = notFoundMsg;
+            }
+            loadingState(false);
+        });
+}
+
+const loadingState = (bool) => {
+    searchInput.disabled = bool;
+    groupRadio.forEach(radio => {
+        radio.disabled = bool;
+    });
+
+    if (bool) {
+        homeButton.removeEventListener('click', () => {
+            homeAction();
+        });
+    } else {
+        homeButton.addEventListener('click', () => {
+            homeAction();
+        });
+    }
+
 };
 
-//Home event
 homeButton.addEventListener('click', () => {
     homeAction();
 });
 
 const homeAction = () => {
+
     if (hasSearch) {
+
         hasSearch = false;
+        lastSearch = '';
+        searchInput.value = '';
         searchFor.innerHTML = newMsg;
         searchValue.innerHTML = basedMsg;
-        gamesRequest();
+        listCards.innerHTML = loadingMsg;
+        loadingState(true);
+
+        gamesRequest()
+            .then(({ results }) => {
+                loadCards(results);
+                loadingState(false);
+            });
     }
-};
+}
 
 //Popular page load
 homeAction();
@@ -659,7 +681,14 @@ homeAction();
 
 // ------------- Suggestions --------------
 
-// //Load suggestions
+// const suggestionRequest = (url) => {
+
+//     gamesRequest(url).then(({ results }) => {
+
+//     });
+// }
+
+// // Load suggestions
 // const loadSuggestions = (results) => {
 //     let count = 0;
 //     results.forEach(({ name, id }) => {
@@ -698,4 +727,3 @@ homeAction();
 //         button.setAttribute('value', '');
 //     });
 // }
-
