@@ -154,10 +154,8 @@ const notFoundMsg = '<p>No serach results found</p>';
 const loadingMsg = `<img width="30" src="../assets/gifs/loading.gif">`;
 
 //Error msgs
-const svgMsg = 'Agustin did not upload all svgs!!';
 const descriptionMsg = 'The description of this game is not available';
 const unknownMsg = 'Unknown';
-const noneMsg = 'None';
 
 //Img not found
 const urlImgNotFound = '../assets/images/img/main/img-not-found.jpg';
@@ -248,7 +246,7 @@ const optionalInfo = {
 //action = 1 ---> Load suggestions
 //action = 2 ---> Load modal
 
-const gamesRequest = async (url = urlGeneral) => {
+const gamesRequest = async (url) => {
 
     try {
 
@@ -266,7 +264,7 @@ const gamesRequest = async (url = urlGeneral) => {
 // ---------------- Aux functions ---------------
 
 const auxGenres = (genres) => {
-    let genreString = 'None';
+    let genreString = '';
 
     if (genres.length !== 0) {
         genreString = '';
@@ -343,13 +341,15 @@ const auxImgs = (results) => {
 
 // ----------------- Cards --------------------
 
-const loadCards = (results) => {
+const loadCards = async (results, descriptionList) => {
 
     listCards.innerHTML = '';
     let number = 1;
     const div = document.createElement('div');
 
     results.forEach(({ name: title, genres, background_image: img, released: date, parent_platforms: platforms = [], id }) => {
+
+        let description = descriptionRequest(id);
 
         div.innerHTML = `<li class="main__card">
             <button class="main__card-button flex-start-column" onclick="openModal(${id}, event)">
@@ -407,11 +407,7 @@ const loadCards = (results) => {
                     </div>
 
                     <div class="main__card-description">
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro aliquam
-                            nihil, perferendis enim ipsum, unde officiis recusandae fugit rerum incidunt
-                            laudantium vel eius. Ab porro perspiciatis reiciendis nisi! Beatae,
-                            repellendus?Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam,
-                            at sunt. Consequuntur tempore nobis dolorum vitae. Cum consequuntur, quam
+                        <p>${descriptionList[number - 1] || descriptionMsg}
                         </p>
                     </div>
                 </div>
@@ -423,6 +419,13 @@ const loadCards = (results) => {
         listCards.append(div.firstChild);
         number++;
     });
+}
+
+const descriptionRequest = (id) => {
+    gamesRequest(`${url}/${id}?key=${key}`)
+        .then(({ description_raw: description }) => {
+            return description;
+        });
 }
 
 // ----------------- Modal ------------------
@@ -550,7 +553,7 @@ const loadModal = ([{ description_raw: description, background_image: img, name:
     <div class="modal__links flex-start-column">
         <div class="modal__link flex-start-column">
             <p>Platforms</p>
-            <a>${genresInfo[1]}</a>
+            <a>${genresInfo[1] || unknownMsg}</a>
         </div>
         <div class="modal__link flex-start-column">
             <p>Release date</p>
@@ -562,11 +565,11 @@ const loadModal = ([{ description_raw: description, background_image: img, name:
         </div>
         <div class="modal__link flex-start-column">
             <p>Website</p>
-            <a>${website}</a>
+            <a>${website || unknownMsg}</a>
         </div>
         <div class="modal__link flex-start-column">
             <p>Genre</p>
-            <a>${auxGenres(genres)}</a>
+            <a>${auxGenres(genres) || unknownMsg}</a>
         </div>
         <div class="modal__link flex-start-column">
             <p>Developer</p>
@@ -603,7 +606,9 @@ searchInput.addEventListener('keyup', (evt) => {
             if (inputValue !== lastSearch) {
                 hasSearch = true;
                 lastSearch = inputValue;
-                searchRequest(inputValue);
+                searchFor.innerHTML = searchMsg;
+                searchValue.innerHTML = `${inputValue}`;
+                searchRequest(`${urlGeneral}&search=${inputValue}`);
             }
         } else {
 
@@ -614,23 +619,42 @@ searchInput.addEventListener('keyup', (evt) => {
 
 });
 
-const searchRequest = (input) => {
+const searchRequest = (url = urlGeneral) => {
 
-    searchFor.innerHTML = searchMsg;
-    searchValue.innerHTML = `${input}`;
     listCards.innerHTML = loadingMsg;
     loadingState(true);
 
-
-    gamesRequest(`${urlGeneral}&search=${input}`)
+    gamesRequest(url)
         .then(({ results }) => {
+
             if (results.length > 0) {
-                loadCards(results);
+
+                Promise.all(getPromises(results))
+                    .then((responses) => {
+                        let descriptionList = [];
+                        responses.forEach(({ description_raw: description }) => {
+                            descriptionList.push(description);
+                        });
+                        loadCards(results, descriptionList);
+                        loadingState(false);
+                    });
+
             } else {
                 listCards.innerHTML = notFoundMsg;
             }
-            loadingState(false);
-        });
+
+        })
+}
+
+const getPromises = (results) => {
+
+    let promises = [];
+
+    results.forEach(({ id }) => {
+        promises.push(gamesRequest(`${url}/${id}?key=${key}`));
+    });
+
+    return promises;
 }
 
 const loadingState = (bool) => {
@@ -639,13 +663,13 @@ const loadingState = (bool) => {
         radio.disabled = bool;
     });
 
-    if (bool) {
-        homeButton.href = '';
-        // console.log('hola');
-    } else {
-        // console.log('chau');
-        homeButton.href = 'javascript: homeAction()';
-    }
+    // if (bool) {
+    //     homeButton.href = '';
+    //     // console.log('hola');
+    // } else {
+    //     // console.log('chau');
+    //     homeButton.href = 'javascript: homeAction()';
+    // }
 
 };
 
@@ -659,13 +683,8 @@ const homeAction = () => {
         searchFor.innerHTML = newMsg;
         searchValue.innerHTML = basedMsg;
         listCards.innerHTML = loadingMsg;
-        loadingState(true);
 
-        gamesRequest()
-            .then(({ results }) => {
-                loadCards(results);
-                loadingState(false);
-            });
+        searchRequest();
     }
 }
 
