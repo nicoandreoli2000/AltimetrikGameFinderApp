@@ -640,20 +640,14 @@ const loadingState = (bool) => {
     });
 
     if (bool) {
-        homeButton.removeEventListener('click', () => {
-            homeAction();
-        });
+        homeButton.href = '';
+        // console.log('hola');
     } else {
-        homeButton.addEventListener('click', () => {
-            homeAction();
-        });
+        // console.log('chau');
+        homeButton.href = 'javascript: homeAction()';
     }
 
 };
-
-homeButton.addEventListener('click', () => {
-    homeAction();
-});
 
 const homeAction = () => {
 

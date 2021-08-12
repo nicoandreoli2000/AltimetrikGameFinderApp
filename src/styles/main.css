@@ -298,6 +298,12 @@ body {
 .nav__item > a {
     outline: none;
     cursor: pointer;
+    color: inherit;
+    text-decoration: none;
+}
+
+.nav__item > a:first-child{
+    appearance: none;
 }
 
 .nav__item:nth-child(4),

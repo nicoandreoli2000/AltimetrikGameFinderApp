@@ -69,7 +69,7 @@ buttonHidePassword.addEventListener('click', () => {
 //Snackbar closing
 snackbarCross.addEventListener('click', () => {
     snackbar.classList.add('hidden');
-})
+});
 
 //Email && Password active, click and focus states - Removing errors when focused
 const inputs = [[inputEmail, emailBox], [inputPassword, passwordBox]];
@@ -111,7 +111,7 @@ const showImageRadio = (value) => {
     carouselImages[lastValue].classList.add('hidden');
     carouselImages[value].classList.remove('hidden');
     lastValue = value;
-};
+}
 
 const decideValue = (value) => {
     if (value < 6) {
@@ -138,7 +138,7 @@ showImageRadio(lastValue);
 const validateEmail = (email) => {
     let re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
-};
+}
 
 //Form validation
 const formValidation = (email, pass) => {
@@ -195,11 +195,11 @@ const postRequest = async (email, pass) => {
 
         let respJson = await resp.json();
 
-        if (resp.ok) {
+        if (resp.status === 200) {
             localStorage.setItem('Access token', respJson.accessToken);
             window.location.href = 'main.html';
 
-        } else {
+        } else if (resp.status === 400) {
             form.classList.add('errorGeneral', 'errorUser', 'errorPass');
             inputEmail.value = '';
             inputPassword.value = '';
@@ -212,7 +212,7 @@ const postRequest = async (email, pass) => {
     }
 
     loadingState(false);
-};
+}
 
 //Login clicked
 form.addEventListener('submit', (evt) => {
@@ -256,4 +256,4 @@ const loadingState = (bool) => {
     } else {
         loginButton.setAttribute('value', 'LOGIN');
     }
-};
+}
