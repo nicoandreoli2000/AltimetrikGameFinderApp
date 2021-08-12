@@ -38,9 +38,5 @@ password: password
 ## Still need to finish:
 
 ### Important
-1. Connection Modal to API (just do the request and fullfill it)
-2. Debounce time in suggestions!
-3. Infinite scroll
-
-### David tips
-1. Separate scripts if they are too long
+1. Debounce time in suggestions!
+2. Infinite scroll
