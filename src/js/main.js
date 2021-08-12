@@ -160,6 +160,7 @@ const unknownMsg = 'Unknown';
 //Img not found
 const urlImgNotFound = '../assets/images/img/main/img-not-found.jpg';
 
+
 // ----------- Simple actions -------------
 
 //Radio buttons changing view
@@ -349,8 +350,6 @@ const loadCards = async (results, descriptionList) => {
 
     results.forEach(({ name: title, genres, background_image: img, released: date, parent_platforms: platforms = [], id }) => {
 
-        let description = descriptionRequest(id);
-
         div.innerHTML = `<li class="main__card">
             <button class="main__card-button flex-start-column" onclick="openModal(${id}, event)">
                 <div class="main__image-box">
@@ -419,13 +418,6 @@ const loadCards = async (results, descriptionList) => {
         listCards.append(div.firstChild);
         number++;
     });
-}
-
-const descriptionRequest = (id) => {
-    gamesRequest(`${url}/${id}?key=${key}`)
-        .then(({ description_raw: description }) => {
-            return description;
-        });
 }
 
 // ----------------- Modal ------------------
@@ -671,7 +663,7 @@ const loadingState = (bool) => {
     //     homeButton.href = 'javascript: homeAction()';
     // }
 
-};
+}
 
 const homeAction = () => {
 
