@@ -151,14 +151,16 @@ const searchMsg = 'Search results';
 const newMsg = 'New and trending';
 const basedMsg = 'Based on player counts and release date';
 const notFoundMsg = '<p>No serach results found</p>';
-const loadingMsg = `<img width="30" src="../assets/gifs/loading.gif">`;
+
+//Loading gif
+const loadingGif = `<img width="30" src="../assets/other/loading.gif">`;
 
 //Error msgs
 const descriptionMsg = 'The description of this game is not available';
 const unknownMsg = 'Unknown';
 
 //Img not found
-const urlImgNotFound = '../assets/images/img/main/img-not-found.jpg';
+const urlImgNotFound = '../assets/img/main/img-not-found.jpg';
 
 
 // ----------- Simple actions -------------
@@ -430,7 +432,7 @@ const openModal = (id, event) => {
 }
 
 const modalRequest = (urlDetails, urlScreens) => {
-    modalView.innerHTML = loadingMsg;
+    modalView.innerHTML = loadingGif;
 
     Promise.all([gamesRequest(urlDetails), gamesRequest(urlScreens)])
         .then(values => {
@@ -613,7 +615,7 @@ searchInput.addEventListener('keyup', (evt) => {
 
 const searchRequest = (url = urlGeneral) => {
 
-    listCards.innerHTML = loadingMsg;
+    listCards.innerHTML = loadingGif;
     loadingState(true);
 
     gamesRequest(url)
@@ -674,7 +676,7 @@ const homeAction = () => {
         searchInput.value = '';
         searchFor.innerHTML = newMsg;
         searchValue.innerHTML = basedMsg;
-        listCards.innerHTML = loadingMsg;
+        listCards.innerHTML = loadingGif;
 
         searchRequest();
     }

@@ -370,11 +370,11 @@ body {
 
 .main__radio--first {
     margin-right: 24px;
-    background-image: url(/src/assets/images/svg/main/display1.svg);
+    background-image: url(/src/assets/svg/main/display1.svg);
 }
 
 .main__radio--second {
-    background-image: url(/src/assets/images/svg/main/display2.svg);
+    background-image: url(/src/assets/svg/main/display2.svg);
 }
 
 /* Grid layout cards */

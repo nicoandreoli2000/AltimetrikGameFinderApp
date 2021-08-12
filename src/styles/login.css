@@ -391,7 +391,7 @@ hr {
     border-color: var(--light-green);
     background-repeat: no-repeat;
     background-position: center;
-    background-image: url(/src/assets/images/svg/login/check.svg);
+    background-image: url(/src/assets/svg/login/check.svg);
 }
 
 .form__login-checkbox:focus-visible {
