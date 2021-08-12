@@ -2,12 +2,13 @@
 <html lang="en">
 
 <head>
+    <!-- <script src="../js/security.js"></script> -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keyword" content="game, gaming, find, app, play, video">
     <meta name="description" content="Responsive and modern website for searching games of any topic">
     <title>Game Finder</title>
-    <link rel="icon" type="image/png" href="../assets/images/favicon/GF_favicon/favicon-16x16.png">
+    <link rel="icon" href="../assets/other/favicon.ico">
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="../styles/login.css">
 
@@ -18,7 +19,7 @@
 
             <div class="form flex-vertical-column">
 
-                <form method="POST">
+                <form method="POST" autocomplete="off">
 
                     <div class="form__title flex-horizontal">
                         <h1>GAME<strong class="form__title-strong">FINDER</strong></h1>
@@ -38,8 +39,8 @@
     s0.4-1.9,1.1-2.7C8.1,4,9,3.6,10,3.6s1.9,0.4,2.7,1.1C13.4,5.4,13.8,6.4,13.8,7.4z" />
                             </svg>
                         </div>
-                        <input class="form__input form__input--email" type="email" autocomplete="off"
-                            placeholder="Email" name="email" required>
+                        <input class="form__input form__input--email" type="email" placeholder="Email" name="email"
+                            required>
                     </div>
 
                     <div class="form__error form__error--user">
@@ -85,7 +86,7 @@
                             <label class="form__login-label" for="remember">Remember me</label>
                         </div>
 
-                        <input class="form__login-button" type="button" value="LOGIN">
+                        <input class="form__login-button" type="submit" value="LOGIN">
                     </div>
 
 
@@ -152,15 +153,14 @@
 
 
             <div class="carousel">
-                <img class="carousel__img hidden" src="../assets/images/img/login/biomutant.png" alt="Biomutant image">
-                <img class="carousel__img hidden" src="../assets/images/img/login/coc.png" alt="Clash of Clans image">
-                <img class="carousel__img hidden" src="../assets/images/img/login/cod.png" alt="Call of Duty image">
-                <img class="carousel__img hidden" src="../assets/images/img/login/fallguys.png" alt="Fall Guys image">
-                <img class="carousel__img hidden" src="../assets/images/img/login/farcry.png"
-                    alt="Far Cry New Dawn image">
-                <img class="carousel__img hidden" src="../assets/images/img/login/resident.png"
+                <img class="carousel__img hidden" src="../assets/img/login/biomutant.png" alt="Biomutant image">
+                <img class="carousel__img hidden" src="../assets/img/login/coc.png" alt="Clash of Clans image">
+                <img class="carousel__img hidden" src="../assets/img/login/cod.png" alt="Call of Duty image">
+                <img class="carousel__img hidden" src="../assets/img/login/fallguys.png" alt="Fall Guys image">
+                <img class="carousel__img hidden" src="../assets/img/login/farcry.png" alt="Far Cry New Dawn image">
+                <img class="carousel__img hidden" src="../assets/img/login/resident.png"
                     alt="Resident of Evil Village image">
-                <img class="carousel__img hidden" src="../assets/images/img/login/rocket.png" alt="Rocket League image">
+                <img class="carousel__img hidden" src="../assets/img/login/rocket.png" alt="Rocket League image">
                 <div class="carousel__radio">
                     <input type="radio" name="image" oninput="showImageRadio(0)">
                     <input type="radio" name="image" oninput="showImageRadio(1)">

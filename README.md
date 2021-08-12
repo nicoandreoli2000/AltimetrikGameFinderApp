@@ -16,7 +16,7 @@ npm install
 
 4. Raise a json-server (verify you are on port 3000, if not change the url at src/js/login.js):
 ```
-npx json-server db.json
+npm run serve
 ```
 
 5. For logging in, use the following credentials:
@@ -39,8 +39,8 @@ password: password
 
 ### Important
 1. Connection Modal to API (just do the request and fullfill it)
-2. Debounce time in suggestions
+2. Debounce time in suggestions!
+3. Infinite scroll
 
 ### David tips
-1. Color variables in main and modal
-2. Separate scripts if they are too long
+1. Separate scripts if they are too long
