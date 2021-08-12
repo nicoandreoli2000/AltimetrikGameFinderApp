@@ -215,7 +215,7 @@ const postRequest = async (email, pass) => {
 }
 
 //Login clicked
-form.addEventListener('submit', (evt) => {
+loginButton.addEventListener('click', (evt) => {
 
     evt.preventDefault();
 
@@ -242,7 +242,6 @@ form.addEventListener('submit', (evt) => {
 
     }
 });
-
 
 //Disable login button and inputs
 const loadingState = (bool) => {
