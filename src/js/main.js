@@ -157,7 +157,7 @@ const notFoundMsg = '<p>No serach results found</p>';
 const loadingGifModal = `<img class="loading-gif" src="../assets/other/loading.gif">`;
 
 //Error msgs
-const descriptionMsg = 'The description of this game is not available';
+const descriptionMsg = 'The description of this game is not available...';
 const unknownMsg = 'Unknown';
 
 //Img not found
@@ -435,7 +435,6 @@ const modalRequest = (urlDetails, urlScreens) => {
 
     Promise.all([gamesRequest(urlDetails), gamesRequest(urlScreens)])
         .then(values => {
-            console.log(values);
             loadModal(values);
         })
         .catch(console.log);

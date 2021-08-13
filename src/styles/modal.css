@@ -6,12 +6,13 @@
     position: fixed;
     top: 0;
     background: rgba(0, 0, 0, 0.784937);
+    z-index: 1;
 
 }
 
 .modal {
     position: relative;
-    z-index: 1;
+    z-index: -1;
     flex: 1082px 0 1;
     height: 794px;
     padding: 26px 91px 0px 79px;
@@ -117,12 +118,16 @@
     grid-area: title;
     height: 82px;
     margin-top: 9px;
+    min-width: 100%;
 }
 
 .modal__title h1 {
     font-weight: 800;
     line-height: 82px;
     font-size: 60px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 
@@ -223,13 +228,13 @@
 
 .modal__description {
     grid-area: description;
-    text-align: justify;
     width: 468px;
     height: 90px;
     font-size: 14px;
     line-height: 19px;
     margin-top: 32px;
-    overflow: hidden;
+    padding-right: 5px;
+    overflow-y: auto;
 }
 
 
@@ -363,6 +368,10 @@
     color: var(--white);
     text-decoration-line: underline;
     margin-top: 4px;
+    text-overflow: ellipsis;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .modal__link:nth-child(2) a,
@@ -548,6 +557,9 @@
     .modal__links {
         width: auto;
         height: auto;
+    }
+    .modal__link {
+        width: 100%;
     }
     .modal__link:nth-last-child(1) {
         margin-bottom: 0;
