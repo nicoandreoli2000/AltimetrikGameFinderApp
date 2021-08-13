@@ -6,6 +6,7 @@ const menu = document.querySelector('.menu');
 const main = document.querySelector('.main');
 const listCards = document.querySelector('.main__ul-grid');
 const groupRadio = document.querySelectorAll('.main__radio');
+const loadingGifMain = document.querySelector('.main__bot .loading-gif');
 
 //Logout
 const logoutButtonHeader = document.querySelector('.header__logout-button');
@@ -153,7 +154,7 @@ const basedMsg = 'Based on player counts and release date';
 const notFoundMsg = '<p>No serach results found</p>';
 
 //Loading gif
-const loadingGif = `<img class="loading-gif" src="../assets/other/loading.gif">`;
+const loadingGifModal = `<img class="loading-gif" src="../assets/other/loading.gif">`;
 
 //Error msgs
 const descriptionMsg = 'The description of this game is not available';
@@ -436,7 +437,7 @@ const openModal = (id, event) => {
 }
 
 const modalRequest = (urlDetails, urlScreens) => {
-    modalView.innerHTML = loadingGif;
+    modalView.innerHTML = loadingGifModal;
 
     Promise.all([gamesRequest(urlDetails), gamesRequest(urlScreens)])
         .then(values => {
@@ -617,14 +618,12 @@ searchInput.addEventListener('keyup', (evt) => {
 
 });
 
-const loadingGifMain = document.querySelector('.main .loading-gif');
-
 const searchRequest = (url = urlGeneral, scroll = false) => {
 
-    if (!scroll) {
-        listCards.innerHTML = loadingGif;
-    } else {
-        loadingGifMain.classList.remove('hidden');
+    loadingGifMain.classList.toggle('hidden');
+
+    if (scroll) {
+        loadingGifMain.classList.toggle('loading-gif--scroll');
     }
 
     loadingState(true);
@@ -647,9 +646,11 @@ const searchRequest = (url = urlGeneral, scroll = false) => {
                             listCards.innerHTML = '';
                             numberCards = 1;
                         } else {
-                            loadingGifMain.classList.add('hidden');
+                            loadingGifMain.classList.toggle('loading-gif--scroll');
+
                         }
 
+                        loadingGifMain.classList.toggle('hidden');
                         loadCards(results, descriptionList);
                         loadingState(false);
                     });
@@ -697,7 +698,6 @@ const homeAction = () => {
         searchInput.value = '';
         searchFor.innerHTML = newMsg;
         searchValue.innerHTML = basedMsg;
-        listCards.innerHTML = loadingGif;
 
         searchRequest();
     }

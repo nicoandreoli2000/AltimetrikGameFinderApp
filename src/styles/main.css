@@ -327,11 +327,11 @@ body {
 /* Main */
 
 .main {
-    position: relative;
     padding: 144px 40px 50px 262px;
 }
 
 .main__bot {
+    position: relative;
     margin-top: 30px;
 }
 
@@ -389,9 +389,9 @@ body {
 /*Loading gif*/
 .main .loading-gif--scroll {
     position: absolute;
-    bottom: 10px;
-    left: 200%;
-    /* transform: translateX(250%); */
+    bottom: 0px;
+    left: 50%;
+    transform: translate(-50%, 40px);
 }
 
 /* Cards */
