@@ -379,6 +379,16 @@
     text-decoration: none;
 }
 
+/* Tool tip */
+.modal__link a:hover,
+.modal__title h1:hover {
+    cursor: pointer;
+    text-overflow: visible;
+    white-space: normal;
+    word-break: break-all;
+}
+
+
 /*Media queries*/
 
 @media (max-width: 1024px) {
