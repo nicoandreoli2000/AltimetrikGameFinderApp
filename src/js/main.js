@@ -248,23 +248,16 @@ const optionalInfo = {
 
 let nextPageUrl = '';
 
-//action = 0 ---> Load cards
-//action = 1 ---> Load suggestions
-//action = 2 ---> Load modal
-
 const gamesRequest = async (url) => {
 
-    try {
+    let resp = await fetch(url, optionalInfo);
 
-        let resp = await fetch(url, optionalInfo);
-
-        if (resp.ok) {
-            return await resp.json();
-        }
-
-    } catch (error) {
-        console.log(error);
+    if (!resp.ok) {
+        throw new Error(`HTTP error status: ${resp.status}`);
     }
+
+    return await resp.json();
+
 }
 
 
@@ -349,7 +342,7 @@ const auxImgs = (results) => {
 // ----------------- Cards --------------------
 let numberCards = 1;
 
-const loadCards = async (results, descriptionList) => {
+const loadCards = (results, descriptionList) => {
 
     let number = 1;
     const div = document.createElement('div');
@@ -623,7 +616,7 @@ const searchRequest = (url = urlGeneral, scroll = false) => {
     loadingGifMain.classList.toggle('hidden');
 
     if (scroll) {
-        loadingGifMain.classList.toggle('loading-gif--scroll');
+        loadingGifMain.classList.add('loading-gif--scroll');
     }
 
     loadingState(true);
@@ -645,14 +638,17 @@ const searchRequest = (url = urlGeneral, scroll = false) => {
                         if (!scroll) {
                             listCards.innerHTML = '';
                             numberCards = 1;
-                        } else {
-                            loadingGifMain.classList.toggle('loading-gif--scroll');
-
                         }
 
-                        loadingGifMain.classList.toggle('hidden');
                         loadCards(results, descriptionList);
-                        loadingState(false);
+
+                    })
+                    .catch(console.log)
+                    .finally(() => {
+                        // loadingGifMain.classList.toggle('hidden');
+                        // loadingGifMain.classList.remove('loading-gif--scroll');
+                        // loadingState(false);
+
                     });
 
             } else {
@@ -660,6 +656,12 @@ const searchRequest = (url = urlGeneral, scroll = false) => {
             }
 
         })
+        .catch(console.log)
+        .finally(() => {
+            loadingGifMain.classList.toggle('hidden');
+            loadingGifMain.classList.remove('loading-gif--scroll');
+            loadingState(false);
+        });
 }
 
 const getPromises = (results) => {
