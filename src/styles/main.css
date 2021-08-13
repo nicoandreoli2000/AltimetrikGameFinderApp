@@ -24,6 +24,7 @@ body {
 
 .header {
     position: fixed;
+    z-index: 1;
     top: 0;
     padding: 32px 40px 0px 40px;
     width: 100%;
@@ -392,7 +393,6 @@ body {
     bottom: 0px;
     left: 50%;
     transform: translate(-50%, 40px);
-    z-index: 1;
 }
 
 /* Cards */
@@ -921,8 +921,8 @@ body {
         display: flex;
     }
 
-    /*Loading message*/
-    .main__ul-grid>p {
+    /*Loading gif*/
+    .loading-gif:not(.loading-gif--scroll) {
         margin-left: 40px;
     }
 }

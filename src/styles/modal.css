@@ -11,7 +11,7 @@
 
 .modal {
     position: relative;
-    z-index: -1;
+    z-index: 1;
     flex: 1082px 0 1;
     height: 794px;
     padding: 26px 91px 0px 79px;

@@ -9,12 +9,12 @@ Webpage for searching games.
 
 2. Download Node in your computer.
 
-3. Install json-server and json-server-auth locally just by running:
+3. Install json-server and json-server-auth locally:
 ```
 npm install
 ```
 
-4. Raise a json-server (verify you are on port 3000, if not change the url at src/js/login.js):
+4. Raise a json-server (verify you are on port 3000):
 ```
 npm run serve
 ```
@@ -22,7 +22,7 @@ npm run serve
 5. For logging in, use the following credentials:
 
 ```
-email: probando@hotmail.com
+email: nicolas@altimetrik.com
 ```
 ```
 password: password
@@ -32,11 +32,6 @@ password: password
 ## Considerations
 
 1. In the main view at the mobile breakpoint, two rows are left for the first 200px, because it looks better that just keeping one too streched.
-2. ...
-
-
-## Still need to finish:
-
-### Important
-1. Debounce time in suggestions!
-2. Infinite scroll
+2. Issues in the console are due to CORS and Alvaro told us to obvious them.
+3. I opt for using a page size of 12 beause otherwise, when doing the infinite scroll, the page becomes REALLY slow.
+4. CSS animations are great, but I chose to optimize my code and prioritize other issues rather than wasting my time on them.

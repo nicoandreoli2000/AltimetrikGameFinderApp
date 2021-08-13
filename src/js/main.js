@@ -236,8 +236,9 @@ searchButton.addEventListener('click', () => {
 //Api info
 const url = 'https://api.rawg.io/api/games';
 const key = 'e47665a812c8462aa8519397b488ec98';
+const size = 12;
 
-const urlGeneral = `${url}?key=${key}`;
+const urlGeneral = `${url}?key=${key}&page_size=${size}`;
 const optionalInfo = {
     method: "GET",
     headers: {
@@ -613,13 +614,11 @@ searchInput.addEventListener('keyup', (evt) => {
 
 const searchRequest = (url = urlGeneral, scroll = false) => {
 
-    loadingGifMain.classList.toggle('hidden');
-
-    if (scroll) {
-        loadingGifMain.classList.add('loading-gif--scroll');
+    if (!scroll) {
+        listCards.innerHTML = '';
     }
 
-    loadingState(true);
+    loadingState(true, scroll);
 
     gamesRequest(url)
         .then(({ results, next }) => {
@@ -636,7 +635,7 @@ const searchRequest = (url = urlGeneral, scroll = false) => {
                         });
 
                         if (!scroll) {
-                            listCards.innerHTML = '';
+                            // listCards.innerHTML = '';
                             numberCards = 1;
                         }
 
@@ -645,22 +644,19 @@ const searchRequest = (url = urlGeneral, scroll = false) => {
                     })
                     .catch(console.log)
                     .finally(() => {
-                        // loadingGifMain.classList.toggle('hidden');
-                        // loadingGifMain.classList.remove('loading-gif--scroll');
-                        // loadingState(false);
-
+                        loadingState(false, scroll);
                     });
 
             } else {
+
+                loadingState(false, scroll);
                 listCards.innerHTML = notFoundMsg;
             }
 
         })
-        .catch(console.log)
-        .finally(() => {
-            loadingGifMain.classList.toggle('hidden');
-            loadingGifMain.classList.remove('loading-gif--scroll');
-            loadingState(false);
+        .catch((error) => {
+            console.log(error);
+            loadingState(false, scroll);
         });
 }
 
@@ -675,12 +671,15 @@ const getPromises = (results) => {
     return promises;
 }
 
-const loadingState = (bool) => {
+const loadingState = (bool, scroll = false) => {
     searchInput.disabled = bool;
     groupRadio.forEach(radio => {
         radio.disabled = bool;
     });
-
+    loadingGifMain.classList.toggle('hidden');
+    if (scroll) {
+        loadingGifMain.classList.toggle('loading-gif--scroll');
+    }
     // if (bool) {
     //     homeButton.href = '';
     //     // console.log('hola');
@@ -688,7 +687,6 @@ const loadingState = (bool) => {
     //     // console.log('chau');
     //     homeButton.href = 'javascript: homeAction()';
     // }
-
 }
 
 const homeAction = () => {
