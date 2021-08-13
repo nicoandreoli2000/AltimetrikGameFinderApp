@@ -29,9 +29,10 @@ password: password
 ```
 
 
-## Considerations
+## Considerations and Issues
 
 1. In the main view at the mobile breakpoint, two rows are left for the first 200px, because it looks better that just keeping one too streched.
 2. Issues in the console are due to CORS and Alvaro told us to obvious them.
-3. I opt for using a page size of 12 beause otherwise, when doing the infinite scroll, the page becomes REALLY slow.
+3. I opt for using a page size of 12 beause otherwise, when doing the infinite scroll, the page becomes REALLY slow when having lot of cards.
 4. CSS animations are great, but I chose to optimize my code and prioritize other issues rather than wasting my time on them.
+5. Modal title tooltip is not great, but is what we agreed with David.
