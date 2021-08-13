@@ -83,6 +83,11 @@ body {
     background-color: var(--light-green);
 }
 
+/*Loading gif*/
+.loading-gif {
+    width: 35px;
+}
+
 /* Scroll bar */
 
 ::-webkit-scrollbar {

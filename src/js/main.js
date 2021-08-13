@@ -153,7 +153,7 @@ const basedMsg = 'Based on player counts and release date';
 const notFoundMsg = '<p>No serach results found</p>';
 
 //Loading gif
-const loadingGif = `<img width="30" src="../assets/other/loading.gif">`;
+const loadingGif = `<img class="loading-gif" src="../assets/other/loading.gif">`;
 
 //Error msgs
 const descriptionMsg = 'The description of this game is not available';
@@ -245,6 +245,8 @@ const optionalInfo = {
     }
 };
 
+let nextPageUrl = '';
+
 //action = 0 ---> Load cards
 //action = 1 ---> Load suggestions
 //action = 2 ---> Load modal
@@ -263,6 +265,7 @@ const gamesRequest = async (url) => {
         console.log(error);
     }
 }
+
 
 // ---------------- Aux functions ---------------
 
@@ -343,10 +346,10 @@ const auxImgs = (results) => {
 }
 
 // ----------------- Cards --------------------
+let numberCards = 1;
 
 const loadCards = async (results, descriptionList) => {
 
-    listCards.innerHTML = '';
     let number = 1;
     const div = document.createElement('div');
 
@@ -378,7 +381,7 @@ const loadCards = async (results, descriptionList) => {
                     </div>
 
                     <div class="main__number ">
-                        <p>#${number}</p>
+                        <p>#${numberCards > number ? numberCards : number}</p>
                     </div>
 
                     <div class="main__card-genre">
@@ -419,6 +422,7 @@ const loadCards = async (results, descriptionList) => {
 
         listCards.append(div.firstChild);
         number++;
+        numberCards = number;
     });
 }
 
@@ -613,15 +617,24 @@ searchInput.addEventListener('keyup', (evt) => {
 
 });
 
-const searchRequest = (url = urlGeneral) => {
+const loadingGifMain = document.querySelector('.main .loading-gif');
 
-    listCards.innerHTML = loadingGif;
+const searchRequest = (url = urlGeneral, scroll = false) => {
+
+    if (!scroll) {
+        listCards.innerHTML = loadingGif;
+    } else {
+        loadingGifMain.classList.remove('hidden');
+    }
+
     loadingState(true);
 
     gamesRequest(url)
-        .then(({ results }) => {
+        .then(({ results, next }) => {
 
             if (results.length > 0) {
+
+                nextPageUrl = next;
 
                 Promise.all(getPromises(results))
                     .then((responses) => {
@@ -629,6 +642,14 @@ const searchRequest = (url = urlGeneral) => {
                         responses.forEach(({ description_raw: description }) => {
                             descriptionList.push(description);
                         });
+
+                        if (!scroll) {
+                            listCards.innerHTML = '';
+                            numberCards = 1;
+                        } else {
+                            loadingGifMain.classList.add('hidden');
+                        }
+
                         loadCards(results, descriptionList);
                         loadingState(false);
                     });
@@ -684,6 +705,17 @@ const homeAction = () => {
 
 //Popular page load
 homeAction();
+
+
+// ---------- Infinite scroll ------------
+window.addEventListener('scroll', () => {
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+        main
+        searchRequest(nextPageUrl, true);
+
+    }
+
+});
 
 
 // ------------- Suggestions --------------

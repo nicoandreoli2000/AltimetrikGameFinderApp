@@ -327,6 +327,7 @@ body {
 /* Main */
 
 .main {
+    position: relative;
     padding: 144px 40px 50px 262px;
 }
 
@@ -383,6 +384,14 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
     gap: 24px;
+}
+
+/*Loading gif*/
+.main .loading-gif--scroll {
+    position: absolute;
+    bottom: 10px;
+    left: 200%;
+    /* transform: translateX(250%); */
 }
 
 /* Cards */

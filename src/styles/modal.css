@@ -29,6 +29,14 @@
     'links . images';
 }
 
+/* Loading gif */
+.modal .loading-gif {
+    position: absolute;
+    top: 40%;
+    right: 50%;
+    transform: translateX(50%);
+}
+
 /* Background */
 .modal__bg {
     position: absolute;
